@@ -1,13 +1,21 @@
-package net.benjaminurquhart.tos;
+package net.benjaminurquhart.tos.handlers;
 
 import java.util.Arrays;
 
-import net.benjaminurquhart.tos.game.*;
+import net.benjaminurquhart.tos.game.Game;
 
-public class MessageHandler {
+public class ServerMessageHandler extends MessageHandler {
 	
-    public void parseServerCommand(byte[] command) {
-    	this.onUnhandledCommand(command, true);
+	private String[] names;
+	
+    public ServerMessageHandler() {
+		super("Server");
+		this.names = new String[15];
+	}
+    
+    @Override
+	public void processCommand(byte[] command) {
+    	//this.onUnhandledCommand(command);
         switch ((int)command[0]) { 
                  case 0: onDefaultFunction(command); break;
                  case 1: onLoginSuccess(command); break;
@@ -20,13 +28,13 @@ public class MessageHandler {
                  case 8: onDefaultFunction(command); break;
                  case 9: onDefaultFunction(command); break;
                  case 10: onDefaultFunction(command); break;
-                 case 11: onDefaultFunction(command); break;
+                 case 11: onGameStartCountdown(command); break;
                  case 12: onDefaultFunction(command); break;
                  case 13: onDefaultFunction(command); break;
                  case 14: onDefaultFunction(command); break;
                  case 15: onDefaultFunction(command); break;
                  case 16: onDoNotSpam(command); break;
-                 case 17: onDefaultFunction(command); break;
+                 case 17: onGameStatus(command); break;
                  case 18: onSystemMessage(command); break;
                  case 19: onStringTableMessage(command); break;
                  case 20: onDefaultFunction(command); break;
@@ -239,631 +247,625 @@ public class MessageHandler {
                  case 225: onJailorDeathNote(command); break;
                  case 226: onLoginFailure(command); break;
                  case 227: onSpyNightInfo(command); break;
-                default: break;
+                default: onUnhandledCommand(command); break;
         }
     }
-    public void parseClientCommand(byte[] command) {
-    	this.onUnhandledCommand(command, false);
-    	switch((int)command[0]) {
-    	case 20: onCustomizationUpdate(command); break;
-    	}
-    }
 
-	private void onCustomizationUpdate(byte[] command) {
-		String[] data = this.convertToString(command).split(",");
-		System.out.println("Customization updated:");
-		String[] scrolledRoles = Arrays.stream(Arrays.copyOfRange(data, 6, 9))
-									   .mapToInt(Integer::parseInt)
-									   .mapToObj(i -> Game.SCROLLS[i])
-									   .map(String::valueOf)
-									   .toArray(String[]::new);
-		System.out.println("Default Name: " + data[data.length-1]);
-		System.out.println("Scrolls: " + Arrays.toString(scrolledRoles));
+	private void onGameStartCountdown(byte[] command) {
+		System.out.println("Lobby is full, game is starting...");
+	}
+
+	private void onGameStatus(byte[] command) {
+		int asterisk = this.indexOf(command, (byte)'*');
+		int players = Integer.parseInt(new String(Arrays.copyOfRange(command, 1, asterisk)));
+		int games = Integer.parseInt(new String(Arrays.copyOfRange(command, asterisk+1, command.length-2)));
+		System.out.printf("%d players online (%d games running)\n", players, games);
 	}
 
 	private void onSpyNightInfo(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onLoginFailure(byte[] command) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Login failed");
 	}
 
 	private void onJailorDeathNote(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onRankedInfo(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onRivalTarget(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onPlagueSpread(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onLoverTarget(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onZombieRotted(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onAccountFlags(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onPirateDuelOutcome(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onVIPTarget(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onGuardianAngelPromoted(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onCovenGotNecronomicon(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onJuggernautKillCount(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onPestilenceConversion(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTrapperTrapStatus(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTrapperNightAbility(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onPsychicNightAbility(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onOtherWitches(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onHasNecronomicon(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onPotionMasterPotions(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onDuelTarget(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onPirateDuel(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onGuardianAngelProtection(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onAmbusherNightAbility(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTrackerNightAbility(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTauntConsumed(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTauntActivated(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTauntResult(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onActiveEvents(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUpdateFreeCurrency(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTransporterNotification(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onVampireVisitedMessage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onVampireHunterPromoted(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onVampireDied(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onCanVampiresConvert(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onAddVampire(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onOtherVampires(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onVampirePromotion(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onPayPalShowApprovalPage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onRoleLotsInfoMesssage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onEndGameUserUpdate(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onEndGameChatMessage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onEndGameInfo(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onIdentify(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onFullMoonNight(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onDeathAnimationsChosen(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onFacebookShareWin(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onFacebookShareAchievement(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onPetsChosen(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onOneDayBeforeStalemate(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onSpyNightAbilityMessage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onEarnedAchievements(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onPrivateMessage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onNotifyUsersOfPrivateMessage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onVigilanteKilledTown(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUserLeftDuringSelection(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartDefense(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onResurrectionSetAlive(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onCharactersChosen(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onFirstDayTransition(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onHousesChosen(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onDeathNote(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onLynchUser(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartDayTransition(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartNightTransition(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onInvalidNameMessage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onMafiaWasJailed(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUserDisconnected(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onAmnesiacBecameMafiaOrWitch(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onExecutionerConvertedToJester(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTellMafiaAboutMafiosoPromotion(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onMafiaPromotedToMafioso(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onMafiosoPromotedToGodfatherUpdateMafia(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onMafiosoPromotedToGodfather(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onSomeoneHasWon(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTellJanitorTargetsWill(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTellJanitorTargetsRole(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onMafiaTargeting(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onHowManyAbilitiesLeft(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTellLastWill(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onMediumCommunicating(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onMediumIsTalkingToUs(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onDisguiserChangedUpdateMafia(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onDisguiserChangedIdentity(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onDisguiserStoleYourIdentity(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onMayorRevealedAndAlreadyVoted(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onMayorRevealed(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onJesterCompletedGoal(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onExecutionerCompletedGoal(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTellJudgementVotes(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUserCanceledJudgementVote(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUserChangedJudgementVote(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUserJudgementVoted(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onJailedTarget(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onBeingJailed(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartFirstDay(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onBroughtBackToLife(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onAmnesiacChangedRole(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTellTownAmnesiacChangedRole(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onOtherMafia(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUserChosenName(byte[] command) {
-		// TODO Auto-generated method stub
-		
+		//onUnhandledCommand(command);
+		String name = new String(Arrays.copyOfRange(command, 3, command.length-1));
+		names[command[2]-1] = name;
+		System.out.printf("%s (%d) has joined the Town\n", name, command[2]);
 	}
 
 	private void onTellRoleList(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onResurrection(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUserDied(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUserChangedVote(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUserCanceledVote(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUserVoted(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onLookoutNightAbilityMessage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTrialFoundNotGuilty(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onTrialFoundGuilty(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartJudgement(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartDefenseTransition(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartVoting(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartDiscussion(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onWhoDiedAndHow(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartDay(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartNight(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onRoleAndPosition(byte[] command) {
-		// TODO Auto-generated method stub
-		
+		//onUnhandledCommand(command);
+		System.out.printf("Role: %s\nPosition: %d\n", Game.ROLES[command[1]], command[2]);
 	}
 
 	private void onNamesAndPositionsOfUsers(byte[] command) {
-		// TODO Auto-generated method stub
-		
+		names[command[1]-1] = new String(Arrays.copyOfRange(command, 2, command.length-1));
 	}
 
 	private void onPickNames(byte[] command) {
-		// TODO Auto-generated method stub
-		
+		Arrays.fill(names, null);
+		System.out.println("Name selection has begun");
+		//onUnhandledCommand(command);
 	}
 
 	private void onCurrencyMultiplier(byte[] command) {
@@ -902,108 +904,93 @@ public class MessageHandler {
 	}
 
 	private void onUpdateFriendName(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onSetLastBonusWinTime(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUpdatePaidCurrency(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onShopPurchaseSuccess(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onReturnToHomePage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onForcedLogout(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onFriendUpdate(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onStringTableMessage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onSystemMessage(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onDoNotSpam(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onChatBoxMessage(byte[] command) {
-		// TODO Auto-generated method stub
+		int offset = command[1] == (byte)0xff ? 1 : 0;
+		int player = command[1+offset]-1;
 		
+		String name;
+		if(player == 44) {
+			name = "Medium";
+		}
+		else {
+			name = names[player];
+		}
+		System.out.printf("%s: %s\n", name, new String(Arrays.copyOfRange(command, 2+offset, command.length-1)));
 	}
 
 	private void onUserLeftGame(byte[] command) {
-		// TODO Auto-generated method stub
+		onUnhandledCommand(command);
 		
 	}
 
 	private void onUsersJoinedLobby(byte[] command) {
-		// TODO Auto-generated method stub
-		
+		int asterisk = this.indexOf(command, (byte)'*');
+		String name = new String(Arrays.copyOfRange(command, 3, asterisk));
+		System.out.printf(
+				"Player #%d (%s) joined the game%s\n",
+				command[asterisk+1], 
+				name,
+				command[1] == 0x02 ? " (Host)" : ""
+		);
+		names[command[asterisk+1]-1] = name;
 	}
 
 	private void onJoinedGameLobby(byte[] command) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Joined game lobby");
+		//onUnhandledCommand(command);
 	}
 
 	private void onLoginSuccess(byte[] command) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void onDefaultFunction(byte[] command) {
-    	onUnhandledCommand(command, true);
-    }
-	public void onUnhandledCommand(byte[] command, boolean server) {
-		System.out.printf("%s: (0x%02x %03d): %s\n", server ? "Server" : "Client", command[0], ((int)command[0])&(int)0b11111111, convertToString(command));
-	}
-	private String convertToString(byte[] command) {
-		StringBuilder sb = new StringBuilder();
-		boolean wasUnprintable = false;
-		String now = null;
-		for(byte b : Arrays.copyOfRange(command, 1, command.length-1)) {
-			if((now = new String(new byte[]{b})).matches("\\p{C}")) {
-				if(!wasUnprintable && sb.length() > 0) {
-					sb.append(' ');
-				}
-				sb.append(String.format("0x%02x ", b));
-				wasUnprintable = true;
-			}
-			else {
-				if(wasUnprintable) {
-					if(now.matches("\\p{P}")) {
-						sb.deleteCharAt(sb.length()-1);
-					}
-					wasUnprintable = false;
-				}
-				sb.append((char)b);
-			}
-		}
-		return sb.toString();
+		System.out.println("Log in succeeded");
+		//onUnhandledCommand(command);
 	}
 }
