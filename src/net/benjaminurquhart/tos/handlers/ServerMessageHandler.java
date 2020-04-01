@@ -556,17 +556,25 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onPrivateMessage(byte[] command) {
-		onUnhandledCommand(command);
-		
+		String color = ANSI.toTrueColor(Color.MAGENTA);
+		System.out.printf(
+				"%s%s %s%s:%s %s%s\n",
+				color,
+				command[1] == 0x01 ? "To" : "From",
+				ANSI.RESET,
+				names[command[2]-1],
+				color,
+				new String(Arrays.copyOfRange(command, 3, command.length-1)),
+				ANSI.GRAY
+		);
 	}
 
 	private void onNotifyUsersOfPrivateMessage(byte[] command) {
-		String whisperColor = ANSI.toTrueColor(Color.MAGENTA);
 		System.out.printf(
 				"%s%s%s is whispering to %s%s%s\n",
 				ANSI.LIGHT_GRAY,
 				names[command[1]-1],
-				whisperColor,
+				ANSI.toTrueColor(Color.MAGENTA),
 				ANSI.LIGHT_GRAY,
 				names[command[2]-1],
 				ANSI.GRAY
@@ -696,9 +704,13 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onTellLastWill(byte[] command) {
-		System.out.printf("%sWill: %s%s\n", ANSI.WHITE, new String(Arrays.copyOfRange(command, 3, command.length-1)), ANSI.GRAY);
-		onUnhandledCommand(command);
-		
+		String will = new String(Arrays.copyOfRange(command, 3, command.length-1));
+		if(!will.trim().isEmpty()) {
+			System.out.printf("%sWill:\n%s%s\n\n", ANSI.RESET, will, ANSI.GRAY);
+		}
+		else {
+			System.out.println(ANSI.RESET+"We could not find a last will\n");
+		}
 	}
 
 	private void onMediumCommunicating(byte[] command) {
@@ -875,7 +887,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	private void onWhoDiedAndHow(byte[] command) {
 		Role role = Game.ROLES[command[2]-1];
-		System.out.printf("%s%s died last night\n", ANSI.WHITE, names[command[1]-1]);
+		System.out.printf("%s%s died last night\n", ANSI.RESET, names[command[1]-1]);
 		System.out.printf("Role: %s%s%s\n", ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.GRAY);
 	}
 
@@ -889,7 +901,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	private void onRoleAndPosition(byte[] command) {
 		Role role = Game.ROLES[command[1]-1];
-		System.out.printf("%sRole: %s%s%s\nPosition: %d%s\n", ANSI.WHITE, ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.WHITE, command[2], ANSI.GRAY);
+		System.out.printf("%sRole: %s%s%s\nPosition: %d%s\n", ANSI.RESET, ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.RESET, command[2], ANSI.GRAY);
 	}
 
 	private void onNamesAndPositionsOfUsers(byte[] command) {
@@ -996,7 +1008,7 @@ public class ServerMessageHandler extends MessageHandler {
 			name = ANSI.CYAN+"Medium";
 		}
 		else {
-			name = ANSI.WHITE+names[player];
+			name = ANSI.RESET+names[player];
 		}
 		System.out.printf("%s: %s%s\n", name, new String(Arrays.copyOfRange(command, 2+offset, command.length-1)), ANSI.GRAY);
 	}
@@ -1019,7 +1031,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onJoinedGameLobby(byte[] command) {
-		System.out.println(ANSI.WHITE+"Joined game lobby"+ANSI.GRAY);
+		System.out.println(ANSI.RESET+"Joined game lobby"+ANSI.GRAY);
 		//onUnhandledCommand(command);
 	}
 
