@@ -1,0 +1,5008 @@
+{
+   "hash": "n45Y7LRKDZizcwXMSn4CGT+eBlOTJmMSpcmtHkfvnJyunIBKf9X3k2IkN1xU8wvTYl+GhvKbSQSw3qfy5eux4CZT0SaeX0m+MKJDJO2yRf63tbAe3p2T4SBoreBfamIqzmyfpJDkLDSmt+tz4WUWlgG2wgfw1AWWho1X6HhfSwOqIp4njqJ/vFP5Hz26vS8twCnzUknyzvzxyH+vukqWTFs9hiHBmOsy1mrxwaCC6FVrqp9kcRy1mwnuFhqsvbc/RVO78mbL/rdYDhO5NEYT0vnT7aWhT+kmKUOu1Dr0ETmxtWrNDobS7SNaJwFGZezVakAuMGg3hZd4bvdHGOXu1A==",
+   "CustomizationHouses": [
+      {
+         "DayFile": "Houses/Standard/HouseDay0_1.png",
+         "NightFile": "Houses/Standard/HouseNight0_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseCottage.png",
+         "id": "0",
+         "Name": {
+            "l10n": "ITEM_2_0",
+            "text": "Cottage"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay1_1.png",
+         "NightFile": "Houses/Standard/HouseNight1_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseStraw.png",
+         "id": "1",
+         "Name": {
+            "l10n": "ITEM_2_1",
+            "text": "Straw house"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay2_1.png",
+         "NightFile": "Houses/Standard/HouseNight2_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseShack.png",
+         "id": "2",
+         "Name": {
+            "l10n": "ITEM_2_2",
+            "text": "Shack"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay3_1.png",
+         "NightFile": "Houses/Standard/HouseNight3_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseCastle.png",
+         "id": "3",
+         "Name": {
+            "l10n": "ITEM_2_3",
+            "text": "Castle"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay4_1.png",
+         "NightFile": "Houses/Standard/HouseNight4_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouse3Bed2Bath.png",
+         "id": "4",
+         "Name": {
+            "l10n": "ITEM_2_4",
+            "text": "3 Bed 2 Bath"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay5_1.png",
+         "NightFile": "Houses/Standard/HouseNight5_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseJail.png",
+         "id": "5",
+         "Name": {
+            "l10n": "ITEM_2_5",
+            "text": "Jail"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay6_1.png",
+         "NightFile": "Houses/Standard/HouseNight6_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseSheriff.png",
+         "id": "6",
+         "Name": {
+            "l10n": "ITEM_2_6",
+            "text": "Sheriff's Office"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay7_1.png",
+         "NightFile": "Houses/Standard/HouseNight7_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseTrapDoor.png",
+         "id": "7",
+         "Name": {
+            "l10n": "ITEM_2_7",
+            "text": "It's A Trap!"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay8_1.png",
+         "NightFile": "Houses/Standard/HouseNight8_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseCave.png",
+         "id": "8",
+         "Name": {
+            "l10n": "ITEM_2_8",
+            "text": "Cave"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay9_1.png",
+         "NightFile": "Houses/Standard/HouseNight9_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseYetisLair.png",
+         "id": "9",
+         "Name": {
+            "l10n": "ITEM_2_9",
+            "text": "Yeti's Lair"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay10_1.png",
+         "NightFile": "Houses/Standard/HouseNight10_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseSK.png",
+         "id": "10",
+         "Name": {
+            "l10n": "ITEM_2_10",
+            "text": "Deadly Suburbia"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay11_1.png",
+         "NightFile": "Houses/Standard/HouseNight11_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseArsonist.png",
+         "id": "11",
+         "Name": {
+            "l10n": "ITEM_2_11",
+            "text": "Burnt-out Firetrap"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay12_1.png",
+         "NightFile": "Houses/Standard/HouseNight12_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseGingerbread.png",
+         "id": "12",
+         "Name": {
+            "l10n": "ITEM_2_12",
+            "text": "Gingerbread House"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay13_1.png",
+         "NightFile": "Houses/Standard/HouseNight13_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseVoxel.png",
+         "id": "13",
+         "Name": {
+            "l10n": "ITEM_2_13",
+            "text": "Voxel Villa"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay14_1.png",
+         "NightFile": "Houses/Standard/HouseNight14_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseWitch.png",
+         "id": "14",
+         "Name": {
+            "l10n": "ITEM_2_14",
+            "text": "Witches Hovel"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay15_1.png",
+         "NightFile": "Houses/Standard/HouseNight15_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseIsland.png",
+         "id": "15",
+         "Name": {
+            "l10n": "ITEM_2_15",
+            "text": "Tiki Hut"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay16_1.png",
+         "NightFile": "Houses/Standard/HouseNight16_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseAframe.png",
+         "id": "16",
+         "Name": {
+            "l10n": "ITEM_2_16",
+            "text": "A-Frame"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.4",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay17_1.png",
+         "NightFile": "Houses/Standard/HouseNight17_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseBalloon.png",
+         "id": "17",
+         "Name": {
+            "l10n": "ITEM_2_17",
+            "text": "Balloon House"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.55",
+         "ScaleY": "0.55",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay18_1.png",
+         "NightFile": "Houses/Standard/HouseNight18_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseFallout.png",
+         "id": "18",
+         "Name": {
+            "l10n": "ITEM_2_18",
+            "text": "Apocalypse Sanctuary"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.4",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Holiday/HolidayDay19_1.png",
+         "NightFile": "Houses/Holiday/HolidayNight19_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseWinterToon.png",
+         "id": "19",
+         "Name": {
+            "l10n": "ITEM_2_19",
+            "text": "Holiday Cheer"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.5",
+         "ScaleY": "0.45",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay20_1.png",
+         "NightFile": "Houses/Standard/HouseNight20_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseClownHead.png",
+         "id": "20",
+         "Name": {
+            "l10n": "ITEM_2_20",
+            "text": "Bozo's Fun House"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.55",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.3",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay21_1.png",
+         "NightFile": "Houses/Standard/HouseNight21_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseSaiyanPod.png",
+         "id": "21",
+         "Name": {
+            "l10n": "ITEM_2_21",
+            "text": "Drop Ship"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.35",
+         "ScaleY": "0.35",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay22_1.png",
+         "NightFile": "Houses/Standard/HouseNight22_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseVeteran.png",
+         "id": "22",
+         "Name": {
+            "l10n": "ITEM_2_22",
+            "text": "No Trespassing"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.35",
+         "ScaleY": "0.3",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay23_1.png",
+         "NightFile": "Houses/Standard/HouseNight23_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseVampire.png",
+         "id": "23",
+         "Name": {
+            "l10n": "ITEM_2_23",
+            "text": "Rest in Peace"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.35",
+         "ScaleY": "0.45",
+         "TileX": "84",
+         "TileY": "86",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay24_1.png",
+         "NightFile": "Houses/Standard/HouseNight24_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseTreeHouse.png",
+         "id": "24",
+         "Name": {
+            "l10n": "ITEM_2_24",
+            "text": "No Girls Allowed"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.35",
+         "ScaleY": "0.35",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.5"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay25_1.png",
+         "NightFile": "Houses/Standard/HouseNight25_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseHippieVan.png",
+         "id": "25",
+         "Name": {
+            "l10n": "ITEM_2_25",
+            "text": "Flower Power"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.35",
+         "ScaleY": "0.35",
+         "TileX": "83",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay26_1.png",
+         "NightFile": "Houses/Standard/HouseNight26_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseSurvivor.png",
+         "id": "26",
+         "Name": {
+            "l10n": "ITEM_2_26",
+            "text": "Prepper's"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.35",
+         "ScaleY": "0.35",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay27_1.png",
+         "NightFile": "Houses/Standard/HouseNight27_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseCaptainsQuarters.png",
+         "id": "27",
+         "Name": {
+            "l10n": "ITEM_2_27",
+            "text": "Captain's Quarters"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "84",
+         "TileY": "86",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay28_1.png",
+         "NightFile": "Houses/Standard/HouseNight28_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseHalloween.png",
+         "id": "28",
+         "Name": {
+            "l10n": "ITEM_2_28",
+            "text": "Grave Mistake"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "200",
+         "TileY": "150",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay29_1.png",
+         "NightFile": "Houses/Standard/HouseNight29_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseVampireHunter.png",
+         "id": "29",
+         "Name": {
+            "l10n": "ITEM_2_29",
+            "text": "Consecrated Ground"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.7",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay30_1.png",
+         "NightFile": "Houses/Standard/HouseNight30_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseDarkHoliday.png",
+         "id": "30",
+         "Name": {
+            "l10n": "ITEM_2_30",
+            "text": "Sleigh Bells Ringing"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.55",
+         "ScaleY": "0.55",
+         "TileX": "95",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay31_1.png",
+         "NightFile": "Houses/Standard/HouseNight31_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseVDay.png",
+         "id": "31",
+         "Name": {
+            "l10n": "ITEM_2_31",
+            "text": "Love Shack"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.5",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay32_1.png",
+         "NightFile": "Houses/Standard/HouseNight32_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseWerewolf.png",
+         "id": "32",
+         "Name": {
+            "l10n": "ITEM_2_32",
+            "text": "Wolf's Den"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay33_1.png",
+         "NightFile": "Houses/Standard/HouseNight33_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHousePortal.png",
+         "id": "33",
+         "Name": {
+            "l10n": "ITEM_2_33",
+            "text": "Infernal Portal"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.55",
+         "ScaleY": "0.55",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay34_1.png",
+         "NightFile": "Houses/Standard/HouseNight34_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseNinja.png",
+         "id": "34",
+         "Name": {
+            "l10n": "ITEM_2_34",
+            "text": "Samurai Sanctuary"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay35_1.png",
+         "NightFile": "Houses/Standard/HouseNight35_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseFarRiver.png",
+         "id": "35",
+         "Name": {
+            "l10n": "ITEM_2_35",
+            "text": "Halfling Hovel"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay36_1.png",
+         "NightFile": "Houses/Standard/HouseNight36_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseHaunted.png",
+         "id": "36",
+         "Name": {
+            "l10n": "ITEM_2_36",
+            "text": "Haunted House"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay37_1.png",
+         "NightFile": "Houses/Standard/HouseNight37_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseRoyalty.png",
+         "id": "37",
+         "Name": {
+            "l10n": "ITEM_2_37",
+            "text": "RoyalPalace"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.43",
+         "ScaleY": "0.43",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay38_1.png",
+         "NightFile": "Houses/Standard/HouseNight38_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseCoven.png",
+         "id": "38",
+         "Name": {
+            "l10n": "ITEM_2_38",
+            "text": "Toil And Trouble"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": "0.43",
+         "ScaleY": "0.43",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.7"
+      },
+      {
+         "DayFile": "Houses/Standard/HouseDay39_1.png",
+         "NightFile": "Houses/Standard/HouseNight39_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseMushroom.png",
+         "id": "39",
+         "Name": {
+            "l10n": "ITEM_2_39",
+            "text": "Mushroom Manor"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": ".47",
+         "ScaleY": ".47",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".7"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_2_40",
+            "text": "Hall of Salem"
+         },
+         "id": "40",
+         "DayFile": "Houses/Standard/HouseDay40_1.png",
+         "NightFile": "Houses/Standard/HouseNight40_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseHall.png",
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": ".45",
+         "ScaleY": ".45",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".6"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_2_41",
+            "text": "Aquarium"
+         },
+         "id": "41",
+         "DayFile": "Houses/Standard/HouseDay41_1.png",
+         "NightFile": "Houses/Standard/HouseNight41_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseAquarium.png",
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "IsMapPack": "0",
+         "ScaleX": ".5",
+         "ScaleY": ".5",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".6"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_2_42",
+            "text": "Cardboard"
+         },
+         "id": "42",
+         "DayFile": "Houses/Standard/HouseDay42_1.png",
+         "NightFile": "Houses/Standard/HouseNight42_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseCardboard.png",
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "IsMapPack": "0",
+         "ScaleX": ".5",
+         "ScaleY": ".5",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".6"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_2_43",
+            "text": "Spaceship"
+         },
+         "id": "43",
+         "DayFile": "Houses/Standard/HouseDay43_1.png",
+         "NightFile": "Houses/Standard/HouseNight43_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseSpaceship.png",
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "IsMapPack": "0",
+         "ScaleX": ".5",
+         "ScaleY": ".5",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".6"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_2_44",
+            "text": "Sphinx"
+         },
+         "id": "44",
+         "DayFile": "Houses/Standard/HouseDay44_1.png",
+         "NightFile": "Houses/Standard/HouseNight44_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseSphinx.png",
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "IsMapPack": "0",
+         "ScaleX": ".5",
+         "ScaleY": ".5",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".6"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_2_45",
+            "text": "Tipi"
+         },
+         "id": "45",
+         "DayFile": "Houses/Standard/HouseDay45_1.png",
+         "NightFile": "Houses/Standard/HouseNight45_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseWigwam.png",
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "IsMapPack": "0",
+         "ScaleX": ".5",
+         "ScaleY": ".5",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".6"
+      },
+      {
+         "DayFile": "Customization/Houses/CustomizationHouseRandomCell.png",
+         "NightFile": "Customization/Houses/CustomizationHouseRandomCell.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseRandom.png",
+         "id": "-3",
+         "Name": {
+            "l10n": "ITEM_2_-3",
+            "text": "Random House"
+         },
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "ScaleX": ".4",
+         "ScaleY": ".4",
+         "TileX": "84",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".6"
+      }
+   ],
+   "CustomizationCharacters": [
+      {
+         "File": "Characters/Male0",
+         "id": "0",
+         "Name": {
+            "l10n": "ITEM_1_0",
+            "text": "John Hathorne"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Male1",
+         "id": "1",
+         "Name": {
+            "l10n": "ITEM_1_1",
+            "text": "Giles Corey"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Female0",
+         "id": "2",
+         "Name": {
+            "l10n": "ITEM_1_2",
+            "text": "Mary Warren"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Female1",
+         "id": "3",
+         "Name": {
+            "l10n": "ITEM_1_3",
+            "text": "Abigail Williams"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Male2",
+         "id": "4",
+         "Name": {
+            "l10n": "ITEM_1_4",
+            "text": "John Proctor"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Female2",
+         "id": "5",
+         "Name": {
+            "l10n": "ITEM_1_5",
+            "text": "Betty Parris"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Entoan",
+         "id": "6",
+         "Name": {
+            "l10n": "ITEM_1_6",
+            "text": "EntoanThePack"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Meg",
+         "id": "7",
+         "Name": {
+            "l10n": "ITEM_1_7",
+            "text": "Meg Turney"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Minx",
+         "id": "8",
+         "Name": {
+            "l10n": "ITEM_1_8",
+            "text": "TheRPGMinx"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Wade",
+         "id": "9",
+         "Name": {
+            "l10n": "ITEM_1_9",
+            "text": "LordMinion777"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Yeti",
+         "id": "10",
+         "Name": {
+            "l10n": "ITEM_1_10",
+            "text": "Yeti Warrior"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.55",
+         "ScaleY": "0.62",
+         "TileX": "80",
+         "TileY": "100",
+         "TileScaleX": "0.4",
+         "TileScaleY": "0.4"
+      },
+      {
+         "File": "Characters/DarkRevenant",
+         "id": "11",
+         "Name": {
+            "l10n": "ITEM_1_11",
+            "text": "DarkRevenant"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Dlive",
+         "id": "12",
+         "Name": {
+            "l10n": "ITEM_1_12",
+            "text": "Dlive"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/OhmWrecker",
+         "id": "13",
+         "Name": {
+            "l10n": "ITEM_1_13",
+            "text": "OhmWrecker"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Kristian",
+         "id": "14",
+         "Name": {
+            "l10n": "ITEM_1_14",
+            "text": "Kristian"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Jester",
+         "id": "15",
+         "Name": {
+            "l10n": "ITEM_1_15",
+            "text": "Jester"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Witch",
+         "id": "16",
+         "Name": {
+            "l10n": "ITEM_1_16",
+            "text": "Witch"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Sheriff",
+         "id": "17",
+         "Name": {
+            "l10n": "ITEM_1_17",
+            "text": "Old West Sheriff"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Doctor",
+         "id": "18",
+         "Name": {
+            "l10n": "ITEM_1_18",
+            "text": "Surgical Doctor"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/SerialKiller",
+         "id": "19",
+         "Name": {
+            "l10n": "ITEM_1_19",
+            "text": "Dexter"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Investigator",
+         "id": "20",
+         "Name": {
+            "l10n": "ITEM_1_20",
+            "text": "Sherlock Holmes"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Arsonist",
+         "id": "21",
+         "Name": {
+            "l10n": "ITEM_1_21",
+            "text": "Firebug"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "5",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Teshtube",
+         "id": "22",
+         "Name": {
+            "l10n": "ITEM_1_22",
+            "text": "TheTeshTube"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/MoneyBag",
+         "id": "23",
+         "Name": {
+            "l10n": "ITEM_1_23",
+            "text": "Montgomery Moneybags"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/FalloutArsonist",
+         "id": "24",
+         "Name": {
+            "l10n": "ITEM_1_24",
+            "text": "Fire it up!"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "5",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/HeadlessHorseman",
+         "id": "25",
+         "Name": {
+            "l10n": "ITEM_1_25",
+            "text": "Headless Horseman"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-55",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "100",
+         "TileY": "125",
+         "TileScaleX": "0.35",
+         "TileScaleY": "0.4"
+      },
+      {
+         "File": "Characters/Werewolf",
+         "id": "26",
+         "Name": {
+            "l10n": "ITEM_1_26",
+            "text": "Lycanthrope"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "95",
+         "TileScaleX": "0.45",
+         "TileScaleY": "0.45"
+      },
+      {
+         "File": "Characters/VoxelCharacter",
+         "id": "27",
+         "Name": {
+            "l10n": "ITEM_1_27",
+            "text": "John Voxelthorne"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "80",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Santa",
+         "id": "28",
+         "Name": {
+            "l10n": "ITEM_1_28",
+            "text": "Santa Claus"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-45",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "85",
+         "TileY": "120",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Nurse1",
+         "id": "29",
+         "Name": {
+            "l10n": "ITEM_1_29",
+            "text": "Nurse Lillian"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Bodyguard",
+         "id": "30",
+         "Name": {
+            "l10n": "ITEM_1_30",
+            "text": "Guardian"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-50",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "97",
+         "TileY": "130",
+         "TileScaleX": "0.32",
+         "TileScaleY": "0.32"
+      },
+      {
+         "File": "Characters/Nurse2",
+         "id": "31",
+         "Name": {
+            "l10n": "ITEM_1_31",
+            "text": "Nurse Joy"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Escort",
+         "id": "32",
+         "Name": {
+            "l10n": "ITEM_1_32",
+            "text": "Candy"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Forger",
+         "id": "33",
+         "Name": {
+            "l10n": "ITEM_1_33",
+            "text": "Ms. Direction"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "10",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/GrimReaper",
+         "id": "34",
+         "Name": {
+            "l10n": "ITEM_1_34",
+            "text": "Grim Reaper"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.7",
+         "ScaleY": "0.7",
+         "TileX": "82",
+         "TileY": "80",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Pirate",
+         "id": "35",
+         "Name": {
+            "l10n": "ITEM_1_35",
+            "text": "Edward Teach"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "5",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "88",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Jailor",
+         "id": "36",
+         "Name": {
+            "l10n": "ITEM_1_36",
+            "text": "Warden"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "15",
+         "ScaleX": "0.8",
+         "ScaleY": "0.8",
+         "TileX": "82",
+         "TileY": "88",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Vampire",
+         "id": "37",
+         "Name": {
+            "l10n": "ITEM_1_37",
+            "text": "Dracula"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "10",
+         "ScaleX": "0.8",
+         "ScaleY": "0.8",
+         "TileX": "82",
+         "TileY": "88",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/VampireHunter",
+         "id": "38",
+         "Name": {
+            "l10n": "ITEM_1_38",
+            "text": "Van Helsing"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "15",
+         "ScaleX": "0.8",
+         "ScaleY": "0.8",
+         "TileX": "82",
+         "TileY": "88",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Spy",
+         "id": "39",
+         "Name": {
+            "l10n": "ITEM_1_39",
+            "text": "Cognition"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "15",
+         "ScaleX": "0.8",
+         "ScaleY": "0.8",
+         "TileX": "82",
+         "TileY": "88",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/SantaCyborg",
+         "id": "40",
+         "Name": {
+            "l10n": "ITEM_1_40",
+            "text": "Robot Santa"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-50",
+         "ScaleX": "-0.7",
+         "ScaleY": "0.7",
+         "TileX": "82",
+         "TileY": "135",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Godfather",
+         "id": "41",
+         "Name": {
+            "l10n": "ITEM_1_41",
+            "text": "The Godfather"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "10",
+         "ScaleX": "0.8",
+         "ScaleY": "0.8",
+         "TileX": "82",
+         "TileY": "72",
+         "TileScaleX": "0.68",
+         "TileScaleY": "0.68"
+      },
+      {
+         "File": "Characters/Red",
+         "id": "42",
+         "Name": {
+            "l10n": "ITEM_1_42",
+            "text": "Red Riding Hood"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/MillicentMoneyBags",
+         "id": "43",
+         "Name": {
+            "l10n": "ITEM_1_43",
+            "text": "Millicent Moneybags"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "5",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Angel",
+         "id": "44",
+         "Name": {
+            "l10n": "ITEM_1_44",
+            "text": "Uriel"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-40",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "87",
+         "TileY": "110",
+         "TileScaleX": "0.55",
+         "TileScaleY": "0.55"
+      },
+      {
+         "File": "Characters/GrimReaperCrimson",
+         "id": "45",
+         "Name": {
+            "l10n": "ITEM_1_45",
+            "text": "Crimson Reaper"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.7",
+         "ScaleY": "0.7",
+         "TileX": "82",
+         "TileY": "80",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Amnesiac",
+         "id": "46",
+         "Name": {
+            "l10n": "ITEM_1_46",
+            "text": "Forgetful Freddy"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "10",
+         "ScaleX": "0.8",
+         "ScaleY": "0.8",
+         "TileX": "82",
+         "TileY": "72",
+         "TileScaleX": "0.68",
+         "TileScaleY": "0.68"
+      },
+      {
+         "File": "Characters/Janitor",
+         "id": "47",
+         "Name": {
+            "l10n": "ITEM_1_47",
+            "text": "Yuan Itor"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "10",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "72",
+         "TileScaleX": "0.68",
+         "TileScaleY": "0.68"
+      },
+      {
+         "File": "Characters/BlueFinder",
+         "id": "48",
+         "Name": {
+            "l10n": "ITEM_1_48",
+            "text": "Tamer of Frost"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "0.7",
+         "ScaleY": "0.7",
+         "TileX": "82",
+         "TileY": "97",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/RedFinder",
+         "id": "49",
+         "Name": {
+            "l10n": "ITEM_1_49",
+            "text": "Tamer of Flames"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "0.7",
+         "ScaleY": "0.7",
+         "TileX": "82",
+         "TileY": "100",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/YellowFinder",
+         "id": "50",
+         "Name": {
+            "l10n": "ITEM_1_50",
+            "text": "Tamer of Thunder"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "0.7",
+         "ScaleY": "0.7",
+         "TileX": "82",
+         "TileY": "90",
+         "TileScaleX": "0.65",
+         "TileScaleY": "0.65"
+      },
+      {
+         "File": "Characters/Halfling",
+         "id": "51",
+         "Name": {
+            "l10n": "ITEM_1_51",
+            "text": "Barthule of Far River"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-50",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "85",
+         "TileY": "130",
+         "TileScaleX": "1",
+         "TileScaleY": "1"
+      },
+      {
+         "File": "Characters/Ninja",
+         "id": "52",
+         "Name": {
+            "l10n": "ITEM_1_52",
+            "text": "The Crimson Katana"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "5",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Vigilante",
+         "id": "53",
+         "Name": {
+            "l10n": "ITEM_1_53",
+            "text": "Brock Smith"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "5",
+         "ScaleX": "0.75",
+         "ScaleY": "0.75",
+         "TileX": "82",
+         "TileY": "87",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Demon",
+         "id": "54",
+         "Name": {
+            "l10n": "ITEM_1_54",
+            "text": "Beelzebub"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-10",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "82",
+         "TileY": "97",
+         "TileScaleX": "0.4",
+         "TileScaleY": "0.4"
+      },
+      {
+         "File": "Characters/Nosferatu",
+         "id": "55",
+         "Name": {
+            "l10n": "ITEM_1_55",
+            "text": "Nosferatu"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-90",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "82",
+         "TileY": "147",
+         "TileScaleX": "0.4",
+         "TileScaleY": "0.4"
+      },
+      {
+         "File": "Characters/Prince",
+         "id": "56",
+         "Name": {
+            "l10n": "ITEM_1_56",
+            "text": "Prince"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-30",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "82",
+         "TileY": "105",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Princess",
+         "id": "57",
+         "Name": {
+            "l10n": "ITEM_1_57",
+            "text": "Princess"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "82",
+         "TileY": "105",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Knight",
+         "id": "58",
+         "Name": {
+            "l10n": "ITEM_1_58",
+            "text": "Knight"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "82",
+         "TileY": "95",
+         "TileScaleX": "0.4",
+         "TileScaleY": "0.4"
+      },
+      {
+         "File": "Characters/Archer",
+         "id": "59",
+         "Name": {
+            "l10n": "ITEM_1_59",
+            "text": "Archer"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-65",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "82",
+         "TileY": "140",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Queen",
+         "id": "60",
+         "Name": {
+            "l10n": "ITEM_1_60",
+            "text": "Queen"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-30",
+         "ScaleX": "0.55",
+         "ScaleY": "0.55",
+         "TileX": "88",
+         "TileY": "110",
+         "TileScaleX": "0.55",
+         "TileScaleY": "0.55"
+      },
+      {
+         "File": "Characters/King",
+         "id": "61",
+         "Name": {
+            "l10n": "ITEM_1_61",
+            "text": "King"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "1.1",
+         "ScaleY": "1.1",
+         "TileX": "87",
+         "TileY": "100",
+         "TileScaleX": "1",
+         "TileScaleY": "1"
+      },
+      {
+         "File": "Characters/Krampus",
+         "id": "62",
+         "Name": {
+            "l10n": "ITEM_1_62",
+            "text": "Krampus"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-30",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "90",
+         "TileY": "110",
+         "TileScaleX": "0.4",
+         "TileScaleY": "0.4"
+      },
+      {
+         "File": "Characters/RamboSanta",
+         "id": "63",
+         "Name": {
+            "l10n": "ITEM_1_63",
+            "text": "War-Torn Santa"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-15",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/SteamRobot",
+         "id": "64",
+         "Name": {
+            "l10n": "ITEM_1_64",
+            "text": "SteamBot3000"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-15",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "82",
+         "TileY": "87",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/Necromancer",
+         "id": "65",
+         "Name": {
+            "l10n": "ITEM_1_65",
+            "text": "Necromancer"
+         },
+         "PreviewOffsetX": "5",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/PotionMaster",
+         "id": "66",
+         "Name": {
+            "l10n": "ITEM_1_66",
+            "text": "PotionMaster"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-10",
+         "ScaleX": "0.52",
+         "ScaleY": "0.52",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/Crusader",
+         "id": "67",
+         "Name": {
+            "l10n": "ITEM_1_67",
+            "text": "Crusader"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "5",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.4",
+         "TileScaleY": "0.4"
+      },
+      {
+         "File": "Characters/Poisoner",
+         "id": "68",
+         "Name": {
+            "l10n": "ITEM_1_68",
+            "text": "Poisoner"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-45",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Characters/Medusa",
+         "id": "69",
+         "Name": {
+            "l10n": "ITEM_1_69",
+            "text": "Medusa"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-25",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/Plaguebearer",
+         "id": "70",
+         "Name": {
+            "l10n": "ITEM_1_70",
+            "text": "Plaguebearer"
+         },
+         "PreviewOffsetX": "00",
+         "PreviewOffsetY": "-15",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/JackFrost",
+         "id": "71",
+         "Name": {
+            "l10n": "ITEM_1_71",
+            "text": "Jack Frost"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-10",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "90",
+         "TileY": "90",
+         "TileScaleX": ".45",
+         "TileScaleY": ".45"
+      },
+      {
+         "File": "Characters/Judge",
+         "id": "72",
+         "Name": {
+            "l10n": "ITEM_1_72",
+            "text": "Judge"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.8",
+         "ScaleY": "0.8",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": ".7",
+         "TileScaleY": ".7"
+      },
+      {
+         "File": "Characters/GrimReaperWhite",
+         "id": "73",
+         "Name": {
+            "l10n": "ITEM_1_73",
+            "text": "Alabaster Reaper"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": ".70",
+         "ScaleY": ".70",
+         "TileX": "82",
+         "TileY": "80",
+         "TileScaleX": ".60",
+         "TileScaleY": ".60"
+      },
+      {
+         "File": "Characters/MontyMoneybags",
+         "id": "74",
+         "Name": {
+            "l10n": "ITEM_1_74",
+            "text": "Monty Moneybags"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": ".75",
+         "ScaleY": ".75",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".6"
+      },
+      {
+         "File": "Characters/GoldenTownie",
+         "id": "75",
+         "Name": {
+            "l10n": "ITEM_1_75",
+            "text": "Ten Karat Tim"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": ".5",
+         "ScaleY": ".5",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".6"
+      },
+      {
+         "File": "Characters/GoldenTownieFemale",
+         "id": "76",
+         "Name": {
+            "l10n": "ITEM_1_76",
+            "text": "Marigold"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": ".5",
+         "ScaleY": ".5",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": ".6",
+         "TileScaleY": ".6"
+      },
+      {
+         "File": "Characters/Stargirl",
+         "id": "77",
+         "Name": {
+            "l10n": "ITEM_1_77",
+            "text": "Star Girl"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": ".5",
+         "ScaleY": ".5",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": ".5",
+         "TileScaleY": ".5"
+      },
+      {
+         "File": "Characters/Executioner",
+         "id": "78",
+         "Name": {
+            "l10n": "ITEM_1_78",
+            "text": "Headsman"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-25",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/Tracker",
+         "id": "79",
+         "Name": {
+            "l10n": "ITEM_1_79",
+            "text": "Shadow Wolf"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-25",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/Mafioso",
+         "id": "80",
+         "Name": {
+            "l10n": "ITEM_1_80",
+            "text": "Mafioso"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-25",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/CovenLeader",
+         "id": "81",
+         "Name": {
+            "l10n": "ITEM_1_81",
+            "text": "Coven Leader"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/HexMaster",
+         "id": "82",
+         "Name": {
+            "l10n": "ITEM_1_82",
+            "text": "Hex Master"
+         },
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "80",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/Hypnotist",
+         "id": "83",
+         "Name": {
+            "l10n": "ITEM_1_83",
+            "text": "Hypnotist"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "20",
+         "ScaleX": "0.55",
+         "ScaleY": "0.55",
+         "TileX": "90",
+         "TileY": "80",
+         "TileScaleX": "0.45",
+         "TileScaleY": "0.45"
+      },
+      {
+         "File": "Characters/Consort",
+         "id": "84",
+         "Name": {
+            "l10n": "ITEM_1_84",
+            "text": "Consort"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/SOSVig",
+         "id": "85",
+         "Name": {
+            "l10n": "ITEM_1_85",
+            "text": "Vigilante"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "90",
+         "TileY": "100",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "File": "Characters/RandomTownie",
+         "id": "-3",
+         "Name": {
+            "l10n": "ITEM_1_-3",
+            "text": "Random Townie"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-20",
+         "ScaleX": ".17",
+         "ScaleY": ".17",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": ".2",
+         "TileScaleY": ".2"
+      }
+   ],
+   "CustomizationBackgrounds": [
+      {
+         "Name": {
+            "l10n": "ITEM_3_0",
+            "text": "Old Salem"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayBackground.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightBackground.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundOldSalem.jpg",
+         "id": "0",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_1",
+            "text": "Sky Temple"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayBackgroundIsland.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightBackgroundIsland.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundSkyTemple.jpg",
+         "id": "1",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_2",
+            "text": "Desert"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayBackgroundDesert.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightBackgroundDesert.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundDesert.jpg",
+         "id": "2",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_3",
+            "text": "Winter in Salem"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayBackgroundWinter.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightBackgroundWinter.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundWinterInSalem.jpg",
+         "id": "3",
+         "IsMapPack": "1"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_4",
+            "text": "Deserted Island"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayDesertedIsland.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightDesertedIsland.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundIsland.jpg",
+         "id": "4",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_5",
+            "text": "Treetop Village"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayTreetopVillage.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightTreetopVillage.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundTreetopVillage.jpg",
+         "id": "5",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_6",
+            "text": "Pool Party"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayPoolParty.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightPoolParty.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundPoolParty.jpg",
+         "id": "6",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_7",
+            "text": "Voxel Village"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayVoxelVillage.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightVoxelVillage.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundVoxel.jpg",
+         "id": "7",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_8",
+            "text": "Dark Forest"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayBackgroundDarkForest.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightBackgroundDarkForest.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundDarkForest.jpg",
+         "id": "8",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_9",
+            "text": "Apocalypse"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayBackgroundFallout.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightBackgroundFallout.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundFallout.jpg",
+         "id": "9",
+         "IsMapPack": "1"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_10",
+            "text": "Happy Holidays"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayBackgroundHoliday.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightBackgroundHoliday.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundHoliday.jpg",
+         "id": "10",
+         "IsMapPack": "1"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_11",
+            "text": "Volcano"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayVolcano.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightVolcano.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundVolcano.jpg",
+         "id": "11",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_12",
+            "text": "The Final Frontier"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DaySpaceship.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightSpaceship.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundSpaceship.jpg",
+         "id": "12",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_13",
+            "text": "Land Before Time"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayBackgroundPrehistoric.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightBackgroundPrehistoric.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundPrehistoric.jpg",
+         "id": "13",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_14",
+            "text": "Troubled Waters"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayBackgroundPirateShip.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightBackgroundPirateShip.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundPirateShip.jpg",
+         "id": "14",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_15",
+            "text": "Dark Holidays"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayDarkHoliday.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightDarkHoliday.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundDarkHoliday.jpg",
+         "id": "15",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_16",
+            "text": "High Roller"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayCasino.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightCasino.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundCasino.jpg",
+         "id": "16",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_17",
+            "text": "Off The Beaten Path"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayRed.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightRed.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundRed.jpg",
+         "id": "17",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_18",
+            "text": "Tranquil Gardens"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayNinja.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightNinja.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundNinja.jpg",
+         "id": "18",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_19",
+            "text": "Palace Square"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayRoyalty.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightRoyalty.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundRoyalty.jpg",
+         "id": "19",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_20",
+            "text": "Coven Rises"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayCoven.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightCoven.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundCoven.jpg",
+         "id": "20",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_21",
+            "text": "Heaven and Hell"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayHeaven.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightHeaven.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundHeaven.jpg",
+         "id": "21",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_22",
+            "text": "Hero City"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayHero.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightHero.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundHero.jpg",
+         "id": "22",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_23",
+            "text": "Alien"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayAlien.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightAlien.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundAlien.jpg",
+         "id": "23",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_24",
+            "text": "Army"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayArmy.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightArmy.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundArmy.jpg",
+         "id": "24",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_25",
+            "text": "Construction"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayConstruction.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightConstruction.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundConstruction.jpg",
+         "id": "25",
+         "IsMapPack": "0"
+      }
+   ],
+   "CustomizationMapPacks": [
+      {
+         "id": "0"
+      },
+      {
+         "id": "1"
+      },
+      {
+         "id": "2"
+      }
+   ],
+   "CustomizationPets": [
+      {
+         "File": "Pets/KSFairy",
+         "id": "0",
+         "Name": {
+            "l10n": "ITEM_4_0",
+            "text": "Kickstarter Fairy"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "82",
+         "TileY": "85",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/Snowman",
+         "id": "1",
+         "Name": {
+            "l10n": "ITEM_4_1",
+            "text": "Snowman"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "82",
+         "TileY": "110",
+         "TileScaleX": "1.2",
+         "TileScaleY": "1.2"
+      },
+      {
+         "File": "Pets/Doge",
+         "id": "2",
+         "Name": {
+            "l10n": "ITEM_4_2",
+            "text": "Doge"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "96",
+         "TileY": "128",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/RedDragon",
+         "id": "3",
+         "Name": {
+            "l10n": "ITEM_4_3",
+            "text": "Red Dragon"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-5",
+         "PreviewOffsetY": "20",
+         "ScaleX": "1",
+         "ScaleY": "1",
+         "TileX": "85",
+         "TileY": "110",
+         "TileScaleX": "1",
+         "TileScaleY": "1"
+      },
+      {
+         "File": "Pets/GreenDragon",
+         "id": "4",
+         "Name": {
+            "l10n": "ITEM_4_4",
+            "text": "Green Dragon"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-5",
+         "PreviewOffsetY": "20",
+         "ScaleX": "1",
+         "ScaleY": "1",
+         "TileX": "85",
+         "TileY": "110",
+         "TileScaleX": "1",
+         "TileScaleY": "1"
+      },
+      {
+         "File": "Pets/BlackDragon",
+         "id": "5",
+         "Name": {
+            "l10n": "ITEM_4_5",
+            "text": "Black Dragon"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-5",
+         "PreviewOffsetY": "20",
+         "ScaleX": "1",
+         "ScaleY": "1",
+         "TileX": "85",
+         "TileY": "110",
+         "TileScaleX": "1",
+         "TileScaleY": "1"
+      },
+      {
+         "File": "Pets/FairyBlue",
+         "id": "6",
+         "Name": {
+            "l10n": "ITEM_4_6",
+            "text": "Blue Fairy"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-5",
+         "PreviewOffsetY": "-10",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "84",
+         "TileY": "130",
+         "TileScaleX": "0.8",
+         "TileScaleY": "0.8"
+      },
+      {
+         "File": "Pets/FairyPink",
+         "id": "7",
+         "Name": {
+            "l10n": "ITEM_4_7",
+            "text": "Pink Fairy"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-5",
+         "PreviewOffsetY": "-10",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "84",
+         "TileY": "130",
+         "TileScaleX": "0.8",
+         "TileScaleY": "0.8"
+      },
+      {
+         "File": "Pets/FairyYellow",
+         "id": "8",
+         "Name": {
+            "l10n": "ITEM_4_8",
+            "text": "Yellow Fairy"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-5",
+         "PreviewOffsetY": "-10",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "84",
+         "TileY": "130",
+         "TileScaleX": "0.8",
+         "TileScaleY": "0.8"
+      },
+      {
+         "File": "Pets/FairyGreen",
+         "id": "9",
+         "Name": {
+            "l10n": "ITEM_4_9",
+            "text": "Green Fairy"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-5",
+         "PreviewOffsetY": "-10",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "84",
+         "TileY": "130",
+         "TileScaleX": "0.8",
+         "TileScaleY": "0.8"
+      },
+      {
+         "File": "Pets/EntoanPet",
+         "id": "10",
+         "Name": {
+            "l10n": "ITEM_4_10",
+            "text": "Mini-EntoanThePack"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "84",
+         "TileY": "80",
+         "TileScaleX": "0.7",
+         "TileScaleY": "0.7"
+      },
+      {
+         "File": "Pets/DlivePet",
+         "id": "11",
+         "Name": {
+            "l10n": "ITEM_4_11",
+            "text": "Mini-Dlive"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "84",
+         "TileY": "80",
+         "TileScaleX": "0.7",
+         "TileScaleY": "0.7"
+      },
+      {
+         "File": "Pets/OhmWreckerPet",
+         "id": "12",
+         "Name": {
+            "l10n": "ITEM_4_12",
+            "text": "Mini-OhmWrecker"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "84",
+         "TileY": "80",
+         "TileScaleX": "0.7",
+         "TileScaleY": "0.7"
+      },
+      {
+         "File": "Pets/MinxPet",
+         "id": "13",
+         "Name": {
+            "l10n": "ITEM_4_13",
+            "text": "Mini-RPGMinx"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "84",
+         "TileY": "80",
+         "TileScaleX": "0.7",
+         "TileScaleY": "0.7"
+      },
+      {
+         "File": "Pets/WadePet",
+         "id": "14",
+         "Name": {
+            "l10n": "ITEM_4_14",
+            "text": "Mini-LordMinion777"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "84",
+         "TileY": "80",
+         "TileScaleX": "0.7",
+         "TileScaleY": "0.7"
+      },
+      {
+         "File": "Pets/PiggyBank",
+         "id": "15",
+         "Name": {
+            "l10n": "ITEM_4_15",
+            "text": "Piggy Bank"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "80",
+         "TileY": "128",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/Zombie",
+         "id": "16",
+         "Name": {
+            "l10n": "ITEM_4_16",
+            "text": "Braaains"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "40",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "83",
+         "TileY": "80",
+         "TileScaleX": "0.7",
+         "TileScaleY": "0.7"
+      },
+      {
+         "File": "Pets/JackOLantern",
+         "id": "17",
+         "Name": {
+            "l10n": "ITEM_4_17",
+            "text": "Jack-O-Lantern"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "1",
+         "ScaleY": "1",
+         "TileX": "80",
+         "TileY": "120",
+         "TileScaleX": "1",
+         "TileScaleY": "1"
+      },
+      {
+         "File": "Pets/DarkHorse",
+         "id": "18",
+         "Name": {
+            "l10n": "ITEM_4_18",
+            "text": "Dark Horse"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "95",
+         "TileY": "110",
+         "TileScaleX": "1.2",
+         "TileScaleY": "1.2"
+      },
+      {
+         "File": "Pets/VoxelDragon",
+         "id": "19",
+         "Name": {
+            "l10n": "ITEM_4_19",
+            "text": "Pixelated Terror"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "15",
+         "ScaleX": ".8",
+         "ScaleY": ".8",
+         "TileX": "85",
+         "TileY": "110",
+         "TileScaleX": "0.95",
+         "TileScaleY": "0.95"
+      },
+      {
+         "File": "Pets/Reindeer",
+         "id": "20",
+         "Name": {
+            "l10n": "ITEM_4_20",
+            "text": "Reindeer"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-20",
+         "PreviewOffsetY": "-10",
+         "ScaleX": "1",
+         "ScaleY": "1",
+         "TileX": "83",
+         "TileY": "110",
+         "TileScaleX": "1.1",
+         "TileScaleY": "1.1"
+      },
+      {
+         "File": "Pets/BlackCat",
+         "id": "21",
+         "Name": {
+            "l10n": "ITEM_4_21",
+            "text": "Bad Luck"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "83",
+         "TileY": "128",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/GrumpyCat",
+         "id": "22",
+         "Name": {
+            "l10n": "ITEM_4_22",
+            "text": "I Hate You All"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "83",
+         "TileY": "128",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/Fish",
+         "id": "23",
+         "Name": {
+            "l10n": "ITEM_4_23",
+            "text": "Friend not Food"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "83",
+         "TileY": "128",
+         "TileScaleX": "0.9",
+         "TileScaleY": "0.9"
+      },
+      {
+         "File": "Pets/Parrot",
+         "id": "24",
+         "Name": {
+            "l10n": "ITEM_4_24",
+            "text": "Polly"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-25",
+         "PreviewOffsetY": "20",
+         "ScaleX": "0.7",
+         "ScaleY": "0.7",
+         "TileX": "75",
+         "TileY": "128",
+         "TileScaleX": "0.8",
+         "TileScaleY": "0.8"
+      },
+      {
+         "File": "Pets/Robot",
+         "id": "25",
+         "Name": {
+            "l10n": "ITEM_4_25",
+            "text": "XJ-0462"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "40",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "83",
+         "TileY": "90",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/Dinosaur1",
+         "id": "26",
+         "Name": {
+            "l10n": "ITEM_4_26",
+            "text": "Triceratops"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1.4",
+         "ScaleY": "1.4",
+         "TileX": "80",
+         "TileY": "128",
+         "TileScaleX": "1.5",
+         "TileScaleY": "1.5"
+      },
+      {
+         "File": "Pets/Dinosaur2",
+         "id": "27",
+         "Name": {
+            "l10n": "ITEM_4_27",
+            "text": "T-Rex"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.4",
+         "ScaleY": "0.4",
+         "TileX": "80",
+         "TileY": "128",
+         "TileScaleX": "0.55",
+         "TileScaleY": "0.55"
+      },
+      {
+         "File": "Pets/Ghost",
+         "id": "28",
+         "Name": {
+            "l10n": "ITEM_4_28",
+            "text": "Specter"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "70",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "155",
+         "TileY": "160",
+         "TileScaleX": "0.55",
+         "TileScaleY": "0.55"
+      },
+      {
+         "File": "Pets/Elephant",
+         "id": "29",
+         "Name": {
+            "l10n": "ITEM_4_29",
+            "text": "Peanut"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "10",
+         "ScaleX": "1.4",
+         "ScaleY": "1.4",
+         "TileX": "84",
+         "TileY": "128",
+         "TileScaleX": "1.5",
+         "TileScaleY": "1.5"
+      },
+      {
+         "File": "Pets/ElfZombie",
+         "id": "30",
+         "Name": {
+            "l10n": "ITEM_4_30",
+            "text": "Alabaster"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "30",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "84",
+         "TileY": "90",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/Cupid",
+         "id": "31",
+         "Name": {
+            "l10n": "ITEM_4_31",
+            "text": "Cupid"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "0",
+         "ScaleX": ".8",
+         "ScaleY": ".8",
+         "TileX": "85",
+         "TileY": "110",
+         "TileScaleX": "1",
+         "TileScaleY": "1"
+      },
+      {
+         "File": "Pets/LittleFriend",
+         "id": "32",
+         "Name": {
+            "l10n": "ITEM_4_32",
+            "text": "My Little Friend"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-5",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1",
+         "ScaleY": "1",
+         "TileX": "83",
+         "TileY": "128",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/Wolf",
+         "id": "33",
+         "Name": {
+            "l10n": "ITEM_4_33",
+            "text": "Lone Wolf"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "85",
+         "TileY": "128",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/PiggyBankTopHat",
+         "id": "34",
+         "Name": {
+            "l10n": "ITEM_4_34",
+            "text": "Sir Hamelot"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "-20",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "80",
+         "TileY": "148",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/Cerberus",
+         "id": "35",
+         "Name": {
+            "l10n": "ITEM_4_35",
+            "text": "Cerberus"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "20",
+         "ScaleX": "1.3",
+         "ScaleY": "1.3",
+         "TileX": "76",
+         "TileY": "110",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/Panda",
+         "id": "36",
+         "Name": {
+            "l10n": "ITEM_4_36",
+            "text": "Ling Ling"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "30",
+         "ScaleX": "0.45",
+         "ScaleY": "0.45",
+         "TileX": "78",
+         "TileY": "95",
+         "TileScaleX": "0.55",
+         "TileScaleY": "0.55"
+      },
+      {
+         "File": "Pets/Frog",
+         "id": "37",
+         "Name": {
+            "l10n": "ITEM_4_37",
+            "text": "Hippity Hopper"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.35",
+         "ScaleY": "0.35",
+         "TileX": "117",
+         "TileY": "120",
+         "TileScaleX": "0.45",
+         "TileScaleY": "0.45"
+      },
+      {
+         "File": "Pets/IceCreature",
+         "id": "38",
+         "Name": {
+            "l10n": "ITEM_4_38",
+            "text": "Frost Titan"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1",
+         "ScaleY": "1",
+         "TileX": "80",
+         "TileY": "120",
+         "TileScaleX": "1",
+         "TileScaleY": "1.1"
+      },
+      {
+         "File": "Pets/FireMoth",
+         "id": "39",
+         "Name": {
+            "l10n": "ITEM_4_39",
+            "text": "Hot Spot"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-20",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "85",
+         "TileY": "120",
+         "TileScaleX": "0.45",
+         "TileScaleY": "0.45"
+      },
+      {
+         "File": "Pets/ElectricBison",
+         "id": "40",
+         "Name": {
+            "l10n": "ITEM_4_40",
+            "text": "Crashing Thunder"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "85",
+         "TileY": "120",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/Fox",
+         "id": "41",
+         "Name": {
+            "l10n": "ITEM_4_41",
+            "text": "Sly as a"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "85",
+         "TileY": "128",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/Mummy",
+         "id": "42",
+         "Name": {
+            "l10n": "ITEM_4_42",
+            "text": "Tutankhamun"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "-50",
+         "ScaleX": "0.3",
+         "ScaleY": "0.3",
+         "TileX": "75",
+         "TileY": "168",
+         "TileScaleX": "0.4",
+         "TileScaleY": "0.4"
+      },
+      {
+         "File": "Pets/CreepyDoll",
+         "id": "43",
+         "Name": {
+            "l10n": "ITEM_4_43",
+            "text": "Alice"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "-50",
+         "ScaleX": "0.3",
+         "ScaleY": "0.3",
+         "TileX": "88",
+         "TileY": "188",
+         "TileScaleX": "0.4",
+         "TileScaleY": "0.4"
+      },
+      {
+         "File": "Pets/RoyalLion",
+         "id": "44",
+         "Name": {
+            "l10n": "ITEM_4_44",
+            "text": "Rawralty"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "-40",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "85",
+         "TileY": "165",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/ZombieReindeer",
+         "id": "45",
+         "Name": {
+            "l10n": "ITEM_4_45",
+            "text": "Blitzen"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "-40",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "85",
+         "TileY": "165",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/HolidayElf",
+         "id": "46",
+         "Name": {
+            "l10n": "ITEM_4_46",
+            "text": "Santa's Little Helper"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "-50",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "85",
+         "TileY": "165",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/Bunny",
+         "id": "47",
+         "Name": {
+            "l10n": "ITEM_4_47",
+            "text": "Bunny"
+         },
+         "UseEndGameMourningPose": "true",
+         "PreviewOffsetX": "-20",
+         "PreviewOffsetY": "15",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "85",
+         "TileY": "105",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/SteampunkSpider",
+         "id": "48",
+         "Name": {
+            "l10n": "ITEM_4_48",
+            "text": "Webby"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "-10",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "83",
+         "TileY": "128",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/Necronomicon",
+         "Name": {
+            "l10n": "ITEM_4_49",
+            "text": "Necronomicon"
+         },
+         "UseEndGameMourningPose": "false",
+         "id": "49",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "0",
+         "ScaleX": ".45",
+         "ScaleY": ".45",
+         "TileX": "85",
+         "TileY": "105",
+         "TileScaleX": ".45",
+         "TileScaleY": ".45"
+      },
+      {
+         "File": "Pets/Penguin",
+         "Name": {
+            "l10n": "ITEM_4_50",
+            "text": "Iceberg"
+         },
+         "UseEndGameMourningPose": "true",
+         "id": "50",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "-10",
+         "ScaleX": ".45",
+         "ScaleY": ".45",
+         "TileX": "85",
+         "TileY": "105",
+         "TileScaleX": ".86",
+         "TileScaleY": ".86"
+      },
+      {
+         "File": "Pets/MissHamelot",
+         "Name": {
+            "l10n": "ITEM_4_51",
+            "text": "Miss Hamelot"
+         },
+         "UseEndGameMourningPose": "false",
+         "id": "51",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "1.2",
+         "ScaleY": "1.2",
+         "TileX": "80",
+         "TileY": "148",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/PoisonerFrog",
+         "Name": {
+            "l10n": "ITEM_4_52",
+            "text": "Spike"
+         },
+         "UseEndGameMourningPose": "true",
+         "id": "52",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": ".3",
+         "ScaleY": ".3",
+         "TileX": "110",
+         "TileY": "148",
+         "TileScaleX": ".3",
+         "TileScaleY": ".3"
+      },
+      {
+         "File": "Pets/Superdog",
+         "Name": {
+            "l10n": "ITEM_4_53",
+            "text": "Super Doge"
+         },
+         "UseEndGameMourningPose": "true",
+         "id": "53",
+         "PreviewOffsetX": "-10",
+         "PreviewOffsetY": "25",
+         "ScaleX": ".6",
+         "ScaleY": ".6",
+         "TileX": "92",
+         "TileY": "105",
+         "TileScaleX": ".7",
+         "TileScaleY": ".7"
+      },
+      {
+         "File": "Pets/Dogegolden",
+         "Name": {
+            "l10n": "ITEM_4_54",
+            "text": "Golden Doge"
+         },
+         "UseEndGameMourningPose": "true",
+         "id": "54",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "5",
+         "ScaleX": "1.3",
+         "ScaleY": "1.3",
+         "TileX": "100",
+         "TileY": "148",
+         "TileScaleX": "1.4",
+         "TileScaleY": "1.4"
+      },
+      {
+         "File": "Pets/Scarecrow",
+         "Name": {
+            "l10n": "ITEM_4_55",
+            "text": "Ina Field"
+         },
+         "UseEndGameMourningPose": "false",
+         "id": "55",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "-40",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "85",
+         "TileY": "165",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/Crow",
+         "Name": {
+            "l10n": "ITEM_4_56",
+            "text": "Carrion"
+         },
+         "UseEndGameMourningPose": "false",
+         "id": "56",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "-45",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "85",
+         "TileY": "165",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "File": "Pets/Phoenix",
+         "id": "57",
+         "Name": {
+            "l10n": "ITEM_4_57",
+            "text": "Phone-ix"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": ".35",
+         "ScaleY": ".35",
+         "TileX": "85",
+         "TileY": "105",
+         "TileScaleX": ".86",
+         "TileScaleY": ".86"
+      },
+      {
+         "File": "Pets/Kitsune",
+         "id": "58",
+         "Name": {
+            "l10n": "ITEM_4_58",
+            "text": "Kitsune"
+         },
+         "UseEndGameMourningPose": "false",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "15",
+         "ScaleX": ".6",
+         "ScaleY": ".6",
+         "TileX": "85",
+         "TileY": "105",
+         "TileScaleX": ".86",
+         "TileScaleY": ".86"
+      },
+      {
+         "File": "Pets/Owl",
+         "Name": {
+            "l10n": "ITEM_4_59",
+            "text": "Owl"
+         },
+         "id": "59",
+         "PreviewOffsetX": "-75",
+         "PreviewOffsetY": "-45",
+         "ScaleX": ".6",
+         "ScaleY": ".6",
+         "TileX": "86",
+         "TileY": "175",
+         "TileScaleX": ".7",
+         "TileScaleY": ".7"
+      },
+      {
+         "File": "Pets/NoPet",
+         "Name": {
+            "l10n": "ITEM_4_-2",
+            "text": "No Pet"
+         },
+         "id": "-2",
+         "PreviewOffsetX": "-20",
+         "PreviewOffsetY": "50",
+         "ScaleX": ".25",
+         "ScaleY": ".25",
+         "TileX": "110",
+         "TileY": "148",
+         "TileScaleX": ".3",
+         "TileScaleY": ".3"
+      },
+      {
+         "File": "Pets/RandomPet",
+         "Name": {
+            "l10n": "ITEM_4_-3",
+            "text": "Random Pet"
+         },
+         "id": "-3",
+         "PreviewOffsetX": "-15",
+         "PreviewOffsetY": "0",
+         "ScaleX": ".1",
+         "ScaleY": ".1",
+         "TileX": "110",
+         "TileY": "148",
+         "TileScaleX": ".15",
+         "TileScaleY": ".15"
+      }
+   ],
+   "CustomizationDeathAnimations": [
+      {
+         "DeathAnimationName": "Hanging",
+         "id": "0",
+         "Name": {
+            "l10n": "ITEM_9_0",
+            "text": "Hanging"
+         },
+         "PreviewOffsetX": "188",
+         "PreviewOffsetY": "300",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "80",
+         "TileY": "65",
+         "TileScaleX": "0.3",
+         "TileScaleY": "0.3"
+      },
+      {
+         "DeathAnimationName": "Burning",
+         "id": "1",
+         "Name": {
+            "l10n": "ITEM_9_1",
+            "text": "Burned at the Stake"
+         },
+         "PreviewOffsetX": "188",
+         "PreviewOffsetY": "320",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "80",
+         "TileY": "110",
+         "TileScaleX": "0.5",
+         "TileScaleY": "0.5"
+      },
+      {
+         "DeathAnimationName": "Rock",
+         "id": "2",
+         "Name": {
+            "l10n": "ITEM_9_2",
+            "text": "Splat!"
+         },
+         "PreviewOffsetX": "210",
+         "PreviewOffsetY": "300",
+         "ScaleX": "0.9",
+         "ScaleY": "0.9",
+         "TileX": "55",
+         "TileY": "68",
+         "TileScaleX": "1",
+         "TileScaleY": "1"
+      },
+      {
+         "DeathAnimationName": "Lightning",
+         "id": "3",
+         "Name": {
+            "l10n": "ITEM_9_3",
+            "text": "Lightning Rod"
+         },
+         "PreviewOffsetX": "205",
+         "PreviewOffsetY": "315",
+         "ScaleX": "0.8",
+         "ScaleY": "0.8",
+         "TileX": "60",
+         "TileY": "70",
+         "TileScaleX": "1",
+         "TileScaleY": "1"
+      },
+      {
+         "DeathAnimationName": "Drowning",
+         "id": "4",
+         "Name": {
+            "l10n": "ITEM_9_4",
+            "text": "Trial by Water"
+         },
+         "PreviewOffsetX": "183",
+         "PreviewOffsetY": "310",
+         "ScaleX": "0.26",
+         "ScaleY": "0.26",
+         "TileX": "85",
+         "TileY": "80",
+         "TileScaleX": "0.03",
+         "TileScaleY": "0.03"
+      },
+      {
+         "DeathAnimationName": "Guillotine",
+         "id": "5",
+         "Name": {
+            "l10n": "ITEM_9_5",
+            "text": "Guillotine"
+         },
+         "PreviewOffsetX": "227",
+         "PreviewOffsetY": "290",
+         "ScaleX": "0.5",
+         "ScaleY": "0.5",
+         "TileX": "15",
+         "TileY": "40",
+         "TileScaleX": "0.6",
+         "TileScaleY": "0.6"
+      },
+      {
+         "DeathAnimationName": "Pixel",
+         "id": "6",
+         "Name": {
+            "l10n": "ITEM_9_6",
+            "text": "Pixelate"
+         },
+         "PreviewOffsetX": "188",
+         "PreviewOffsetY": "300",
+         "ScaleX": "0.35",
+         "ScaleY": "0.35",
+         "TileX": "80",
+         "TileY": "65",
+         "TileScaleX": "0.2",
+         "TileScaleY": "0.2"
+      },
+      {
+         "DeathAnimationName": "BlastOff",
+         "id": "7",
+         "Name": {
+            "l10n": "ITEM_9_7",
+            "text": "Blast Off"
+         },
+         "PreviewOffsetX": "188",
+         "PreviewOffsetY": "300",
+         "ScaleX": "0.35",
+         "ScaleY": "0.35",
+         "TileX": "80",
+         "TileY": "65",
+         "TileScaleX": "0.2",
+         "TileScaleY": "0.2"
+      }
+   ],
+   "CustomizationLobbyIcons": [
+      {
+         "File": "LobbyIcons/LobbyIconPicture.jpg",
+         "id": "0",
+         "Name": {
+            "l10n": "ITEM_8_0",
+            "text": "Default"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconContributor.jpg",
+         "id": "1",
+         "Name": {
+            "l10n": "ITEM_8_1",
+            "text": "Contributor"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconDonor.jpg",
+         "id": "2",
+         "Name": {
+            "l10n": "ITEM_8_2",
+            "text": "Donor"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSponsor.jpg",
+         "id": "3",
+         "Name": {
+            "l10n": "ITEM_8_3",
+            "text": "Sponsor"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconBenefactor.jpg",
+         "id": "4",
+         "Name": {
+            "l10n": "ITEM_8_4",
+            "text": "Benefactor"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconPatron.jpg",
+         "id": "5",
+         "Name": {
+            "l10n": "ITEM_8_5",
+            "text": "Patron"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconPhilanthropist.jpg",
+         "id": "6",
+         "Name": {
+            "l10n": "ITEM_8_6",
+            "text": "Philanthropist"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconHumanitarian.jpg",
+         "id": "7",
+         "Name": {
+            "l10n": "ITEM_8_7",
+            "text": "Humanitarian"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconAngel.jpg",
+         "id": "8",
+         "Name": {
+            "l10n": "ITEM_8_8",
+            "text": "Angel"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconReaper.jpg",
+         "id": "9",
+         "Name": {
+            "l10n": "ITEM_8_9",
+            "text": "Grim"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconAngelWarrior.jpg",
+         "id": "10",
+         "Name": {
+            "l10n": "ITEM_8_10",
+            "text": "Angelic"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconCerberus.jpg",
+         "id": "11",
+         "Name": {
+            "l10n": "ITEM_8_11",
+            "text": "Demonic"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconGodfather.jpg",
+         "id": "12",
+         "Name": {
+            "l10n": "ITEM_8_12",
+            "text": "Kingpin"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconJailor.jpg",
+         "id": "13",
+         "Name": {
+            "l10n": "ITEM_8_13",
+            "text": "Locked Up"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconJester.jpg",
+         "id": "14",
+         "Name": {
+            "l10n": "ITEM_8_14",
+            "text": "Jest a Prank"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSerialKiller.jpg",
+         "id": "15",
+         "Name": {
+            "l10n": "ITEM_8_15",
+            "text": "Zodiac"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSpy.jpg",
+         "id": "16",
+         "Name": {
+            "l10n": "ITEM_8_16",
+            "text": "Fly On The Wall"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconVampire.jpg",
+         "id": "17",
+         "Name": {
+            "l10n": "ITEM_8_17",
+            "text": "Vampiric"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconWerewolf.jpg",
+         "id": "18",
+         "Name": {
+            "l10n": "ITEM_8_18",
+            "text": "Full Moon"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconWitch.jpg",
+         "id": "19",
+         "Name": {
+            "l10n": "ITEM_8_19",
+            "text": "Witchcraft"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconTurdPile.jpg",
+         "id": "20",
+         "Name": {
+            "l10n": "ITEM_8_20",
+            "text": "TurdPile"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconCoven.jpg",
+         "id": "21",
+         "Name": {
+            "l10n": "ITEM_8_21",
+            "text": "Coven"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconLegacyBronze.jpg",
+         "id": "22",
+         "Name": {
+            "l10n": "ITEM_8_22",
+            "text": "Legacy Bronze"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconLegacySilver.jpg",
+         "id": "23",
+         "Name": {
+            "l10n": "ITEM_8_23",
+            "text": "Legacy Silver"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconLegacyGold.jpg",
+         "id": "24",
+         "Name": {
+            "l10n": "ITEM_8_24",
+            "text": "Legacy Gold"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconLegacyPlatinum.jpg",
+         "id": "25",
+         "Name": {
+            "l10n": "ITEM_8_25",
+            "text": "Legacy Platinum"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconLegacyDiamond.jpg",
+         "id": "26",
+         "Name": {
+            "l10n": "ITEM_8_26",
+            "text": "Legacy Diamond"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconLegacyCrystal.jpg",
+         "id": "27",
+         "Name": {
+            "l10n": "ITEM_8_27",
+            "text": "Legacy Master"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason1Bronze.jpg",
+         "id": "28",
+         "Name": {
+            "l10n": "ITEM_8_28",
+            "text": "Season 1 Bronze"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason1Silver.jpg",
+         "id": "29",
+         "Name": {
+            "l10n": "ITEM_8_29",
+            "text": "Season 1 Silver"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason1Gold.jpg",
+         "id": "30",
+         "Name": {
+            "l10n": "ITEM_8_30",
+            "text": "Season 1 Gold"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason1Platinum.jpg",
+         "id": "31",
+         "Name": {
+            "l10n": "ITEM_8_31",
+            "text": "Season 1 Platinum"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason1Diamond.jpg",
+         "id": "32",
+         "Name": {
+            "l10n": "ITEM_8_32",
+            "text": "Season 1 Diamond"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason1Crystal.jpg",
+         "id": "33",
+         "Name": {
+            "l10n": "ITEM_8_33",
+            "text": "Season 1 Master"
+         }
+      },
+      {
+         "File": "LobbyIcons/LobbyIconGMod.jpg",
+         "Name": {
+            "l10n": "ITEM_8_34",
+            "text": "Gmod"
+         },
+         "id": "34"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconJuror.jpg",
+         "Name": {
+            "l10n": "ITEM_8_35",
+            "text": "Juror"
+         },
+         "id": "35"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconJudge.jpg",
+         "Name": {
+            "l10n": "ITEM_8_36",
+            "text": "Judge"
+         },
+         "id": "36"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason2Bronze.jpg",
+         "Name": {
+            "l10n": "ITEM_8_37",
+            "text": "Season 2 Bronze"
+         },
+         "id": "37"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason2Silver.jpg",
+         "Name": {
+            "l10n": "ITEM_8_38",
+            "text": "Season 2 Silver"
+         },
+         "id": "38"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason2Gold.jpg",
+         "Name": {
+            "l10n": "ITEM_8_39",
+            "text": "Season 2 Gold"
+         },
+         "id": "39"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason2Platinum.jpg",
+         "Name": {
+            "l10n": "ITEM_8_40",
+            "text": "Season 2 Platinum"
+         },
+         "id": "40"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason2Diamond.jpg",
+         "Name": {
+            "l10n": "ITEM_8_41",
+            "text": "Season 2 Diamond"
+         },
+         "id": "41"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason2Crystal.jpg",
+         "Name": {
+            "l10n": "ITEM_8_42",
+            "text": "Season 2 Master"
+         },
+         "id": "42"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason3Bronze.jpg",
+         "Name": {
+            "l10n": "ITEM_8_43",
+            "text": "Season 3 Bronze"
+         },
+         "id": "43"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason3Silver.jpg",
+         "Name": {
+            "l10n": "ITEM_8_44",
+            "text": "Season 3 Silver"
+         },
+         "id": "44"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason3Gold.jpg",
+         "Name": {
+            "l10n": "ITEM_8_45",
+            "text": "Season 3 Gold"
+         },
+         "id": "45"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason3Platinum.jpg",
+         "Name": {
+            "l10n": "ITEM_8_46",
+            "text": "Season 3 Platinum"
+         },
+         "id": "46"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason3Diamond.jpg",
+         "Name": {
+            "l10n": "ITEM_8_47",
+            "text": "Season 3 Diamond"
+         },
+         "id": "47"
+      },
+      {
+         "File": "LobbyIcons/LobbyIconSeason3Crystal.jpg",
+         "Name": {
+            "l10n": "ITEM_8_48",
+            "text": "Season 3 Master"
+         },
+         "id": "48"
+      }
+   ],
+   "CustomizationScrolls": [
+      {
+         "File": "Scrolls/NormalBodyguardScroll/newscroll.png",
+         "id": "0",
+         "Name": {
+            "l10n": "ITEM_16_0",
+            "text": "Bodyguard Scroll"
+         },
+         "Role": "0",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalDoctorScroll/newscroll.png",
+         "id": "1",
+         "Name": {
+            "l10n": "ITEM_16_1",
+            "text": "Doctor Scroll"
+         },
+         "Role": "1",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalEscortScroll/newscroll.png",
+         "id": "2",
+         "Name": {
+            "l10n": "ITEM_16_2",
+            "text": "Escort Scroll"
+         },
+         "Role": "2",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalInvestigatorScroll/newscroll.png",
+         "id": "3",
+         "Name": {
+            "l10n": "ITEM_16_3",
+            "text": "Investigator Scroll"
+         },
+         "Role": "3",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalJailorScroll/newscroll.png",
+         "id": "4",
+         "Name": {
+            "l10n": "ITEM_16_4",
+            "text": "Jailor Scroll"
+         },
+         "Role": "4",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalLookoutScroll/newscroll.png",
+         "id": "5",
+         "Name": {
+            "l10n": "ITEM_16_5",
+            "text": "Lookout Scroll"
+         },
+         "Role": "5",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalMayorScroll/newscroll.png",
+         "id": "6",
+         "Name": {
+            "l10n": "ITEM_16_6",
+            "text": "Mayor Scroll"
+         },
+         "Role": "6",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalMediumScroll/newscroll.png",
+         "id": "7",
+         "Name": {
+            "l10n": "ITEM_16_7",
+            "text": "Medium Scroll"
+         },
+         "Role": "7",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalRetributionistScroll/newscroll.png",
+         "id": "8",
+         "Name": {
+            "l10n": "ITEM_16_8",
+            "text": "Retributionist Scroll"
+         },
+         "Role": "8",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalSheriffScroll/newscroll.png",
+         "id": "9",
+         "Name": {
+            "l10n": "ITEM_16_9",
+            "text": "Sheriff Scroll"
+         },
+         "Role": "9",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalSpyScroll/newscroll.png",
+         "id": "10",
+         "Name": {
+            "l10n": "ITEM_16_10",
+            "text": "Spy Scroll"
+         },
+         "Role": "10",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalTransporterScroll/newscroll.png",
+         "id": "11",
+         "Name": {
+            "l10n": "ITEM_16_11",
+            "text": "Transporter Scroll"
+         },
+         "Role": "11",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalVeteranScroll/newscroll.png",
+         "id": "12",
+         "Name": {
+            "l10n": "ITEM_16_12",
+            "text": "Veteran Scroll"
+         },
+         "Role": "13",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalVigilanteScroll/newscroll.png",
+         "id": "13",
+         "Name": {
+            "l10n": "ITEM_16_13",
+            "text": "Vigilante Scroll"
+         },
+         "Role": "14",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalBlackmailerScroll/newscroll.png",
+         "id": "14",
+         "Name": {
+            "l10n": "ITEM_16_14",
+            "text": "Blackmailer Scroll"
+         },
+         "Role": "15",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalConsigliereScroll/newscroll.png",
+         "id": "15",
+         "Name": {
+            "l10n": "ITEM_16_15",
+            "text": "Consigliere Scroll"
+         },
+         "Role": "16",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalConsortScroll/newscroll.png",
+         "id": "16",
+         "Name": {
+            "l10n": "ITEM_16_16",
+            "text": "Consort Scroll"
+         },
+         "Role": "17",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalDisguiserScroll/newscroll.png",
+         "id": "17",
+         "Name": {
+            "l10n": "ITEM_16_17",
+            "text": "Disguiser Scroll"
+         },
+         "Role": "18",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalForgerScroll/newscroll.png",
+         "id": "18",
+         "Name": {
+            "l10n": "ITEM_16_18",
+            "text": "Forger Scroll"
+         },
+         "Role": "19",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalFramerScroll/newscroll.png",
+         "id": "19",
+         "Name": {
+            "l10n": "ITEM_16_19",
+            "text": "Framer Scroll"
+         },
+         "Role": "20",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalGodfatherScroll/newscroll.png",
+         "id": "20",
+         "Name": {
+            "l10n": "ITEM_16_20",
+            "text": "Godfather Scroll"
+         },
+         "Role": "21",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalJanitorScroll/newscroll.png",
+         "id": "21",
+         "Name": {
+            "l10n": "ITEM_16_21",
+            "text": "Janitor Scroll"
+         },
+         "Role": "22",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalMafiosoScroll/newscroll.png",
+         "id": "22",
+         "Name": {
+            "l10n": "ITEM_16_22",
+            "text": "Mafioso Scroll"
+         },
+         "Role": "23",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalAmnesiacScroll/newscroll.png",
+         "id": "23",
+         "Name": {
+            "l10n": "ITEM_16_23",
+            "text": "Amnesiac Scroll"
+         },
+         "Role": "24",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalArsonistScroll/newscroll.png",
+         "id": "24",
+         "Name": {
+            "l10n": "ITEM_16_24",
+            "text": "Arsonist Scroll"
+         },
+         "Role": "25",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalExecutionerScroll/newscroll.png",
+         "id": "25",
+         "Name": {
+            "l10n": "ITEM_16_25",
+            "text": "Executioner Scroll"
+         },
+         "Role": "26",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalJesterScroll/newscroll.png",
+         "id": "26",
+         "Name": {
+            "l10n": "ITEM_16_26",
+            "text": "Jester Scroll"
+         },
+         "Role": "27",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalSerialkillerScroll/newscroll.png",
+         "id": "27",
+         "Name": {
+            "l10n": "ITEM_16_27",
+            "text": "Serial Killer Scroll"
+         },
+         "Role": "28",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalSurvivorScroll/newscroll.png",
+         "id": "28",
+         "Name": {
+            "l10n": "ITEM_16_28",
+            "text": "Survivor Scroll"
+         },
+         "Role": "29",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalWerewolfScroll/newscroll.png",
+         "id": "29",
+         "Name": {
+            "l10n": "ITEM_16_29",
+            "text": "Werewolf Scroll"
+         },
+         "Role": "31",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalWitchScroll/newscroll.png",
+         "id": "30",
+         "Name": {
+            "l10n": "ITEM_16_30",
+            "text": "Witch Scroll"
+         },
+         "Role": "32",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/LesserBodyguardScroll/newscroll.png",
+         "id": "31",
+         "Name": {
+            "l10n": "ITEM_16_31",
+            "text": "Lesser Bodyguard Scroll"
+         },
+         "Role": "0",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserDoctorScroll/newscroll.png",
+         "id": "32",
+         "Name": {
+            "l10n": "ITEM_16_32",
+            "text": "Lesser Doctor Scroll"
+         },
+         "Role": "1",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserEscortScroll/newscroll.png",
+         "id": "33",
+         "Name": {
+            "l10n": "ITEM_16_33",
+            "text": "Lesser Escort Scroll"
+         },
+         "Role": "2",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserInvestigatorScroll/newscroll.png",
+         "id": "34",
+         "Name": {
+            "l10n": "ITEM_16_34",
+            "text": "Lesser Investigator Scroll"
+         },
+         "Role": "3",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserJailorScroll/newscroll.png",
+         "id": "35",
+         "Name": {
+            "l10n": "ITEM_16_35",
+            "text": "Lesser Jailor Scroll"
+         },
+         "Role": "4",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserLookoutScroll/newscroll.png",
+         "id": "36",
+         "Name": {
+            "l10n": "ITEM_16_36",
+            "text": "Lesser Lookout Scroll"
+         },
+         "Role": "5",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserMayorScroll/newscroll.png",
+         "id": "37",
+         "Name": {
+            "l10n": "ITEM_16_37",
+            "text": "Lesser Mayor Scroll"
+         },
+         "Role": "6",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserMediumScroll/newscroll.png",
+         "id": "38",
+         "Name": {
+            "l10n": "ITEM_16_38",
+            "text": "Lesser Medium Scroll"
+         },
+         "Role": "7",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserRetributionistScroll/newscroll.png",
+         "id": "39",
+         "Name": {
+            "l10n": "ITEM_16_39",
+            "text": "Lesser Retributionist Scroll"
+         },
+         "Role": "8",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserSheriffScroll/newscroll.png",
+         "id": "40",
+         "Name": {
+            "l10n": "ITEM_16_40",
+            "text": "Lesser Sheriff Scroll"
+         },
+         "Role": "9",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserSpyScroll/newscroll.png",
+         "id": "41",
+         "Name": {
+            "l10n": "ITEM_16_41",
+            "text": "Lesser Spy Scroll"
+         },
+         "Role": "10",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserTransporterScroll/newscroll.png",
+         "id": "42",
+         "Name": {
+            "l10n": "ITEM_16_42",
+            "text": "Lesser Transporter Scroll"
+         },
+         "Role": "11",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserVeteranScroll/newscroll.png",
+         "id": "43",
+         "Name": {
+            "l10n": "ITEM_16_43",
+            "text": "Lesser Veteran Scroll"
+         },
+         "Role": "13",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserVigilanteScroll/newscroll.png",
+         "id": "44",
+         "Name": {
+            "l10n": "ITEM_16_44",
+            "text": "Lesser Vigilante Scroll"
+         },
+         "Role": "14",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserBlackmailerScroll/newscroll.png",
+         "id": "45",
+         "Name": {
+            "l10n": "ITEM_16_45",
+            "text": "Lesser Blackmailer Scroll"
+         },
+         "Role": "15",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserConsigliereScroll/newscroll.png",
+         "id": "46",
+         "Name": {
+            "l10n": "ITEM_16_46",
+            "text": "Lesser Consigliere Scroll"
+         },
+         "Role": "16",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserConsortScroll/newscroll.png",
+         "id": "47",
+         "Name": {
+            "l10n": "ITEM_16_47",
+            "text": "Lesser Consort Scroll"
+         },
+         "Role": "17",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserDisguiserScroll/newscroll.png",
+         "id": "48",
+         "Name": {
+            "l10n": "ITEM_16_48",
+            "text": "Lesser Disguiser Scroll"
+         },
+         "Role": "18",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserForgerScroll/newscroll.png",
+         "id": "49",
+         "Name": {
+            "l10n": "ITEM_16_49",
+            "text": "Lesser Forger Scroll"
+         },
+         "Role": "19",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserFramerScroll/newscroll.png",
+         "id": "50",
+         "Name": {
+            "l10n": "ITEM_16_50",
+            "text": "Lesser Framer Scroll"
+         },
+         "Role": "20",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserGodfatherScroll/newscroll.png",
+         "id": "51",
+         "Name": {
+            "l10n": "ITEM_16_51",
+            "text": "Lesser Godfather Scroll"
+         },
+         "Role": "21",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserJanitorScroll/newscroll.png",
+         "id": "52",
+         "Name": {
+            "l10n": "ITEM_16_52",
+            "text": "Lesser Janitor Scroll"
+         },
+         "Role": "22",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserMafiosoScroll/newscroll.png",
+         "id": "53",
+         "Name": {
+            "l10n": "ITEM_16_53",
+            "text": "Lesser Mafioso Scroll"
+         },
+         "Role": "23",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserAmnesiacScroll/newscroll.png",
+         "id": "54",
+         "Name": {
+            "l10n": "ITEM_16_54",
+            "text": "Lesser Amnesiac Scroll"
+         },
+         "Role": "24",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserArsonistScroll/newscroll.png",
+         "id": "55",
+         "Name": {
+            "l10n": "ITEM_16_55",
+            "text": "Lesser Arsonist Scroll"
+         },
+         "Role": "25",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserExecutionerScroll/newscroll.png",
+         "id": "56",
+         "Name": {
+            "l10n": "ITEM_16_56",
+            "text": "Lesser Executioner Scroll"
+         },
+         "Role": "26",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserJesterScroll/newscroll.png",
+         "id": "57",
+         "Name": {
+            "l10n": "ITEM_16_57",
+            "text": "Lesser Jester Scroll"
+         },
+         "Role": "27",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserSerialKillerScroll/newscroll.png",
+         "id": "58",
+         "Name": {
+            "l10n": "ITEM_16_58",
+            "text": "Lesser Serial Killer Scroll"
+         },
+         "Role": "28",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserSurvivorScroll/newscroll.png",
+         "id": "59",
+         "Name": {
+            "l10n": "ITEM_16_59",
+            "text": "Lesser Survivor Scroll"
+         },
+         "Role": "29",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserWerewolfScroll/newscroll.png",
+         "id": "60",
+         "Name": {
+            "l10n": "ITEM_16_60",
+            "text": "Lesser Werewolf Scroll"
+         },
+         "Role": "31",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserWitchScroll/newscroll.png",
+         "id": "61",
+         "Name": {
+            "l10n": "ITEM_16_61",
+            "text": "Lesser Witch Scroll"
+         },
+         "Role": "32",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/NormalVampireHunterScroll/newscroll.png",
+         "id": "62",
+         "Name": {
+            "l10n": "ITEM_16_62",
+            "text": "Vampire Hunter Scroll"
+         },
+         "Role": "12",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalVampireScroll/newscroll.png",
+         "id": "63",
+         "Name": {
+            "l10n": "ITEM_16_63",
+            "text": "Vampire Scroll"
+         },
+         "Role": "30",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/LesserVampireHunterScroll/newscroll.png",
+         "id": "64",
+         "Name": {
+            "l10n": "ITEM_16_64",
+            "text": "Lesser Vampire Hunter Scroll"
+         },
+         "Role": "12",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/LesserVampireScroll/newscroll.png",
+         "id": "65",
+         "Name": {
+            "l10n": "ITEM_16_65",
+            "text": "Lesser Vampire Scroll"
+         },
+         "Role": "30",
+         "Odds": "2"
+      },
+      {
+         "File": "Scrolls/NormalCrusaderScroll/newscroll.png",
+         "id": "66",
+         "Name": {
+            "l10n": "ITEM_16_66",
+            "text": "Crusader Scroll"
+         },
+         "Role": "46",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalTrackerScroll/newscroll.png",
+         "id": "67",
+         "Name": {
+            "l10n": "ITEM_16_67",
+            "text": "Tracker Scroll"
+         },
+         "Role": "47",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalTrapperScroll/newscroll.png",
+         "id": "68",
+         "Name": {
+            "l10n": "ITEM_16_68",
+            "text": "Trapper Scroll"
+         },
+         "Role": "48",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalPsychicScroll/newscroll.png",
+         "id": "69",
+         "Name": {
+            "l10n": "ITEM_16_69",
+            "text": "Psychic Scroll"
+         },
+         "Role": "49",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalHypnotistScroll/newscroll.png",
+         "id": "70",
+         "Name": {
+            "l10n": "ITEM_16_70",
+            "text": "Hypnotist Scroll"
+         },
+         "Role": "50",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalAmbusherScroll/newscroll.png",
+         "id": "71",
+         "Name": {
+            "l10n": "ITEM_16_71",
+            "text": "Ambusher Scroll"
+         },
+         "Role": "51",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalPlaguebearerScroll/newscroll.png",
+         "id": "72",
+         "Name": {
+            "l10n": "ITEM_16_72",
+            "text": "Plaguebearer Scroll"
+         },
+         "Role": "52",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalJuggernautScroll/newscroll.png",
+         "id": "73",
+         "Name": {
+            "l10n": "ITEM_16_73",
+            "text": "Juggernaut Scroll"
+         },
+         "Role": "53",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalGuardianAngelScroll/newscroll.png",
+         "id": "74",
+         "Name": {
+            "l10n": "ITEM_16_74",
+            "text": "Guardian Angel Scroll"
+         },
+         "Role": "54",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalPirateScroll/newscroll.png",
+         "id": "75",
+         "Name": {
+            "l10n": "ITEM_16_75",
+            "text": "Pirate Scroll"
+         },
+         "Role": "55",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalCovenLeaderScroll/newscroll.png",
+         "id": "76",
+         "Name": {
+            "l10n": "ITEM_16_76",
+            "text": "Coven Leader Scroll"
+         },
+         "Role": "56",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalPotionMasterScroll/newscroll.png",
+         "id": "77",
+         "Name": {
+            "l10n": "ITEM_16_77",
+            "text": "Potion Master Scroll"
+         },
+         "Role": "57",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalHexMasterScroll/newscroll.png",
+         "id": "78",
+         "Name": {
+            "l10n": "ITEM_16_78",
+            "text": "Hex Master Scroll"
+         },
+         "Role": "58",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalNecromancerScroll/newscroll.png",
+         "id": "79",
+         "Name": {
+            "l10n": "ITEM_16_79",
+            "text": "Necromancer Scroll"
+         },
+         "Role": "59",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalPoisonerScroll/newscroll.png",
+         "id": "80",
+         "Name": {
+            "l10n": "ITEM_16_80",
+            "text": "Poisoner Scroll"
+         },
+         "Role": "60",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NormalMedusaScroll/newscroll.png",
+         "id": "81",
+         "Name": {
+            "l10n": "ITEM_16_81",
+            "text": "Medusa Scroll"
+         },
+         "Role": "61",
+         "Odds": "10"
+      },
+      {
+         "File": "Scrolls/NoScroll/newscroll.png",
+         "id": "-2",
+         "Name": {
+            "l10n": "ITEM_16_-2",
+            "text": "No Scroll"
+         }
+      }
+   ],
+   "CustomizationTaunts": [
+      {
+         "File": "Taunts/Dog/SmallPreview.png",
+         "id": "0",
+         "Name": {
+            "l10n": "ITEM_25_0",
+            "text": "Defiled"
+         }
+      },
+      {
+         "File": "Taunts/Witch/SmallPreview.png",
+         "id": "1",
+         "Name": {
+            "l10n": "ITEM_25_1",
+            "text": "Accursed"
+         }
+      },
+      {
+         "File": "Taunts/Tomb/SmallPreview.png",
+         "id": "2",
+         "Name": {
+            "l10n": "ITEM_25_2",
+            "text": "RIP"
+         }
+      },
+      {
+         "File": "Taunts/Fireworks/SmallPreview.png",
+         "id": "3",
+         "Name": {
+            "l10n": "ITEM_25_3",
+            "text": "Celebrate"
+         }
+      }
+   ],
+   "CustomizationTickets": [
+      {
+         "File": "Tickets/ClassicFreeTicket.png",
+         "id": "1",
+         "Name": {
+            "l10n": "ITEM_27_1",
+            "text": "Classic Free Ticket"
+         }
+      },
+      {
+         "File": "Tickets/CovenFreeTicket.png",
+         "id": "2",
+         "Name": {
+            "l10n": "ITEM_27_2",
+            "text": "Coven Free Ticket"
+         }
+      }
+   ]
+}

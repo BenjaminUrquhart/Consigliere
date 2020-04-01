@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'application'
+    id "com.github.johnrengelman.shadow" version "5.2.0"
+}
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+	compile 'org.json:json:20190722'
+	compile 'org.pcap4j:pcap4j-core:1.+'
+	compile 'org.pcap4j:pcap4j-packetfactory-static:1.+'
+}
+
+sourceSets {
+    main.java.srcDirs = ['src/']
+    main.resources.srcDirs = ['src/']
+}
+sourceCompatibility = '1.11'
+targetCompatibility = '1.11'
+
+mainClassName='net.benjaminurquhart.tos.TerminalOfSalem'
