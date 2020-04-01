@@ -1,8 +1,11 @@
 package net.benjaminurquhart.tos.handlers;
 
+import java.awt.Color;
 import java.util.Arrays;
 
+import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
+import net.benjaminurquhart.tos.game.Role;
 
 public class ServerMessageHandler extends MessageHandler {
 	
@@ -16,7 +19,7 @@ public class ServerMessageHandler extends MessageHandler {
     @Override
 	public void processCommand(byte[] command) {
     	//this.onUnhandledCommand(command);
-        switch ((int)command[0]) { 
+        switch (((int)command[0])&(int)0b11111111) { 
                  case 0: onDefaultFunction(command); break;
                  case 1: onLoginSuccess(command); break;
                  case 2: onJoinedGameLobby(command); break;
@@ -212,7 +215,7 @@ public class ServerMessageHandler extends MessageHandler {
                  case 190: onDefaultFunction(command); break;
                  case 191: onDefaultFunction(command); break;
                  case 192: onTransporterNotification(command); break;
-                 case 193: onDefaultFunction(command); break;
+                 case 193: onItemPurchased(command); break;
                  case 194: onUpdateFreeCurrency(command); break;
                  case 195: onActiveEvents(command); break;
                  case 196: onDefaultFunction(command); break;
@@ -251,15 +254,20 @@ public class ServerMessageHandler extends MessageHandler {
         }
     }
 
+	private void onItemPurchased(byte[] command) {
+		onUnhandledCommand(command);
+		
+	}
+
 	private void onGameStartCountdown(byte[] command) {
-		System.out.println("Lobby is full, game is starting...");
+		System.out.println(ANSI.GREEN+"Lobby is full, game is starting..."+ANSI.GRAY);
 	}
 
 	private void onGameStatus(byte[] command) {
 		int asterisk = this.indexOf(command, (byte)'*');
 		int players = Integer.parseInt(new String(Arrays.copyOfRange(command, 1, asterisk)));
 		int games = Integer.parseInt(new String(Arrays.copyOfRange(command, asterisk+1, command.length-2)));
-		System.out.printf("%d players online (%d games running)\n", players, games);
+		System.out.printf("%s%d players online (%d games running)%s\n", ANSI.GREEN, players, games, ANSI.GRAY);
 	}
 
 	private void onSpyNightInfo(byte[] command) {
@@ -277,8 +285,29 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onRankedInfo(byte[] command) {
-		onUnhandledCommand(command);
+		int[] stats = Arrays.stream(this.convertToString(command, true).split(","))
+							.mapToInt(Integer::parseInt)
+							.toArray();
+		//System.out.println(Arrays.toString(stats));
+		boolean coven = stats[0]/6 == 2;
 		
+		int practiceGamesRequired = stats[9];
+		int practiceGamesPlayed = stats[1];
+		int rankedGamesDrawn = stats[12];
+		int rankedGamesLost = stats[11];
+		int rankedGamesWon = stats[10];
+		
+		int seasonHigh = stats[14];
+		int elo = stats[15];
+		
+		System.out.println("-----------------------------------------------");
+		System.out.println((coven ? "Coven" : "Classic") + " Ranked Statistics:");
+		System.out.printf("Practice Games: %d/%d\n", practiceGamesPlayed, practiceGamesRequired);
+		if(practiceGamesRequired <= practiceGamesPlayed) {
+			System.out.printf("Current Elo: %d\nSeason High: %d\n", elo, seasonHigh);
+			System.out.printf("Wins: %d | Losses: %d | Draws: %d\n", rankedGamesWon, rankedGamesLost, rankedGamesDrawn);
+		}
+		System.out.println("-----------------------------------------------");
 	}
 
 	private void onRivalTarget(byte[] command) {
@@ -532,8 +561,16 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onNotifyUsersOfPrivateMessage(byte[] command) {
-		onUnhandledCommand(command);
-		
+		String whisperColor = ANSI.toTrueColor(Color.MAGENTA);
+		System.out.printf(
+				"%s%s%s is whispering to %s%s%s\n",
+				ANSI.LIGHT_GRAY,
+				names[command[1]-1],
+				whisperColor,
+				ANSI.LIGHT_GRAY,
+				names[command[2]-1],
+				ANSI.GRAY
+		);
 	}
 
 	private void onVigilanteKilledTown(byte[] command) {
@@ -562,8 +599,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onFirstDayTransition(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.println(ANSI.GRAY+"---------- Start ----------");
 	}
 
 	private void onHousesChosen(byte[] command) {
@@ -582,12 +618,10 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onStartDayTransition(byte[] command) {
-		onUnhandledCommand(command);
 		
 	}
 
 	private void onStartNightTransition(byte[] command) {
-		onUnhandledCommand(command);
 		
 	}
 
@@ -662,6 +696,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onTellLastWill(byte[] command) {
+		System.out.printf("%sWill: %s%s\n", ANSI.WHITE, new String(Arrays.copyOfRange(command, 3, command.length-1)), ANSI.GRAY);
 		onUnhandledCommand(command);
 		
 	}
@@ -770,7 +805,7 @@ public class ServerMessageHandler extends MessageHandler {
 		//onUnhandledCommand(command);
 		String name = new String(Arrays.copyOfRange(command, 3, command.length-1));
 		names[command[2]-1] = name;
-		System.out.printf("%s (%d) has joined the Town\n", name, command[2]);
+		System.out.printf("%s%s (%d) has joined the Town%s\n", ANSI.GREEN, name, command[2], ANSI.GRAY);
 	}
 
 	private void onTellRoleList(byte[] command) {
@@ -839,23 +874,22 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onWhoDiedAndHow(byte[] command) {
-		onUnhandledCommand(command);
-		
+		Role role = Game.ROLES[command[2]-1];
+		System.out.printf("%s%s died last night\n", ANSI.WHITE, names[command[1]-1]);
+		System.out.printf("Role: %s%s%s\n", ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.GRAY);
 	}
 
 	private void onStartDay(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.println(ANSI.GRAY+"----------  Day  ----------");
 	}
 
 	private void onStartNight(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.println(ANSI.GRAY+"---------- Night ----------");
 	}
 
 	private void onRoleAndPosition(byte[] command) {
-		//onUnhandledCommand(command);
-		System.out.printf("Role: %s\nPosition: %d\n", Game.ROLES[command[1]], command[2]);
+		Role role = Game.ROLES[command[1]-1];
+		System.out.printf("%sRole: %s%s%s\nPosition: %d%s\n", ANSI.WHITE, ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.WHITE, command[2], ANSI.GRAY);
 	}
 
 	private void onNamesAndPositionsOfUsers(byte[] command) {
@@ -959,12 +993,12 @@ public class ServerMessageHandler extends MessageHandler {
 		
 		String name;
 		if(player == 44) {
-			name = "Medium";
+			name = ANSI.CYAN+"Medium";
 		}
 		else {
-			name = names[player];
+			name = ANSI.WHITE+names[player];
 		}
-		System.out.printf("%s: %s\n", name, new String(Arrays.copyOfRange(command, 2+offset, command.length-1)));
+		System.out.printf("%s: %s%s\n", name, new String(Arrays.copyOfRange(command, 2+offset, command.length-1)), ANSI.GRAY);
 	}
 
 	private void onUserLeftGame(byte[] command) {
@@ -985,7 +1019,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onJoinedGameLobby(byte[] command) {
-		System.out.println("Joined game lobby");
+		System.out.println(ANSI.WHITE+"Joined game lobby"+ANSI.GRAY);
 		//onUnhandledCommand(command);
 	}
 

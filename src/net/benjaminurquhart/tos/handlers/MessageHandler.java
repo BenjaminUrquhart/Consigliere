@@ -2,6 +2,8 @@ package net.benjaminurquhart.tos.handlers;
 
 import java.util.Arrays;
 
+import net.benjaminurquhart.tos.game.ANSI;
+
 public abstract class MessageHandler {
 	
 	private String origin;
@@ -34,7 +36,7 @@ public abstract class MessageHandler {
     	onUnhandledCommand(command);
     }
 	protected void onUnhandledCommand(byte[] command) {
-		System.out.printf("%s: (0x%02x %03d): %s\n", origin, command[0], ((int)command[0])&(int)0b11111111, convertToString(command));
+		System.out.printf("%s%s: (0x%02x %03d): %s%s\n", ANSI.GRAY, origin, command[0], ((int)command[0])&(int)0b11111111, convertToString(command), ANSI.RESET);
 	}
 	protected String convertToString(byte[] command) {
 		return convertToString(command, true);

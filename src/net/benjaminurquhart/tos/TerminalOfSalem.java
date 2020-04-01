@@ -7,11 +7,12 @@ import java.net.UnknownHostException;
 //import org.pcap4j.core.BpfProgram.BpfCompileMode;
 
 import org.pcap4j.core.PcapHandle;
-//import org.pcap4j.core.PcapNetworkInterface.PromiscuousMode;
+import org.pcap4j.core.PcapNetworkInterface.PromiscuousMode;
 import org.pcap4j.core.Pcaps;
 
 import org.pcap4j.packet.*;
 
+import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.handlers.*;
 
 //import net.benjaminurquhart.tos.game.Game;
@@ -30,10 +31,9 @@ public class TerminalOfSalem {
 	}
 
 	public static void main(String[] args) throws Exception {
-		Class.forName("net.benjaminurquhart.tos.game.Game");
+		System.out.print(ANSI.RESET);
 		MessageHandler server = new ServerMessageHandler(), client = new ClientMessageHandler();
-		
-		PcapHandle handle = Pcaps.openOffline("tos2.pcapng");//Pcaps.getDevByAddress(InetAddress.getByName("192.168.254.16")).openLive(1<<16, PromiscuousMode.NONPROMISCUOUS, 10);
+		PcapHandle handle = args.length > 0 ? Pcaps.openOffline(args[0]) : Pcaps.getDevByAddress(InetAddress.getByName("192.168.254.16")).openLive(1<<16, PromiscuousMode.NONPROMISCUOUS, 10);
 		//handle.setFilter("(((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)", BpfCompileMode.OPTIMIZE);
 		IpV4Packet ipv4Packet;
 		TcpPacket packet;
