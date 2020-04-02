@@ -27,6 +27,7 @@ public class ClientMessageHandler extends MessageHandler {
     	case 19: onUserChangedTarget(command); break;
     	case 20: onCustomizationUpdate(command); break;
     	case 21: onNameSubmission(command); break;
+    	case 22: onUserReported(command); break;
     	case 39: onLeaveGame(command); break;
     	case 79: onUserChoseMultiAction(command); break;
     	case 85: onSteamLoginAttempt(command); break;
@@ -36,6 +37,9 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	private void onUserReported(byte[] command) {
+		System.out.printf("%sA report was filed for Player %d (%s)\n", ANSI.GRAY, command[1], new String(Arrays.copyOfRange(command, 3, command.length-1)));
+	}
 	private void onUserChoseMultiAction(byte[] command) {
 		System.out.printf("%sUser chose action %d\n", ANSI.GRAY, command[1]);
 	}

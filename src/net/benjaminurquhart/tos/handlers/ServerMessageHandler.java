@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Faction;
@@ -14,6 +16,8 @@ import net.benjaminurquhart.tos.game.Scroll;
 import net.benjaminurquhart.tos.game.StringTableMessage;
 
 public class ServerMessageHandler extends MessageHandler {
+	
+	private static final Pattern END_GAME_RESULTS = Pattern.compile("\\(([^\\)]+)\\)");
 	
 	private boolean[] alive;
 	private String[] names;
@@ -260,6 +264,7 @@ public class ServerMessageHandler extends MessageHandler {
                  case 225: onJailorDeathNote(command); break;
                  case 226: onLoginFailure(command); break;
                  case 227: onSpyNightInfo(command); break;
+                 case 228: onDefaultFunction(command); break;
                 default: onUnhandledCommand(command); break;
         }
     }
@@ -276,7 +281,7 @@ public class ServerMessageHandler extends MessageHandler {
 	private void onGameStatus(byte[] command) {
 		int asterisk = this.indexOf(command, (byte)'*');
 		int players = Integer.parseInt(new String(Arrays.copyOfRange(command, 1, asterisk)));
-		int games = Integer.parseInt(new String(Arrays.copyOfRange(command, asterisk+1, command.length-2)));
+		int games = Integer.parseInt(new String(Arrays.copyOfRange(command, asterisk+1, command.length-1)));
 		System.out.printf("%s%d players online (%d games running)%s\n", ANSI.GREEN, players, games, ANSI.GRAY);
 	}
 
@@ -341,7 +346,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onAccountFlags(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 
@@ -427,8 +432,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onGuardianAngelProtection(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%sThe Guardian Angel was watching over %s%s%s\n", ANSI.GREEN, ANSI.RESET, names[command[1]-1], ANSI.GRAY);
 	}
 
 	private void onAmbusherNightAbility(byte[] command) {
@@ -516,18 +520,53 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onEndGameUserUpdate(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 
 	private void onEndGameChatMessage(byte[] command) {
-		onUnhandledCommand(command);
-		
+		onChatBoxMessage(command);
 	}
 
 	private void onEndGameInfo(byte[] command) {
-		onUnhandledCommand(command);
+		System.out.printf("%s---------------Game Information----------------\n", ANSI.RESET);
+		String infoString = this.convertToString(Arrays.copyOfRange(command, this.indexOf(command, (byte)'='), command.length));
+		Matcher matcher = END_GAME_RESULTS.matcher(infoString);
+		String username, name;
+		int position, roleID;
+		Role role;
 		
+		String[] info;
+		while(matcher.find()) {
+			info = matcher.group(1).split(",\\s{0,}(0x)?");
+			username = info[1];
+			name = info[0];
+			
+			if(info[3].length() == 1) {
+				roleID = info[3].charAt(0);
+			}
+			else {
+				roleID = Integer.parseInt(info[3], 16);
+			}
+			
+			position = Integer.parseInt(info[2], 16);
+			
+			role = Game.ROLES[roleID-1];
+			
+			roles[position-1] = role;
+			names[position-1] = username;
+			
+			System.out.printf(
+					"%s%-16s %-16s %s%-16s%s\n",
+					ANSI.RESET,
+					name,
+					username,
+					ANSI.toTrueColor(role.getColor()),
+					role.getName(),
+					ANSI.GRAY
+			);
+		}
+		System.out.printf("%s-----------------------------------------------%s\n", ANSI.RESET, ANSI.GRAY);
 	}
 
 	private void onIdentify(byte[] command) {
@@ -935,10 +974,10 @@ public class ServerMessageHandler extends MessageHandler {
 				ANSI.GREEN,
 				ANSI.RESET,
 				ANSI.RED,
-				command[1],
+				command[1]-1,
 				ANSI.RESET,
 				ANSI.GREEN,
-				command[2],
+				command[2]-1,
 				ANSI.GRAY
 		);
 	}
@@ -950,10 +989,10 @@ public class ServerMessageHandler extends MessageHandler {
 				ANSI.RED,
 				ANSI.RESET,
 				ANSI.RED,
-				command[1],
+				command[1]-1,
 				ANSI.RESET,
 				ANSI.GREEN,
-				command[2],
+				command[2]-1,
 				ANSI.GRAY
 		);
 	}
@@ -1045,7 +1084,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onReferAFriendUpdate(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 	}
 
 	private void onModeratorMessage(byte[] command) {
@@ -1087,7 +1126,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onFriendUpdate(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 

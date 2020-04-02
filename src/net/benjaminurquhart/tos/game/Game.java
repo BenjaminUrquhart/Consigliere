@@ -12,6 +12,7 @@ public class Game {
 	
 	public static Map<String, StringTableMessage> STRING_TABLE;
 	public static Map<String, Faction> FACTION_TABLE;
+	public static Map<Integer, Role> ROLE_TABLE;
 	
 	public static Faction[] FACTIONS;
 	public static Killer[] KILLERS;
@@ -39,14 +40,19 @@ public class Game {
 			}
 			JSONArray roles = json.getJSONArray("Roles");
 			ROLES = new Role[roles.length()];
+			ROLE_TABLE = new HashMap<>();
+			Role role;
 			for(int i = 0, length = roles.length(); i < length; i++) {
 				tmp = roles.getJSONObject(i);
+				//System.err.println(tmp);
 				if(!tmp.has("Type")) {
-					ROLES[i] = new RandomRole(tmp);
+					role = new RandomRole(tmp);
 				}
 				else {
-					ROLES[i] = new Role(tmp);
+					role = new Role(tmp);
 				}
+				ROLES[i] = role;
+				ROLE_TABLE.put(role.getID(), role);
 			}
 			JSONArray killers = json.getJSONArray("Killers");
 			KILLERS = new Killer[killers.length()];
@@ -66,7 +72,7 @@ public class Game {
 			for(int i = 0, length = scrolls.length(); i < length; i++) {
 				tmp = scrolls.getJSONObject(i);
 				if(!tmp.has("Role")) {
-					
+					SCROLLS[i] = new NoScroll(tmp);
 				}
 				else {
 					SCROLLS[i] = new Scroll(tmp);
