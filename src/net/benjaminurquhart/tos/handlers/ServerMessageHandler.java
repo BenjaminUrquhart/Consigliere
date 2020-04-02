@@ -10,10 +10,12 @@ import net.benjaminurquhart.tos.game.Role;
 public class ServerMessageHandler extends MessageHandler {
 	
 	private String[] names;
+	private Role[] roles;
 	
     public ServerMessageHandler() {
 		super("Server");
 		this.names = new String[15];
+		this.roles = new Role[15];
 	}
     
     @Override
@@ -789,13 +791,11 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onStartFirstDay(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
 	}
 
 	private void onBroughtBackToLife(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.println(ANSI.GREEN+"You were resurrected by a Retributionist!"+ANSI.GRAY);//onUnhandledCommand(command);
 	}
 
 	private void onAmnesiacChangedRole(byte[] command) {
@@ -821,13 +821,27 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onTellRoleList(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.println("Possible Roles:");
+		Color color;
+		Role role;
+		for(int i = 1; i < command.length-1; i++) {
+			role = Game.ROLES[command[i]-1];
+			color = role.getColor();
+			System.out.printf("%s%s%s\n", (color.getRGB()&0xffffff) == 0xffffff ? ANSI.RESET : ANSI.toTrueColor(color), role.getName(), ANSI.GRAY);
+		}
 	}
 
 	private void onResurrection(byte[] command) {
-		onUnhandledCommand(command);
-		
+		Role role = roles[command[1]-1];
+		System.out.printf(
+				"%s%s (%s%s%s) was brought back to life!%s\n",
+				ANSI.RESET,
+				names[command[1]-1],
+				ANSI.toTrueColor(role.getColor()),
+				role.getName(),
+				ANSI.RESET,
+				ANSI.LIGHT_GRAY
+		);
 	}
 
 	private void onUserDied(byte[] command) {
@@ -876,31 +890,31 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onStartVoting(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.println(ANSI.GRAY+"----------Voting-----------");
 	}
 
 	private void onStartDiscussion(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.println(ANSI.GRAY+"--------Discussion---------");
 	}
 
 	private void onWhoDiedAndHow(byte[] command) {
 		Role role = Game.ROLES[command[2]-1];
+		roles[command[1]-1] = role;
 		System.out.printf("%s%s died last night\n", ANSI.RESET, names[command[1]-1]);
 		System.out.printf("Role: %s%s%s\n", ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.GRAY);
 	}
 
 	private void onStartDay(byte[] command) {
-		System.out.println(ANSI.GRAY+"----------  Day  ----------");
+		System.out.println(ANSI.GRAY+"------------Day------------");
 	}
 
 	private void onStartNight(byte[] command) {
-		System.out.println(ANSI.GRAY+"---------- Night ----------");
+		System.out.println(ANSI.GRAY+"-----------Night-----------");
 	}
 
 	private void onRoleAndPosition(byte[] command) {
 		Role role = Game.ROLES[command[1]-1];
+		roles[command[2]-1] = role;
 		System.out.printf("%sRole: %s%s%s\nPosition: %d%s\n", ANSI.RESET, ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.RESET, command[2], ANSI.GRAY);
 	}
 
