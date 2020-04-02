@@ -1,10 +1,13 @@
 package net.benjaminurquhart.tos.handlers;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
+import net.benjaminurquhart.tos.game.Killer;
 import net.benjaminurquhart.tos.game.Role;
 import net.benjaminurquhart.tos.game.StringTableMessage;
 
@@ -521,8 +524,13 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onFullMoonNight(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf(
+				"%s%sThere is a full moon out tonight%s%s\n",
+				ANSI.WHITE,
+				ANSI.toTrueColorBackground(Color.CYAN),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	private void onDeathAnimationsChosen(byte[] command) {
@@ -599,8 +607,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onResurrectionSetAlive(byte[] command) {
-		onUnhandledCommand(command);
-		
+		alive[command[1]-1] = true;
 	}
 
 	private void onCharactersChosen(byte[] command) {
@@ -622,8 +629,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onLynchUser(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
 	}
 
 	private void onStartDayTransition(byte[] command) {
@@ -853,7 +859,6 @@ public class ServerMessageHandler extends MessageHandler {
 				ANSI.RESET,
 				ANSI.LIGHT_GRAY
 		);
-		alive[command[1]-1] = true;
 	}
 
 	private void onUserDied(byte[] command) {
@@ -957,11 +962,19 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onWhoDiedAndHow(byte[] command) {
-		System.out.println(ANSI.RESET+"-----------Death-----------");
+		//System.out.println(ANSI.RESET+"-----------Death-----------");
+		this.onUnhandledCommand(command);
+		System.out.printf("%x\n", command[2]);
 		Role role = Game.ROLES[command[2]-1];
 		roles[command[1]-1] = role;
 		alive[command[1]-1] = false;
-		System.out.printf("%s%s (%d) was killed\n", ANSI.RESET, names[command[1]-1], command[1]);
+		List<String> killers = new ArrayList<>();
+		Killer killer;
+		for(int i = 4; i < command.length-1; i++) {
+			killer = Game.KILLERS[command[i]-1];
+			killers.add(String.format("%s%s%s", ANSI.toTrueColor(killer.getColor()), killer.getName(), ANSI.RESET));
+		}
+		System.out.printf("\n%s%s (%d) was killed%s%s\n", ANSI.RESET, names[command[1]-1], command[1], killers.size() > 0 ? " by " : "", String.join(", ", killers));
 		System.out.printf("Role: %s%s%s\n", ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.GRAY);
 	}
 

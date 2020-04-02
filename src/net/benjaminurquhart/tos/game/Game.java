@@ -13,6 +13,7 @@ public class Game {
 	public static Map<String, StringTableMessage> STRING_TABLE;
 	
 	public static Faction[] FACTIONS;
+	public static Killer[] KILLERS;
 	public static Scroll[] SCROLLS;
 	public static Role[] ROLES;
 
@@ -43,6 +44,11 @@ public class Game {
 				else {
 					ROLES[i] = new Role(tmp);
 				}
+			}
+			JSONArray killers = json.getJSONArray("Killers");
+			KILLERS = new Killer[killers.length()];
+			for(int i = 0, length = killers.length(); i < length; i++) {
+				KILLERS[i] = new Killer(killers.getJSONObject(i));
 			}
 			sb.delete(0, sb.length());
 			stream = Game.class.getResourceAsStream("/Customization.json");
