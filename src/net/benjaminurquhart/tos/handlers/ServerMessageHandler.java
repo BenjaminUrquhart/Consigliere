@@ -6,14 +6,17 @@ import java.util.Arrays;
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
 import net.benjaminurquhart.tos.game.Role;
+import net.benjaminurquhart.tos.game.StringTableMessage;
 
 public class ServerMessageHandler extends MessageHandler {
 	
+	private boolean[] alive;
 	private String[] names;
 	private Role[] roles;
 	
     public ServerMessageHandler() {
 		super("Server");
+		this.alive = new boolean[15];
 		this.names = new String[15];
 		this.roles = new Role[15];
 	}
@@ -585,17 +588,14 @@ public class ServerMessageHandler extends MessageHandler {
 
 	private void onVigilanteKilledTown(byte[] command) {
 		onUnhandledCommand(command);
-		
 	}
 
 	private void onUserLeftDuringSelection(byte[] command) {
 		onUnhandledCommand(command);
-		
 	}
 
 	private void onStartDefense(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.println(ANSI.GRAY+"----------Defense----------");
 	}
 
 	private void onResurrectionSetAlive(byte[] command) {
@@ -618,8 +618,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onDeathNote(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%sDeath Note:\n%s%s%s\n", ANSI.RESET, ANSI.RED, new String(Arrays.copyOfRange(command, 3, command.length-1)), ANSI.GRAY);
 	}
 
 	private void onLynchUser(byte[] command) {
@@ -646,8 +645,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onUserDisconnected(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
 	}
 
 	private void onAmnesiacBecameMafiaOrWitch(byte[] command) {
@@ -701,8 +699,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onHowManyAbilitiesLeft(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%sYou have %d ability uses left%s\n", ANSI.RESET, command[1], ANSI.GRAY);
 	}
 
 	private void onTellLastWill(byte[] command) {
@@ -761,23 +758,37 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onTellJudgementVotes(byte[] command) {
-		onUnhandledCommand(command);
-		
+		String verb = "voted ";
+		Color color;
+		String vote;
+		switch(command[2]) {
+		case 1: color = Color.RED; vote = "guilty"; break;
+		case 2: color = Color.GREEN; vote = "innocent"; break;
+		case 3: color = Color.CYAN; vote = "abstained"; verb = ""; break;
+		default: color = Color.GRAY; vote = "???";
+		}
+		System.out.printf(
+				"%s%s%s %s%s%s%s\n",
+				ANSI.RESET,
+				names[command[1]-1],
+				ANSI.GREEN,
+				verb,
+				ANSI.toTrueColor(color),
+				vote,
+				ANSI.GRAY
+		);
 	}
 
 	private void onUserCanceledJudgementVote(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%s%s%s has canceled their vote%s\n", ANSI.RESET, names[command[1]-1], ANSI.GREEN, ANSI.GRAY);
 	}
 
 	private void onUserChangedJudgementVote(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%s%s%s has changed their vote%s\n", ANSI.RESET, names[command[1]-1], ANSI.GREEN, ANSI.GRAY);
 	}
 
 	private void onUserJudgementVoted(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%s%s%s has voted%s\n", ANSI.RESET, names[command[1]-1], ANSI.GREEN, ANSI.GRAY);
 	}
 
 	private void onJailedTarget(byte[] command) {
@@ -842,26 +853,49 @@ public class ServerMessageHandler extends MessageHandler {
 				ANSI.RESET,
 				ANSI.LIGHT_GRAY
 		);
+		alive[command[1]-1] = true;
 	}
 
 	private void onUserDied(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%s%sYou have died!%s%s\n", ANSI.WHITE, ANSI.toTrueColorBackground(Color.RED), ANSI.RESET, ANSI.GRAY);
 	}
 
 	private void onUserChangedVote(byte[] command) {
-		onUnhandledCommand(command);
-		
+		String voter = names[command[1]-1], voted = names[command[2]-1];
+		System.out.printf(
+				"%s%s%s has changed their vote to %s%s (Vote Worth: %d)%s\n",
+				ANSI.RESET,
+				voter,
+				ANSI.GREEN,
+				ANSI.RESET,
+				voted,
+				command[3],
+				ANSI.GRAY
+		);
 	}
 
 	private void onUserCanceledVote(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf(
+				"%s%s%s has canceled their vote%s\n",
+				ANSI.RESET,
+				names[command[1]-1],
+				ANSI.GREEN,
+				ANSI.GRAY
+		);
 	}
 
 	private void onUserVoted(byte[] command) {
-		onUnhandledCommand(command);
-		
+		String voter = names[command[1]-1], voted = names[command[2]-1];
+		System.out.printf(
+				"%s%s%s has voted against %s%s (Vote Worth: %d)%s\n",
+				ANSI.RESET,
+				voter,
+				ANSI.GREEN,
+				ANSI.RESET,
+				voted,
+				command[3],
+				ANSI.GRAY
+		);
 	}
 
 	private void onLookoutNightAbilityMessage(byte[] command) {
@@ -870,23 +904,48 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onTrialFoundNotGuilty(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf(
+				"%sDefendant found %sinnocent%s by a vote of %s%s%s to %s%d%s\n",
+				ANSI.RESET,
+				ANSI.GREEN,
+				ANSI.RESET,
+				ANSI.RED,
+				command[1],
+				ANSI.RESET,
+				ANSI.GREEN,
+				command[2],
+				ANSI.GRAY
+		);
 	}
 
 	private void onTrialFoundGuilty(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf(
+				"%sDefendant found %sguilty%s by a vote of %s%s%s to %s%d%s\n",
+				ANSI.RESET,
+				ANSI.RED,
+				ANSI.RESET,
+				ANSI.RED,
+				command[1],
+				ANSI.RESET,
+				ANSI.GREEN,
+				command[2],
+				ANSI.GRAY
+		);
 	}
 
 	private void onStartJudgement(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.println(ANSI.GREEN+"The Town may now vote on the fate of the defendant"+ANSI.GRAY);
+		System.out.println(ANSI.GRAY+"---------Judgement---------");
 	}
-
 	private void onStartDefenseTransition(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf(
+				"%sThe Town has decided to put %s%s%s on trial%s\n",
+				ANSI.GREEN,
+				ANSI.RESET,
+				names[command[1]-1],
+				ANSI.GREEN,
+				ANSI.GRAY
+		);
 	}
 
 	private void onStartVoting(byte[] command) {
@@ -898,9 +957,11 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onWhoDiedAndHow(byte[] command) {
+		System.out.println(ANSI.RESET+"-----------Death-----------");
 		Role role = Game.ROLES[command[2]-1];
 		roles[command[1]-1] = role;
-		System.out.printf("%s%s died last night\n", ANSI.RESET, names[command[1]-1]);
+		alive[command[1]-1] = false;
+		System.out.printf("%s%s (%d) was killed\n", ANSI.RESET, names[command[1]-1], command[1]);
 		System.out.printf("Role: %s%s%s\n", ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.GRAY);
 	}
 
@@ -999,8 +1060,9 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onStringTableMessage(byte[] command) {
-		onUnhandledCommand(command);
-		
+		String id = String.valueOf(command[1]-1);
+		StringTableMessage msg = Game.STRING_TABLE.get(id);
+		System.out.printf("%s%s%s%s\n", ANSI.WHITE, ANSI.toTrueColorBackground(msg.getColor()), msg.getText(), ANSI.RESET, ANSI.GRAY);
 	}
 
 	private void onSystemMessage(byte[] command) {
@@ -1009,27 +1071,28 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onDoNotSpam(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.println(ANSI.YELLOW+"Please do not spam the chat"+ANSI.GRAY);
 	}
 
 	private void onChatBoxMessage(byte[] command) {
 		int offset = command[1] == (byte)0xff ? 1 : 0;
 		int player = command[1+offset]-1;
+		boolean alive;
 		
 		String name;
 		if(player == 44) {
 			name = ANSI.CYAN+"Medium";
+			alive = true;
 		}
 		else {
-			name = ANSI.RESET+names[player];
+			name = names[player];
+			alive = this.alive[player];
 		}
-		System.out.printf("%s: %s%s\n", name, new String(Arrays.copyOfRange(command, 2+offset, command.length-1)), ANSI.GRAY);
+		System.out.printf("%s%s%s: %s%s\n", alive ? ANSI.RESET : ANSI.RED, name, ANSI.RESET, new String(Arrays.copyOfRange(command, 2+offset, command.length-1)), ANSI.GRAY);
 	}
 
 	private void onUserLeftGame(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%s%s left the game%s\n", ANSI.YELLOW, names[command[3]-1], ANSI.GRAY);
 	}
 
 	private void onUsersJoinedLobby(byte[] command) {
@@ -1045,6 +1108,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onJoinedGameLobby(byte[] command) {
+		Arrays.fill(alive, true);
 		System.out.println(ANSI.RESET+"Joined game lobby"+ANSI.GRAY);
 		//onUnhandledCommand(command);
 	}

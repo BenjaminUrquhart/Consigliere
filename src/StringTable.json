@@ -1,0 +1,1249 @@
+[
+   {
+      "id": "0",
+      "Text": "Your target is a member of the mafia!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "1",
+      "Text": "Your target is not suspicious.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "2",
+      "Text": "Your target is a member of the Cult!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "3",
+      "Text": "Your target is a Serial Killer!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "4",
+      "Text": "You were executed by the Jailor!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "5",
+      "Text": "Someone tried to transport you but you were in jail.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "6",
+      "Text": "You were transported to another location.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_6",
+      "Text": "Your target was transported to another location.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "7",
+      "Text": "Someone tried to role block you but you were in jail.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "8",
+      "Text": "Someone occupied your night. You were role blocked!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_8",
+      "Text": "Someone occupied your target's night. They were role blocked!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "9",
+      "Text": "Someone tried to blackmail you but you were in jail last night.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "10",
+      "Text": "Someone threatened to reveal your secrets. You are blackmailed!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_10",
+      "Text": "Someone threatened to reveal your target's secrets. They were blackmailed!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "11",
+      "Text": "Someone tried to douse you in gas but you were in jail last night!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "12",
+      "Text": "You were doused in gas!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_12",
+      "Text": "Your target was doused in gas!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "13",
+      "Text": "Someone tried to attack you but you were in jail last night!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "14",
+      "Text": "You were attacked but someone fought off your attacker!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_14",
+      "Text": "Your target was attacked but someone fought off their attacker!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "15",
+      "Text": "You were attacked but someone nursed you back to health!",
+      "Color": "0x00FF00"
+   },
+   {
+      "id": "SpyResult_15",
+      "Text": "Your target was attacked but someone nursed them back to health!",
+      "Color": "0x00FF00"
+   },
+   {
+      "id": "16",
+      "Text": "You were attacked by a member of the Mafia!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_16",
+      "Text": "Your target was attacked by a member of the Mafia!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "17",
+      "Text": "You were attacked by a Serial Killer!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_17",
+      "Text": "Your target was attacked by a Serial Killer!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "18",
+      "Text": "You were shot by a Vigilante!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_18",
+      "Text": "Your target was shot by a Vigilante!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "19",
+      "Text": "You were set on fire by an Arsonist!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_19",
+      "Text": "Your target was set on fire by an Arsonist!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "20",
+      "Text": "You were shot by the Veteran you visited!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_20",
+      "Text": "Your target was shot by the Veteran they visited!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "21",
+      "Text": "You were killed protecting your target!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_21",
+      "Text": "Your target was killed protecting someone!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "22",
+      "Text": "Your target was attacked last night!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_22",
+      "Text": "Your target's target was attacked last night!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "23",
+      "Text": "An Arsonist tried to douse you in gas but a Bodyguard fought off your attacker!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_23",
+      "Text": "An Arsonist tried to douse your target but a Bodyguard fought off the attack!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "24",
+      "Text": "You were murdered by the Serial Killer you visited!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_24",
+      "Text": "Your target was murdered by the Serial Killer they visited!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "25",
+      "Text": "Your target has a desire to deceive. They must be a Framer!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "26",
+      "Text": "Your target could be an Escort, Transporter, or Consort.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven26",
+      "Text": "Your target could be an Escort, Transporter, Consort, or Hypnotist.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "27",
+      "Text": "Your target could be a Doctor, Disguiser, or Serial Killer.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven27",
+      "Text": "Your target could be a Doctor, Disguiser, Serial Killer, or Potion Master.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "28",
+      "Text": "Your target could be a Investigator, Consigliere, or Mayor.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven28",
+      "Text": "Your target could be a Investigator, Consigliere, Mayor, Tracker, or Plaguebearer.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "29",
+      "Text": "Your target is the Mystery role!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "30",
+      "Text": "Your target could be a Bodyguard, Godfather, or Arsonist.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven30",
+      "Text": "Your target could be a Bodyguard, Godfather, Arsonist, or Crusader.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "31",
+      "Text": "Your target could be a Vigilante, Veteran, or Mafioso.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven31",
+      "Text": "Your target could be a Vigilante, Veteran, Mafioso, Pirate, or Ambusher.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "32",
+      "Text": "Your target could be a Medium, Janitor, or Retributionist.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven32",
+      "Text": "Your target could be a Medium, Janitor, Retributionist, Necromancer, or Trapper.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "33",
+      "Text": "Your target could be a Survivor, Vampire Hunter, or Amnesiac.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven33",
+      "Text": "Your target could be a Survivor, Vampire Hunter, Amnesiac, Medusa, or Psychic.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "34",
+      "Text": "Your target could be a Spy, Blackmailer, or Jailor.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven34",
+      "Text": "Your target could be a Spy, Blackmailer, Jailor, or Guardian Angel.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "35",
+      "Text": "Your target could be a Sheriff, Executioner, or Werewolf.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven35",
+      "Text": "Your target could be a Sheriff, Executioner, Werewolf, or Poisoner.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "36",
+      "Text": "UNUSED.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "37",
+      "Text": "Your target could be a Framer, Vampire, or Jester.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven37",
+      "Text": "Your target could be a Framer, Vampire, Jester, or Hex Master.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "38",
+      "Text": "Your target could be a Lookout, Forger, or Witch.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "Coven38",
+      "Text": "Your target could be a Lookout, Forger, or Coven Leader.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "39",
+      "Text": "A Bodyguard attacked you but someone nursed you back to health!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_39",
+      "Text": "A Bodyguard attacked your target but someone nursed them back to health!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "40",
+      "Text": "A Bodyguard attacked you but someone fought off your attacker!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_40",
+      "Text": "A Bodyguard attacked your target but someone fought them off!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "41",
+      "Text": "You were killed by a Bodyguard!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_41",
+      "Text": "Your target was killed by a Bodyguard!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "42",
+      "Text": "Someone attacked you but your defense was too strong!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_42",
+      "Text": "Someone attacked your target but their defense was too strong!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "43",
+      "Text": "One of your targets was jailed so you could not transport them!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "44",
+      "Text": "Your target is a trained protector. They must be a Bodyguard.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "45",
+      "Text": "Your target specializes in transportation. They must be a Transporter.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "46",
+      "Text": "Your target is a professional surgeon. They must be a Doctor.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "47",
+      "Text": "Your target is a beautiful person working for the town. They must be an Escort.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "48",
+      "Text": "Your target gathers information about people. They must be an Investigator.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "49",
+      "Text": "Your target detains people at night. They must be a Jailor.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "50",
+      "Text": "Your target watches who visits people at night. They must be a Lookout.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "51",
+      "Text": "Your target is a member of a secret town organization. They must be a Mason.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "52",
+      "Text": "Your target the leader of a secret town organization. They must be a Mason Leader.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "53",
+      "Text": "Your target is the leader of the town. They must be the Mayor.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "54",
+      "Text": "Your target is a protector of the town. They must be a Sheriff.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "55",
+      "Text": "Your target secretly watches who someone visits. They must be a Spy.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "56",
+      "Text": "Your target is a paranoid war hero. They must be a Veteran.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "57",
+      "Text": "Your target will bend the law to enact justice. They must be a Vigilante.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "58",
+      "Text": "Your target speaks with the dead. They must be a Medium.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "59",
+      "Text": "Your target wields mystical powers. They must be a Retributionist.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "60",
+      "Text": "Your target uses information to silence people. They must be a Blackmailer.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "61",
+      "Text": "Your target gathers information for the Mafia. They must be a Consigliere.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "62",
+      "Text": "Your target is a beautiful person working for the Mafia. They must be a Consort.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "63",
+      "Text": "Your target pretends to be other people. They must be a Disguiser.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "64",
+      "Text": "Your target is good at forging documents. They must be a Forger.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "65",
+      "Text": "Your target is the leader of the Mafia. They must be the Godfather.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "66",
+      "Text": "Your target cleans up dead bodies. They must be a Janitor.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "67",
+      "Text": "Your target does the Godfather's dirty work. They must be a Mafioso.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "68",
+      "Text": "Your target does not remember their role. They must be an Amnesiac.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "69",
+      "Text": "Your target likes to watch things burn. They must be an Arsonist.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "70",
+      "Text": "Your target is a member of an evil secret organization. They must be a Cultist.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "71",
+      "Text": "Your target wants someone to be lynched at any cost. They must be an Executioner.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "72",
+      "Text": "Your target wants to be lynched. They must be a Jester.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "73",
+      "Text": "Your target wants to kill everyone. They must be a Serial Killer.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "74",
+      "Text": "Your target simply wants to live. They must be a Survivor.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "75",
+      "Text": "Your target casts spells on people. They must be a Witch.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "76",
+      "Text": "Your target was jailed so you could not control them.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "77",
+      "Text": "Someone tried to role block you but you are immune!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_77",
+      "Text": "Someone tried to role block your target but they were immune!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "78",
+      "Text": "You feel a mystical power dominating you. You were controlled by a Witch!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_78",
+      "Text": "Your target was controlled by a Witch!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "79",
+      "Text": "A Witch tried to control you but you are immune.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_79",
+      "Text": "A Witch tried to control your target but they were immune.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "80",
+      "Text": "Someone tried to control you last night but you were jailed.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "81",
+      "Text": "has joined the Town.",
+      "Color": "0x505050"
+   },
+   {
+      "id": "82",
+      "Text": "You have attempted to remember who you were!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "83",
+      "Text": "You were haunted by the Jester. You committed suicide over the guilt!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_83",
+      "Text": "Your target was haunted by the Jester and committed suicide!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "84",
+      "Text": "You were attacked but your bulletproof vest saved you!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_84",
+      "Text": "Your target was attacked but their bulletproof vest saved them!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "85",
+      "Text": "You shot someone who visited you last night!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "86",
+      "Text": "Someone tried to attack you but your defense while on alert was too strong!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_86",
+      "Text": "Someone tried to attack your alert target and failed!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "87",
+      "Text": "You were haunted by the Jester. You tried to commit suicide but someone healed you!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "88",
+      "Text": "You could not get over the guilt of killing a town member. You shot yourself!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_88",
+      "Text": "Your target shot themselves over the guilt of killing a town member!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "89",
+      "Text": "Someone role blocked you, so you attacked them!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_89",
+      "Text": "Someone role blocked your target, so your target attacked them!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "90",
+      "Text": "The Godfather has ordered you to kill his target.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "91",
+      "Text": "You cannot resurrect a user who has left the game.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "92",
+      "Text": "You have cleaned the gasoline off of yourself.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_92",
+      "Text": "Your target has cleaned the gasoline off of themself.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "93",
+      "Text": "The jailor has decided to execute you.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "94",
+      "Text": "The jailor has changed his mind.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "95",
+      "Text": "You were killed by the Serial Killer you jailed.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_95",
+      "Text": "Your target was killed by the Serial Killer they jailed.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "96",
+      "Text": "You attacked the jailor!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "97",
+      "Text": "Your target's defense was too strong to kill.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "98",
+      "Text": "The jester will get his revenge from the grave!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "99",
+      "Text": "You did not select a target so one was chosen at random.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "100",
+      "Text": "There is a full moon out tonight.",
+      "Color": "0x00CCFF"
+   },
+   {
+      "id": "101",
+      "Text": "You attacked someone.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "102",
+      "Text": "Your target is a Werewolf!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "103",
+      "Text": "You were attacked by a Werewolf!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_103",
+      "Text": "Your target was attacked by a Werewolf!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "104",
+      "Text": "The light of the full moon has transformed you into a rampaging Werewolf!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "105",
+      "Text": "Someone role blocked you so you stayed at home tonight.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_105",
+      "Text": "Someone role blocked your target so they stayed at home.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "106",
+      "Text": "Your target howls at the moon. They must be a Werewolf.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "107",
+      "Text": "You did not perform your day ability.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "108",
+      "Text": "You did not perform your night ability.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "109",
+      "Text": "You were staked by a Vampire Hunter!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_109",
+      "Text": "Your target was staked by a Vampire Hunter!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "110",
+      "Text": "You were staked by the Vampire Hunter you visited!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_110",
+      "Text": "Your target was staked by the Vampire Hunter they visited!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "111",
+      "Text": "You staked the Vampire who attacked you!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_111",
+      "Text": "Your target staked the Vampire that attacked them!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "112",
+      "Text": "Your target tracks Vampires. They must be a Vampire Hunter!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "113",
+      "Text": "Your target drinks blood. They must be a Vampire!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "114",
+      "Text": "You were attacked by a Vampire!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_114",
+      "Text": "Your target was attacked by a Vampire!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "115",
+      "Text": "You can't whisper to a revealed Mayor.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "116",
+      "Text": "You can't whisper once you have revealed as the Mayor!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "117",
+      "Text": "You feel that someone can hear your conversations.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "118",
+      "Text": "You feel like you can speak privately.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "120",
+      "Text": "You were attacked but someone protected you!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_120",
+      "Text": "Your target was attacked but someone protected them!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "121",
+      "Text": "You were attacked by a Crusader!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_121",
+      "Text": "Your target was attacked by a Crusader!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "122",
+      "Text": "You were attacked by Pestilence!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_122",
+      "Text": "Your target was attacked by Pestilence!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "123",
+      "Text": "You were attacked by the Juggernaut!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_123",
+      "Text": "Your target was attacked by the Juggernaut!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "124",
+      "Text": "You were attacked but your Guardian Angel saved you!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_124",
+      "Text": "Your target was attacked but their Guardian Angel saved them!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "125",
+      "Text": "You were attacked by a Pirate!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_125",
+      "Text": "Your target was attacked by a Pirate!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "126",
+      "Text": "Your life force was drained by the Coven Leader!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_126",
+      "Text": "Your target's life force was drained by the Coven Leader!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "127",
+      "Text": "You were attacked by a Hex Master!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_127",
+      "Text": "Your target was attacked by a Hex Master!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "128",
+      "Text": "You were attacked by a Necromancer!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_128",
+      "Text": "Your target was attacked by a Necromancer!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "129",
+      "Text": "Someone tried to poison you but you were jailed last night!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "130",
+      "Text": "Someone tried to poison you but someone fought off your attacker!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_130",
+      "Text": "Someone tried to poison your target but someone fought them off!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "131",
+      "Text": "You were poisoned but someone nursed you back to health!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_131",
+      "Text": "Your target was poisoned but someone nursed them back to health!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "132",
+      "Text": "You were poisoned. You will die tomorrow unless you are cured!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_132",
+      "Text": "Your target was poisoned. They will die tomorrow unless cured!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "133",
+      "Text": "You died to poison!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_133",
+      "Text": "Your target died to poison!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "134",
+      "Text": "You were cured of poison!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_134",
+      "Text": "Your target was cured of poison!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "135",
+      "Text": "You were poisoned. You will die tomorrow!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_135",
+      "Text": "Your target was poisoned. They will die tomorrow!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "136",
+      "Text": "You turned someone to stone.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "137",
+      "Text": "You were turned to stone.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_137",
+      "Text": "Your target was turned to stone.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "138",
+      "Text": "Your target is a divine protector. They must be a Crusader.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "139",
+      "Text": "You triggered a trap!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "140",
+      "Text": "You were attacked but a trap saved you!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_140",
+      "Text": "Your target was attacked but a trap saved them!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "141",
+      "Text": "A plague has consumed the town summoning Pestilence, Horseman of the Apocalypse!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "142",
+      "Text": "Your target is a skilled in the art of tracking. They must be a Tracker.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "143",
+      "Text": "Your target is waiting for a big catch. They must be a Trapper.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "144",
+      "Text": "Your target has the sight. They must be a Psychic.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "145",
+      "Text": "The town is too evil to find anyone good!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "146",
+      "Text": "The town is too small to accurately find an evildoer!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "147",
+      "Text": "The Guardian Angel was watching over you!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "148",
+      "Text": "You were attacked by a Potion Master!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_148",
+      "Text": "Your target was attacked by a Potion Master!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "149",
+      "Text": "Your target is a carrier of disease. They must be the Plaguebearer.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "150",
+      "Text": "Your target reeks of disease. They must be Pestilence, Horseman of the Apocalypse.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "151",
+      "Text": "Your target gets more powerful with each kill. They must be a Juggernaut.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "152",
+      "Text": "Your target is watching over someone. They must be a Guardian Angel.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "153",
+      "Text": "Your target wants to plunder the town. They must be a Pirate.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "154",
+      "Text": "Your target works with alchemy. They must be a Potion Master.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "155",
+      "Text": "Your target leads the mystical. They must be the Coven Leader.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "156",
+      "Text": "Your target is versed in the ways of hexes. They must be the Hex Master.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "157",
+      "Text": "Your target uses the deceased to do their dirty work. They must be the Necromancer.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "158",
+      "Text": "Your target uses herbs and plants to kill their victims. They must be the Poisoner.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "159",
+      "Text": "Your target has a gaze of stone. They must be Medusa.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "160",
+      "Text": "Your target lies in wait. They must be an Ambusher.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "161",
+      "Text": "Your target is skilled at disrupting others. They must be a Hypnotist.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "162",
+      "Text": "Your trap attacked someone!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "163",
+      "Text": "Your target was hauled off to jail so you couldn't duel them.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "164",
+      "Text": "Your ability failed because your target was in jail.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "165",
+      "Text": "You could not attack your target because they were in jail.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "166",
+      "Text": "Your target wasn't home, but you rampaged anyways.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "167",
+      "Text": "Juggernaut killed healed player.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "168",
+      "Text": "Your target is a member of the Coven!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "169",
+      "Text": "You could not resurrect your unique target!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "170",
+      "Text": "You could not remember the unique role!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "171",
+      "Text": "You were hauled off to jail so you couldn't duel your target.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "172",
+      "Text": "An unstoppable force meets an invincible object. The ground beneath your feet shudders!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "173",
+      "Text": "You cannot whisper in a VIP game."
+   },
+   {
+      "id": "174",
+      "Text": "Your lover died. You can feel your heart breaking."
+   },
+   {
+      "id": "175",
+      "Text": "You care not for a lover for a Horseman feels no love, no pain, no happiness."
+   },
+   {
+      "id": "176",
+      "Text": "You jailed Pestilence and were obliterated. Flummery!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_176",
+      "Text": "Your target jailed Pestilence and was obliterated.",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "177",
+      "Text": "A trap attacked you but someone nursed you back to health!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "SpyResult_177",
+      "Text": "A trap attacked your target but someone nursed them back to health!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "178",
+      "Text": "You attacked the pirate for roleblocking you. The scallywag!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "179",
+      "Text": "You attacked someone visiting your target!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "180",
+      "Text": "Your ghoul was attacked by a Bodyguard!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "181",
+      "Text": "Your ghoul was stopped in its tracks by a trap!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "182",
+      "Text": "A ghoul visited your target last night!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "183",
+      "Text": "You were bitten by a Vampire!",
+      "Color": "0xFF0000"
+   },
+   {
+      "id": "184",
+      "Text": "You rampaged at home last night!",
+      "Color": "0xFF0000"
+   }
+]

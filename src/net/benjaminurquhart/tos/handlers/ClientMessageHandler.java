@@ -13,9 +13,13 @@ public class ClientMessageHandler extends MessageHandler {
     public void processCommand(byte[] command) {
     	switch(((int)command[0])&(int)0b11111111) {
     	case 2: onLoginAttempt(command); break;
-    	case 3: onChatBoxMessage(command); break;
+    	case 3: onChat(command); break;
+    	case 8: onWhisper(command); break;
+    	case 10: onUserVoteUpdate(command); break;
     	case 17: onWillUpdate(command); break;
+    	case 18: onDeathNoteUpdate(command); break;
     	case 20: onCustomizationUpdate(command); break;
+    	case 21: onNameSubmission(command); break;
     	case 85: onSteamLoginAttempt(command); break;
     	case 74: onItemPurchase(command); break;
     	case 127: onKeepAlive(command); break;
@@ -23,10 +27,22 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	private void onNameSubmission(byte[] command) {
+		
+	}
+	private void onWhisper(byte[] command) {
+		
+	}
+	private void onDeathNoteUpdate(byte[] command) {
+		System.out.println("Death note updated:\n" + new String(Arrays.copyOfRange(command, 1, command.length-1)));
+	}
+	private void onUserVoteUpdate(byte[] command) {
+		
+	}
 	private void onWillUpdate(byte[] command) {
 		System.out.println("Will updated:\n" + new String(Arrays.copyOfRange(command, 1, command.length-1)));
 	}
-	private void onChatBoxMessage(byte[] command) {
+	private void onChat(byte[] command) {
 		
 	}
 	private void onSteamLoginAttempt(byte[] command) {

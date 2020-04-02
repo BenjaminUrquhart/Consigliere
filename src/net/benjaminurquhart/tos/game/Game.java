@@ -2,11 +2,15 @@ package net.benjaminurquhart.tos.game;
 
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Game {
+	
+	public static Map<String, StringTableMessage> STRING_TABLE;
 	
 	public static Faction[] FACTIONS;
 	public static Scroll[] SCROLLS;
@@ -58,6 +62,20 @@ public class Game {
 				else {
 					SCROLLS[i] = new Scroll(tmp);
 				}
+			}
+			sb.delete(0, sb.length());
+			stream = Game.class.getResourceAsStream("/StringTable.json");
+			while((read = stream.read(buff)) != -1) {
+				if(read == 0) continue;
+				sb.append(new String(Arrays.copyOfRange(buff, 0, read)));
+			}
+			stream.close();
+			JSONArray table = new JSONArray(sb.toString());
+			STRING_TABLE = new HashMap<>();
+			StringTableMessage msg;
+			for(int i = 0, length = table.length(); i < length; i++) {
+				msg = new StringTableMessage(table.getJSONObject(i));
+				STRING_TABLE.put(msg.getID(), msg);
 			}
 		}
 		catch(Exception e) {
