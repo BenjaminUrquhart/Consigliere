@@ -28,6 +28,7 @@ public class ClientMessageHandler extends MessageHandler {
     	case 20: onCustomizationUpdate(command); break;
     	case 21: onNameSubmission(command); break;
     	case 39: onLeaveGame(command); break;
+    	case 79: onUserChoseMultiAction(command); break;
     	case 85: onSteamLoginAttempt(command); break;
     	case 74: onItemPurchase(command); break;
     	case 127: onKeepAlive(command); break;
@@ -35,6 +36,9 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	private void onUserChoseMultiAction(byte[] command) {
+		System.out.printf("%sUser chose action %d\n", ANSI.GRAY, command[1]);
+	}
 	private void onUserChangedTarget(byte[] command) {
 		
 	}

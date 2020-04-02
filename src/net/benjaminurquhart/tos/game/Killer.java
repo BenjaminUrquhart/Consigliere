@@ -15,7 +15,7 @@ public class Killer {
 		this.color = new Color(Integer.parseInt(json.optString("Color", "#000000").substring(1), 16));
 		this.id = Integer.parseInt(json.getString("id"));
 		
-		this.name = json.optString("Name", json.getString("Icon"));
+		this.name = json.optString("Name", "Leaving the Game");
 	}
 	public Color getColor() {
 		return color;

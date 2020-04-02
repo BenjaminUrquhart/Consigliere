@@ -10,6 +10,7 @@ import net.benjaminurquhart.tos.game.Faction;
 import net.benjaminurquhart.tos.game.Game;
 import net.benjaminurquhart.tos.game.Killer;
 import net.benjaminurquhart.tos.game.Role;
+import net.benjaminurquhart.tos.game.Scroll;
 import net.benjaminurquhart.tos.game.StringTableMessage;
 
 public class ServerMessageHandler extends MessageHandler {
@@ -394,13 +395,25 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onHasNecronomicon(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
 	}
 
 	private void onPotionMasterPotions(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf(
+				"%sPotion Status%s:\n%sHeal%s: %d/3\n%sReveal%s: %d/3\n%sKill%s: %d/3%s\n",
+				ANSI.COVEN,
+				ANSI.RESET,
+				ANSI.GREEN,
+				ANSI.RESET,
+				4-command[1],
+				ANSI.CYAN,
+				ANSI.RESET,
+				4-command[2],
+				ANSI.RED,
+				ANSI.RESET,
+				4-command[3],
+				ANSI.GRAY
+		);
 	}
 
 	private void onDuelTarget(byte[] command) {
@@ -498,7 +511,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onRoleLotsInfoMesssage(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 
@@ -533,7 +546,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onDeathAnimationsChosen(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 
@@ -548,7 +561,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onPetsChosen(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 
@@ -610,7 +623,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onCharactersChosen(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 
@@ -619,7 +632,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onHousesChosen(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 
@@ -1022,8 +1035,9 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onScrollConsumed(byte[] command) {
-		onUnhandledCommand(command);
-		System.out.printf("%sScroll used!%s\n", ANSI.RESET, ANSI.GRAY);
+		//onUnhandledCommand(command);
+		Scroll scroll = Game.SCROLLS[Integer.parseInt(new String(Arrays.copyOfRange(command, 1, command.length-1)))];
+		System.out.printf("%sScroll used: %s%s\n", ANSI.RESET, scroll, ANSI.GRAY);
 	}
 
 	private void onPlayerStatistics(byte[] command) {

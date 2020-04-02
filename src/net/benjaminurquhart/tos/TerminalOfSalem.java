@@ -36,7 +36,7 @@ public class TerminalOfSalem {
 		MessageHandler server = new ServerMessageHandler(), client = new ClientMessageHandler();
 		PromiscuousMode mode = PromiscuousMode.NONPROMISCUOUS;
 		PcapHandle handle;
-		boolean live = false;
+		boolean live = true;
 		if(args.length > 0) {
 			if(args[0].equalsIgnoreCase("--file")) {
 				if(args.length == 1) {
