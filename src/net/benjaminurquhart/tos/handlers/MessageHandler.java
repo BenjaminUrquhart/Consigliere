@@ -36,7 +36,7 @@ public abstract class MessageHandler {
     	onUnhandledCommand(command);
     }
 	protected void onUnhandledCommand(byte[] command) {
-		System.out.printf("%s%s: (0x%02x %03d): %s%s\n", ANSI.GRAY, origin, command[0], ((int)command[0])&(int)0b11111111, convertToString(command), ANSI.RESET);
+		System.out.printf("%s%s: (0x%02x %03d): %s%s\n", ANSI.GRAY, origin, command[0], ((int)command[0])&(int)0xff, convertToString(command), ANSI.RESET);
 	}
 	protected String convertToString(byte[] command) {
 		return convertToString(command, true);
@@ -48,8 +48,11 @@ public abstract class MessageHandler {
 		StringBuilder sb = new StringBuilder();
 		boolean wasUnprintable = false;
 		String now = null;
-		for(byte b : command) {
-			if((now = new String(new byte[]{b})).matches("\\p{C}")) {
+		for(int b : command) {
+			if(b < 0) {
+				b&=0xff;
+			}
+			if((now = new String(new byte[]{(byte)b})).matches("\\p{C}")) {
 				if(!wasUnprintable && sb.length() > 0) {
 					sb.append(' ');
 				}

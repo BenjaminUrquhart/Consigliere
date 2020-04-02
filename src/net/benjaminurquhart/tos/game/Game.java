@@ -11,6 +11,7 @@ import org.json.JSONObject;
 public class Game {
 	
 	public static Map<String, StringTableMessage> STRING_TABLE;
+	public static Map<String, Faction> FACTION_TABLE;
 	
 	public static Faction[] FACTIONS;
 	public static Killer[] KILLERS;
@@ -31,8 +32,10 @@ public class Game {
 			JSONObject json = new JSONObject(sb.toString()), tmp;
 			JSONArray factions = json.getJSONArray("Factions");
 			FACTIONS = new Faction[factions.length()];
+			FACTION_TABLE = new HashMap<>();
 			for(int i = 0, length = factions.length(); i < length; i++) {
 				FACTIONS[i] = new Faction(factions.getJSONObject(i));
+				FACTION_TABLE.put(FACTIONS[i].getName(), FACTIONS[i]);
 			}
 			JSONArray roles = json.getJSONArray("Roles");
 			ROLES = new Role[roles.length()];

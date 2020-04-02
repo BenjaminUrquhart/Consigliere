@@ -7,6 +7,7 @@ import java.net.UnknownHostException;
 //import org.pcap4j.core.BpfProgram.BpfCompileMode;
 
 import org.pcap4j.core.PcapHandle;
+import org.pcap4j.core.PcapNetworkInterface;
 import org.pcap4j.core.PcapNetworkInterface.PromiscuousMode;
 import org.pcap4j.core.Pcaps;
 
@@ -33,7 +34,25 @@ public class TerminalOfSalem {
 	public static void main(String[] args) throws Exception {
 		System.out.print(ANSI.RESET);
 		MessageHandler server = new ServerMessageHandler(), client = new ClientMessageHandler();
-		PcapHandle handle = args.length > 0 ? Pcaps.openOffline(args[0]) : Pcaps.getDevByAddress(InetAddress.getByName("192.168.254.16")).openLive(1<<16, PromiscuousMode.NONPROMISCUOUS, 10);
+		PcapHandle handle;
+		if(args.length > 0) {
+			System.out.println("Reading file " + args[0]+"...");
+			handle = Pcaps.openOffline(args[0]);
+		}
+		else {
+			PcapNetworkInterface captureInterface = Pcaps.findAllDevs().get(0);
+			/*
+			for(PcapNetworkInterface iface : Pcaps.findAllDevs()) {
+				System.out.printf("%s (%s): %s\n", iface.getName(), iface.getAddresses(), iface.getDescription());
+			}*/
+			System.out.printf(
+					"Capturing on interface %s (%s): %s...\n", 
+					captureInterface.getName(), 
+					captureInterface.getAddresses(), 
+					captureInterface.getDescription()
+			);
+			handle = captureInterface.openLive(1<<16, PromiscuousMode.NONPROMISCUOUS, 10);
+		}
 		//handle.setFilter("(((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)", BpfCompileMode.OPTIMIZE);
 		IpV4Packet ipv4Packet;
 		TcpPacket packet;

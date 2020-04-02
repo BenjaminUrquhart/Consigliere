@@ -3,6 +3,12 @@ package net.benjaminurquhart.tos.game;
 import java.awt.Color;
 
 public enum ANSI {
+	
+	TOWN(new Color(0x7FFF00)),
+	MAFIA(new Color(0xDD0000)),
+	COVEN(new Color(0xBF5FFF)),
+	VAMPIRE(new Color(0x7B8968)),
+	
 	RED(Color.RED),
 	GRAY(Color.GRAY),
 	CYAN(Color.CYAN),

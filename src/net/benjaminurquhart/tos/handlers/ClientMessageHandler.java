@@ -14,15 +14,17 @@ public class ClientMessageHandler extends MessageHandler {
 	}
 	@Override
     public void processCommand(byte[] command) {
-    	switch(((int)command[0])&(int)0b11111111) {
+    	switch(((int)command[0])&0xff) {
     	case 2: onLoginAttempt(command); break;
     	case 3: onChat(command); break;
     	case 8: onWhisper(command); break;
     	case 10: onUserVoteUpdate(command); break;
+    	case 11: onUserSelectedTarget(command); break;
     	case 14: onUserJudgedGuilty(command); break;
     	case 15: onUserJudgedInnocent(command); break;
     	case 17: onWillUpdate(command); break;
     	case 18: onDeathNoteUpdate(command); break;
+    	case 19: onUserChangedTarget(command); break;
     	case 20: onCustomizationUpdate(command); break;
     	case 21: onNameSubmission(command); break;
     	case 39: onLeaveGame(command); break;
@@ -33,6 +35,12 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	private void onUserChangedTarget(byte[] command) {
+		
+	}
+	private void onUserSelectedTarget(byte[] command) {
+		System.out.printf("%sUser targeted Player %d\n", ANSI.GRAY, command[1]);
+	}
 	private void onUserJudgedInnocent(byte[] command) {
 		
 	}
