@@ -34,12 +34,22 @@ public class TerminalOfSalem {
 	public static void main(String[] args) throws Exception {
 		System.out.print(ANSI.RESET);
 		MessageHandler server = new ServerMessageHandler(), client = new ClientMessageHandler();
+		PromiscuousMode mode = PromiscuousMode.NONPROMISCUOUS;
 		PcapHandle handle;
+		boolean live = false;
 		if(args.length > 0) {
-			System.out.println("Reading file " + args[0]+"...");
-			handle = Pcaps.openOffline(args[0]);
+			if(args[0].equalsIgnoreCase("--file")) {
+				if(args.length == 1) {
+					System.out.println("Please provide a file name.");
+					return;
+				}
+				live = false;
+			}
+			else if(args[0].equalsIgnoreCase("--promiscuous")) {
+				mode = PromiscuousMode.NONPROMISCUOUS;
+			}
 		}
-		else {
+		if(live) {
 			PcapNetworkInterface captureInterface = Pcaps.findAllDevs().get(0);
 			/*
 			for(PcapNetworkInterface iface : Pcaps.findAllDevs()) {
@@ -51,7 +61,11 @@ public class TerminalOfSalem {
 					captureInterface.getAddresses(), 
 					captureInterface.getDescription()
 			);
-			handle = captureInterface.openLive(1<<16, PromiscuousMode.NONPROMISCUOUS, 10);
+			handle = captureInterface.openLive(1<<16, mode, 10);
+		}
+		else {
+			System.out.println("Reading file " + args[1]+"...");
+			handle = Pcaps.openOffline(args[1]);
 		}
 		//handle.setFilter("(((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)", BpfCompileMode.OPTIMIZE);
 		IpV4Packet ipv4Packet;
