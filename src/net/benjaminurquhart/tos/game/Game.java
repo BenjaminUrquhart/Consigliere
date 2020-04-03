@@ -14,6 +14,8 @@ public class Game {
 	public static Map<String, Faction> FACTION_TABLE;
 	public static Map<Integer, Role> ROLE_TABLE;
 	
+	public static Map<Integer, String> GAME_MODE_TABLE;
+	
 	public static Faction[] FACTIONS;
 	public static Killer[] KILLERS;
 	public static Scroll[] SCROLLS;
@@ -58,6 +60,15 @@ public class Game {
 			KILLERS = new Killer[killers.length()];
 			for(int i = 0, length = killers.length(); i < length; i++) {
 				KILLERS[i] = new Killer(killers.getJSONObject(i));
+			}
+			JSONArray gamemodes = json.getJSONArray("Modes");
+			GAME_MODE_TABLE = new HashMap<>();
+			for(int i = 0, length = gamemodes.length(); i < length; i++) {
+				tmp = gamemodes.getJSONObject(i);
+				if(tmp.get("id") instanceof JSONArray) {
+					tmp.put("id", tmp.getJSONArray("id").getString(0));
+				}
+				GAME_MODE_TABLE.put(Integer.parseInt(tmp.getString("id")), tmp.getString("Name"));
 			}
 			sb.delete(0, sb.length());
 			stream = Game.class.getResourceAsStream("/Customization.json");

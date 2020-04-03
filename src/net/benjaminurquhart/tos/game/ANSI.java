@@ -26,9 +26,14 @@ public enum ANSI {
 	private ANSI(Color color) {
 		this.color = color;
 	}
-
-	public static String toTrueColor(Color color) {
+	private static String toTrueColorImpl(Color color) {
 		return String.format("\u001b[38;2;%d;%d;%dm", color.getRed(), color.getGreen(), color.getBlue());
+	}
+	public static String toTrueColor(Color color) {
+		if((color.getRGB()&0xffffff) == 0xffffff) {
+			return RESET;
+		}
+		return toTrueColorImpl(color);
 	}
 	public static String toTrueColorBackground(Color color) {
 		return String.format("\u001b[48;2;%d;%d;%dm", color.getRed(), color.getGreen(), color.getBlue());
@@ -36,6 +41,6 @@ public enum ANSI {
 	
 	@Override
 	public String toString() {
-		return toTrueColor(color);
+		return toTrueColorImpl(color);
 	}
 }

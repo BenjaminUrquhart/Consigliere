@@ -529,16 +529,17 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onEndGameInfo(byte[] command) {
+		//onUnhandledCommand(command);
 		System.out.printf("%s---------------Game Information----------------\n", ANSI.RESET);
-		String infoString = this.convertToString(Arrays.copyOfRange(command, this.indexOf(command, (byte)'='), command.length));
+		String infoString = this.convertToString(Arrays.copyOfRange(command, this.indexOf(command, (byte)'(')-1, command.length));
 		Matcher matcher = END_GAME_RESULTS.matcher(infoString);
 		String username, name;
 		int position, roleID;
 		Role role;
 		
-		String[] info;
+		String[] info, table = new String[15];
 		while(matcher.find()) {
-			info = matcher.group(1).split(",\\s{0,}(0x)?");
+			info = matcher.group(1).split(",");
 			username = info[1];
 			name = info[0];
 			
@@ -546,18 +547,18 @@ public class ServerMessageHandler extends MessageHandler {
 				roleID = info[3].charAt(0);
 			}
 			else {
-				roleID = Integer.parseInt(info[3], 16);
+				roleID = Integer.parseInt(info[3].trim().substring(2), 16);
 			}
 			
-			position = Integer.parseInt(info[2], 16);
+			position = Integer.parseInt(info[2].trim().substring(2), 16);
 			
 			role = Game.ROLES[roleID-1];
 			
 			roles[position-1] = role;
 			names[position-1] = username;
 			
-			System.out.printf(
-					"%s%-16s %-16s %s%-16s%s\n",
+			table[position-1] = String.format(
+					"%s%-16s %-16s %s%-16s%s",
 					ANSI.RESET,
 					name,
 					username,
@@ -565,6 +566,9 @@ public class ServerMessageHandler extends MessageHandler {
 					role.getName(),
 					ANSI.GRAY
 			);
+		}
+		for(String s : table) {
+			System.out.println(s);
 		}
 		System.out.printf("%s-----------------------------------------------%s\n", ANSI.RESET, ANSI.GRAY);
 	}
@@ -737,7 +741,29 @@ public class ServerMessageHandler extends MessageHandler {
 
 	private void onSomeoneHasWon(byte[] command) {
 		onUnhandledCommand(command);
+		Faction faction = command[1] < Game.FACTIONS.length ? Game.FACTIONS[command[1]-1] : null;
+		String winnerFaction;
+		//Color color;
 		
+		List<String> winners = new ArrayList<>();
+		for(int i = 2; i < command.length-1; i++) {
+			winners.add(names[command[i]-1]);
+		}
+		if(faction == null) {
+			winnerFaction = "A neutral role";
+			//color = Color.YELLOW;
+		}
+		else {
+			winnerFaction = faction.getName();
+		}
+		System.out.printf(
+				"%s%s wins\n%s %s won the game%s\n",
+				ANSI.GREEN,
+				winnerFaction,
+				String.join(", ", winners),
+				winners.size() == 1 ? "had" : "have",
+				ANSI.GRAY
+		);
 	}
 
 	private void onTellJanitorTargetsWill(byte[] command) {
@@ -880,8 +906,14 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onTellTownAmnesiacChangedRole(byte[] command) {
-		onUnhandledCommand(command);
-		
+		Role role = Game.ROLES[command[1]-1];
+		System.out.printf(
+				"%sAn amnesiac has remembered that they were like the %s%s%s\n",
+				ANSI.GREEN,
+				ANSI.toTrueColor(role.getColor()),
+				role.getName(),
+				ANSI.GRAY
+		);
 	}
 
 	private void onOtherMafia(byte[] command) {
@@ -903,7 +935,7 @@ public class ServerMessageHandler extends MessageHandler {
 		for(int i = 1; i < command.length-1; i++) {
 			role = Game.ROLES[command[i]-1];
 			color = role.getColor();
-			System.out.printf("%s%s%s\n", (color.getRGB()&0xffffff) == 0xffffff ? ANSI.RESET : ANSI.toTrueColor(color), role.getName(), ANSI.GRAY);
+			System.out.printf("%s%s%s\n", ANSI.toTrueColor(color), role.getName(), ANSI.GRAY);
 		}
 	}
 
@@ -1196,9 +1228,9 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onJoinedGameLobby(byte[] command) {
-		Arrays.fill(alive, true);
-		System.out.println(ANSI.RESET+"Joined game lobby"+ANSI.GRAY);
 		//onUnhandledCommand(command);
+		Arrays.fill(alive, true);
+		System.out.printf("%sJoined game lobby (Game Mode: %s)%s\n", ANSI.RESET, Game.GAME_MODE_TABLE.get((int)command[2]), ANSI.GRAY);
 	}
 
 	private void onLoginSuccess(byte[] command) {

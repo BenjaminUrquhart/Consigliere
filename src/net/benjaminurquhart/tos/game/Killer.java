@@ -12,7 +12,7 @@ public class Killer {
 	
 	public Killer(JSONObject json) {
 		//System.out.println(json);
-		this.color = new Color(Integer.parseInt(json.optString("Color", "#000000").substring(1), 16));
+		this.color = new Color(Integer.parseInt(json.optString("Color", "#505050").substring(1), 16));
 		this.id = Integer.parseInt(json.getString("id"));
 		
 		this.name = json.optString("Name", "Leaving the Game");

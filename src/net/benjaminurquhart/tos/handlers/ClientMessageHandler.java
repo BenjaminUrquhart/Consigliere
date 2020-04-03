@@ -28,6 +28,7 @@ public class ClientMessageHandler extends MessageHandler {
     	case 20: onCustomizationUpdate(command); break;
     	case 21: onNameSubmission(command); break;
     	case 22: onUserReported(command); break;
+    	case 30: onUserJoinedLobby(command); break;
     	case 39: onLeaveGame(command); break;
     	case 79: onUserChoseMultiAction(command); break;
     	case 85: onSteamLoginAttempt(command); break;
@@ -37,6 +38,9 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	private void onUserJoinedLobby(byte[] command) {
+		
+	}
 	private void onUserReported(byte[] command) {
 		System.out.printf("%sA report was filed for Player %d (%s)\n", ANSI.GRAY, command[1], new String(Arrays.copyOfRange(command, 3, command.length-1)));
 	}
