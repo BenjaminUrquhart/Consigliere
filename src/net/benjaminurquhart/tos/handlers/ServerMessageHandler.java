@@ -68,11 +68,11 @@ public class ServerMessageHandler extends MessageHandler {
                  case 28: onDefaultFunction(command); break;
                  case 29: onDefaultFunction(command); break;
                  case 30: onDefaultFunction(command); break;
-                 case 31: onDefaultFunction(command); break;
-                 case 32: onDefaultFunction(command); break;
-                 case 33: onDefaultFunction(command); break;
+                 case 31: onPartyInvite(command); break;
+                 case 32: onJoinedParty(command); break;
+                 case 33: onUsersJoinedParty(command); break;
                  case 34: onDefaultFunction(command); break;
-                 case 35: onDefaultFunction(command); break;
+                 case 35: onPartyChatBoxMessage(command); break;
                  case 36: onDefaultFunction(command); break;
                  case 37: onDefaultFunction(command); break;
                  case 38: onDefaultFunction(command); break;
@@ -95,11 +95,11 @@ public class ServerMessageHandler extends MessageHandler {
                  case 55: onDefaultFunction(command); break;
                  case 56: onDefaultFunction(command); break;
                  case 57: onDefaultFunction(command); break;
-                 case 58: onDefaultFunction(command); break;
+                 case 58: onUserBecamePartyHost(command); break;
                  case 59: onDefaultFunction(command); break;
                  case 60: onDefaultFunction(command); break;
                  case 61: onDefaultFunction(command); break;
-                 case 62: onDefaultFunction(command); break;
+                 case 62: onUserCanInviteToParty(command); break;
                  case 63: onDefaultFunction(command); break;
                  case 64: onDefaultFunction(command); break;
                  case 65: onDefaultFunction(command); break;
@@ -271,6 +271,48 @@ public class ServerMessageHandler extends MessageHandler {
                 default: onUnhandledCommand(command); break;
         }
     }
+
+	private void onUserBecamePartyHost(byte[] command) {
+		System.out.printf(
+				"%s%s is now the host%s\n",
+				ANSI.GREEN,
+				this.convertToString(command),
+				ANSI.GRAY
+		);
+	}
+
+	private void onUsersJoinedParty(byte[] command) {
+		int seperator = this.indexOf(command, (byte)'*');
+		System.out.printf("%s%s joined the party\n", ANSI.GRAY, new String(Arrays.copyOfRange(command, 1, seperator)));
+	}
+
+	private void onJoinedParty(byte[] command) {
+		System.out.printf("%sJoined party%s\n", ANSI.RESET, ANSI.GRAY);
+	}
+
+	private void onUserCanInviteToParty(byte[] command) {
+		System.out.printf(
+				"%s%s%s can now invite others to the party%s\n", 
+				ANSI.RESET,
+				new String(Arrays.copyOfRange(command, 1, command.length-1)),
+				ANSI.GREEN,
+				ANSI.GRAY
+		);
+	}
+
+	private void onPartyInvite(byte[] command) {
+		int seperator = this.indexOf(command, (byte)'*');
+		String username = new String(Arrays.copyOfRange(command, seperator+1, command.length-1));
+		String party = new String(Arrays.copyOfRange(command, 1, seperator));
+		System.out.printf("%sReceived party invite from %s%s (%s)%s\n", ANSI.GREEN, ANSI.RESET, username, party, ANSI.GRAY);
+	}
+
+	private void onPartyChatBoxMessage(byte[] command) {
+		int seperator = this.indexOf(command, (byte)'*');
+		String message = new String(Arrays.copyOfRange(command, seperator+1, command.length-1));
+		String name = new String(Arrays.copyOfRange(command, 1, seperator));
+		System.out.printf("%s%s: %s%s\n", ANSI.RESET, name, message, ANSI.GRAY);
+	}
 
 	private void onItemPurchased(byte[] command) {
 		onUnhandledCommand(command);
@@ -561,7 +603,7 @@ public class ServerMessageHandler extends MessageHandler {
 			names[position-1] = username;
 			
 			table[position-1] = String.format(
-					"%s%-16s %-16s %s%-16s%s",
+					"%s%-20s %-20s %s%-20s%s",
 					ANSI.RESET,
 					name,
 					username,
