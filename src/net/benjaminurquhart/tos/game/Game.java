@@ -19,6 +19,7 @@ public class Game {
 	public static Faction[] FACTIONS;
 	public static Killer[] KILLERS;
 	public static Scroll[] SCROLLS;
+	public static Winner[] WINNERS;
 	public static Role[] ROLES;
 
 	static {
@@ -69,6 +70,11 @@ public class Game {
 					tmp.put("id", tmp.getJSONArray("id").getString(0));
 				}
 				GAME_MODE_TABLE.put(Integer.parseInt(tmp.getString("id")), tmp.getString("Name"));
+			}
+			JSONArray winners = json.getJSONArray("WinningGroups");
+			WINNERS = new Winner[winners.length()];
+			for(int i = 0, length = winners.length(); i < length; i++) {
+				WINNERS[i] = new Winner(winners.getJSONObject(i));
 			}
 			sb.delete(0, sb.length());
 			stream = Game.class.getResourceAsStream("/Customization.json");

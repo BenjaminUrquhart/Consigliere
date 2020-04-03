@@ -14,6 +14,7 @@ import net.benjaminurquhart.tos.game.Killer;
 import net.benjaminurquhart.tos.game.Role;
 import net.benjaminurquhart.tos.game.Scroll;
 import net.benjaminurquhart.tos.game.StringTableMessage;
+import net.benjaminurquhart.tos.game.Winner;
 
 public class ServerMessageHandler extends MessageHandler {
 	
@@ -22,6 +23,8 @@ public class ServerMessageHandler extends MessageHandler {
 	private boolean[] alive;
 	private String[] names;
 	private Role[] roles;
+	
+	private boolean gameStarted;
 	
     public ServerMessageHandler() {
 		super("Server");
@@ -740,26 +743,18 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onSomeoneHasWon(byte[] command) {
-		onUnhandledCommand(command);
-		Faction faction = command[1] < Game.FACTIONS.length ? Game.FACTIONS[command[1]-1] : null;
-		String winnerFaction;
-		//Color color;
+		//onUnhandledCommand(command);
+		Winner winner = Game.WINNERS[command[1]-1];
 		
 		List<String> winners = new ArrayList<>();
 		for(int i = 2; i < command.length-1; i++) {
 			winners.add(names[command[i]-1]);
 		}
-		if(faction == null) {
-			winnerFaction = "A neutral role";
-			//color = Color.YELLOW;
-		}
-		else {
-			winnerFaction = faction.getName();
-		}
 		System.out.printf(
-				"%s%s wins\n%s %s won the game%s\n",
+				"%s%s\n%s%s %s won the game%s\n",
+				ANSI.toTrueColor(winner.getColor()),
+				winner,
 				ANSI.GREEN,
-				winnerFaction,
 				String.join(", ", winners),
 				winners.size() == 1 ? "had" : "have",
 				ANSI.GRAY
@@ -1094,6 +1089,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	private void onPickNames(byte[] command) {
 		Arrays.fill(names, null);
+		gameStarted = true;
 		System.out.println("Name selection has begun");
 	}
 
@@ -1213,6 +1209,11 @@ public class ServerMessageHandler extends MessageHandler {
 
 	private void onUserLeftGame(byte[] command) {
 		System.out.printf("%s%s left the game%s\n", ANSI.YELLOW, names[command[3]-1], ANSI.GRAY);
+		if(!gameStarted) {
+			for(int i = command[3]; i < 15; i++) {
+				names[i-1] = names[i];
+			}
+		}
 	}
 
 	private void onUsersJoinedLobby(byte[] command) {
@@ -1230,6 +1231,7 @@ public class ServerMessageHandler extends MessageHandler {
 	private void onJoinedGameLobby(byte[] command) {
 		//onUnhandledCommand(command);
 		Arrays.fill(alive, true);
+		gameStarted = false;
 		System.out.printf("%sJoined game lobby (Game Mode: %s)%s\n", ANSI.RESET, Game.GAME_MODE_TABLE.get((int)command[2]), ANSI.GRAY);
 	}
 

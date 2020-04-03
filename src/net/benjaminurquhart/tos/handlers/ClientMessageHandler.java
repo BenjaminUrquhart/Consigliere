@@ -84,8 +84,7 @@ public class ClientMessageHandler extends MessageHandler {
 		System.out.println("Attemping to log in via Steam...");
 	}
 	private void onKeepAlive(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
 	}
 	private void onItemPurchase(byte[] command) {
 		onUnhandledCommand(command);

@@ -4,21 +4,20 @@ import java.awt.Color;
 
 import org.json.JSONObject;
 
-public class Killer {
+public class Winner {
 
+	private boolean isDraw;
+	
 	private String name;
 	private Color color;
 	private int id;
 	
-	public Killer(JSONObject json) {
-		//System.out.println(json);
+	public Winner(JSONObject json) {
 		this.color = new Color(Integer.parseInt(json.optString("Color", "#505050").substring(1), 16));
-		this.id = Integer.parseInt(json.getString("id"));
+		this.name = json.getString("Name");
 		
-		if(json.has("Name") && (json.get("Name") instanceof JSONObject)) {
-			json.put("Name", json.getJSONObject("Name").getString("text"));
-		}
-		this.name = json.optString("Name", "Leaving the Game");
+		this.isDraw = json.has("isDraw") && json.getBoolean("isDraw");
+		this.id = Integer.parseInt(json.getString("id"));
 	}
 	public Color getColor() {
 		return color;
@@ -26,11 +25,14 @@ public class Killer {
 	public String getName() {
 		return name;
 	}
+	public boolean isDraw() {
+		return isDraw;
+	}
 	public int getID() {
 		return id;
 	}
 	@Override
 	public String toString() {
-		return name + " (" + id + ")";
+		return name + " " + (name.endsWith("s") ? "win" : "wins");
 	}
 }
