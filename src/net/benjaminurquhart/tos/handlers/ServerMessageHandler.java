@@ -108,7 +108,7 @@ public class ServerMessageHandler extends MessageHandler {
                  case 68: onDefaultFunction(command); break;
                  case 69: onDefaultFunction(command); break;
                  case 70: onDefaultFunction(command); break;
-                 case 71: onDefaultFunction(command); break;
+                 case 71: onJoinRankedQueue(command); break;
                  case 72: onDefaultFunction(command); break;
                  case 73: onDefaultFunction(command); break;
                  case 74: onUserStatistics(command); break;
@@ -256,7 +256,7 @@ public class ServerMessageHandler extends MessageHandler {
                  case 214: onGuardianAngelPromoted(command); break;
                  case 215: onVIPTarget(command); break;
                  case 216: onPirateDuelOutcome(command); break;
-                 case 217: onDefaultFunction(command); break;
+                 case 217: onPartyGamemodeUpdate(command); break;
                  case 218: onDefaultFunction(command); break;
                  case 219: onAccountFlags(command); break;
                  case 220: onZombieRotted(command); break;
@@ -271,6 +271,15 @@ public class ServerMessageHandler extends MessageHandler {
                 default: onUnhandledCommand(command); break;
         }
     }
+
+	private void onJoinRankedQueue(byte[] command) {
+		System.err.printf("%sJoined %s Ranked queue%s\n", ANSI.GREEN);
+	}
+
+	private void onPartyGamemodeUpdate(byte[] command) {
+		//onUnhandledCommand(command);
+		System.out.printf("%sGame Mode updated to %s%s\n", ANSI.RESET, Game.GAME_MODE_TABLE.get((int)command[2]-1), ANSI.GRAY);
+	}
 
 	private void onUserBecamePartyHost(byte[] command) {
 		System.out.printf(
@@ -733,7 +742,9 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onStartDayTransition(byte[] command) {
-		
+		for(int i = 1; i < command.length-1; i++) {
+			alive[command[i]-1] = false;
+		}
 	}
 
 	private void onStartNightTransition(byte[] command) {
@@ -828,7 +839,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onHowManyAbilitiesLeft(byte[] command) {
-		System.out.printf("%sYou have %d ability uses left%s\n", ANSI.RESET, command[1], ANSI.GRAY);
+		System.out.printf("%sYou have %d ability uses left%s\n", ANSI.RESET, command[1]-1, ANSI.GRAY);
 	}
 
 	private void onTellLastWill(byte[] command) {
@@ -994,6 +1005,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onUserChangedVote(byte[] command) {
+		//onUnhandledCommand(command);
 		String voter = names[command[1]-1], voted = names[command[2]-1];
 		System.out.printf(
 				"%s%s%s has changed their vote to %s%s (Vote Worth: %d)%s\n",
@@ -1002,7 +1014,7 @@ public class ServerMessageHandler extends MessageHandler {
 				ANSI.GREEN,
 				ANSI.RESET,
 				voted,
-				command[3],
+				command[4],
 				ANSI.GRAY
 		);
 	}
@@ -1171,8 +1183,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onSetLastBonusWinTime(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
 	}
 
 	private void onUpdatePaidCurrency(byte[] command) {
