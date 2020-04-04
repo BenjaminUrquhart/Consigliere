@@ -15,6 +15,7 @@ public class ClientMessageHandler extends MessageHandler {
 	@Override
     public void processCommand(byte[] command) {
     	switch(((int)command[0])&0xff) {
+    	case 0: break;
     	case 2: onLoginAttempt(command); break;
     	case 3: onChat(command); break;
     	case 8: onWhisper(command); break;
@@ -30,6 +31,7 @@ public class ClientMessageHandler extends MessageHandler {
     	case 22: onUserReported(command); break;
     	case 30: onUserJoinedLobby(command); break;
     	case 39: onLeaveGame(command); break;
+    	case 62: onUserAcceptedRankedMatch(command); break;
     	case 79: onUserChoseMultiAction(command); break;
     	case 85: onSteamLoginAttempt(command); break;
     	case 74: onItemPurchase(command); break;
@@ -38,6 +40,9 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	private void onUserAcceptedRankedMatch(byte[] command) {
+		System.out.printf("%sUser accepted Ranked game\n", ANSI.GRAY);
+	}
 	private void onUserJoinedLobby(byte[] command) {
 		
 	}

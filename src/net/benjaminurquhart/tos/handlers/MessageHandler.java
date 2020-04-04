@@ -43,6 +43,9 @@ public abstract class MessageHandler {
 	}
 	protected String convertToString(byte[] command, boolean trim) {
 		if(trim) {
+			if(command.length == 1) {
+				return "";
+			}
 			command = Arrays.copyOfRange(command, 1, command.length-1);
 		}
 		StringBuilder sb = new StringBuilder();

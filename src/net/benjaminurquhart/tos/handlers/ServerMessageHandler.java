@@ -110,7 +110,7 @@ public class ServerMessageHandler extends MessageHandler {
                  case 70: onDefaultFunction(command); break;
                  case 71: onJoinRankedQueue(command); break;
                  case 72: onDefaultFunction(command); break;
-                 case 73: onDefaultFunction(command); break;
+                 case 73: onRankedGameAvailable(command); break;
                  case 74: onUserStatistics(command); break;
                  case 75: onDefaultFunction(command); break;
                  case 76: onDefaultFunction(command); break;
@@ -272,8 +272,17 @@ public class ServerMessageHandler extends MessageHandler {
         }
     }
 
+	private void onRankedGameAvailable(byte[] command) {
+		System.out.printf("%sA Ranked match is available%s\n", ANSI.GREEN, ANSI.GRAY);
+	}
+
 	private void onJoinRankedQueue(byte[] command) {
-		System.err.printf("%sJoined %s Ranked queue%s\n", ANSI.GREEN);
+		System.out.printf(
+				"%sJoined %s Ranked queue (%s seconds remaining)%s\n", 
+				ANSI.GREEN, command[1] == 1 ? "Classic" : "Coven",
+				new String(Arrays.copyOfRange(command, 2, command.length-1)),
+				ANSI.GRAY
+		);
 	}
 
 	private void onPartyGamemodeUpdate(byte[] command) {
@@ -349,8 +358,13 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onJailorDeathNote(byte[] command) {
-		onUnhandledCommand(command);
-		
+		String message = "   ";
+		switch(command[3]) {
+		case 5: message += "They were too quiet or won't respond to questioning"; break;
+		default: message += "Unknown jailor message: " + command[3]; break;
+		}
+		message += " ";
+		this.onDeathNote(message.getBytes());
 	}
 
 	private void onRankedInfo(byte[] command) {
@@ -931,13 +945,25 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onJailedTarget(byte[] command) {
-		onUnhandledCommand(command);
-		
+		String jailee = names[command[1]-1];
+		System.out.printf(
+				"%s%sYou hauled %s off to jail!%s\n", 
+				ANSI.toTrueColorBackground(Color.LIGHT_GRAY), 
+				ANSI.WHITE,
+				jailee,
+				ANSI.RESET, 
+				ANSI.GRAY
+		);
 	}
 
 	private void onBeingJailed(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf(
+				"%s%sYou were hauled off to jail!%s\n", 
+				ANSI.toTrueColorBackground(Color.LIGHT_GRAY), 
+				ANSI.WHITE,
+				ANSI.RESET, 
+				ANSI.GRAY
+		);
 	}
 
 	private void onStartFirstDay(byte[] command) {
@@ -1142,6 +1168,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onPickNames(byte[] command) {
+		Arrays.fill(alive, true);
 		Arrays.fill(names, null);
 		gameStarted = true;
 		System.out.println("Name selection has begun");
@@ -1234,6 +1261,11 @@ public class ServerMessageHandler extends MessageHandler {
 		String name, role = " (???)";
 		if(player == 44) {
 			name = ANSI.CYAN+"Medium";
+			alive = true;
+			role = "";
+		}
+		else if(player == 29) {
+			name = ANSI.YELLOW+"Jailor";
 			alive = true;
 			role = "";
 		}
