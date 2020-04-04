@@ -867,13 +867,11 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onMediumCommunicating(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%sYou have opened a connection to the living!%s\n", ANSI.CYAN, ANSI.GRAY);
 	}
 
 	private void onMediumIsTalkingToUs(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%sA Medium is speaking to you!%s\n", ANSI.CYAN, ANSI.GRAY);
 	}
 
 	private void onDisguiserChangedUpdateMafia(byte[] command) {

@@ -23,6 +23,7 @@ public class ClientMessageHandler extends MessageHandler {
     	case 11: onUserSelectedTarget(command); break;
     	case 14: onUserJudgedGuilty(command); break;
     	case 15: onUserJudgedInnocent(command); break;
+    	case 16: onUserSelectedDayTarget(command); break;
     	case 17: onWillUpdate(command); break;
     	case 18: onDeathNoteUpdate(command); break;
     	case 19: onUserChangedTarget(command); break;
@@ -40,6 +41,9 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	private void onUserSelectedDayTarget(byte[] command) {
+		onUserSelectedTarget(command);
+	}
 	private void onUserAcceptedRankedMatch(byte[] command) {
 		System.out.printf("%sUser accepted Ranked game\n", ANSI.GRAY);
 	}
