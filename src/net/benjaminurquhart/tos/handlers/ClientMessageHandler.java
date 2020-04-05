@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
+import net.benjaminurquhart.tos.game.StringTableMessage;
 
 public class ClientMessageHandler extends MessageHandler {
 	
@@ -33,14 +34,52 @@ public class ClientMessageHandler extends MessageHandler {
     	case 30: onUserJoinedLobby(command); break;
     	case 39: onLeaveGame(command); break;
     	case 62: onUserAcceptedRankedMatch(command); break;
-    	case 79: onUserChoseMultiAction(command); break;
-    	case 85: onSteamLoginAttempt(command); break;
     	case 74: onItemPurchase(command); break;
+    	case 78: onUserChosePirateAttack(command); break;
+    	case 79: onUserChosePotion(command); break;
+    	case 82: onUserChoseHypnotistMessage(command); break;
+    	case 85: onSteamLoginAttempt(command); break;
     	case 127: onKeepAlive(command); break;
     	default: this.onUnhandledCommand(command); break;
     	}
     }
 
+	private void onUserChosePirateAttack(byte[] command) {
+		//onUnhandledCommand(command);
+		String attack = "";
+		switch(command[1]) {
+		case 2: attack = "Scimitar"; break;
+		case 3: attack = "Pistol"; break;
+		case 4: attack = "Rapier"; break;
+		}
+		System.out.printf("%sUser chose %s\n", ANSI.GRAY, attack);
+	}
+	private void onUserChoseHypnotistMessage(byte[] command) {
+		StringTableMessage message = Game.STRING_TABLE.get("GAME_"+this.convertToString(command));
+		System.out.printf(
+				"%sUser chose Hypnotist message: '%s%s%s'\n",
+				ANSI.GRAY,
+				ANSI.LIGHT_GRAY,
+				message.getText(),
+				ANSI.GRAY
+		);
+	}
+	private void onUserChosePotion(byte[] command) {
+		String potion = "";
+		ANSI color = null;
+		switch(command[1]) {
+		case 2: potion = "Healing"; color = ANSI.GREEN; break;
+		case 3: potion = "Revealing"; color = ANSI.CYAN; break;
+		case 4: potion = "Killing"; color = ANSI.RED; break;
+		}
+		System.out.printf(
+				"%sUser chose %s%s%s potion\n", 
+				ANSI.GRAY, 
+				color,
+				potion,
+				ANSI.GRAY
+		);
+	}
 	private void onUserSelectedDayTarget(byte[] command) {
 		onUserSelectedTarget(command);
 	}
@@ -52,9 +91,6 @@ public class ClientMessageHandler extends MessageHandler {
 	}
 	private void onUserReported(byte[] command) {
 		System.out.printf("%sA report was filed for Player %d (%s)\n", ANSI.GRAY, command[1], new String(Arrays.copyOfRange(command, 3, command.length-1)));
-	}
-	private void onUserChoseMultiAction(byte[] command) {
-		System.out.printf("%sUser chose action %d\n", ANSI.GRAY, command[1]);
 	}
 	private void onUserChangedTarget(byte[] command) {
 		
@@ -106,14 +142,14 @@ public class ClientMessageHandler extends MessageHandler {
 	}
 	public void onCustomizationUpdate(byte[] command) {
 		String[] data = this.convertToString(command).split(",");
-		System.out.println("Customization updated:");
+		System.out.println(ANSI.GRAY+"Customization updated:");
 		String[] scrolledRoles = Arrays.stream(Arrays.copyOfRange(data, 6, 9))
 									   .mapToInt(Integer::parseInt)
 									   .mapToObj(i -> Game.SCROLLS[i == -2 ? Game.SCROLLS.length-1 : i])
 									   .map(String::valueOf)
 									   .toArray(String[]::new);
 		System.out.println("Default Name: " + data[data.length-1]);
-		System.out.println("Scrolls: " + Arrays.toString(scrolledRoles));
+		System.out.println("Scrolls: " + Arrays.toString(scrolledRoles)+ANSI.GRAY);
 	}
 
 }

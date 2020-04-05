@@ -12,10 +12,12 @@ public class Game {
 	
 	public static Map<String, StringTableMessage> STRING_TABLE;
 	public static Map<String, Faction> FACTION_TABLE;
-	public static Map<Integer, Role> ROLE_TABLE;
+	public static Map<String, Genre> GENRE_TABLE;
+	public static Map<String, Role> ROLE_TABLE;
 	
 	public static Map<Integer, String> GAME_MODE_TABLE;
 	
+	public static Achievement[] ACHIEVEMENTS;
 	public static Faction[] FACTIONS;
 	public static Killer[] KILLERS;
 	public static Scroll[] SCROLLS;
@@ -55,7 +57,7 @@ public class Game {
 					role = new Role(tmp);
 				}
 				ROLES[i] = role;
-				ROLE_TABLE.put(role.getID(), role);
+				ROLE_TABLE.put(role.getName(), role);
 			}
 			JSONArray killers = json.getJSONArray("Killers");
 			KILLERS = new Killer[killers.length()];
@@ -102,12 +104,30 @@ public class Game {
 				sb.append(new String(Arrays.copyOfRange(buff, 0, read)));
 			}
 			stream.close();
-			JSONArray table = new JSONArray(sb.toString());
+			JSONObject table = new JSONObject(sb.toString());
 			STRING_TABLE = new HashMap<>();
-			StringTableMessage msg;
-			for(int i = 0, length = table.length(); i < length; i++) {
-				msg = new StringTableMessage(table.getJSONObject(i));
-				STRING_TABLE.put(msg.getID(), msg);
+			for(String key : table.keySet()) {
+				STRING_TABLE.put(key, new StringTableMessage(key, table.getJSONObject(key)));
+			}
+			sb.delete(0, sb.length());
+			stream = Game.class.getResourceAsStream("/Achievements.json");
+			while((read = stream.read(buff)) != -1) {
+				if(read == 0) continue;
+				sb.append(new String(Arrays.copyOfRange(buff, 0, read)));
+			}
+			stream.close();
+			tmp = new JSONObject(sb.toString());
+			JSONArray achievements = tmp.getJSONArray("Achievement");
+			ACHIEVEMENTS = new Achievement[achievements.length()];
+			for(int i = 0, length = achievements.length(); i < length; i++) {
+				ACHIEVEMENTS[i] = new Achievement(achievements.getJSONObject(i));
+			}
+			JSONArray genres = tmp.getJSONArray("Genre");
+			GENRE_TABLE = new HashMap<>();
+			Genre genre;
+			for(int i = 0, length = genres.length(); i < length; i++) {
+				genre = new Genre(genres.getJSONObject(i));
+				GENRE_TABLE.put(genre.getID(), genre);
 			}
 		}
 		catch(Exception e) {

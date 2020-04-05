@@ -9,10 +9,15 @@ public class StringTableMessage {
 	private String text, id;
 	private Color color;
 	
-	public StringTableMessage(JSONObject json) {
-		this.color = new Color(Integer.parseInt(json.optString("Color", "0x000000").substring(2), 16));
-		this.text = json.getString("Text");
-		this.id = json.getString("id");
+	public StringTableMessage(String id, JSONObject json) {
+		switch(json.optString("style", "none")) {
+		case "positive": color = Color.GREEN; break;
+		case "alert": color = Color.RED; break;
+		case "spy": color = Color.BLACK; break;
+		default: color = Color.GRAY; break;
+		}
+		this.text = json.optString("text");
+		this.id = id;
 	}
 	public String getText() {
 		return text;

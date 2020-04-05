@@ -38,7 +38,9 @@ public enum ANSI {
 	public static String toTrueColorBackground(Color color) {
 		return String.format("\u001b[48;2;%d;%d;%dm", color.getRed(), color.getGreen(), color.getBlue());
 	}
-	
+	public Color getColor() {
+		return color;
+	}
 	@Override
 	public String toString() {
 		return toTrueColorImpl(color);

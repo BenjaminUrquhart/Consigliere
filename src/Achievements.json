@@ -1,0 +1,4681 @@
+{
+   "hash": "mBCslhcUPAVCjO32BM2M4kHdwAQsoR2mlOH15ksBk13zHbcK3gk8PVsL7yZAr8IC1OOvtTqx6a522HCusQzGg0H1/edgwj0lpr2/MQeRLCx4BsVfEi3WCxGv+UV2PxEXRFvxDjzQ0rsbA1Tr7+491oCQnXflcNZMbmQT+clLJ+e38o0eIR+BTITpDweJYHjxqBRbNAaSjHwZKqcvpfM29FkOLx8o16q6+8yzzgg/BuH/gTNf+HXpB3eIi6qukXfxg6YDMJmG9twM0LGlGOAIFK+hbcLSZse0ZtBbS0aqvjuCSv2T5osNvfR99zslcvQjFOlKJo+TWWGB9GAor2ofXw==",
+   "Genre": [
+      {
+         "id": "General",
+         "color": "#FFFF00",
+         "name": {
+            "l10n": "GUI_GENERAL",
+            "text": "General"
+         }
+      },
+      {
+         "id": "Town",
+         "color": "#00FF00",
+         "name": {
+            "l10n": "GUI_TOWN",
+            "text": "Town"
+         },
+         "Role": [
+            {
+               "id": "0",
+               "name": {
+                  "l10n": "GUI_ROLE_0",
+                  "text": "Bodyguard"
+               }
+            },
+            {
+               "id": "1",
+               "name": {
+                  "l10n": "GUI_ROLE_1",
+                  "text": "Doctor"
+               }
+            },
+            {
+               "id": "2",
+               "name": {
+                  "l10n": "GUI_ROLE_2",
+                  "text": "Escort"
+               }
+            },
+            {
+               "id": "3",
+               "name": {
+                  "l10n": "GUI_ROLE_3",
+                  "text": "Investigator"
+               }
+            },
+            {
+               "id": "4",
+               "name": {
+                  "l10n": "GUI_ROLE_4",
+                  "text": "Jailor"
+               }
+            },
+            {
+               "id": "5",
+               "name": {
+                  "l10n": "GUI_ROLE_5",
+                  "text": "Lookout"
+               }
+            },
+            {
+               "id": "6",
+               "name": {
+                  "l10n": "GUI_ROLE_6",
+                  "text": "Mayor"
+               }
+            },
+            {
+               "id": "7",
+               "name": {
+                  "l10n": "GUI_ROLE_7",
+                  "text": "Medium"
+               }
+            },
+            {
+               "id": "8",
+               "name": {
+                  "l10n": "GUI_ROLE_8",
+                  "text": "Retributionist"
+               }
+            },
+            {
+               "id": "9",
+               "name": {
+                  "l10n": "GUI_ROLE_9",
+                  "text": "Sheriff"
+               }
+            },
+            {
+               "id": "10",
+               "name": {
+                  "l10n": "GUI_ROLE_10",
+                  "text": "Spy"
+               }
+            },
+            {
+               "id": "11",
+               "name": {
+                  "l10n": "GUI_ROLE_11",
+                  "text": "Transporter"
+               }
+            },
+            {
+               "id": "12",
+               "name": {
+                  "l10n": "GUI_ROLE_12",
+                  "text": "Vampire Hunter"
+               }
+            },
+            {
+               "id": "13",
+               "name": {
+                  "l10n": "GUI_ROLE_13",
+                  "text": "Veteran"
+               }
+            },
+            {
+               "id": "14",
+               "name": {
+                  "l10n": "GUI_ROLE_14",
+                  "text": "Vigilante"
+               }
+            },
+            {
+               "id": "46",
+               "name": {
+                  "l10n": "GUI_ROLE_46",
+                  "text": "Crusader"
+               }
+            },
+            {
+               "id": "47",
+               "name": {
+                  "l10n": "GUI_ROLE_47",
+                  "text": "Tracker"
+               }
+            },
+            {
+               "id": "48",
+               "name": {
+                  "l10n": "GUI_ROLE_48",
+                  "text": "Trapper"
+               }
+            },
+            {
+               "id": "49",
+               "name": {
+                  "l10n": "GUI_ROLE_49",
+                  "text": "Psychic"
+               }
+            }
+         ]
+      },
+      {
+         "id": "Mafia",
+         "color": "#FF0000",
+         "name": {
+            "l10n": "GUI_MAFIA",
+            "text": "Mafia"
+         },
+         "Role": [
+            {
+               "id": "15",
+               "name": {
+                  "l10n": "GUI_ROLE_15",
+                  "text": "Blackmailer"
+               }
+            },
+            {
+               "id": "16",
+               "name": {
+                  "l10n": "GUI_ROLE_16",
+                  "text": "Consigliere"
+               }
+            },
+            {
+               "id": "17",
+               "name": {
+                  "l10n": "GUI_ROLE_17",
+                  "text": "Consort"
+               }
+            },
+            {
+               "id": "18",
+               "name": {
+                  "l10n": "GUI_ROLE_18",
+                  "text": "Disguiser"
+               }
+            },
+            {
+               "id": "19",
+               "name": {
+                  "l10n": "GUI_ROLE_19",
+                  "text": "Forger"
+               }
+            },
+            {
+               "id": "20",
+               "name": {
+                  "l10n": "GUI_ROLE_20",
+                  "text": "Framer"
+               }
+            },
+            {
+               "id": "21",
+               "name": {
+                  "l10n": "GUI_ROLE_21",
+                  "text": "Godfather"
+               }
+            },
+            {
+               "id": "22",
+               "name": {
+                  "l10n": "GUI_ROLE_22",
+                  "text": "Janitor"
+               }
+            },
+            {
+               "id": "23",
+               "name": {
+                  "l10n": "GUI_ROLE_23",
+                  "text": "Mafioso"
+               }
+            },
+            {
+               "id": "50",
+               "name": {
+                  "l10n": "GUI_ROLE_50",
+                  "text": "Hypnotist"
+               }
+            },
+            {
+               "id": "51",
+               "name": {
+                  "l10n": "GUI_ROLE_51",
+                  "text": "Ambusher"
+               }
+            }
+         ]
+      },
+      {
+         "id": "Neutral",
+         "color": "#FFFFFF",
+         "name": {
+            "l10n": "GUI_NEUTRAL",
+            "text": "Neutral"
+         },
+         "Role": [
+            {
+               "color": "#22FFFF",
+               "id": "24",
+               "name": {
+                  "l10n": "GUI_ROLE_24",
+                  "text": "Amnesiac"
+               }
+            },
+            {
+               "color": "#EE7600",
+               "id": "25",
+               "name": {
+                  "l10n": "GUI_ROLE_25",
+                  "text": "Arsonist"
+               }
+            },
+            {
+               "color": "#CCCCCC",
+               "id": "26",
+               "name": {
+                  "l10n": "GUI_ROLE_26",
+                  "text": "Executioner"
+               }
+            },
+            {
+               "color": "#F7B3DA",
+               "id": "27",
+               "name": {
+                  "l10n": "GUI_ROLE_27",
+                  "text": "Jester"
+               }
+            },
+            {
+               "color": "#3333FF",
+               "id": "28",
+               "name": {
+                  "l10n": "GUI_ROLE_28",
+                  "text": "Serial Killer"
+               }
+            },
+            {
+               "color": "#DDDD00",
+               "id": "29",
+               "name": {
+                  "l10n": "GUI_ROLE_29",
+                  "text": "Survivor"
+               }
+            },
+            {
+               "color": "#7B8968",
+               "id": "30",
+               "name": {
+                  "l10n": "GUI_ROLE_30",
+                  "text": "Vampire"
+               }
+            },
+            {
+               "color": "#9F703A",
+               "id": "31",
+               "name": {
+                  "l10n": "GUI_ROLE_31",
+                  "text": "Werewolf"
+               }
+            },
+            {
+               "color": "#BF5FFF",
+               "id": "32",
+               "name": {
+                  "l10n": "GUI_ROLE_32",
+                  "text": "Witch"
+               }
+            },
+            {
+               "color": "#CFFF63",
+               "id": "52",
+               "name": {
+                  "l10n": "GUI_ROLE_52",
+                  "text": "Plaguebearer"
+               }
+            },
+            {
+               "color": "#A12B56",
+               "id": "53",
+               "name": {
+                  "l10n": "GUI_ROLE_53",
+                  "text": "Juggernaut"
+               }
+            },
+            {
+               "color": "#FFFFFF",
+               "id": "54",
+               "name": {
+                  "l10n": "GUI_ROLE_54",
+                  "text": "Guardian Angel"
+               }
+            },
+            {
+               "color": "#EDC240",
+               "id": "55",
+               "name": {
+                  "l10n": "GUI_ROLE_55",
+                  "text": "Pirate"
+               }
+            }
+         ]
+      },
+      {
+         "id": "Coven",
+         "color": "#BF80FF",
+         "name": {
+            "l10n": "GUI_COVEN",
+            "text": "Coven"
+         },
+         "Role": [
+            {
+               "id": "56",
+               "name": {
+                  "l10n": "GUI_ROLE_56",
+                  "text": "Coven Leader"
+               }
+            },
+            {
+               "id": "57",
+               "name": {
+                  "l10n": "GUI_ROLE_57",
+                  "text": "Potion Master"
+               }
+            },
+            {
+               "id": "58",
+               "name": {
+                  "l10n": "GUI_ROLE_58",
+                  "text": "Hex Master"
+               }
+            },
+            {
+               "id": "59",
+               "name": {
+                  "l10n": "GUI_ROLE_59",
+                  "text": "Necromancer"
+               }
+            },
+            {
+               "id": "60",
+               "name": {
+                  "l10n": "GUI_ROLE_60",
+                  "text": "Poisoner"
+               }
+            },
+            {
+               "id": "61",
+               "name": {
+                  "l10n": "GUI_ROLE_61",
+                  "text": "Medusa"
+               }
+            }
+         ]
+      }
+   ],
+   "Achievement": [
+      {
+         "id": "0",
+         "steam": "Win1Game",
+         "icon": "SalemIcon",
+         "points": "20FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "1",
+         "steam": "Win5Games",
+         "icon": "SalemIcon",
+         "points": "20FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "2",
+         "steam": "Win10Games",
+         "icon": "SalemIcon",
+         "points": "20FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "3",
+         "steam": "Win25Games",
+         "icon": "SalemIcon",
+         "points": "40FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "4",
+         "steam": "Win50Games",
+         "icon": "SalemIcon",
+         "points": "40FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "5",
+         "steam": "Win100Games",
+         "icon": "SalemIcon",
+         "points": "40FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "6",
+         "steam": "Win250Games",
+         "icon": "SalemIcon",
+         "points": "100FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "7",
+         "steam": "Win1GameAsBodyguard",
+         "icon": "Bodyguard",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "0",
+         "roleName": {
+            "l10n": "GUI_ROLE_0",
+            "text": "Bodyguard"
+         }
+      },
+      {
+         "id": "8",
+         "steam": "Win5GamesAsBodyguard",
+         "icon": "Bodyguard",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "0",
+         "roleName": {
+            "l10n": "GUI_ROLE_0",
+            "text": "Bodyguard"
+         }
+      },
+      {
+         "id": "9",
+         "steam": "Win10GamesAsBodyguard",
+         "icon": "Bodyguard",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "0",
+         "roleName": {
+            "l10n": "GUI_ROLE_0",
+            "text": "Bodyguard"
+         }
+      },
+      {
+         "id": "10",
+         "steam": "Win25GamesAsBodyguard",
+         "icon": "Bodyguard",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "0",
+         "roleName": {
+            "l10n": "GUI_ROLE_0",
+            "text": "Bodyguard"
+         }
+      },
+      {
+         "id": "11",
+         "steam": "Win1GameAsDoctor",
+         "icon": "Doctor",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "1",
+         "roleName": {
+            "l10n": "GUI_ROLE_1",
+            "text": "Doctor"
+         }
+      },
+      {
+         "id": "12",
+         "steam": "Win5GamesAsDoctor",
+         "icon": "Doctor",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "1",
+         "roleName": {
+            "l10n": "GUI_ROLE_1",
+            "text": "Doctor"
+         }
+      },
+      {
+         "id": "13",
+         "steam": "Win10GamesAsDoctor",
+         "icon": "Doctor",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "1",
+         "roleName": {
+            "l10n": "GUI_ROLE_1",
+            "text": "Doctor"
+         }
+      },
+      {
+         "id": "14",
+         "steam": "Win25GamesAsDoctor",
+         "icon": "Doctor",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "1",
+         "roleName": {
+            "l10n": "GUI_ROLE_1",
+            "text": "Doctor"
+         }
+      },
+      {
+         "id": "15",
+         "steam": "Win1GameAsEscort",
+         "icon": "Escort",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "2",
+         "roleName": {
+            "l10n": "GUI_ROLE_2",
+            "text": "Escort"
+         }
+      },
+      {
+         "id": "16",
+         "steam": "Win5GamesAsEscort",
+         "icon": "Escort",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "2",
+         "roleName": {
+            "l10n": "GUI_ROLE_2",
+            "text": "Escort"
+         }
+      },
+      {
+         "id": "17",
+         "steam": "Win10GamesAsEscort",
+         "icon": "Escort",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "2",
+         "roleName": {
+            "l10n": "GUI_ROLE_2",
+            "text": "Escort"
+         }
+      },
+      {
+         "id": "18",
+         "steam": "Win25GamesAsEscort",
+         "icon": "Escort",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "2",
+         "roleName": {
+            "l10n": "GUI_ROLE_2",
+            "text": "Escort"
+         }
+      },
+      {
+         "id": "19",
+         "steam": "Win1GameAsInvestigator",
+         "icon": "Investigator",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "3",
+         "roleName": {
+            "l10n": "GUI_ROLE_3",
+            "text": "Investigator"
+         }
+      },
+      {
+         "id": "20",
+         "steam": "Win5GamesAsInvestigator",
+         "icon": "Investigator",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "3",
+         "roleName": {
+            "l10n": "GUI_ROLE_3",
+            "text": "Investigator"
+         }
+      },
+      {
+         "id": "21",
+         "steam": "Win10GamesAsInvestigator",
+         "icon": "Investigator",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "3",
+         "roleName": {
+            "l10n": "GUI_ROLE_3",
+            "text": "Investigator"
+         }
+      },
+      {
+         "id": "22",
+         "steam": "Win25GamesAsInvestigator",
+         "icon": "Investigator",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "3",
+         "roleName": {
+            "l10n": "GUI_ROLE_3",
+            "text": "Investigator"
+         }
+      },
+      {
+         "id": "23",
+         "steam": "Win1GameAsJailor",
+         "icon": "Jailor",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "4",
+         "roleName": {
+            "l10n": "GUI_ROLE_4",
+            "text": "Jailor"
+         }
+      },
+      {
+         "id": "24",
+         "steam": "Win5GamesAsJailor",
+         "icon": "Jailor",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "4",
+         "roleName": {
+            "l10n": "GUI_ROLE_4",
+            "text": "Jailor"
+         }
+      },
+      {
+         "id": "25",
+         "steam": "Win10GamesAsJailor",
+         "icon": "Jailor",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "4",
+         "roleName": {
+            "l10n": "GUI_ROLE_4",
+            "text": "Jailor"
+         }
+      },
+      {
+         "id": "26",
+         "steam": "Win25GamesAsJailor",
+         "icon": "Jailor",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "4",
+         "roleName": {
+            "l10n": "GUI_ROLE_4",
+            "text": "Jailor"
+         }
+      },
+      {
+         "id": "27",
+         "steam": "Win1GameAsLookout",
+         "icon": "Lookout",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "5",
+         "roleName": {
+            "l10n": "GUI_ROLE_5",
+            "text": "Lookout"
+         }
+      },
+      {
+         "id": "28",
+         "steam": "Win5GamesAsLookout",
+         "icon": "Lookout",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "5",
+         "roleName": {
+            "l10n": "GUI_ROLE_5",
+            "text": "Lookout"
+         }
+      },
+      {
+         "id": "29",
+         "steam": "Win10GamesAsLookout",
+         "icon": "Lookout",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "5",
+         "roleName": {
+            "l10n": "GUI_ROLE_5",
+            "text": "Lookout"
+         }
+      },
+      {
+         "id": "30",
+         "steam": "Win25GamesAsLookout",
+         "icon": "Lookout",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "5",
+         "roleName": {
+            "l10n": "GUI_ROLE_5",
+            "text": "Lookout"
+         }
+      },
+      {
+         "id": "31",
+         "steam": "Win1GameAsMayor",
+         "icon": "Mayor",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "6",
+         "roleName": {
+            "l10n": "GUI_ROLE_6",
+            "text": "Mayor"
+         }
+      },
+      {
+         "id": "32",
+         "steam": "Win5GamesAsMayor",
+         "icon": "Mayor",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "6",
+         "roleName": {
+            "l10n": "GUI_ROLE_6",
+            "text": "Mayor"
+         }
+      },
+      {
+         "id": "33",
+         "steam": "Win10GamesAsMayor",
+         "icon": "Mayor",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "6",
+         "roleName": {
+            "l10n": "GUI_ROLE_6",
+            "text": "Mayor"
+         }
+      },
+      {
+         "id": "34",
+         "steam": "Win25GamesAsMayor",
+         "icon": "Mayor",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "6",
+         "roleName": {
+            "l10n": "GUI_ROLE_6",
+            "text": "Mayor"
+         }
+      },
+      {
+         "id": "35",
+         "steam": "Win1GameAsMedium",
+         "icon": "Medium",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "7",
+         "roleName": {
+            "l10n": "GUI_ROLE_7",
+            "text": "Medium"
+         }
+      },
+      {
+         "id": "36",
+         "steam": "Win5GamesAsMedium",
+         "icon": "Medium",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "7",
+         "roleName": {
+            "l10n": "GUI_ROLE_7",
+            "text": "Medium"
+         }
+      },
+      {
+         "id": "37",
+         "steam": "Win10GamesAsMedium",
+         "icon": "Medium",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "7",
+         "roleName": {
+            "l10n": "GUI_ROLE_7",
+            "text": "Medium"
+         }
+      },
+      {
+         "id": "38",
+         "steam": "Win25GamesAsMedium",
+         "icon": "Medium",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "7",
+         "roleName": {
+            "l10n": "GUI_ROLE_7",
+            "text": "Medium"
+         }
+      },
+      {
+         "id": "39",
+         "steam": "Win1GameAsRetributionist",
+         "icon": "Retributionist",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "8",
+         "roleName": {
+            "l10n": "GUI_ROLE_8",
+            "text": "Retributionist"
+         }
+      },
+      {
+         "id": "40",
+         "steam": "Win5GamesAsRetributionist",
+         "icon": "Retributionist",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "8",
+         "roleName": {
+            "l10n": "GUI_ROLE_8",
+            "text": "Retributionist"
+         }
+      },
+      {
+         "id": "41",
+         "steam": "Win10GamesAsRetributionist",
+         "icon": "Retributionist",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "8",
+         "roleName": {
+            "l10n": "GUI_ROLE_8",
+            "text": "Retributionist"
+         }
+      },
+      {
+         "id": "42",
+         "steam": "Win25GamesAsRetributionist",
+         "icon": "Retributionist",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "8",
+         "roleName": {
+            "l10n": "GUI_ROLE_8",
+            "text": "Retributionist"
+         }
+      },
+      {
+         "id": "43",
+         "steam": "Win1GameAsSheriff",
+         "icon": "Sheriff",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "9",
+         "roleName": {
+            "l10n": "GUI_ROLE_9",
+            "text": "Sheriff"
+         }
+      },
+      {
+         "id": "44",
+         "steam": "Win5GamesAsSheriff",
+         "icon": "Sheriff",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "9",
+         "roleName": {
+            "l10n": "GUI_ROLE_9",
+            "text": "Sheriff"
+         }
+      },
+      {
+         "id": "45",
+         "steam": "Win10GamesAsSheriff",
+         "icon": "Sheriff",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "9",
+         "roleName": {
+            "l10n": "GUI_ROLE_9",
+            "text": "Sheriff"
+         }
+      },
+      {
+         "id": "46",
+         "steam": "Win25GamesAsSheriff",
+         "icon": "Sheriff",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "9",
+         "roleName": {
+            "l10n": "GUI_ROLE_9",
+            "text": "Sheriff"
+         }
+      },
+      {
+         "id": "47",
+         "steam": "Win1GameAsSpy",
+         "icon": "Spy",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "10",
+         "roleName": {
+            "l10n": "GUI_ROLE_10",
+            "text": "Spy"
+         }
+      },
+      {
+         "id": "48",
+         "steam": "Win5GamesAsSpy",
+         "icon": "Spy",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "10",
+         "roleName": {
+            "l10n": "GUI_ROLE_10",
+            "text": "Spy"
+         }
+      },
+      {
+         "id": "49",
+         "steam": "Win10GamesAsSpy",
+         "icon": "Spy",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "10",
+         "roleName": {
+            "l10n": "GUI_ROLE_10",
+            "text": "Spy"
+         }
+      },
+      {
+         "id": "50",
+         "steam": "Win25GamesAsSpy",
+         "icon": "Spy",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "10",
+         "roleName": {
+            "l10n": "GUI_ROLE_10",
+            "text": "Spy"
+         }
+      },
+      {
+         "id": "51",
+         "steam": "Win1GameAsTransporter",
+         "icon": "Transporter",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "11",
+         "roleName": {
+            "l10n": "GUI_ROLE_11",
+            "text": "Transporter"
+         }
+      },
+      {
+         "id": "52",
+         "steam": "Win5GamesAsTransporter",
+         "icon": "Transporter",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "11",
+         "roleName": {
+            "l10n": "GUI_ROLE_11",
+            "text": "Transporter"
+         }
+      },
+      {
+         "id": "53",
+         "steam": "Win10GamesAsTransporter",
+         "icon": "Transporter",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "11",
+         "roleName": {
+            "l10n": "GUI_ROLE_11",
+            "text": "Transporter"
+         }
+      },
+      {
+         "id": "54",
+         "steam": "Win25GamesAsTransporter",
+         "icon": "Transporter",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "11",
+         "roleName": {
+            "l10n": "GUI_ROLE_11",
+            "text": "Transporter"
+         }
+      },
+      {
+         "id": "55",
+         "steam": "Win1GameAsVeteran",
+         "icon": "Veteran",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "13",
+         "roleName": {
+            "l10n": "GUI_ROLE_13",
+            "text": "Veteran"
+         }
+      },
+      {
+         "id": "56",
+         "steam": "Win5GamesAsVeteran",
+         "icon": "Veteran",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "13",
+         "roleName": {
+            "l10n": "GUI_ROLE_13",
+            "text": "Veteran"
+         }
+      },
+      {
+         "id": "57",
+         "steam": "Win10GamesAsVeteran",
+         "icon": "Veteran",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "13",
+         "roleName": {
+            "l10n": "GUI_ROLE_13",
+            "text": "Veteran"
+         }
+      },
+      {
+         "id": "58",
+         "steam": "Win25GamesAsVeteran",
+         "icon": "Veteran",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "13",
+         "roleName": {
+            "l10n": "GUI_ROLE_13",
+            "text": "Veteran"
+         }
+      },
+      {
+         "id": "59",
+         "steam": "Win1GameAsVigilante",
+         "icon": "Vigilante",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "14",
+         "roleName": {
+            "l10n": "GUI_ROLE_14",
+            "text": "Vigilante"
+         }
+      },
+      {
+         "id": "60",
+         "steam": "Win5GamesAsVigilante",
+         "icon": "Vigilante",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "14",
+         "roleName": {
+            "l10n": "GUI_ROLE_14",
+            "text": "Vigilante"
+         }
+      },
+      {
+         "id": "61",
+         "steam": "Win10GamesAsVigilante",
+         "icon": "Vigilante",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "14",
+         "roleName": {
+            "l10n": "GUI_ROLE_14",
+            "text": "Vigilante"
+         }
+      },
+      {
+         "id": "62",
+         "steam": "Win25GamesAsVigilante",
+         "icon": "Vigilante",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "14",
+         "roleName": {
+            "l10n": "GUI_ROLE_14",
+            "text": "Vigilante"
+         }
+      },
+      {
+         "id": "63",
+         "steam": "Win1GameAsBlackmailer",
+         "icon": "Blackmailer",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "15",
+         "roleName": {
+            "l10n": "GUI_ROLE_15",
+            "text": "Blackmailer"
+         }
+      },
+      {
+         "id": "64",
+         "steam": "Win5GamesAsBlackmailer",
+         "icon": "Blackmailer",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "15",
+         "roleName": {
+            "l10n": "GUI_ROLE_15",
+            "text": "Blackmailer"
+         }
+      },
+      {
+         "id": "65",
+         "steam": "Win10GamesAsBlackmailer",
+         "icon": "Blackmailer",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "15",
+         "roleName": {
+            "l10n": "GUI_ROLE_15",
+            "text": "Blackmailer"
+         }
+      },
+      {
+         "id": "66",
+         "steam": "Win25GamesAsBlackmailer",
+         "icon": "Blackmailer",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "15",
+         "roleName": {
+            "l10n": "GUI_ROLE_15",
+            "text": "Blackmailer"
+         }
+      },
+      {
+         "id": "67",
+         "steam": "Win1GameAsConsigliere",
+         "icon": "Consigliere",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "16",
+         "roleName": {
+            "l10n": "GUI_ROLE_16",
+            "text": "Consigliere"
+         }
+      },
+      {
+         "id": "68",
+         "steam": "Win5GamesAsConsigliere",
+         "icon": "Consigliere",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "16",
+         "roleName": {
+            "l10n": "GUI_ROLE_16",
+            "text": "Consigliere"
+         }
+      },
+      {
+         "id": "69",
+         "steam": "Win10GamesAsConsigliere",
+         "icon": "Consigliere",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "16",
+         "roleName": {
+            "l10n": "GUI_ROLE_16",
+            "text": "Consigliere"
+         }
+      },
+      {
+         "id": "70",
+         "steam": "Win25GamesAsConsigliere",
+         "icon": "Consigliere",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "16",
+         "roleName": {
+            "l10n": "GUI_ROLE_16",
+            "text": "Consigliere"
+         }
+      },
+      {
+         "id": "71",
+         "steam": "Win1GameAsConsort",
+         "icon": "Consort",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "17",
+         "roleName": {
+            "l10n": "GUI_ROLE_17",
+            "text": "Consort"
+         }
+      },
+      {
+         "id": "72",
+         "steam": "Win5GamesAsConsort",
+         "icon": "Consort",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "17",
+         "roleName": {
+            "l10n": "GUI_ROLE_17",
+            "text": "Consort"
+         }
+      },
+      {
+         "id": "73",
+         "steam": "Win10GamesAsConsort",
+         "icon": "Consort",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "17",
+         "roleName": {
+            "l10n": "GUI_ROLE_17",
+            "text": "Consort"
+         }
+      },
+      {
+         "id": "74",
+         "steam": "Win25GamesAsConsort",
+         "icon": "Consort",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "17",
+         "roleName": {
+            "l10n": "GUI_ROLE_17",
+            "text": "Consort"
+         }
+      },
+      {
+         "id": "75",
+         "steam": "Win1GameAsDisguiser",
+         "icon": "Disguiser",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "18",
+         "roleName": {
+            "l10n": "GUI_ROLE_18",
+            "text": "Disguiser"
+         }
+      },
+      {
+         "id": "76",
+         "steam": "Win5GamesAsDisguiser",
+         "icon": "Disguiser",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "18",
+         "roleName": {
+            "l10n": "GUI_ROLE_18",
+            "text": "Disguiser"
+         }
+      },
+      {
+         "id": "77",
+         "steam": "Win10GamesAsDisguiser",
+         "icon": "Disguiser",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "18",
+         "roleName": {
+            "l10n": "GUI_ROLE_18",
+            "text": "Disguiser"
+         }
+      },
+      {
+         "id": "78",
+         "steam": "Win25GamesAsDisguiser",
+         "icon": "Disguiser",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "18",
+         "roleName": {
+            "l10n": "GUI_ROLE_18",
+            "text": "Disguiser"
+         }
+      },
+      {
+         "id": "79",
+         "steam": "Win1GameAsFramer",
+         "icon": "Framer",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "20",
+         "roleName": {
+            "l10n": "GUI_ROLE_20",
+            "text": "Framer"
+         }
+      },
+      {
+         "id": "80",
+         "steam": "Win5GamesAsFramer",
+         "icon": "Framer",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "20",
+         "roleName": {
+            "l10n": "GUI_ROLE_20",
+            "text": "Framer"
+         }
+      },
+      {
+         "id": "81",
+         "steam": "Win10GamesAsFramer",
+         "icon": "Framer",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "20",
+         "roleName": {
+            "l10n": "GUI_ROLE_20",
+            "text": "Framer"
+         }
+      },
+      {
+         "id": "82",
+         "steam": "Win25GamesAsFramer",
+         "icon": "Framer",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "20",
+         "roleName": {
+            "l10n": "GUI_ROLE_20",
+            "text": "Framer"
+         }
+      },
+      {
+         "id": "83",
+         "steam": "Win1GameAsGodfather",
+         "icon": "Godfather",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "21",
+         "roleName": {
+            "l10n": "GUI_ROLE_21",
+            "text": "Godfather"
+         }
+      },
+      {
+         "id": "84",
+         "steam": "Win5GamesAsGodfather",
+         "icon": "Godfather",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "21",
+         "roleName": {
+            "l10n": "GUI_ROLE_21",
+            "text": "Godfather"
+         }
+      },
+      {
+         "id": "85",
+         "steam": "Win10GamesAsGodfather",
+         "icon": "Godfather",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "21",
+         "roleName": {
+            "l10n": "GUI_ROLE_21",
+            "text": "Godfather"
+         }
+      },
+      {
+         "id": "86",
+         "steam": "Win25GamesAsGodfather",
+         "icon": "Godfather",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "21",
+         "roleName": {
+            "l10n": "GUI_ROLE_21",
+            "text": "Godfather"
+         }
+      },
+      {
+         "id": "87",
+         "steam": "Win1GameAsJanitor",
+         "icon": "Janitor",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "22",
+         "roleName": {
+            "l10n": "GUI_ROLE_22",
+            "text": "Janitor"
+         }
+      },
+      {
+         "id": "88",
+         "steam": "Win5GamesAsJanitor",
+         "icon": "Janitor",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "22",
+         "roleName": {
+            "l10n": "GUI_ROLE_22",
+            "text": "Janitor"
+         }
+      },
+      {
+         "id": "89",
+         "steam": "Win10GamesAsJanitor",
+         "icon": "Janitor",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "22",
+         "roleName": {
+            "l10n": "GUI_ROLE_22",
+            "text": "Janitor"
+         }
+      },
+      {
+         "id": "90",
+         "steam": "Win25GamesAsJanitor",
+         "icon": "Janitor",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "22",
+         "roleName": {
+            "l10n": "GUI_ROLE_22",
+            "text": "Janitor"
+         }
+      },
+      {
+         "id": "91",
+         "steam": "Win1GameAsMafioso",
+         "icon": "Mafioso",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "23",
+         "roleName": {
+            "l10n": "GUI_ROLE_23",
+            "text": "Mafioso"
+         }
+      },
+      {
+         "id": "92",
+         "steam": "Win5GamesAsMafioso",
+         "icon": "Mafioso",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "23",
+         "roleName": {
+            "l10n": "GUI_ROLE_23",
+            "text": "Mafioso"
+         }
+      },
+      {
+         "id": "93",
+         "steam": "Win10GamesAsMafioso",
+         "icon": "Mafioso",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "23",
+         "roleName": {
+            "l10n": "GUI_ROLE_23",
+            "text": "Mafioso"
+         }
+      },
+      {
+         "id": "94",
+         "steam": "Win25GamesAsMafioso",
+         "icon": "Mafioso",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "23",
+         "roleName": {
+            "l10n": "GUI_ROLE_23",
+            "text": "Mafioso"
+         }
+      },
+      {
+         "id": "95",
+         "steam": "Win1GameAsAmnesiac",
+         "icon": "Amnesiac",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "24",
+         "roleName": {
+            "l10n": "GUI_ROLE_24",
+            "text": "Amnesiac"
+         }
+      },
+      {
+         "id": "96",
+         "steam": "Win5GamesAsAmnesiac",
+         "icon": "Amnesiac",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "24",
+         "roleName": {
+            "l10n": "GUI_ROLE_24",
+            "text": "Amnesiac"
+         }
+      },
+      {
+         "id": "97",
+         "steam": "Win10GamesAsAmnesiac",
+         "icon": "Amnesiac",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "24",
+         "roleName": {
+            "l10n": "GUI_ROLE_24",
+            "text": "Amnesiac"
+         }
+      },
+      {
+         "id": "98",
+         "steam": "Win25GamesAsAmnesiac",
+         "icon": "Amnesiac",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "24",
+         "roleName": {
+            "l10n": "GUI_ROLE_24",
+            "text": "Amnesiac"
+         }
+      },
+      {
+         "id": "99",
+         "steam": "Win1GameAsArsonist",
+         "icon": "Arsonist",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "25",
+         "roleName": {
+            "l10n": "GUI_ROLE_25",
+            "text": "Arsonist"
+         }
+      },
+      {
+         "id": "100",
+         "steam": "Win5GamesAsArsonist",
+         "icon": "Arsonist",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "25",
+         "roleName": {
+            "l10n": "GUI_ROLE_25",
+            "text": "Arsonist"
+         }
+      },
+      {
+         "id": "101",
+         "steam": "Win10GamesAsArsonist",
+         "icon": "Arsonist",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "25",
+         "roleName": {
+            "l10n": "GUI_ROLE_25",
+            "text": "Arsonist"
+         }
+      },
+      {
+         "id": "102",
+         "steam": "Win25GamesAsArsonist",
+         "icon": "Arsonist",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "25",
+         "roleName": {
+            "l10n": "GUI_ROLE_25",
+            "text": "Arsonist"
+         }
+      },
+      {
+         "id": "103",
+         "steam": "Win1GameAsExecutioner",
+         "icon": "Executioner",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "26",
+         "roleName": {
+            "l10n": "GUI_ROLE_26",
+            "text": "Executioner"
+         }
+      },
+      {
+         "id": "104",
+         "steam": "Win5GamesAsExecutioner",
+         "icon": "Executioner",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "26",
+         "roleName": {
+            "l10n": "GUI_ROLE_26",
+            "text": "Executioner"
+         }
+      },
+      {
+         "id": "105",
+         "steam": "Win10GamesAsExecutioner",
+         "icon": "Executioner",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "26",
+         "roleName": {
+            "l10n": "GUI_ROLE_26",
+            "text": "Executioner"
+         }
+      },
+      {
+         "id": "106",
+         "steam": "Win25GamesAsExecutioner",
+         "icon": "Executioner",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "26",
+         "roleName": {
+            "l10n": "GUI_ROLE_26",
+            "text": "Executioner"
+         }
+      },
+      {
+         "id": "107",
+         "steam": "Win1GameAsJester",
+         "icon": "Jester",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "27",
+         "roleName": {
+            "l10n": "GUI_ROLE_27",
+            "text": "Jester"
+         }
+      },
+      {
+         "id": "108",
+         "steam": "Win5GamesAsJester",
+         "icon": "Jester",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "27",
+         "roleName": {
+            "l10n": "GUI_ROLE_27",
+            "text": "Jester"
+         }
+      },
+      {
+         "id": "109",
+         "steam": "Win10GamesAsJester",
+         "icon": "Jester",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "27",
+         "roleName": {
+            "l10n": "GUI_ROLE_27",
+            "text": "Jester"
+         }
+      },
+      {
+         "id": "110",
+         "steam": "Win25GamesAsJester",
+         "icon": "Jester",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "27",
+         "roleName": {
+            "l10n": "GUI_ROLE_27",
+            "text": "Jester"
+         }
+      },
+      {
+         "id": "111",
+         "steam": "Win1GameAsSerialKiller",
+         "icon": "SerialKiller",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "28",
+         "roleName": {
+            "l10n": "GUI_ROLE_28",
+            "text": "Serial Killer"
+         }
+      },
+      {
+         "id": "112",
+         "steam": "Win5GamesAsSerialKiller",
+         "icon": "SerialKiller",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "28",
+         "roleName": {
+            "l10n": "GUI_ROLE_28",
+            "text": "Serial Killer"
+         }
+      },
+      {
+         "id": "113",
+         "steam": "Win10GamesAsSerialKiller",
+         "icon": "SerialKiller",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "28",
+         "roleName": {
+            "l10n": "GUI_ROLE_28",
+            "text": "Serial Killer"
+         }
+      },
+      {
+         "id": "114",
+         "steam": "Win25GamesAsSerialKiller",
+         "icon": "SerialKiller",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "28",
+         "roleName": {
+            "l10n": "GUI_ROLE_28",
+            "text": "Serial Killer"
+         }
+      },
+      {
+         "id": "115",
+         "steam": "Win1GameAsSurvivor",
+         "icon": "Survivor",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "29",
+         "roleName": {
+            "l10n": "GUI_ROLE_29",
+            "text": "Survivor"
+         }
+      },
+      {
+         "id": "116",
+         "steam": "Win5GamesAsSurvivor",
+         "icon": "Survivor",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "29",
+         "roleName": {
+            "l10n": "GUI_ROLE_29",
+            "text": "Survivor"
+         }
+      },
+      {
+         "id": "117",
+         "steam": "Win10GamesAsSurvivor",
+         "icon": "Survivor",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "29",
+         "roleName": {
+            "l10n": "GUI_ROLE_29",
+            "text": "Survivor"
+         }
+      },
+      {
+         "id": "118",
+         "steam": "Win25GamesAsSurvivor",
+         "icon": "Survivor",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "29",
+         "roleName": {
+            "l10n": "GUI_ROLE_29",
+            "text": "Survivor"
+         }
+      },
+      {
+         "id": "119",
+         "steam": "Win1GameAsWitch",
+         "icon": "Witch",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "32",
+         "roleName": {
+            "l10n": "GUI_ROLE_32",
+            "text": "Witch"
+         }
+      },
+      {
+         "id": "120",
+         "steam": "Win5GamesAsWitch",
+         "icon": "Witch",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "32",
+         "roleName": {
+            "l10n": "GUI_ROLE_32",
+            "text": "Witch"
+         }
+      },
+      {
+         "id": "121",
+         "steam": "Win10GamesAsWitch",
+         "icon": "Witch",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "32",
+         "roleName": {
+            "l10n": "GUI_ROLE_32",
+            "text": "Witch"
+         }
+      },
+      {
+         "id": "122",
+         "steam": "Win25GamesAsWitch",
+         "icon": "Witch",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "32",
+         "roleName": {
+            "l10n": "GUI_ROLE_32",
+            "text": "Witch"
+         }
+      },
+      {
+         "id": "123",
+         "steam": "ProtectSomeone",
+         "icon": "Bodyguard",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "0",
+         "roleName": {
+            "l10n": "GUI_ROLE_0",
+            "text": "Bodyguard"
+         }
+      },
+      {
+         "id": "124",
+         "steam": "BulletproofVest",
+         "icon": "Bodyguard",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "0",
+         "roleName": {
+            "l10n": "GUI_ROLE_0",
+            "text": "Bodyguard"
+         }
+      },
+      {
+         "id": "125",
+         "steam": "KillGodfather",
+         "icon": "Bodyguard",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "0",
+         "roleName": {
+            "l10n": "GUI_ROLE_0",
+            "text": "Bodyguard"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "126",
+         "steam": "HealSomeone",
+         "icon": "Doctor",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "1",
+         "roleName": {
+            "l10n": "GUI_ROLE_1",
+            "text": "Doctor"
+         }
+      },
+      {
+         "id": "127",
+         "steam": "Heal3People",
+         "icon": "Doctor",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "1",
+         "roleName": {
+            "l10n": "GUI_ROLE_1",
+            "text": "Doctor"
+         }
+      },
+      {
+         "id": "128",
+         "steam": "HealYourself",
+         "icon": "Doctor",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "1",
+         "roleName": {
+            "l10n": "GUI_ROLE_1",
+            "text": "Doctor"
+         }
+      },
+      {
+         "id": "129",
+         "steam": "RoleBlockSomeone",
+         "icon": "Escort",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "2",
+         "roleName": {
+            "l10n": "GUI_ROLE_2",
+            "text": "Escort"
+         }
+      },
+      {
+         "id": "130",
+         "steam": "VisitSerialKiller",
+         "icon": "Escort",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "2",
+         "roleName": {
+            "l10n": "GUI_ROLE_2",
+            "text": "Escort"
+         }
+      },
+      {
+         "id": "131",
+         "steam": "RoleBlockYourself",
+         "icon": "Escort",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "2",
+         "roleName": {
+            "l10n": "GUI_ROLE_2",
+            "text": "Escort"
+         }
+      },
+      {
+         "id": "132",
+         "steam": "InvestigateSomeone",
+         "icon": "Investigator",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "3",
+         "roleName": {
+            "l10n": "GUI_ROLE_3",
+            "text": "Investigator"
+         }
+      },
+      {
+         "id": "133",
+         "steam": "InvestigateYourself",
+         "icon": "Investigator",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "3",
+         "roleName": {
+            "l10n": "GUI_ROLE_3",
+            "text": "Investigator"
+         }
+      },
+      {
+         "id": "134",
+         "steam": "ExecuteSomeone",
+         "icon": "Jailor",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "4",
+         "roleName": {
+            "l10n": "GUI_ROLE_4",
+            "text": "Jailor"
+         }
+      },
+      {
+         "id": "135",
+         "steam": "Execute3nontown",
+         "icon": "Jailor",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "4",
+         "roleName": {
+            "l10n": "GUI_ROLE_4",
+            "text": "Jailor"
+         }
+      },
+      {
+         "id": "136",
+         "steam": "JailedSerialKiller",
+         "icon": "Jailor",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "4",
+         "roleName": {
+            "l10n": "GUI_ROLE_4",
+            "text": "Jailor"
+         }
+      },
+      {
+         "id": "137",
+         "steam": "WatchSomeone",
+         "icon": "Lookout",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "5",
+         "roleName": {
+            "l10n": "GUI_ROLE_5",
+            "text": "Lookout"
+         }
+      },
+      {
+         "id": "138",
+         "steam": "5PeopleVisitYourTarget",
+         "icon": "Lookout",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "5",
+         "roleName": {
+            "l10n": "GUI_ROLE_5",
+            "text": "Lookout"
+         }
+      },
+      {
+         "id": "139",
+         "steam": "WinWithoutReveal",
+         "icon": "Mayor",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "6",
+         "roleName": {
+            "l10n": "GUI_ROLE_6",
+            "text": "Mayor"
+         }
+      },
+      {
+         "id": "140",
+         "steam": "RevealDay1",
+         "icon": "Mayor",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "6",
+         "roleName": {
+            "l10n": "GUI_ROLE_6",
+            "text": "Mayor"
+         }
+      },
+      {
+         "id": "141",
+         "steam": "InnocentNoReveal",
+         "icon": "Mayor",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "6",
+         "roleName": {
+            "l10n": "GUI_ROLE_6",
+            "text": "Mayor"
+         }
+      },
+      {
+         "id": "142",
+         "steam": "TalkToArsonist",
+         "icon": "Medium",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "7",
+         "roleName": {
+            "l10n": "GUI_ROLE_7",
+            "text": "Medium"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "143",
+         "steam": "TalkToGodfather",
+         "icon": "Medium",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "7",
+         "roleName": {
+            "l10n": "GUI_ROLE_7",
+            "text": "Medium"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "144",
+         "steam": "TalkToSerialKiller",
+         "icon": "Medium",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "7",
+         "roleName": {
+            "l10n": "GUI_ROLE_7",
+            "text": "Medium"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "145",
+         "steam": "NotSuspicious",
+         "icon": "Sheriff",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "9",
+         "roleName": {
+            "l10n": "GUI_ROLE_9",
+            "text": "Sheriff"
+         }
+      },
+      {
+         "id": "146",
+         "steam": "FindMafia",
+         "icon": "Sheriff",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "9",
+         "roleName": {
+            "l10n": "GUI_ROLE_9",
+            "text": "Sheriff"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "147",
+         "steam": "FindSerialKiller",
+         "icon": "Sheriff",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "9",
+         "roleName": {
+            "l10n": "GUI_ROLE_9",
+            "text": "Sheriff"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "148",
+         "steam": "ListenToWhisper",
+         "icon": "Spy",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "10",
+         "roleName": {
+            "l10n": "GUI_ROLE_10",
+            "text": "Spy"
+         }
+      },
+      {
+         "id": "149",
+         "steam": "SeeMafiaTargetYou",
+         "icon": "Spy",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "10",
+         "roleName": {
+            "l10n": "GUI_ROLE_10",
+            "text": "Spy"
+         }
+      },
+      {
+         "id": "150",
+         "steam": "4MafiaVisitPeople",
+         "icon": "Spy",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "10",
+         "roleName": {
+            "l10n": "GUI_ROLE_10",
+            "text": "Spy"
+         }
+      },
+      {
+         "id": "151",
+         "steam": "TransportYourself",
+         "icon": "Transporter",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "11",
+         "roleName": {
+            "l10n": "GUI_ROLE_11",
+            "text": "Transporter"
+         }
+      },
+      {
+         "id": "152",
+         "steam": "MakeSomeoneAttackThemself",
+         "icon": "Transporter",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "11",
+         "roleName": {
+            "l10n": "GUI_ROLE_11",
+            "text": "Transporter"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "153",
+         "steam": "Shoot3Nontown",
+         "icon": "Vigilante",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "14",
+         "roleName": {
+            "l10n": "GUI_ROLE_14",
+            "text": "Vigilante"
+         }
+      },
+      {
+         "id": "154",
+         "steam": "ShootYourself",
+         "icon": "Vigilante",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "14",
+         "roleName": {
+            "l10n": "GUI_ROLE_14",
+            "text": "Vigilante"
+         }
+      },
+      {
+         "id": "155",
+         "steam": "Shoot3NightImmune",
+         "icon": "Vigilante",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "14",
+         "roleName": {
+            "l10n": "GUI_ROLE_14",
+            "text": "Vigilante"
+         }
+      },
+      {
+         "id": "156",
+         "steam": "ResurrectDoctor",
+         "icon": "Retributionist",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "8",
+         "roleName": {
+            "l10n": "GUI_ROLE_8",
+            "text": "Retributionist"
+         }
+      },
+      {
+         "id": "157",
+         "steam": "ResurrectSheriff",
+         "icon": "Retributionist",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "8",
+         "roleName": {
+            "l10n": "GUI_ROLE_8",
+            "text": "Retributionist"
+         }
+      },
+      {
+         "id": "158",
+         "steam": "ResurrectJailor",
+         "icon": "Retributionist",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "8",
+         "roleName": {
+            "l10n": "GUI_ROLE_8",
+            "text": "Retributionist"
+         }
+      },
+      {
+         "id": "159",
+         "steam": "DontKillTownMembers",
+         "icon": "Veteran",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "13",
+         "roleName": {
+            "l10n": "GUI_ROLE_13",
+            "text": "Veteran"
+         }
+      },
+      {
+         "id": "160",
+         "steam": "Kill3People1Night",
+         "icon": "Veteran",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "13",
+         "roleName": {
+            "l10n": "GUI_ROLE_13",
+            "text": "Veteran"
+         }
+      },
+      {
+         "id": "161",
+         "steam": "DontGoOnAlert",
+         "icon": "Veteran",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "13",
+         "roleName": {
+            "l10n": "GUI_ROLE_13",
+            "text": "Veteran"
+         }
+      },
+      {
+         "id": "162",
+         "steam": "BlackmailMafia",
+         "icon": "Blackmailer",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "15",
+         "roleName": {
+            "l10n": "GUI_ROLE_15",
+            "text": "Blackmailer"
+         }
+      },
+      {
+         "id": "163",
+         "steam": "BlackmailYourself",
+         "icon": "Blackmailer",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "15",
+         "roleName": {
+            "l10n": "GUI_ROLE_15",
+            "text": "Blackmailer"
+         }
+      },
+      {
+         "id": "164",
+         "steam": "Blackmail3Times",
+         "icon": "Blackmailer",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "15",
+         "roleName": {
+            "l10n": "GUI_ROLE_15",
+            "text": "Blackmailer"
+         }
+      },
+      {
+         "id": "165",
+         "steam": "FindASheriff",
+         "icon": "Consigliere",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "16",
+         "roleName": {
+            "l10n": "GUI_ROLE_16",
+            "text": "Consigliere"
+         }
+      },
+      {
+         "id": "166",
+         "steam": "FindAGodfather",
+         "icon": "Consigliere",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "16",
+         "roleName": {
+            "l10n": "GUI_ROLE_16",
+            "text": "Consigliere"
+         }
+      },
+      {
+         "id": "167",
+         "steam": "FindAVeteran",
+         "icon": "Consigliere",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "16",
+         "roleName": {
+            "l10n": "GUI_ROLE_16",
+            "text": "Consigliere"
+         }
+      },
+      {
+         "id": "168",
+         "steam": "DieToSerialKiller",
+         "icon": "Consort",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "17",
+         "roleName": {
+            "l10n": "GUI_ROLE_17",
+            "text": "Consort"
+         }
+      },
+      {
+         "id": "169",
+         "steam": "ConsortRoleblockYourself",
+         "icon": "Consort",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "17",
+         "roleName": {
+            "l10n": "GUI_ROLE_17",
+            "text": "Consort"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "170",
+         "steam": "RoleblockGodfather",
+         "icon": "Consort",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "17",
+         "roleName": {
+            "l10n": "GUI_ROLE_17",
+            "text": "Consort"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "171",
+         "steam": "Disguise3Times",
+         "icon": "Disguiser",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "18",
+         "roleName": {
+            "l10n": "GUI_ROLE_18",
+            "text": "Disguiser"
+         }
+      },
+      {
+         "id": "172",
+         "steam": "WinWithoutDisguise",
+         "icon": "Disguiser",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "18",
+         "roleName": {
+            "l10n": "GUI_ROLE_18",
+            "text": "Disguiser"
+         }
+      },
+      {
+         "id": "173",
+         "steam": "FrameMafia",
+         "icon": "Framer",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "20",
+         "roleName": {
+            "l10n": "GUI_ROLE_20",
+            "text": "Framer"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "174",
+         "steam": "FrameYourself",
+         "icon": "Framer",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "20",
+         "roleName": {
+            "l10n": "GUI_ROLE_20",
+            "text": "Framer"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "175",
+         "steam": "WinWithoutDying",
+         "icon": "Godfather",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "21",
+         "roleName": {
+            "l10n": "GUI_ROLE_21",
+            "text": "Godfather"
+         }
+      },
+      {
+         "id": "176",
+         "steam": "WinGameWithoutCleaning",
+         "icon": "Janitor",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "22",
+         "roleName": {
+            "l10n": "GUI_ROLE_22",
+            "text": "Janitor"
+         }
+      },
+      {
+         "id": "177",
+         "steam": "CleanYourOwnBody",
+         "icon": "Janitor",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "22",
+         "roleName": {
+            "l10n": "GUI_ROLE_22",
+            "text": "Janitor"
+         }
+      },
+      {
+         "id": "178",
+         "steam": "PromotedToGodfather",
+         "icon": "Mafioso",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "23",
+         "roleName": {
+            "l10n": "GUI_ROLE_23",
+            "text": "Mafioso"
+         }
+      },
+      {
+         "id": "179",
+         "steam": "WinWithoutPromotion",
+         "icon": "Mafioso",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "23",
+         "roleName": {
+            "l10n": "GUI_ROLE_23",
+            "text": "Mafioso"
+         }
+      },
+      {
+         "id": "180",
+         "steam": "RememberYouWereAmnesiac",
+         "icon": "Amnesiac",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "24",
+         "roleName": {
+            "l10n": "GUI_ROLE_24",
+            "text": "Amnesiac"
+         }
+      },
+      {
+         "id": "181",
+         "steam": "RememberYouWereSurvivor",
+         "icon": "Amnesiac",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "24",
+         "roleName": {
+            "l10n": "GUI_ROLE_24",
+            "text": "Amnesiac"
+         }
+      },
+      {
+         "id": "182",
+         "steam": "RememberYouWereMafia",
+         "icon": "Amnesiac",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "24",
+         "roleName": {
+            "l10n": "GUI_ROLE_24",
+            "text": "Amnesiac"
+         }
+      },
+      {
+         "id": "183",
+         "steam": "IgniteYourself",
+         "icon": "Arsonist",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "25",
+         "roleName": {
+            "l10n": "GUI_ROLE_25",
+            "text": "Arsonist"
+         }
+      },
+      {
+         "id": "184",
+         "steam": "Ignite5People",
+         "icon": "Arsonist",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "25",
+         "roleName": {
+            "l10n": "GUI_ROLE_25",
+            "text": "Arsonist"
+         }
+      },
+      {
+         "id": "185",
+         "steam": "IgniteGfAndSk",
+         "icon": "Arsonist",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "25",
+         "roleName": {
+            "l10n": "GUI_ROLE_25",
+            "text": "Arsonist"
+         }
+      },
+      {
+         "id": "186",
+         "steam": "TargetLynchDay2",
+         "icon": "Executioner",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "26",
+         "roleName": {
+            "l10n": "GUI_ROLE_26",
+            "text": "Executioner"
+         }
+      },
+      {
+         "id": "187",
+         "steam": "Attacked5Times",
+         "icon": "Executioner",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "26",
+         "roleName": {
+            "l10n": "GUI_ROLE_26",
+            "text": "Executioner"
+         }
+      },
+      {
+         "id": "188",
+         "steam": "LynchedTwice",
+         "icon": "Executioner",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "26",
+         "roleName": {
+            "l10n": "GUI_ROLE_26",
+            "text": "Executioner"
+         }
+      },
+      {
+         "id": "189",
+         "steam": "HauntGodfather",
+         "icon": "Jester",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "27",
+         "roleName": {
+            "l10n": "GUI_ROLE_27",
+            "text": "Jester"
+         }
+      },
+      {
+         "id": "190",
+         "steam": "HauntSerialKiller",
+         "icon": "Jester",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "27",
+         "roleName": {
+            "l10n": "GUI_ROLE_27",
+            "text": "Jester"
+         }
+      },
+      {
+         "id": "191",
+         "steam": "HauntArsonist",
+         "icon": "Jester",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "27",
+         "roleName": {
+            "l10n": "GUI_ROLE_27",
+            "text": "Jester"
+         }
+      },
+      {
+         "id": "192",
+         "steam": "KillJailor",
+         "icon": "SerialKiller",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "28",
+         "roleName": {
+            "l10n": "GUI_ROLE_28",
+            "text": "Serial Killer"
+         }
+      },
+      {
+         "id": "193",
+         "steam": "Kill5People",
+         "icon": "SerialKiller",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "28",
+         "roleName": {
+            "l10n": "GUI_ROLE_28",
+            "text": "Serial Killer"
+         }
+      },
+      {
+         "id": "194",
+         "steam": "WinWithAnotherSerialKiller",
+         "icon": "SerialKiller",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "28",
+         "roleName": {
+            "l10n": "GUI_ROLE_28",
+            "text": "Serial Killer"
+         }
+      },
+      {
+         "id": "195",
+         "steam": "WinWithoutVest",
+         "icon": "Survivor",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "29",
+         "roleName": {
+            "l10n": "GUI_ROLE_29",
+            "text": "Survivor"
+         }
+      },
+      {
+         "id": "196",
+         "steam": "HaveVestSaveYou",
+         "icon": "Survivor",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "29",
+         "roleName": {
+            "l10n": "GUI_ROLE_29",
+            "text": "Survivor"
+         }
+      },
+      {
+         "id": "197",
+         "steam": "WinWithSerialKiller",
+         "icon": "Survivor",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "29",
+         "roleName": {
+            "l10n": "GUI_ROLE_29",
+            "text": "Survivor"
+         }
+      },
+      {
+         "id": "198",
+         "steam": "MakeVigilanteShootTown",
+         "icon": "Witch",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "32",
+         "roleName": {
+            "l10n": "GUI_ROLE_32",
+            "text": "Witch"
+         }
+      },
+      {
+         "id": "199",
+         "steam": "Make2TownTargetVeteran",
+         "icon": "Witch",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "32",
+         "roleName": {
+            "l10n": "GUI_ROLE_32",
+            "text": "Witch"
+         }
+      },
+      {
+         "id": "200",
+         "steam": "ControlSerialKiller",
+         "icon": "Witch",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "32",
+         "roleName": {
+            "l10n": "GUI_ROLE_32",
+            "text": "Witch"
+         }
+      },
+      {
+         "id": "201",
+         "steam": "WinAllTownAlive",
+         "icon": "SalemIcon",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "-1"
+      },
+      {
+         "id": "202",
+         "steam": "WinAllMafiaAlive",
+         "icon": "SalemIcon",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "-1"
+      },
+      {
+         "id": "203",
+         "steam": "TieVote",
+         "icon": "SalemIcon",
+         "points": "20FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "204",
+         "steam": "GameLast10Days",
+         "icon": "SalemIcon",
+         "points": "20FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "205",
+         "steam": "WinWithHalfTownRoles",
+         "icon": "SalemIcon",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "-1"
+      },
+      {
+         "id": "206",
+         "steam": "WinWithAllTownRoles",
+         "icon": "SalemIcon",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "-1"
+      },
+      {
+         "id": "207",
+         "steam": "WinWithHalfMafiaRoles",
+         "icon": "SalemIcon",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "-1"
+      },
+      {
+         "id": "208",
+         "steam": "WinWithAllMafiaRoles",
+         "icon": "SalemIcon",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "-1"
+      },
+      {
+         "id": "209",
+         "steam": "WinWithHalfNeutralRoles",
+         "icon": "SalemIcon",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "-1"
+      },
+      {
+         "id": "210",
+         "steam": "WinWithAllNeutralRoles",
+         "icon": "SalemIcon",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "-1"
+      },
+      {
+         "id": "211",
+         "steam": "WinWithHalfOfRoles",
+         "icon": "SalemIcon",
+         "points": "100FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "212",
+         "steam": "WinWithAllRoles",
+         "icon": "SalemIcon",
+         "points": "100FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "213",
+         "steam": "DailyWinBonus",
+         "icon": "SalemIcon",
+         "points": "100FreePoints",
+         "genre": "No Genre",
+         "role": "-1"
+      },
+      {
+         "id": "214",
+         "icon": "SalemIcon",
+         "points": "100FreePoints",
+         "genre": "General No Show",
+         "role": "-1"
+      },
+      {
+         "id": "215",
+         "steam": "Win1GameWithWerewolf",
+         "icon": "Werewolf",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "31",
+         "roleName": {
+            "l10n": "GUI_ROLE_31",
+            "text": "Werewolf"
+         }
+      },
+      {
+         "id": "216",
+         "steam": "Win5GamesWerewolf",
+         "icon": "Werewolf",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "31",
+         "roleName": {
+            "l10n": "GUI_ROLE_31",
+            "text": "Werewolf"
+         }
+      },
+      {
+         "id": "217",
+         "steam": "Win10GamesWerewolf",
+         "icon": "Werewolf",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "31",
+         "roleName": {
+            "l10n": "GUI_ROLE_31",
+            "text": "Werewolf"
+         }
+      },
+      {
+         "id": "218",
+         "steam": "Win25GamesWerewolf",
+         "icon": "Werewolf",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "31",
+         "roleName": {
+            "l10n": "GUI_ROLE_31",
+            "text": "Werewolf"
+         }
+      },
+      {
+         "id": "219",
+         "steam": "Attack5Peeople1Night",
+         "icon": "Werewolf",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "31",
+         "roleName": {
+            "l10n": "GUI_ROLE_31",
+            "text": "Werewolf"
+         }
+      },
+      {
+         "id": "220",
+         "steam": "KillGfArsonistSk",
+         "icon": "Werewolf",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "31",
+         "roleName": {
+            "l10n": "GUI_ROLE_31",
+            "text": "Werewolf"
+         }
+      },
+      {
+         "id": "221",
+         "steam": "WerewolfKillJailor",
+         "icon": "Werewolf",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "31",
+         "roleName": {
+            "l10n": "GUI_ROLE_31",
+            "text": "Werewolf"
+         }
+      },
+      {
+         "id": "222",
+         "steam": "SuccessfullyForgeAWill",
+         "icon": "Forger",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "19",
+         "roleName": {
+            "l10n": "GUI_ROLE_19",
+            "text": "Forger"
+         }
+      },
+      {
+         "id": "223",
+         "steam": "ForgeWillOnInvestigator",
+         "icon": "Forger",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "19",
+         "roleName": {
+            "l10n": "GUI_ROLE_19",
+            "text": "Forger"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "224",
+         "steam": "ForgeWillOnYourself",
+         "icon": "Forger",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "19",
+         "roleName": {
+            "l10n": "GUI_ROLE_19",
+            "text": "Forger"
+         }
+      },
+      {
+         "id": "225",
+         "steam": "ForgeWillOnMafiaMember",
+         "icon": "Forger",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "19",
+         "roleName": {
+            "l10n": "GUI_ROLE_19",
+            "text": "Forger"
+         }
+      },
+      {
+         "id": "226",
+         "steam": "Win1GameWithForger",
+         "icon": "Forger",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "19",
+         "roleName": {
+            "l10n": "GUI_ROLE_19",
+            "text": "Forger"
+         }
+      },
+      {
+         "id": "227",
+         "steam": "Win5GamesWithForger",
+         "icon": "Forger",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "19",
+         "roleName": {
+            "l10n": "GUI_ROLE_19",
+            "text": "Forger"
+         }
+      },
+      {
+         "id": "228",
+         "steam": "Win10GamesWithForger",
+         "icon": "Forger",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "19",
+         "roleName": {
+            "l10n": "GUI_ROLE_19",
+            "text": "Forger"
+         }
+      },
+      {
+         "id": "229",
+         "steam": "Win25GamesWithForger",
+         "icon": "Forger",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "19",
+         "roleName": {
+            "l10n": "GUI_ROLE_19",
+            "text": "Forger"
+         }
+      },
+      {
+         "id": "230",
+         "steam": "Win1GameAsVampireHunter",
+         "icon": "VampireHunter",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "12",
+         "roleName": {
+            "l10n": "GUI_ROLE_12",
+            "text": "Vampire Hunter"
+         }
+      },
+      {
+         "id": "231",
+         "steam": "Win5GamesAsVampireHunter",
+         "icon": "VampireHunter",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "12",
+         "roleName": {
+            "l10n": "GUI_ROLE_12",
+            "text": "Vampire Hunter"
+         }
+      },
+      {
+         "id": "232",
+         "steam": "Win10GamesAsVampireHunter",
+         "icon": "VampireHunter",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "12",
+         "roleName": {
+            "l10n": "GUI_ROLE_12",
+            "text": "Vampire Hunter"
+         }
+      },
+      {
+         "id": "233",
+         "steam": "Win25GamesAsVampireHunter",
+         "icon": "VampireHunter",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "12",
+         "roleName": {
+            "l10n": "GUI_ROLE_12",
+            "text": "Vampire Hunter"
+         }
+      },
+      {
+         "id": "234",
+         "steam": "Win1GameAsVampire",
+         "icon": "Vampire",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "30",
+         "roleName": {
+            "l10n": "GUI_ROLE_30",
+            "text": "Vampire"
+         }
+      },
+      {
+         "id": "235",
+         "steam": "Win5GamesAsVampire",
+         "icon": "Vampire",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "30",
+         "roleName": {
+            "l10n": "GUI_ROLE_30",
+            "text": "Vampire"
+         }
+      },
+      {
+         "id": "236",
+         "steam": "Win10GamesAsVampire",
+         "icon": "Vampire",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "30",
+         "roleName": {
+            "l10n": "GUI_ROLE_30",
+            "text": "Vampire"
+         }
+      },
+      {
+         "id": "237",
+         "steam": "Win25GamesAsVampire",
+         "icon": "Vampire",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "30",
+         "roleName": {
+            "l10n": "GUI_ROLE_30",
+            "text": "Vampire"
+         }
+      },
+      {
+         "id": "238",
+         "steam": "StakeAVampire",
+         "icon": "VampireHunter",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "12",
+         "roleName": {
+            "l10n": "GUI_ROLE_12",
+            "text": "Vampire Hunter"
+         }
+      },
+      {
+         "id": "239",
+         "steam": "Kill3Vampires1Game",
+         "icon": "VampireHunter",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "12",
+         "roleName": {
+            "l10n": "GUI_ROLE_12",
+            "text": "Vampire Hunter"
+         }
+      },
+      {
+         "id": "240",
+         "steam": "Kill2Vampires1Night",
+         "icon": "VampireHunter",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "12",
+         "roleName": {
+            "l10n": "GUI_ROLE_12",
+            "text": "Vampire Hunter"
+         }
+      },
+      {
+         "id": "241",
+         "steam": "ConvertSomeoneToVampire",
+         "icon": "Vampire",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "30",
+         "roleName": {
+            "l10n": "GUI_ROLE_30",
+            "text": "Vampire"
+         }
+      },
+      {
+         "id": "242",
+         "steam": "Convert3Vampires1Game",
+         "icon": "Vampire",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "30",
+         "roleName": {
+            "l10n": "GUI_ROLE_30",
+            "text": "Vampire"
+         }
+      },
+      {
+         "id": "243",
+         "steam": "WinWithoutVampireDeath",
+         "icon": "Vampire",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "30",
+         "roleName": {
+            "l10n": "GUI_ROLE_30",
+            "text": "Vampire"
+         }
+      },
+      {
+         "id": "244",
+         "steam": "WinAllCovenRoles",
+         "icon": "CovenIcon",
+         "points": "100FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "245",
+         "steam": "WinAllCovenTownRoles",
+         "icon": "CovenIcon",
+         "points": "100FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "246",
+         "steam": "WinAllCovenMafiaRoles",
+         "icon": "CovenIcon",
+         "points": "100FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "247",
+         "steam": "WinAllCovenWitchRoles",
+         "icon": "CovenIcon",
+         "points": "100FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "248",
+         "steam": "WinAllCovenNeutralRoles",
+         "icon": "CovenIcon",
+         "points": "100FreePoints",
+         "genre": "General",
+         "role": "-1"
+      },
+      {
+         "id": "249",
+         "steam": "Win1GameAsAmbusher",
+         "icon": "Ambusher",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "51",
+         "roleName": {
+            "l10n": "GUI_ROLE_51",
+            "text": "Ambusher"
+         }
+      },
+      {
+         "id": "250",
+         "steam": "Win5GamesAsAmbusher",
+         "icon": "Ambusher",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "51",
+         "roleName": {
+            "l10n": "GUI_ROLE_51",
+            "text": "Ambusher"
+         }
+      },
+      {
+         "id": "251",
+         "steam": "Win10GamesAsAmbusher",
+         "icon": "Ambusher",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "51",
+         "roleName": {
+            "l10n": "GUI_ROLE_51",
+            "text": "Ambusher"
+         }
+      },
+      {
+         "id": "252",
+         "steam": "Win25GamesAsAmbusher",
+         "icon": "Ambusher",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "51",
+         "roleName": {
+            "l10n": "GUI_ROLE_51",
+            "text": "Ambusher"
+         }
+      },
+      {
+         "id": "253",
+         "steam": "Win1GameAsCrusader",
+         "icon": "Crusader",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "46",
+         "roleName": {
+            "l10n": "GUI_ROLE_46",
+            "text": "Crusader"
+         }
+      },
+      {
+         "id": "254",
+         "steam": "Win5GamesAsCrusader",
+         "icon": "Crusader",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "46",
+         "roleName": {
+            "l10n": "GUI_ROLE_46",
+            "text": "Crusader"
+         }
+      },
+      {
+         "id": "255",
+         "steam": "Win10GamesAsCrusader",
+         "icon": "Crusader",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "46",
+         "roleName": {
+            "l10n": "GUI_ROLE_46",
+            "text": "Crusader"
+         }
+      },
+      {
+         "id": "256",
+         "steam": "Win25GamesAsCrusader",
+         "icon": "Crusader",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "46",
+         "roleName": {
+            "l10n": "GUI_ROLE_46",
+            "text": "Crusader"
+         }
+      },
+      {
+         "id": "257",
+         "steam": "Win1GameAsGuardianAngel",
+         "icon": "GuardianAngel",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "54",
+         "roleName": {
+            "l10n": "GUI_ROLE_54",
+            "text": "Guardian Angel"
+         }
+      },
+      {
+         "id": "258",
+         "steam": "Win5GamesAsGuardianAngel",
+         "icon": "GuardianAngel",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "54",
+         "roleName": {
+            "l10n": "GUI_ROLE_54",
+            "text": "Guardian Angel"
+         }
+      },
+      {
+         "id": "259",
+         "steam": "Win10GamesAsGuardianAngel",
+         "icon": "GuardianAngel",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "54",
+         "roleName": {
+            "l10n": "GUI_ROLE_54",
+            "text": "Guardian Angel"
+         }
+      },
+      {
+         "id": "260",
+         "steam": "Win25GamesAsGuardianAngel",
+         "icon": "GuardianAngel",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "54",
+         "roleName": {
+            "l10n": "GUI_ROLE_54",
+            "text": "Guardian Angel"
+         }
+      },
+      {
+         "id": "261",
+         "steam": "Win1GameAsHexMaster",
+         "icon": "HexMaster",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "58",
+         "roleName": {
+            "l10n": "GUI_ROLE_58",
+            "text": "Hex Master"
+         }
+      },
+      {
+         "id": "262",
+         "steam": "Win5GamesAsHexMaster",
+         "icon": "HexMaster",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "58",
+         "roleName": {
+            "l10n": "GUI_ROLE_58",
+            "text": "Hex Master"
+         }
+      },
+      {
+         "id": "263",
+         "steam": "Win10GamesAsHexMaster",
+         "icon": "HexMaster",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "58",
+         "roleName": {
+            "l10n": "GUI_ROLE_58",
+            "text": "Hex Master"
+         }
+      },
+      {
+         "id": "264",
+         "steam": "Win25GamesAsHexMaster",
+         "icon": "HexMaster",
+         "points": "100FreePoints",
+         "genre": "Coven",
+         "role": "58",
+         "roleName": {
+            "l10n": "GUI_ROLE_58",
+            "text": "Hex Master"
+         }
+      },
+      {
+         "id": "265",
+         "steam": "Win1GameAsJuggernaut",
+         "icon": "Juggernaut",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "53",
+         "roleName": {
+            "l10n": "GUI_ROLE_53",
+            "text": "Juggernaut"
+         }
+      },
+      {
+         "id": "266",
+         "steam": "Win5GamesAsJuggernaut",
+         "icon": "Juggernaut",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "53",
+         "roleName": {
+            "l10n": "GUI_ROLE_53",
+            "text": "Juggernaut"
+         }
+      },
+      {
+         "id": "267",
+         "steam": "Win10GamesAsJuggernaut",
+         "icon": "Juggernaut",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "53",
+         "roleName": {
+            "l10n": "GUI_ROLE_53",
+            "text": "Juggernaut"
+         }
+      },
+      {
+         "id": "268",
+         "steam": "Win25GamesAsJuggernaut",
+         "icon": "Juggernaut",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "53",
+         "roleName": {
+            "l10n": "GUI_ROLE_53",
+            "text": "Juggernaut"
+         }
+      },
+      {
+         "id": "269",
+         "steam": "Win1GameAsCovenLeader",
+         "icon": "CovenLeader",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "56",
+         "roleName": {
+            "l10n": "GUI_ROLE_56",
+            "text": "Coven Leader"
+         }
+      },
+      {
+         "id": "270",
+         "steam": "Win5GamesAsCovenLeader",
+         "icon": "CovenLeader",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "56",
+         "roleName": {
+            "l10n": "GUI_ROLE_56",
+            "text": "Coven Leader"
+         }
+      },
+      {
+         "id": "271",
+         "steam": "Win10GamesAsCovenLeader",
+         "icon": "CovenLeader",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "56",
+         "roleName": {
+            "l10n": "GUI_ROLE_56",
+            "text": "Coven Leader"
+         }
+      },
+      {
+         "id": "272",
+         "steam": "Win25GamesAsCovenLeader",
+         "icon": "CovenLeader",
+         "points": "100FreePoints",
+         "genre": "Coven",
+         "role": "56",
+         "roleName": {
+            "l10n": "GUI_ROLE_56",
+            "text": "Coven Leader"
+         }
+      },
+      {
+         "id": "273",
+         "steam": "Win1GameAsMedusa",
+         "icon": "Medusa",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "61",
+         "roleName": {
+            "l10n": "GUI_ROLE_61",
+            "text": "Medusa"
+         }
+      },
+      {
+         "id": "274",
+         "steam": "Win5GamesAsMedusa",
+         "icon": "Medusa",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "61",
+         "roleName": {
+            "l10n": "GUI_ROLE_61",
+            "text": "Medusa"
+         }
+      },
+      {
+         "id": "275",
+         "steam": "Win10GamesAsMedusa",
+         "icon": "Medusa",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "61",
+         "roleName": {
+            "l10n": "GUI_ROLE_61",
+            "text": "Medusa"
+         }
+      },
+      {
+         "id": "276",
+         "steam": "Win25GamesAsMedusa",
+         "icon": "Medusa",
+         "points": "100FreePoints",
+         "genre": "Coven",
+         "role": "61",
+         "roleName": {
+            "l10n": "GUI_ROLE_61",
+            "text": "Medusa"
+         }
+      },
+      {
+         "id": "277",
+         "steam": "Win1GameAsNecromancer",
+         "icon": "Necromancer",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "59",
+         "roleName": {
+            "l10n": "GUI_ROLE_59",
+            "text": "Necromancer"
+         }
+      },
+      {
+         "id": "278",
+         "steam": "Win5GamesAsNecromancer",
+         "icon": "Necromancer",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "59",
+         "roleName": {
+            "l10n": "GUI_ROLE_59",
+            "text": "Necromancer"
+         }
+      },
+      {
+         "id": "279",
+         "steam": "Win10GamesAsNecromancer",
+         "icon": "Necromancer",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "59",
+         "roleName": {
+            "l10n": "GUI_ROLE_59",
+            "text": "Necromancer"
+         }
+      },
+      {
+         "id": "280",
+         "steam": "Win25GamesAsNecromancer",
+         "icon": "Necromancer",
+         "points": "100FreePoints",
+         "genre": "Coven",
+         "role": "59",
+         "roleName": {
+            "l10n": "GUI_ROLE_59",
+            "text": "Necromancer"
+         }
+      },
+      {
+         "id": "281",
+         "steam": "Win1GameAsPirate",
+         "icon": "Pirate",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "55",
+         "roleName": {
+            "l10n": "GUI_ROLE_55",
+            "text": "Pirate"
+         }
+      },
+      {
+         "id": "282",
+         "steam": "Win5GamesAsPirate",
+         "icon": "Pirate",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "55",
+         "roleName": {
+            "l10n": "GUI_ROLE_55",
+            "text": "Pirate"
+         }
+      },
+      {
+         "id": "283",
+         "steam": "Win10GamesAsPirate",
+         "icon": "Pirate",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "55",
+         "roleName": {
+            "l10n": "GUI_ROLE_55",
+            "text": "Pirate"
+         }
+      },
+      {
+         "id": "284",
+         "steam": "Win25GamesAsPirate",
+         "icon": "Pirate",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "55",
+         "roleName": {
+            "l10n": "GUI_ROLE_55",
+            "text": "Pirate"
+         }
+      },
+      {
+         "id": "285",
+         "steam": "Win1GameAsPlaguebearer",
+         "icon": "Plaguebearer",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "52",
+         "roleName": {
+            "l10n": "GUI_ROLE_52",
+            "text": "Plaguebearer"
+         }
+      },
+      {
+         "id": "286",
+         "steam": "Win5GamesAsPlaguebearer",
+         "icon": "Plaguebearer",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "52",
+         "roleName": {
+            "l10n": "GUI_ROLE_52",
+            "text": "Plaguebearer"
+         }
+      },
+      {
+         "id": "287",
+         "steam": "Win10GamesAsPlaguebearer",
+         "icon": "Plaguebearer",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "52",
+         "roleName": {
+            "l10n": "GUI_ROLE_52",
+            "text": "Plaguebearer"
+         }
+      },
+      {
+         "id": "288",
+         "steam": "Win25GamesAsPlaguebearer",
+         "icon": "Plaguebearer",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "52",
+         "roleName": {
+            "l10n": "GUI_ROLE_52",
+            "text": "Plaguebearer"
+         }
+      },
+      {
+         "id": "289",
+         "steam": "Win1GameAsPotionMaster",
+         "icon": "PotionMaster",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "57",
+         "roleName": {
+            "l10n": "GUI_ROLE_57",
+            "text": "Potion Master"
+         }
+      },
+      {
+         "id": "290",
+         "steam": "Win5GamesAsPotionMaster",
+         "icon": "PotionMaster",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "57",
+         "roleName": {
+            "l10n": "GUI_ROLE_57",
+            "text": "Potion Master"
+         }
+      },
+      {
+         "id": "291",
+         "steam": "Win10GamesAsPotionMaster",
+         "icon": "PotionMaster",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "57",
+         "roleName": {
+            "l10n": "GUI_ROLE_57",
+            "text": "Potion Master"
+         }
+      },
+      {
+         "id": "292",
+         "steam": "Win25GamesAsPotionMaster",
+         "icon": "PotionMaster",
+         "points": "100FreePoints",
+         "genre": "Coven",
+         "role": "57",
+         "roleName": {
+            "l10n": "GUI_ROLE_57",
+            "text": "Potion Master"
+         }
+      },
+      {
+         "id": "293",
+         "steam": "Win1GameAsPoisoner",
+         "icon": "Poisoner",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "60",
+         "roleName": {
+            "l10n": "GUI_ROLE_60",
+            "text": "Poisoner"
+         }
+      },
+      {
+         "id": "294",
+         "steam": "Win5GamesAsPoisoner",
+         "icon": "Poisoner",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "60",
+         "roleName": {
+            "l10n": "GUI_ROLE_60",
+            "text": "Poisoner"
+         }
+      },
+      {
+         "id": "295",
+         "steam": "Win10GamesAsPoisoner",
+         "icon": "Poisoner",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "60",
+         "roleName": {
+            "l10n": "GUI_ROLE_60",
+            "text": "Poisoner"
+         }
+      },
+      {
+         "id": "296",
+         "steam": "Win25GamesAsPoisoner",
+         "icon": "Poisoner",
+         "points": "100FreePoints",
+         "genre": "Coven",
+         "role": "60",
+         "roleName": {
+            "l10n": "GUI_ROLE_60",
+            "text": "Poisoner"
+         }
+      },
+      {
+         "id": "297",
+         "steam": "Win1GameAsPsychic",
+         "icon": "Psychic",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "49",
+         "roleName": {
+            "l10n": "GUI_ROLE_49",
+            "text": "Psychic"
+         }
+      },
+      {
+         "id": "298",
+         "steam": "Win5GamesAsPsychic",
+         "icon": "Psychic",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "49",
+         "roleName": {
+            "l10n": "GUI_ROLE_49",
+            "text": "Psychic"
+         }
+      },
+      {
+         "id": "299",
+         "steam": "Win10GamesAsPsychic",
+         "icon": "Psychic",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "49",
+         "roleName": {
+            "l10n": "GUI_ROLE_49",
+            "text": "Psychic"
+         }
+      },
+      {
+         "id": "300",
+         "steam": "Win25GamesAsPsychic",
+         "icon": "Psychic",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "49",
+         "roleName": {
+            "l10n": "GUI_ROLE_49",
+            "text": "Psychic"
+         }
+      },
+      {
+         "id": "301",
+         "steam": "Win1GameAsTracker",
+         "icon": "Tracker",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "47",
+         "roleName": {
+            "l10n": "GUI_ROLE_47",
+            "text": "Tracker"
+         }
+      },
+      {
+         "id": "302",
+         "steam": "Win5GamesAsTracker",
+         "icon": "Tracker",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "47",
+         "roleName": {
+            "l10n": "GUI_ROLE_47",
+            "text": "Tracker"
+         }
+      },
+      {
+         "id": "303",
+         "steam": "Win10GamesAsTracker",
+         "icon": "Tracker",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "47",
+         "roleName": {
+            "l10n": "GUI_ROLE_47",
+            "text": "Tracker"
+         }
+      },
+      {
+         "id": "304",
+         "steam": "Win25GamesAsTracker",
+         "icon": "Tracker",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "47",
+         "roleName": {
+            "l10n": "GUI_ROLE_47",
+            "text": "Tracker"
+         }
+      },
+      {
+         "id": "305",
+         "steam": "Win1GameAsTrapper",
+         "icon": "Trapper",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "48",
+         "roleName": {
+            "l10n": "GUI_ROLE_48",
+            "text": "Trapper"
+         }
+      },
+      {
+         "id": "306",
+         "steam": "Win5GamesAsTrapper",
+         "icon": "Trapper",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "48",
+         "roleName": {
+            "l10n": "GUI_ROLE_48",
+            "text": "Trapper"
+         }
+      },
+      {
+         "id": "307",
+         "steam": "Win10GamesAsTrapper",
+         "icon": "Trapper",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "48",
+         "roleName": {
+            "l10n": "GUI_ROLE_48",
+            "text": "Trapper"
+         }
+      },
+      {
+         "id": "308",
+         "steam": "Win25GamesAsTrapper",
+         "icon": "Trapper",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "48",
+         "roleName": {
+            "l10n": "GUI_ROLE_48",
+            "text": "Trapper"
+         }
+      },
+      {
+         "id": "309",
+         "steam": "Win1GameAsHypnotist",
+         "icon": "Hypnotist",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "50",
+         "roleName": {
+            "l10n": "GUI_ROLE_50",
+            "text": "Hypnotist"
+         }
+      },
+      {
+         "id": "310",
+         "steam": "Win5GamesAsHypnotist",
+         "icon": "Hypnotist",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "50",
+         "roleName": {
+            "l10n": "GUI_ROLE_50",
+            "text": "Hypnotist"
+         }
+      },
+      {
+         "id": "311",
+         "steam": "Win10GamesAsHypnotist",
+         "icon": "Hypnotist",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "50",
+         "roleName": {
+            "l10n": "GUI_ROLE_50",
+            "text": "Hypnotist"
+         }
+      },
+      {
+         "id": "312",
+         "steam": "Win25GamesAsHypnotist",
+         "icon": "Hypnotist",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "50",
+         "roleName": {
+            "l10n": "GUI_ROLE_50",
+            "text": "Hypnotist"
+         }
+      },
+      {
+         "id": "313",
+         "steam": "CrusaderProtect5People",
+         "icon": "Crusader",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "46",
+         "roleName": {
+            "l10n": "GUI_ROLE_46",
+            "text": "Crusader"
+         }
+      },
+      {
+         "id": "314",
+         "steam": "CrusaderAttack5People",
+         "icon": "Crusader",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "46",
+         "roleName": {
+            "l10n": "GUI_ROLE_46",
+            "text": "Crusader"
+         }
+      },
+      {
+         "id": "315",
+         "steam": "CrusaderAttackPestilence",
+         "icon": "Crusader",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "46",
+         "roleName": {
+            "l10n": "GUI_ROLE_46",
+            "text": "Crusader"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "316",
+         "steam": "TrackerSeeDoubleVisit",
+         "icon": "Tracker",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "47",
+         "roleName": {
+            "l10n": "GUI_ROLE_47",
+            "text": "Tracker"
+         }
+      },
+      {
+         "id": "317",
+         "steam": "TrackerSeeVisitYourself",
+         "icon": "Tracker",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "47",
+         "roleName": {
+            "l10n": "GUI_ROLE_47",
+            "text": "Tracker"
+         }
+      },
+      {
+         "id": "318",
+         "steam": "TrackerTrackSamePerson3Times",
+         "icon": "Tracker",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "47",
+         "roleName": {
+            "l10n": "GUI_ROLE_47",
+            "text": "Tracker"
+         }
+      },
+      {
+         "id": "319",
+         "steam": "TrapperSeePestilence",
+         "icon": "Trapper",
+         "points": "100FreePoints",
+         "genre": "Town",
+         "role": "48",
+         "roleName": {
+            "l10n": "GUI_ROLE_48",
+            "text": "Trapper"
+         }
+      },
+      {
+         "id": "320",
+         "steam": "Trapper3TrapsPlaced",
+         "icon": "Trapper",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "48",
+         "roleName": {
+            "l10n": "GUI_ROLE_48",
+            "text": "Trapper"
+         }
+      },
+      {
+         "id": "321",
+         "steam": "TrapperAttackCovenLeader",
+         "icon": "Trapper",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "48",
+         "roleName": {
+            "l10n": "GUI_ROLE_48",
+            "text": "Trapper"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "322",
+         "steam": "PsychicSee6Visions",
+         "icon": "Psychic",
+         "points": "20FreePoints",
+         "genre": "Town",
+         "role": "49",
+         "roleName": {
+            "l10n": "GUI_ROLE_49",
+            "text": "Psychic"
+         }
+      },
+      {
+         "id": "323",
+         "steam": "PsychicGetRoleblocked3Times",
+         "icon": "Psychic",
+         "points": "40FreePoints",
+         "genre": "Town",
+         "role": "49",
+         "roleName": {
+            "l10n": "GUI_ROLE_49",
+            "text": "Psychic"
+         }
+      },
+      {
+         "id": "324",
+         "steam": "AmbusherAttackDoctor",
+         "icon": "Ambusher",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "51",
+         "roleName": {
+            "l10n": "GUI_ROLE_51",
+            "text": "Ambusher"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "325",
+         "steam": "AmbusherAttackWerewolf",
+         "icon": "Ambusher",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "51",
+         "roleName": {
+            "l10n": "GUI_ROLE_51",
+            "text": "Ambusher"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "326",
+         "steam": "AmbusherAttackPestilence",
+         "icon": "Ambusher",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "51",
+         "roleName": {
+            "l10n": "GUI_ROLE_51",
+            "text": "Ambusher"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "327",
+         "steam": "Hypnotist5NightAbilities",
+         "icon": "Hypnotist",
+         "points": "20FreePoints",
+         "genre": "Mafia",
+         "role": "50",
+         "roleName": {
+            "l10n": "GUI_ROLE_50",
+            "text": "Hypnotist"
+         }
+      },
+      {
+         "id": "328",
+         "steam": "HypnotistTargetMafia",
+         "icon": "Hypnotist",
+         "points": "40FreePoints",
+         "genre": "Mafia",
+         "role": "50",
+         "roleName": {
+            "l10n": "GUI_ROLE_50",
+            "text": "Hypnotist"
+         }
+      },
+      {
+         "id": "329",
+         "steam": "HypnotistTargetSelf",
+         "icon": "Hypnotist",
+         "points": "100FreePoints",
+         "genre": "Mafia",
+         "role": "50",
+         "roleName": {
+            "l10n": "GUI_ROLE_50",
+            "text": "Hypnotist"
+         }
+      },
+      {
+         "id": "330",
+         "steam": "GuardianAngelSaveTarget",
+         "icon": "GuardianAngel",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "54",
+         "roleName": {
+            "l10n": "GUI_ROLE_54",
+            "text": "Guardian Angel"
+         }
+      },
+      {
+         "id": "331",
+         "steam": "GuardianAngelSaveWhileDead",
+         "icon": "GuardianAngel",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "54",
+         "roleName": {
+            "l10n": "GUI_ROLE_54",
+            "text": "Guardian Angel"
+         }
+      },
+      {
+         "id": "332",
+         "steam": "GuardianAngelRemovePoisonAndGas",
+         "icon": "GuardianAngel",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "54",
+         "roleName": {
+            "l10n": "GUI_ROLE_54",
+            "text": "Guardian Angel"
+         }
+      },
+      {
+         "id": "333",
+         "steam": "PirateWin5Duels",
+         "icon": "Pirate",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "55",
+         "roleName": {
+            "l10n": "GUI_ROLE_55",
+            "text": "Pirate"
+         }
+      },
+      {
+         "id": "334",
+         "steam": "PirateWin2DuelsInARow",
+         "icon": "Pirate",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "55",
+         "roleName": {
+            "l10n": "GUI_ROLE_55",
+            "text": "Pirate"
+         }
+      },
+      {
+         "id": "335",
+         "steam": "PirateLose10Duels",
+         "icon": "Pirate",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "55",
+         "roleName": {
+            "l10n": "GUI_ROLE_55",
+            "text": "Pirate"
+         }
+      },
+      {
+         "id": "336",
+         "steam": "PlagueBearerInfectAllByNight4",
+         "icon": "Plaguebearer",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "52",
+         "roleName": {
+            "l10n": "GUI_ROLE_52",
+            "text": "Plaguebearer"
+         }
+      },
+      {
+         "id": "337",
+         "steam": "PlagueBearerBecomePestilence",
+         "icon": "Plaguebearer",
+         "points": "20FreePoints",
+         "genre": "Neutral",
+         "role": "52",
+         "roleName": {
+            "l10n": "GUI_ROLE_52",
+            "text": "Plaguebearer"
+         }
+      },
+      {
+         "id": "338",
+         "steam": "PlagueBearerAttack5People1Night",
+         "icon": "Plaguebearer",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "52",
+         "roleName": {
+            "l10n": "GUI_ROLE_52",
+            "text": "Plaguebearer"
+         }
+      },
+      {
+         "id": "339",
+         "steam": "PlagueBearerExecutedAsPestilence",
+         "icon": "Plaguebearer",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "52",
+         "roleName": {
+            "l10n": "GUI_ROLE_52",
+            "text": "Plaguebearer"
+         }
+      },
+      {
+         "id": "340",
+         "steam": "PlagueBearerAttackedByJuggernautAsPestilence",
+         "icon": "Plaguebearer",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "52",
+         "roleName": {
+            "l10n": "GUI_ROLE_52",
+            "text": "Plaguebearer"
+         }
+      },
+      {
+         "id": "341",
+         "steam": "JuggernautFullyPoweredByNight5",
+         "icon": "Juggernaut",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "53",
+         "roleName": {
+            "l10n": "GUI_ROLE_53",
+            "text": "Juggernaut"
+         }
+      },
+      {
+         "id": "342",
+         "steam": "JuggernautKill5In1Night",
+         "icon": "Juggernaut",
+         "points": "100FreePoints",
+         "genre": "Neutral",
+         "role": "53",
+         "roleName": {
+            "l10n": "GUI_ROLE_53",
+            "text": "Juggernaut"
+         }
+      },
+      {
+         "id": "343",
+         "steam": "JuggernautAttackSomeoneInJail",
+         "icon": "Juggernaut",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "53",
+         "roleName": {
+            "l10n": "GUI_ROLE_53",
+            "text": "Juggernaut"
+         }
+      },
+      {
+         "id": "344",
+         "steam": "HexMasterKill5People",
+         "icon": "HexMaster",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "58",
+         "roleName": {
+            "l10n": "GUI_ROLE_58",
+            "text": "Hex Master"
+         }
+      },
+      {
+         "id": "345",
+         "steam": "HexMasterHexCoven",
+         "icon": "HexMaster",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "58",
+         "roleName": {
+            "l10n": "GUI_ROLE_58",
+            "text": "Hex Master"
+         }
+      },
+      {
+         "id": "346",
+         "steam": "HexMasterHexPestilence",
+         "icon": "HexMaster",
+         "points": "100FreePoints",
+         "genre": "Coven",
+         "role": "58",
+         "roleName": {
+            "l10n": "GUI_ROLE_58",
+            "text": "Hex Master"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "347",
+         "steam": "PoisonerPoison5People",
+         "icon": "Poisoner",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "60",
+         "roleName": {
+            "l10n": "GUI_ROLE_60",
+            "text": "Poisoner"
+         }
+      },
+      {
+         "id": "348",
+         "steam": "PoisonerKillJailedTarget",
+         "icon": "Poisoner",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "60",
+         "roleName": {
+            "l10n": "GUI_ROLE_60",
+            "text": "Poisoner"
+         }
+      },
+      {
+         "id": "349",
+         "steam": "PoisonerKillVeteranOnAlert",
+         "icon": "Poisoner",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "60",
+         "roleName": {
+            "l10n": "GUI_ROLE_60",
+            "text": "Poisoner"
+         },
+         "shadowAchievement": "true"
+      },
+      {
+         "id": "350",
+         "steam": "PotionMasterFindPestilence",
+         "icon": "PotionMaster",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "57",
+         "roleName": {
+            "l10n": "GUI_ROLE_57",
+            "text": "Potion Master"
+         }
+      },
+      {
+         "id": "351",
+         "steam": "PotionMasterHeal5Coven",
+         "icon": "PotionMaster",
+         "points": "100FreePoints",
+         "genre": "Coven",
+         "role": "57",
+         "roleName": {
+            "l10n": "GUI_ROLE_57",
+            "text": "Potion Master"
+         }
+      },
+      {
+         "id": "352",
+         "steam": "PotionMasterUse3DifferentPotions",
+         "icon": "PotionMaster",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "57",
+         "roleName": {
+            "l10n": "GUI_ROLE_57",
+            "text": "Potion Master"
+         }
+      },
+      {
+         "id": "353",
+         "steam": "MedusaAttack3Visitors",
+         "icon": "Medusa",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "61",
+         "roleName": {
+            "l10n": "GUI_ROLE_61",
+            "text": "Medusa"
+         }
+      },
+      {
+         "id": "354",
+         "steam": "MedusaAttackRevealedMayor",
+         "icon": "Medusa",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "61",
+         "roleName": {
+            "l10n": "GUI_ROLE_61",
+            "text": "Medusa"
+         }
+      },
+      {
+         "id": "355",
+         "steam": "NecromancerReanimateSerialKiller",
+         "icon": "Necromancer",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "59",
+         "roleName": {
+            "l10n": "GUI_ROLE_59",
+            "text": "Necromancer"
+         }
+      },
+      {
+         "id": "356",
+         "steam": "NecromancerReanimateWerewolfFullMoon",
+         "icon": "Necromancer",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "59",
+         "roleName": {
+            "l10n": "GUI_ROLE_59",
+            "text": "Necromancer"
+         }
+      },
+      {
+         "id": "357",
+         "steam": "NecromancerReanimatePestilence",
+         "icon": "Necromancer",
+         "points": "100FreePoints",
+         "genre": "Coven",
+         "role": "59",
+         "roleName": {
+            "l10n": "GUI_ROLE_59",
+            "text": "Necromancer"
+         }
+      },
+      {
+         "id": "358",
+         "steam": "NecromancerReanimateDoctorTargetCoven",
+         "icon": "Necromancer",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "59",
+         "roleName": {
+            "l10n": "GUI_ROLE_59",
+            "text": "Necromancer"
+         }
+      },
+      {
+         "id": "359",
+         "steam": "CovenLeaderControlIntoMedusaGazing",
+         "icon": "CovenLeader",
+         "points": "20FreePoints",
+         "genre": "Coven",
+         "role": "56",
+         "roleName": {
+            "l10n": "GUI_ROLE_56",
+            "text": "Coven Leader"
+         }
+      },
+      {
+         "id": "360",
+         "steam": "CovenLeaderControlIntoPestilence",
+         "icon": "CovenLeader",
+         "points": "40FreePoints",
+         "genre": "Coven",
+         "role": "56",
+         "roleName": {
+            "l10n": "GUI_ROLE_56",
+            "text": "Coven Leader"
+         }
+      },
+      {
+         "id": "361",
+         "steam": "CovenLeaderControlJailorToExecute",
+         "icon": "CovenLeader",
+         "points": "100FreePoints",
+         "genre": "Coven",
+         "role": "56",
+         "roleName": {
+            "l10n": "GUI_ROLE_56",
+            "text": "Coven Leader"
+         }
+      },
+      {
+         "id": "362",
+         "steam": "KillCovenLeaderAsJuggernaut",
+         "icon": "Juggernaut",
+         "points": "40FreePoints",
+         "genre": "Neutral",
+         "role": "53",
+         "roleName": {
+            "l10n": "GUI_ROLE_53",
+            "text": "Juggernaut"
+         }
+      }
+   ]
+}

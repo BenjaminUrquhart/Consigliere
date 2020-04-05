@@ -8,8 +8,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.benjaminurquhart.tos.game.ANSI;
+import net.benjaminurquhart.tos.game.Achievement;
 import net.benjaminurquhart.tos.game.Faction;
 import net.benjaminurquhart.tos.game.Game;
+import net.benjaminurquhart.tos.game.Genre;
 import net.benjaminurquhart.tos.game.Killer;
 import net.benjaminurquhart.tos.game.Role;
 import net.benjaminurquhart.tos.game.Scroll;
@@ -25,6 +27,7 @@ public class ServerMessageHandler extends MessageHandler {
 	private Role[] roles;
 	
 	private boolean gameStarted;
+	private int selfPosition;
 	
     public ServerMessageHandler() {
 		super("Server");
@@ -358,13 +361,24 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onJailorDeathNote(byte[] command) {
-		String message = "   ";
+		String message;
 		switch(command[3]) {
-		case 5: message += "They were too quiet or won't respond to questioning"; break;
-		default: message += "Unknown jailor message: " + command[3]; break;
+		case 1: message = "No reason specified."; break;
+		case 2: message = "They are known to be an evildoer."; break;
+		case 3: message = "Their confession was contradictory."; break;
+		case 4: message = "They are possessed and talking nonsense."; break;
+		case 5: message = "They were too quiet or won't respond to questioning."; break;
+		case 6: message = "They are an outsider that might turn against us."; break;
+		case 7: message = "I'm using my own discretion."; break;
+		default: message = "Unknown jailor message: " + command[3]; break;
 		}
-		message += " ";
-		this.onDeathNote(message.getBytes());
+		System.out.printf(
+				"%sDeath Note: %s%s%s\n",
+				ANSI.RESET,
+				ANSI.YELLOW,
+				message,
+				ANSI.GRAY
+		);
 	}
 
 	private void onRankedInfo(byte[] command) {
@@ -419,8 +433,12 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onPirateDuelOutcome(byte[] command) {
-		onUnhandledCommand(command);
-		
+		if(command[1]-1 == command[2]) {
+			System.out.printf("%sYou won the duel!%s\n", ANSI.GREEN, ANSI.RESET);
+		}
+		else {
+			System.out.printf("%sYou lost the duel!%s\n", ANSI.RED, ANSI.RESET);
+		}
 	}
 
 	private void onVIPTarget(byte[] command) {
@@ -490,8 +508,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onDuelTarget(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%sDueling %s...\n", ANSI.GRAY, names[command[1]-1]);
 	}
 
 	private void onPirateDuel(byte[] command) {
@@ -534,8 +551,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onUpdateFreeCurrency(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf("%sMerit Points updated: %s%s\n", ANSI.LIGHT_GRAY, this.convertToString(command), ANSI.GRAY);
 	}
 
 	private void onTransporterNotification(byte[] command) {
@@ -687,8 +703,39 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onEarnedAchievements(byte[] command) {
-		onUnhandledCommand(command);
+		Achievement achievement = Game.ACHIEVEMENTS[Integer.parseInt(this.convertToString(command))];
+		Role role = achievement.getRole();
 		
+		StringTableMessage message = Game.STRING_TABLE.get("GUI_ACHIEVEMENT_DESC"+achievement.getID());
+		String name, text;
+		Color color;
+		
+		if(role == null) {
+			Genre genre = Game.GENRE_TABLE.get(achievement.getGenre());
+			color = genre.getColor();
+			name = genre.getID();
+		}
+		else {
+			color = role.getColor();
+			name = role.getName();
+		}
+		text = message.getText();
+		for(Role r : Game.ROLES) {
+			text = text.replaceAll(
+					"(^|\\s)("+Pattern.quote(r.getName())+")(\\s|$)",
+					"$1"+ANSI.toTrueColor(r.getColor())+"$2$3"
+			);
+		}
+		
+		System.out.printf(
+				"%sReceived %s%s%s achievement: %s%s\n",
+				ANSI.RESET,
+				ANSI.toTrueColor(color),
+				name,
+				ANSI.RESET,
+				text,
+				ANSI.GRAY
+		);
 	}
 
 	private void onPrivateMessage(byte[] command) {
@@ -790,23 +837,43 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onTellMafiaAboutMafiosoPromotion(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
+		Role role = roles[command[1]-1] = Game.ROLE_TABLE.get("Mafioso");
+		System.out.printf(
+				"%s was promoted to %s%s%s\n",
+				names[command[1]-1],
+				ANSI.toTrueColor(role.getColor()),
+				role.getName(),
+				ANSI.GRAY
+		);
 	}
 
 	private void onMafiaPromotedToMafioso(byte[] command) {
-		onUnhandledCommand(command);
-		
+		roles[selfPosition-1] = Game.ROLE_TABLE.get("Mafioso");
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(Color.LIGHT_GRAY),
+				ANSI.BLACK,
+				Game.STRING_TABLE.get("GUI_PROMOTED_TO_23").getText(),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	private void onMafiosoPromotedToGodfatherUpdateMafia(byte[] command) {
 		onUnhandledCommand(command);
-		
 	}
 
 	private void onMafiosoPromotedToGodfather(byte[] command) {
-		onUnhandledCommand(command);
-		
+		roles[selfPosition-1] = Game.ROLE_TABLE.get("Godfather");
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(Color.LIGHT_GRAY),
+				ANSI.BLACK,
+				Game.STRING_TABLE.get("GUI_PROMOTED_TO_21").getText(),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	private void onSomeoneHasWon(byte[] command) {
@@ -1158,7 +1225,8 @@ public class ServerMessageHandler extends MessageHandler {
 	private void onRoleAndPosition(byte[] command) {
 		Role role = Game.ROLES[command[1]-1];
 		roles[command[2]-1] = role;
-		System.out.printf("%sRole: %s%s%s\nPosition: %d%s\n", ANSI.RESET, ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.RESET, command[2], ANSI.GRAY);
+		selfPosition = command[2];
+		System.out.printf("%sRole: %s%s%s\nPosition: %d%s\n", ANSI.RESET, ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.RESET, selfPosition, ANSI.GRAY);
 	}
 
 	private void onNamesAndPositionsOfUsers(byte[] command) {
@@ -1237,8 +1305,8 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onStringTableMessage(byte[] command) {
-		String id = String.valueOf(command[1]-1);
-		StringTableMessage msg = Game.STRING_TABLE.get(id);
+		String id = String.valueOf((command[1]&0xff)-1);
+		StringTableMessage msg = Game.STRING_TABLE.get("GAME_"+id);
 		System.out.printf("%s%s%s%s\n", ANSI.WHITE, ANSI.toTrueColorBackground(msg.getColor()), msg.getText(), ANSI.RESET, ANSI.GRAY);
 	}
 
