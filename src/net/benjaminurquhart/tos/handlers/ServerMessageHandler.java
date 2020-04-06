@@ -739,17 +739,36 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onPrivateMessage(byte[] command) {
+		//onUnhandledCommand(command);
 		String color = ANSI.toTrueColor(Color.MAGENTA);
-		System.out.printf(
-				"%s%s %s%s:%s %s%s\n",
-				color,
-				command[1] == 0x01 ? "To" : "From",
-				ANSI.GRAY,
-				names[command[2]-1],
-				color,
-				new String(Arrays.copyOfRange(command, 3, command.length-1)),
-				ANSI.GRAY
-		);
+		// Blackmailer
+		if(command[1] == 3) {
+			System.out.printf(
+					"%sFrom %s%s%s to %s%s:%s %s%s\n",
+					color,
+					ANSI.GRAY,
+					names[command[2]-1],
+					color,
+					
+					ANSI.GRAY,
+					names[command[3]-1],
+					color,
+					new String(Arrays.copyOfRange(command, 4, command.length-1)),
+					ANSI.GRAY
+			);
+		}
+		else {
+			System.out.printf(
+					"%s%s %s%s:%s %s%s\n",
+					color,
+					command[1] == 0x01 ? "To" : "From",
+					ANSI.GRAY,
+					names[command[2]-1],
+					color,
+					new String(Arrays.copyOfRange(command, 3, command.length-1)),
+					ANSI.GRAY
+			);
+		}
 	}
 
 	private void onNotifyUsersOfPrivateMessage(byte[] command) {
@@ -818,8 +837,16 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onMafiaWasJailed(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
+		System.out.printf(
+				"%s%s (%s%s%s) was hauled off to jail!%s\n",
+				ANSI.LIGHT_GRAY,
+				names[command[1]-1],
+				ANSI.MAFIA,
+				roles[command[1]-1].getName(),
+				ANSI.LIGHT_GRAY,
+				ANSI.GRAY
+		);
 	}
 
 	private void onUserDisconnected(byte[] command) {
@@ -861,7 +888,14 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onMafiosoPromotedToGodfatherUpdateMafia(byte[] command) {
-		onUnhandledCommand(command);
+		Role role = roles[command[1]-1] = Game.ROLE_TABLE.get("Godfather");
+		System.out.printf(
+				"%s was promoted to %s%s%s\n",
+				names[command[1]-1],
+				ANSI.toTrueColor(role.getColor()),
+				role.getName(),
+				ANSI.GRAY
+		);
 	}
 
 	private void onMafiosoPromotedToGodfather(byte[] command) {
