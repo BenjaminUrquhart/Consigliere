@@ -105,22 +105,25 @@ public class ClientMessageHandler extends MessageHandler {
 		
 	}
 	private void onLeaveGame(byte[] command) {
+		if(selfName == null) {
+			selfName = "User";
+		}
 		System.out.printf("%s%s left the game%s\n", ANSI.YELLOW, selfName, ANSI.GRAY);
 	}
 	private void onNameSubmission(byte[] command) {
-		System.out.println("Name selected: " + (selfName = new String(Arrays.copyOfRange(command, 1, command.length-1))));
+		System.out.printf("%sName selected: %s\n", ANSI.GRAY, selfName = this.convertToString(command));
 	}
 	private void onWhisper(byte[] command) {
 		
 	}
 	private void onDeathNoteUpdate(byte[] command) {
-		System.out.println("Death note updated:\n" + new String(Arrays.copyOfRange(command, 1, command.length-1)));
+		System.out.printf("%sDeath Note updated:\n%s\n", ANSI.GRAY, new String(Arrays.copyOfRange(command, 1, command.length-1)));
 	}
 	private void onUserVoteUpdate(byte[] command) {
 		
 	}
 	private void onWillUpdate(byte[] command) {
-		System.out.println("Will updated:\n" + new String(Arrays.copyOfRange(command, 1, command.length-1)));
+		System.out.printf("%sWill updated:\n%s\n", ANSI.GRAY, new String(Arrays.copyOfRange(command, 1, command.length-1)));
 	}
 	private void onChat(byte[] command) {
 		

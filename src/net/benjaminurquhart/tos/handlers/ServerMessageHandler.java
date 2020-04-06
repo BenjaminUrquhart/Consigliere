@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Achievement;
@@ -13,6 +14,7 @@ import net.benjaminurquhart.tos.game.Faction;
 import net.benjaminurquhart.tos.game.Game;
 import net.benjaminurquhart.tos.game.Genre;
 import net.benjaminurquhart.tos.game.Killer;
+import net.benjaminurquhart.tos.game.PlayerTag;
 import net.benjaminurquhart.tos.game.Role;
 import net.benjaminurquhart.tos.game.Scroll;
 import net.benjaminurquhart.tos.game.StringTableMessage;
@@ -452,8 +454,33 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onCovenGotNecronomicon(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
+		String name = names[command[2]-1];
+		Role role = roles[command[2]-1];
+		// Previous holder died, passed on to next member
+		// Otherwise, first time Coven has Necronomicon (Night 3)
+		if(command[1] == 2) {
+			System.out.printf(
+					"%s%s (%s%s%s) has died while possessing the Necronomicon!%s\n",
+					ANSI.RED,
+					name,
+					ANSI.COVEN,
+					role.getName(),
+					ANSI.RED,
+					ANSI.GRAY
+			);
+			name = names[command[3]-1];
+			role = roles[command[3]-1];
+		}
+		System.out.printf(
+				"%s%s (%s%s%s) possesses the Necronomicon. Their powers are enhanced!%s\n",
+				ANSI.GREEN,
+				name,
+				ANSI.COVEN,
+				role.getName(),
+				ANSI.GREEN,
+				ANSI.GRAY
+		);
 	}
 
 	private void onJuggernautKillCount(byte[] command) {
@@ -678,8 +705,8 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onFacebookShareWin(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
+		System.out.printf("%sShare this win on Facebook%s\n", ANSI.BLUE, ANSI.GRAY);
 	}
 
 	private void onFacebookShareAchievement(byte[] command) {
@@ -719,13 +746,7 @@ public class ServerMessageHandler extends MessageHandler {
 			color = role.getColor();
 			name = role.getName();
 		}
-		text = message.getText();
-		for(Role r : Game.ROLES) {
-			text = text.replaceAll(
-					"(^|\\s)("+Pattern.quote(r.getName())+")(\\s|$)",
-					"$1"+ANSI.toTrueColor(r.getColor())+"$2$3"
-			);
-		}
+		text = Game.insertColors(message.getText());
 		
 		System.out.printf(
 				"%sReceived %s%s%s achievement: %s%s\n",
@@ -1230,7 +1251,7 @@ public class ServerMessageHandler extends MessageHandler {
 		//System.out.println(ANSI.RESET+"-----------Death-----------");
 		//this.onUnhandledCommand(command);
 		int roleID = (command[2]&0xff)-1;
-		Role role = roleID < Game.ROLES.length ? Game.ROLES[roleID] : null;
+		Role role = Game.ROLE_ID_TABLE.get(roleID);
 		roles[command[1]-1] = role;
 		alive[command[1]-1] = false;
 		List<String> killers = new ArrayList<>();
@@ -1241,7 +1262,16 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 		System.out.printf("\n%s%s (%d) was killed%s%s\n", ANSI.RESET, names[command[1]-1], command[1], killers.size() > 0 ? " by " : "", String.join(", ", killers));
 		if(role == null) {
-			System.out.printf("We could not determine their role%s\n", ANSI.GRAY);
+			System.out.printf("We could not determine their role (Unknown role: %d)%s\n", roleID, ANSI.GRAY);
+		}
+		else if (role.getTags().contains(PlayerTag.STONED) || role.getTags().contains(PlayerTag.CLEANED)) {
+			System.out.printf(
+					"We could not determine their role (%s%s%s)%s\n",
+					ANSI.toTrueColor(role.getColor()),
+					role.getTags().stream().map(String::valueOf).collect(Collectors.joining(", ")),
+					ANSI.RESET,
+					ANSI.GRAY
+			);
 		}
 		else {
 			System.out.printf("Role: %s%s%s\n", ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.GRAY);
@@ -1285,7 +1315,7 @@ public class ServerMessageHandler extends MessageHandler {
 	private void onScrollConsumed(byte[] command) {
 		//onUnhandledCommand(command);
 		Scroll scroll = Game.SCROLLS[Integer.parseInt(new String(Arrays.copyOfRange(command, 1, command.length-1)))];
-		System.out.printf("%sScroll used: %s%s\n", ANSI.RESET, scroll, ANSI.GRAY);
+		System.out.printf("%sScroll used: %s%s\n", ANSI.RESET, Game.insertColors(scroll.toString()), ANSI.GRAY);
 	}
 
 	private void onPlayerStatistics(byte[] command) {
@@ -1387,7 +1417,7 @@ public class ServerMessageHandler extends MessageHandler {
 				name, 
 				ANSI.RESET, 
 				role,
-				new String(Arrays.copyOfRange(command, 2+offset, command.length-1)), 
+				Game.insertColors(new String(Arrays.copyOfRange(command, 2+offset, command.length-1))), 
 				ANSI.GRAY
 		);
 	}

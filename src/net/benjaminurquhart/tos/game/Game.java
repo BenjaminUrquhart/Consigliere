@@ -1,9 +1,13 @@
 package net.benjaminurquhart.tos.game;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,7 +19,10 @@ public class Game {
 	public static Map<String, Genre> GENRE_TABLE;
 	public static Map<String, Role> ROLE_TABLE;
 	
+	public static Map<String, List<String>> ROLE_ABBREVIATIONS;
+	
 	public static Map<Integer, String> GAME_MODE_TABLE;
+	public static Map<Integer, Role> ROLE_ID_TABLE;
 	
 	public static Achievement[] ACHIEVEMENTS;
 	public static Faction[] FACTIONS;
@@ -45,6 +52,7 @@ public class Game {
 			}
 			JSONArray roles = json.getJSONArray("Roles");
 			ROLES = new Role[roles.length()];
+			ROLE_ID_TABLE = new HashMap<>();
 			ROLE_TABLE = new HashMap<>();
 			Role role;
 			for(int i = 0, length = roles.length(); i < length; i++) {
@@ -58,6 +66,7 @@ public class Game {
 				}
 				ROLES[i] = role;
 				ROLE_TABLE.put(role.getName(), role);
+				ROLE_ID_TABLE.put(role.getID(), role);
 			}
 			JSONArray killers = json.getJSONArray("Killers");
 			KILLERS = new Killer[killers.length()];
@@ -129,9 +138,45 @@ public class Game {
 				genre = new Genre(genres.getJSONObject(i));
 				GENRE_TABLE.put(genre.getID(), genre);
 			}
+			sb.delete(0, sb.length());
+			stream = Game.class.getResourceAsStream("/RoleAliases.json");
+			while((read = stream.read(buff)) != -1) {
+				if(read == 0) continue;
+				sb.append(new String(Arrays.copyOfRange(buff, 0, read)));
+			}
+			stream.close();
+			final JSONObject abbreviationJSON = new JSONObject(sb.toString());
+			ROLE_ABBREVIATIONS = abbreviationJSON.keySet()
+												 .stream()
+												 .collect(Collectors.toMap(key -> key, key -> {
+													 JSONArray abbreviations = abbreviationJSON.getJSONArray((String)key);
+													 return abbreviations.toList().stream().map(String::valueOf).collect(Collectors.toList());
+												 }));
 		}
 		catch(Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	public static String insertColors(String text) {
+		for(Role role : ROLES) {
+			for(String abbreviation : ROLE_ABBREVIATIONS.computeIfAbsent(role.getName(), n -> new ArrayList<>())) {
+				text = text.replaceAll(
+						"(?i)(^|\\s|\\p{P})("+Pattern.quote(abbreviation)+"s?)(\\s|$|\\p{P})",
+						"$1"+ANSI.toTrueColor(role.getColor())+"$2"+ANSI.RESET+"$3"
+				);
+			}
+			text = text.replaceAll(
+					"(?i)(^|\\s|\\p{P})"+Pattern.quote(role.getName())+"(\\s|$|\\p{P})",
+					"$1"+ANSI.toTrueColor(role.getColor())+role.getName()+ANSI.RESET+"$2"
+			);
+		}
+		for(Faction faction : FACTIONS) {
+			text = text.replaceAll(
+					"(?i)(^|\\s|\\p{P})"+Pattern.quote(faction.getName())+"(\\s|$|\\p{P})",
+					"$1"+ANSI.valueOf(faction.getName().toUpperCase())+faction.getName()+ANSI.RESET+"$2"
+			);
+		}
+		return text;
 	}
 }

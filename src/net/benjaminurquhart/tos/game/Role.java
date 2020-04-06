@@ -1,11 +1,17 @@
 package net.benjaminurquhart.tos.game;
 
 import java.awt.Color;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.json.JSONObject;
 
 public class Role {
+	
+	private static Set<String> unknownTags = new HashSet<>();
 
+	private Set<PlayerTag> tags;
 	private Faction faction;
 	private String type;
 	private String name;
@@ -37,6 +43,28 @@ public class Role {
 		this.name = json.getJSONObject("Name").getString("text");
 		this.type = json.getJSONObject("Type").getString("text");
 		this.id = Integer.parseInt(json.getString("id"));
+		
+		this.tags = new HashSet<>();
+		if(json.has("PlayerTags")) {
+			Collection<Object> tags;
+			Object obj = json.get("PlayerTags");
+			if(obj instanceof JSONObject) {
+				tags = ((JSONObject)obj).toMap().values();
+			}
+			else {
+				tags = json.getJSONArray("PlayerTags").toList();
+			}
+			for(Object o : tags) {
+				try {
+					this.tags.add(PlayerTag.valueOf(String.valueOf(o).toUpperCase()));
+				}
+				catch(Exception e) {
+					if(unknownTags.add(String.valueOf(o))) {
+						System.out.printf("%sUnknown tag: %s%s\n", ANSI.RED, String.valueOf(o).toUpperCase(), ANSI.GRAY);
+					}
+				}
+			}
+		}
 	}
 	public int getID() {
 		return id;
@@ -58,6 +86,9 @@ public class Role {
 	}
 	public Faction getFaction() {
 		return faction;
+	}
+	public Set<PlayerTag> getTags() {
+		return tags;
 	}
 	@Override
 	public String toString() {
