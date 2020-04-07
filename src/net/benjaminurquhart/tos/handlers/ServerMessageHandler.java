@@ -24,15 +24,17 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	private static final Pattern END_GAME_RESULTS = Pattern.compile("\\(([^\\)]+)\\)");
 	
-	private boolean[] alive;
+	private boolean[] alive, lynched;
 	private String[] names;
 	private Role[] roles;
 	
 	private boolean gameStarted;
+	private int playerOnTrial;
 	private int selfPosition;
 	
     public ServerMessageHandler() {
 		super("Server");
+		this.lynched = new boolean[15];
 		this.alive = new boolean[15];
 		this.names = new String[15];
 		this.roles = new Role[15];
@@ -56,7 +58,7 @@ public class ServerMessageHandler extends MessageHandler {
                  case 11: onGameStartCountdown(command); break;
                  case 12: onDefaultFunction(command); break;
                  case 13: onDefaultFunction(command); break;
-                 case 14: onDefaultFunction(command); break;
+                 case 14: onVoteToRepickHost(command); break;
                  case 15: onDefaultFunction(command); break;
                  case 16: onDoNotSpam(command); break;
                  case 17: onGameStatus(command); break;
@@ -276,6 +278,14 @@ public class ServerMessageHandler extends MessageHandler {
                 default: onUnhandledCommand(command); break;
         }
     }
+
+	private void onVoteToRepickHost(byte[] command) {
+		System.out.printf(
+				"%s%d more votes are needed to repick the host\n",
+				ANSI.GRAY,
+				command[1]-1
+		);
+	}
 
 	private void onRankedGameAvailable(byte[] command) {
 		System.out.printf("%sA Ranked match is available%s\n", ANSI.GREEN, ANSI.GRAY);
@@ -563,8 +573,8 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onTauntActivated(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
+		System.out.printf("%s%s was taunted with %s\n", ANSI.GRAY, names[command[1]-1], Game.TAUNTS[command[2]-1]);
 	}
 
 	private void onTauntResult(byte[] command) {
@@ -817,6 +827,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onResurrectionSetAlive(byte[] command) {
+		lynched[command[1]-1] = false;
 		alive[command[1]-1] = true;
 	}
 
@@ -839,10 +850,14 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onLynchUser(byte[] command) {
-		//onUnhandledCommand(command);
+		lynched[playerOnTrial] = true;
+		playerOnTrial = -1;
 	}
 
 	private void onStartDayTransition(byte[] command) {
+		if(command.length == 2) {
+			System.out.printf("%sNo deaths last night...\n", ANSI.GRAY);
+		}
 		for(int i = 1; i < command.length-1; i++) {
 			alive[command[i]-1] = false;
 		}
@@ -940,14 +955,20 @@ public class ServerMessageHandler extends MessageHandler {
 			winners.add(names[command[i]-1]);
 		}
 		System.out.printf(
-				"%s%s\n%s%s %s won the game%s\n",
+				"%s%s%s\n",
 				ANSI.toTrueColor(winner.getColor()),
 				winner,
-				ANSI.GREEN,
-				String.join(", ", winners),
-				winners.size() == 1 ? "had" : "have",
 				ANSI.GRAY
 		);
+		if(winners.size() > 0) {
+			System.out.printf(
+					"%s%s %s won the game%s\n", 
+					ANSI.GREEN,
+					String.join(", ", winners),
+					winners.size() == 1 ? "has" : "have",
+					ANSI.GRAY
+			);
+		}
 	}
 
 	private void onTellJanitorTargetsWill(byte[] command) {
@@ -1148,6 +1169,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onUserDied(byte[] command) {
+		alive[selfPosition-1] = false;
 		System.out.printf("%s%sYou have died!%s%s\n", ANSI.WHITE, ANSI.toTrueColorBackground(Color.RED), ANSI.RESET, ANSI.GRAY);
 	}
 
@@ -1197,8 +1219,9 @@ public class ServerMessageHandler extends MessageHandler {
 
 	private void onTrialFoundNotGuilty(byte[] command) {
 		System.out.printf(
-				"%sDefendant found %sinnocent%s by a vote of %s%s%s to %s%d%s\n",
+				"%s%s was found %sinnocent%s by a vote of %s%s%s to %s%d%s\n",
 				ANSI.RESET,
+				names[playerOnTrial],
 				ANSI.GREEN,
 				ANSI.RESET,
 				ANSI.RED,
@@ -1208,12 +1231,14 @@ public class ServerMessageHandler extends MessageHandler {
 				command[2]-1,
 				ANSI.GRAY
 		);
+		playerOnTrial = -1;
 	}
 
 	private void onTrialFoundGuilty(byte[] command) {
 		System.out.printf(
-				"%sDefendant found %sguilty%s by a vote of %s%s%s to %s%d%s\n",
+				"%s%s was found %sguilty%s by a vote of %s%s%s to %s%d%s\n",
 				ANSI.RESET,
+				names[playerOnTrial],
 				ANSI.RED,
 				ANSI.RESET,
 				ANSI.RED,
@@ -1226,7 +1251,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onStartJudgement(byte[] command) {
-		System.out.println(ANSI.GREEN+"The Town may now vote on the fate of the defendant"+ANSI.GRAY);
+		System.out.println(ANSI.GREEN+"The Town may now vote on the fate of "+ANSI.RESET+names[playerOnTrial]+ANSI.GRAY);
 		System.out.println(ANSI.GRAY+"---------Judgement---------");
 	}
 	private void onStartDefenseTransition(byte[] command) {
@@ -1238,6 +1263,7 @@ public class ServerMessageHandler extends MessageHandler {
 				ANSI.GREEN,
 				ANSI.GRAY
 		);
+		playerOnTrial = command[1]-1;
 	}
 
 	private void onStartVoting(byte[] command) {
@@ -1260,6 +1286,9 @@ public class ServerMessageHandler extends MessageHandler {
 		for(int i = 4; i < command.length-1; i++) {
 			killer = Game.KILLERS[command[i]-1];
 			killers.add(String.format("%s%s%s", ANSI.toTrueColor(killer.getColor()), killer.getName(), ANSI.RESET));
+		}
+		if(lynched[command[1]-1]) {
+			killers.add(String.format("%sLynching%s", ANSI.toTrueColor(Killer.DEFAULT_COLOR), ANSI.RESET));
 		}
 		System.out.printf("\n%s%s (%d) was killed%s%s\n", ANSI.RESET, names[command[1]-1], command[1], killers.size() > 0 ? " by " : "", String.join(", ", killers));
 		if(role == null) {
@@ -1299,6 +1328,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onPickNames(byte[] command) {
+		Arrays.fill(lynched, false);
 		Arrays.fill(alive, true);
 		Arrays.fill(names, null);
 		gameStarted = true;

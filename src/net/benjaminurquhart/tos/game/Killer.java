@@ -5,6 +5,8 @@ import java.awt.Color;
 import org.json.JSONObject;
 
 public class Killer {
+	
+	public static final Color DEFAULT_COLOR = new Color(0x505050);
 
 	private String name;
 	private Color color;
@@ -12,7 +14,7 @@ public class Killer {
 	
 	public Killer(JSONObject json) {
 		//System.out.println(json);
-		this.color = new Color(Integer.parseInt(json.optString("Color", "#505050").substring(1), 16));
+		this.color = json.has("Color") ? new Color(Integer.parseInt(json.getString("Color").substring(1), 16)) : DEFAULT_COLOR;
 		this.id = Integer.parseInt(json.getString("id"));
 		
 		if(json.has("Name") && (json.get("Name") instanceof JSONObject)) {

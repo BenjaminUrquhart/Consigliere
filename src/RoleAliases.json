@@ -35,7 +35,7 @@
 	"Werewolf":["ww"],
 	"Witch":[],
 	
-	"Random Town":["rt"],
+	"Random Town":["rt","tplo"],
 	"Town Investigative":["ti","town invest"],
 	"Town Protective":["tp","town protect"],
 	"Town Killing":["tk"],
@@ -71,7 +71,7 @@
 	"Poisoner":[],
 	"Medusa":[],
 	
-	"Random Coven":[],
+	"Random Coven":["rc"],
 	
 	"Coven Neutral Chaos":["nc"],
 	"Coven Town Support":["ts"],

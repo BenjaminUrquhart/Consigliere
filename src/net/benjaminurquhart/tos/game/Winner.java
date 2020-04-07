@@ -33,6 +33,9 @@ public class Winner {
 	}
 	@Override
 	public String toString() {
+		if(isDraw) {
+			return "The game has ended in a draw (" + name + ")";
+		}
 		return name + " " + (name.endsWith("s") ? "win" : "wins");
 	}
 }

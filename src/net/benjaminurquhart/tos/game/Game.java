@@ -29,6 +29,7 @@ public class Game {
 	public static Killer[] KILLERS;
 	public static Scroll[] SCROLLS;
 	public static Winner[] WINNERS;
+	public static String[] TAUNTS;
 	public static Role[] ROLES;
 	
 	private static Map<String, String> REPLACEMENT_CACHE = new HashMap<>();
@@ -109,6 +110,12 @@ public class Game {
 					SCROLLS[i] = new Scroll(tmp);
 				}
 			}
+			JSONArray taunts = json.getJSONArray("CustomizationTaunts");
+			TAUNTS = new String[taunts.length()];
+			for(int i = 0, length = taunts.length(); i < length; i++) {
+				tmp = taunts.getJSONObject(i);
+				TAUNTS[i] = tmp.getJSONObject("Name").getString("text");
+			}
 			sb.delete(0, sb.length());
 			stream = Game.class.getResourceAsStream("/StringTable.json");
 			while((read = stream.read(buff)) != -1) {
@@ -169,12 +176,12 @@ public class Game {
 				text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(abbreviation, a -> "$1"+ANSI.toTrueColor(role.getColor())+"$2"+ANSI.RESET+"$3"));
 				
 			}
-			pattern = REGEX_CACHE.computeIfAbsent(role.getName(), name -> Pattern.compile("(?i)(^|\\s|\\p{P})"+Pattern.quote(name)+"(\\s|$|\\p{P})"));
-			text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(role.getName(), name -> "$1"+ANSI.toTrueColor(role.getColor())+name+ANSI.RESET+"$2"));
+			pattern = REGEX_CACHE.computeIfAbsent(role.getName(), name -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(name)+")(\\s|$|\\p{P})"));
+			text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(role.getName(), name -> "$1"+ANSI.toTrueColor(role.getColor())+"$2"+ANSI.RESET+"$3"));
 		}
 		for(Faction faction : FACTIONS) {
-			pattern = REGEX_CACHE.computeIfAbsent(faction.getName(), f -> Pattern.compile("(?i)(^|\\s|\\p{P})"+Pattern.quote(faction.getName())+"(\\s|$|\\p{P})"));
-			text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(faction.getName(), f -> "$1"+ANSI.valueOf(faction.getName().toUpperCase())+faction.getName()+ANSI.RESET+"$2"));
+			pattern = REGEX_CACHE.computeIfAbsent(faction.getName(), f -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(faction.getName())+")(\\s|$|\\p{P})"));
+			text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(faction.getName(), f -> "$1"+ANSI.valueOf(faction.getName().toUpperCase())+"$2"+ANSI.RESET+"$3"));
 		}
 		return text;
 	}

@@ -1,6 +1,7 @@
 package net.benjaminurquhart.tos.handlers;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
@@ -145,14 +146,14 @@ public class ClientMessageHandler extends MessageHandler {
 	}
 	public void onCustomizationUpdate(byte[] command) {
 		String[] data = this.convertToString(command).split(",");
-		System.out.println(ANSI.GRAY+"Customization updated:");
-		String[] scrolledRoles = Arrays.stream(Arrays.copyOfRange(data, 6, 9))
-									   .mapToInt(Integer::parseInt)
-									   .mapToObj(i -> Game.SCROLLS[i == -2 ? Game.SCROLLS.length-1 : i])
-									   .map(String::valueOf)
-									   .toArray(String[]::new);
+		System.out.println(ANSI.RESET+"Customization updated:");
+		String scrolledRoles = Arrays.stream(Arrays.copyOfRange(data, 6, 9))
+									 .mapToInt(Integer::parseInt)
+									 .mapToObj(i -> Game.SCROLLS[i == -2 ? Game.SCROLLS.length-1 : i])
+									 .map(String::valueOf)
+									 .collect(Collectors.joining(", "));
 		System.out.println("Default Name: " + data[data.length-1]);
-		System.out.println("Scrolls: " + Arrays.toString(scrolledRoles)+ANSI.GRAY);
+		System.out.println("Scrolls: " + Game.insertColors(scrolledRoles)+ANSI.GRAY);
 	}
 
 }
