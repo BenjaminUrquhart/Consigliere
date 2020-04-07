@@ -41,7 +41,7 @@
 	"Town Killing":["tk"],
 	"Town Support":["ts"],
 	
-	"Random Mafia":["maf"],
+	"Random Mafia":["rm","maf"],
 	"Mafia Support":["ms"],
 	"Mafia Deception":[],
 	

@@ -981,7 +981,7 @@ public class ServerMessageHandler extends MessageHandler {
 	private void onTellLastWill(byte[] command) {
 		String will = new String(Arrays.copyOfRange(command, 3, command.length-1));
 		if(!will.trim().isEmpty()) {
-			System.out.printf("%sWill:\n%s%s\n\n", ANSI.RESET, will, ANSI.GRAY);
+			System.out.printf("%sWill:\n%s%s\n\n", ANSI.RESET, Game.insertColors(will), ANSI.GRAY);
 		}
 		else {
 			System.out.println(ANSI.RESET+"We could not find a last will\n");
@@ -1018,6 +1018,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	private void onMayorRevealed(byte[] command) {
 		System.out.printf("%s%s%s has revealed themselves as Mayor!%s\n", ANSI.RESET, names[command[1]-1], ANSI.RED, ANSI.GRAY);
+		roles[command[1]-1] = Game.ROLE_TABLE.get("Mayor");
 	}
 
 	private void onJesterCompletedGoal(byte[] command) {

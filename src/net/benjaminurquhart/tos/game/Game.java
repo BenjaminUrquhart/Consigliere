@@ -30,6 +30,9 @@ public class Game {
 	public static Scroll[] SCROLLS;
 	public static Winner[] WINNERS;
 	public static Role[] ROLES;
+	
+	private static Map<String, String> REPLACEMENT_CACHE = new HashMap<>();
+	private static Map<String, Pattern> REGEX_CACHE = new HashMap<>();
 
 	static {
 		try {
@@ -159,23 +162,19 @@ public class Game {
 	}
 	
 	public static String insertColors(String text) {
+		Pattern pattern;
 		for(Role role : ROLES) {
 			for(String abbreviation : ROLE_ABBREVIATIONS.computeIfAbsent(role.getName(), n -> new ArrayList<>())) {
-				text = text.replaceAll(
-						"(?i)(^|\\s|\\p{P})("+Pattern.quote(abbreviation)+"s?)(\\s|$|\\p{P})",
-						"$1"+ANSI.toTrueColor(role.getColor())+"$2"+ANSI.RESET+"$3"
-				);
+				pattern = REGEX_CACHE.computeIfAbsent(abbreviation, a -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(a)+"s?)(\\s|$|\\p{P})"));
+				text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(abbreviation, a -> "$1"+ANSI.toTrueColor(role.getColor())+"$2"+ANSI.RESET+"$3"));
+				
 			}
-			text = text.replaceAll(
-					"(?i)(^|\\s|\\p{P})"+Pattern.quote(role.getName())+"(\\s|$|\\p{P})",
-					"$1"+ANSI.toTrueColor(role.getColor())+role.getName()+ANSI.RESET+"$2"
-			);
+			pattern = REGEX_CACHE.computeIfAbsent(role.getName(), name -> Pattern.compile("(?i)(^|\\s|\\p{P})"+Pattern.quote(name)+"(\\s|$|\\p{P})"));
+			text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(role.getName(), name -> "$1"+ANSI.toTrueColor(role.getColor())+name+ANSI.RESET+"$2"));
 		}
 		for(Faction faction : FACTIONS) {
-			text = text.replaceAll(
-					"(?i)(^|\\s|\\p{P})"+Pattern.quote(faction.getName())+"(\\s|$|\\p{P})",
-					"$1"+ANSI.valueOf(faction.getName().toUpperCase())+faction.getName()+ANSI.RESET+"$2"
-			);
+			pattern = REGEX_CACHE.computeIfAbsent(faction.getName(), f -> Pattern.compile("(?i)(^|\\s|\\p{P})"+Pattern.quote(faction.getName())+"(\\s|$|\\p{P})"));
+			text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(faction.getName(), f -> "$1"+ANSI.valueOf(faction.getName().toUpperCase())+faction.getName()+ANSI.RESET+"$2"));
 		}
 		return text;
 	}
