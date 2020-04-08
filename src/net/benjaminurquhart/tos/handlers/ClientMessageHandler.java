@@ -46,7 +46,7 @@ public class ClientMessageHandler extends MessageHandler {
     }
 
 	private void onUserChosePirateAttack(byte[] command) {
-		//onUnhandledCommand(command);
+		onUnhandledCommand(command);
 		String attack = "";
 		switch(command[1]) {
 		case 2: attack = "Scimitar"; break;

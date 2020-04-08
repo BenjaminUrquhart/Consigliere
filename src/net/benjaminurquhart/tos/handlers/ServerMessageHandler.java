@@ -425,8 +425,9 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onPlagueSpread(byte[] command) {
-		onUnhandledCommand(command);
-		
+		for(int i = 1; i < command.length-1; i++) {
+			System.out.printf("%s%s was infected with the plague\n", ANSI.GRAY, names[command[i]-1]);
+		}
 	}
 
 	private void onLoverTarget(byte[] command) {
@@ -549,8 +550,13 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onPirateDuel(byte[] command) {
-		onUnhandledCommand(command);
-		
+		System.out.printf(
+				"%s%sThe pirate duel has roleblocked you!%s%s\n",
+				ANSI.toTrueColorBackground(Color.LIGHT_GRAY),
+				ANSI.BLACK,
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	private void onGuardianAngelProtection(byte[] command) {
