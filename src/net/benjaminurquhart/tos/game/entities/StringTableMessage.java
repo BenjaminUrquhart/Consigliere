@@ -11,6 +11,7 @@ public class StringTableMessage {
 	
 	public StringTableMessage(String id, JSONObject json) {
 		switch(json.optString("style", "none")) {
+		case "ability_feedback": color = Color.BLACK; break;
 		case "ability_status": color = Color.LIGHT_GRAY; break;
 		case "positive": color = Color.GREEN; break;
 		case "alert": color = Color.RED; break;

@@ -170,7 +170,7 @@ public class ServerMessageHandler extends MessageHandler {
                  case 129: onMediumCommunicating(command); break;
                  case 130: onTellLastWill(command); break;
                  case 131: onHowManyAbilitiesLeft(command); break;
-                 case 132: onMafiaTargeting(command); break;
+                 case 132: onFactionTargeting(command); break;
                  case 133: onTellJanitorTargetsRole(command); break;
                  case 134: onTellJanitorTargetsWill(command); break;
                  case 135: onSomeoneHasWon(command); break;
@@ -594,8 +594,15 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onVampireVisitedMessage(byte[] command) {
-		onUnhandledCommand(command);
-		
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_VAMPIRE_VISITED_MESSAGE2");
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(msg.getColor()),
+				ANSI.GREEN,
+				msg.getText().replace("%name%", game.getPlayer(command[1]).getName()),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	private void onVampireHunterPromoted(byte[] command) {
@@ -604,27 +611,45 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onVampireDied(byte[] command) {
-		onUnhandledCommand(command);
-		
+		game.getPlayer(command[1]).kill();
 	}
 
 	private void onCanVampiresConvert(byte[] command) {
-		onUnhandledCommand(command);
-		
+		StringTableMessage msg = Game.STRING_TABLE.get(command[1] == 1 ? "GUI_VAMP_CANT_BITE_TONIGHT" : "GUI_VAMP_CAN_BITE_TONIGHT");
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(Color.BLACK),
+				ANSI.GREEN,
+				msg.getText(),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	private void onAddVampire(byte[] command) {
-		onUnhandledCommand(command);
-		
+		game.getPlayer(command[1]).setRole(Game.ROLE_TABLE.get("Vampire"));
 	}
 
 	private void onOtherVampires(byte[] command) {
-		this.tellFactionMembers(command, Game.FACTION_TABLE.get("Vampire"));
+		System.out.printf("%sVampire%s Members:\n", ANSI.VAMPIRE, ANSI.RESET);
+		Player member;
+		Role role = Game.ROLE_TABLE.get("Vampire");
+		for(int i = 1; i < command.length-1; i+=2) {
+			member = game.getPlayer(command[i]);
+			member.setRole(role);
+			System.out.printf(
+					"%s (%s%s%s)\n", 
+					member, 
+					ANSI.toTrueColor(role.getColor()), 
+					command[i+1] == 0 ? "Youngest" : "Vampire",
+					ANSI.RESET
+			);
+		}
+		System.out.print(ANSI.GRAY);
 	}
 
 	private void onVampirePromotion(byte[] command) {
-		onUnhandledCommand(command);
-		
+		game.getSelfPlayer().setRole(Game.ROLE_TABLE.get("Vampire"));
 	}
 
 	private void onPayPalShowApprovalPage(byte[] command) {
@@ -983,7 +1008,7 @@ public class ServerMessageHandler extends MessageHandler {
 		
 	}
 
-	private void onMafiaTargeting(byte[] command) {
+	private void onFactionTargeting(byte[] command) {
 		//onUnhandledCommand(command);
 		Player member = game.getPlayer(command[1]);
 		Role role = member.getRole();
@@ -1182,7 +1207,7 @@ public class ServerMessageHandler extends MessageHandler {
 				ANSI.RESET,
 				player,
 				ANSI.toTrueColor(player.getRole().getColor()),
-				player.getRole(),
+				player.getRole().getName(),
 				ANSI.RESET,
 				ANSI.LIGHT_GRAY
 		);
