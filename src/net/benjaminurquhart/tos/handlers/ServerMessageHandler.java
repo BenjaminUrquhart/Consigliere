@@ -984,26 +984,33 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onMafiaTargeting(byte[] command) {
+		//onUnhandledCommand(command);
 		Player member = game.getPlayer(command[1]);
+		Role role = member.getRole();
 		if(command[3] == 30) {
 			System.out.printf(
 					"%s%s (%s%s%s) has changed their mind\n",
 					ANSI.GRAY,
 					member,
-					ANSI.toTrueColor(member.getRole().getColor()),
-					member.getRole().getName(),
+					ANSI.toTrueColor(role.getColor()),
+					role.getName(),
 					ANSI.GRAY
 			);
 		}
 		else {
+			StringTableMessage msg = Game.STRING_TABLE.get("GUI_FACTION_TARGETING_"+role.getID());
+			String title = String.format(
+					 "%s (%s%s%s)",
+					 member,
+					 ANSI.toTrueColor(role.getColor()),
+					 role.getName(),
+					 ANSI.GRAY
+			);
 			System.out.printf(
-					"%s%s (%s%s%s) is targeting %s\n",
+					"%s%s\n",
 					ANSI.GRAY,
-					member,
-					ANSI.toTrueColor(member.getRole().getColor()),
-					member.getRole().getName(),
-					ANSI.GRAY,
-					game.getPlayer(command[3])
+					msg.getText().replace("%name1%", title)
+								 .replace("%name2%", game.getPlayer(command[3]).getName())
 			);
 		}
 	}

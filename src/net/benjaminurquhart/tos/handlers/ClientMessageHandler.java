@@ -69,12 +69,13 @@ public class ClientMessageHandler extends MessageHandler {
 		);
 	}
 	private void onUserChosePotion(byte[] command) {
+		onUnhandledCommand(command);
 		String potion = "";
 		ANSI color = null;
 		switch(command[1]) {
-		case 2: potion = "Healing"; color = ANSI.GREEN; break;
+		case 4: potion = "Healing"; color = ANSI.GREEN; break;
 		case 3: potion = "Revealing"; color = ANSI.CYAN; break;
-		case 4: potion = "Killing"; color = ANSI.RED; break;
+		case 2: potion = "Killing"; color = ANSI.RED; break;
 		}
 		System.out.printf(
 				"%sUser chose %s%s%s potion\n", 
@@ -100,14 +101,6 @@ public class ClientMessageHandler extends MessageHandler {
 		onUnhandledCommand(command);
 	}
 	private void onUserSelectedTarget(byte[] command) {
-		/*
-		String title = String.format(
-									 "%s (%s%s%s)",
-									 game.getSelfPlayer(),
-									 ANSI.toTrueColor(game.getSelfPlayer().getRole().getColor()),
-									 game.getSelfPlayer().getRole().getName(),
-									 ANSI.GRAY
-		);*/
 		StringTableMessage msg;
 		if(command[1] == 30) {
 			msg = Game.STRING_TABLE.get("GUI_YOU_CHANGED_MIND");
