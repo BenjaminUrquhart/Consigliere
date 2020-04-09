@@ -1,10 +1,12 @@
-package net.benjaminurquhart.tos.game;
+package net.benjaminurquhart.tos.game.entities;
 
 import java.awt.Color;
 
 import org.json.JSONObject;
 
 public class Killer {
+	
+	public static final Killer LYNCHING = new Killer();
 	
 	public static final Color DEFAULT_COLOR = new Color(0x505050);
 
@@ -22,8 +24,13 @@ public class Killer {
 		}
 		this.name = json.optString("Name", "Leaving the Game");
 	}
+	private Killer() {
+		this.color = DEFAULT_COLOR;
+		this.name = "Lynching";
+		this.id = -1;
+	}
 	public Color getColor() {
-		return color;
+		return color == null ? DEFAULT_COLOR : color;
 	}
 	public String getName() {
 		return name;

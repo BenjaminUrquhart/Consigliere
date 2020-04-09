@@ -5,14 +5,17 @@ import java.util.stream.Collectors;
 
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
-import net.benjaminurquhart.tos.game.StringTableMessage;
+import net.benjaminurquhart.tos.game.GamePhase;
+import net.benjaminurquhart.tos.game.entities.StringTableMessage;
 
 public class ClientMessageHandler extends MessageHandler {
 	
 	private String selfName;
+	private Game game;
 	
-	public ClientMessageHandler() {
+	public ClientMessageHandler(Game game) {
 		super("Client");
+		this.game = game;
 	}
 	@Override
     public void processCommand(byte[] command) {
@@ -94,10 +97,36 @@ public class ClientMessageHandler extends MessageHandler {
 		System.out.printf("%sA report was filed for Player %d (%s)\n", ANSI.GRAY, command[1], new String(Arrays.copyOfRange(command, 3, command.length-1)));
 	}
 	private void onUserChangedTarget(byte[] command) {
-		
+		onUnhandledCommand(command);
 	}
 	private void onUserSelectedTarget(byte[] command) {
-		System.out.printf("%sUser targeted Player %d\n", ANSI.GRAY, command[1]);
+		/*
+		String title = String.format(
+									 "%s (%s%s%s)",
+									 game.getSelfPlayer(),
+									 ANSI.toTrueColor(game.getSelfPlayer().getRole().getColor()),
+									 game.getSelfPlayer().getRole().getName(),
+									 ANSI.GRAY
+		);*/
+		StringTableMessage msg;
+		if(command[1] == 30) {
+			msg = Game.STRING_TABLE.get("GUI_YOU_CHANGED_MIND");
+			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText());
+		}
+		else {
+			String msgID = "GUI_ROLE_"+game.getSelfPlayer().getRole().getID()+"_TARGETING_X1";
+			if(game.getPhase() == GamePhase.NIGHT) {
+				msg = Game.STRING_TABLE.get(msgID+"_FIXED");
+				if(msg == null) {
+					msg = Game.STRING_TABLE.get(msgID);
+				}
+			}
+			else {
+				msg = Game.STRING_TABLE.get(msgID);
+			}
+			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText().replace("%target%", game.getPlayer(command[1]).toString()));
+		}
+		
 	}
 	private void onUserJudgedInnocent(byte[] command) {
 		

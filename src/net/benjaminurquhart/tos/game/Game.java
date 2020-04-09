@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import net.benjaminurquhart.tos.game.entities.*;
+
 public class Game {
 	
 	public static Map<String, StringTableMessage> STRING_TABLE;
@@ -73,10 +75,11 @@ public class Game {
 				ROLE_ID_TABLE.put(role.getID(), role);
 			}
 			JSONArray killers = json.getJSONArray("Killers");
-			KILLERS = new Killer[killers.length()];
+			KILLERS = new Killer[killers.length()+1];
 			for(int i = 0, length = killers.length(); i < length; i++) {
 				KILLERS[i] = new Killer(killers.getJSONObject(i));
 			}
+			KILLERS[KILLERS.length-1] = Killer.LYNCHING;
 			JSONArray gamemodes = json.getJSONArray("Modes");
 			GAME_MODE_TABLE = new HashMap<>();
 			for(int i = 0, length = gamemodes.length(); i < length; i++) {
@@ -176,13 +179,100 @@ public class Game {
 				text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(abbreviation, a -> "$1"+ANSI.toTrueColor(role.getColor())+"$2"+ANSI.RESET+"$3"));
 				
 			}
-			pattern = REGEX_CACHE.computeIfAbsent(role.getName(), name -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(name)+")(\\s|$|\\p{P})"));
+			pattern = REGEX_CACHE.computeIfAbsent(role.getName(), name -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(name)+"s?)(\\s|$|\\p{P})"));
 			text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(role.getName(), name -> "$1"+ANSI.toTrueColor(role.getColor())+"$2"+ANSI.RESET+"$3"));
 		}
 		for(Faction faction : FACTIONS) {
-			pattern = REGEX_CACHE.computeIfAbsent(faction.getName(), f -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(faction.getName())+")(\\s|$|\\p{P})"));
+			pattern = REGEX_CACHE.computeIfAbsent(faction.getName(), f -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(faction.getName())+"s?)(\\s|$|\\p{P})"));
 			text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(faction.getName(), f -> "$1"+ANSI.valueOf(faction.getName().toUpperCase())+"$2"+ANSI.RESET+"$3"));
 		}
 		return text;
+	}
+	
+	private int playerOnTrial;
+	
+	private Player[] players;
+	private int selfPosition;
+	
+	private GamePhase phase;
+	
+	private int abilitiesLeft;
+	
+	public Game() {
+		this.players = new Player[15];
+		this.selfPosition = -1;
+	}
+	public GamePhase getPhase() {
+		return phase;
+	}
+	public Player[] getPlayers() {
+		return players;
+	}
+	public Player getPlayer(int position) {
+		return players[position-1];
+	}
+	public Player getSelfPlayer() {
+		return players[selfPosition-1];
+	}
+	public void setPhase(GamePhase phase) {
+		this.phase = phase;
+	}
+	public void setSelfPosition(int position) {
+		selfPosition = position;
+	}
+	
+	public void updatePlayerName(String name, int position) {
+		if(players[position-1] != null) {
+			players[position-1].setName(name);
+		}
+		else {
+			players[position-1] = new Player(name, position);
+		}
+	}
+	
+	public void placePlayerOnTrial(int position) {
+		playerOnTrial = position;
+	}
+	public void clearPlayerOnTrial() {
+		playerOnTrial = -1;
+	}
+	public Player getPlayerOnTrial() {
+		if(playerOnTrial < 0) {
+			return null;
+		}
+		return players[playerOnTrial-1];
+	}
+	public void setAbilitiesLeft(int left) {
+		abilitiesLeft = left;
+	}
+	public int getAbilitiesLeft() {
+		return abilitiesLeft;
+	}
+	public void consumeAbility() {
+		abilitiesLeft = Math.min(0, abilitiesLeft-1);
+	}
+	public String getDayAbilitiesLeftMessage() {
+		StringTableMessage msg = this.getSelfPlayer().getRole().getDayAbilityUsesLeftMessage(abilitiesLeft);
+		if(msg == null) {
+			return null;
+		}
+		return formatMsg(msg);
+	}
+	public String getNightAbilitiesLeftMessage() {
+		StringTableMessage msg = this.getSelfPlayer().getRole().getNightAbilityUsesLeftMessage(abilitiesLeft);
+		if(msg == null) {
+			return null;
+		}
+		return formatMsg(msg);
+	}
+	private String formatMsg(StringTableMessage msg) {
+		return String.format(
+				"%s%s%s%s", 
+				ANSI.WHITE, 
+				ANSI.toTrueColorBackground(msg.getColor()), 
+				msg.getText().replace("%number%", String.valueOf(abilitiesLeft)), 
+				ANSI.RESET, 
+				ANSI.GRAY
+		);
 	}
 }

@@ -1,4 +1,4 @@
-package net.benjaminurquhart.tos.game;
+package net.benjaminurquhart.tos.game.entities;
 
 import java.awt.Color;
 
@@ -11,6 +11,7 @@ public class StringTableMessage {
 	
 	public StringTableMessage(String id, JSONObject json) {
 		switch(json.optString("style", "none")) {
+		case "ability_status": color = Color.LIGHT_GRAY; break;
 		case "positive": color = Color.GREEN; break;
 		case "alert": color = Color.RED; break;
 		case "spy": color = Color.BLACK; break;

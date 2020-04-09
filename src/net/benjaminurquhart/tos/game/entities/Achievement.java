@@ -1,6 +1,8 @@
-package net.benjaminurquhart.tos.game;
+package net.benjaminurquhart.tos.game.entities;
 
 import org.json.JSONObject;
+
+import net.benjaminurquhart.tos.game.Game;
 
 public class Achievement {
 

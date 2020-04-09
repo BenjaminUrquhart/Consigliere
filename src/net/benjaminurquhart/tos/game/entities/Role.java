@@ -1,4 +1,4 @@
-package net.benjaminurquhart.tos.game;
+package net.benjaminurquhart.tos.game.entities;
 
 import java.awt.Color;
 import java.util.Collection;
@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.json.JSONObject;
+
+import net.benjaminurquhart.tos.game.*;
 
 public class Role {
 	
@@ -89,6 +91,12 @@ public class Role {
 	}
 	public Set<PlayerTag> getTags() {
 		return tags;
+	}
+	public StringTableMessage getDayAbilityUsesLeftMessage(int usesLeft) {
+		return Game.STRING_TABLE.get("GUI_ROLE_"+id+"_DAY" + (usesLeft != 1 ? "_PLURAL" : ""));
+	}
+	public StringTableMessage getNightAbilityUsesLeftMessage(int usesLeft) {
+		return Game.STRING_TABLE.get("GUI_ROLE_"+id+"_NIGHT" + (usesLeft != 1 ? "_PLURAL" : ""));
 	}
 	@Override
 	public String toString() {

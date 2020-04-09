@@ -1,4 +1,4 @@
-package net.benjaminurquhart.tos.game;
+package net.benjaminurquhart.tos.game.entities;
 
 import java.awt.Color;
 

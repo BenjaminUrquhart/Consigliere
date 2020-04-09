@@ -16,6 +16,7 @@ import org.pcap4j.core.Pcaps;
 import org.pcap4j.packet.*;
 
 import net.benjaminurquhart.tos.game.ANSI;
+import net.benjaminurquhart.tos.game.Game;
 import net.benjaminurquhart.tos.handlers.*;
 
 //import net.benjaminurquhart.tos.game.Game;
@@ -35,7 +36,8 @@ public class TerminalOfSalem {
 
 	public static void main(String[] args) throws Exception {
 		System.out.print(ANSI.RESET);
-		MessageHandler server = new ServerMessageHandler(), client = new ClientMessageHandler();
+		Game game = new Game();
+		MessageHandler server = new ServerMessageHandler(game), client = new ClientMessageHandler(game);
 		PromiscuousMode mode = PromiscuousMode.NONPROMISCUOUS;
 		PcapHandle handle;
 		boolean live = true;
