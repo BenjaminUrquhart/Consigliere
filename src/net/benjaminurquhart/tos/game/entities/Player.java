@@ -11,6 +11,8 @@ public class Player {
 	
 	private Killer[] killers;
 	
+	private Player target;
+	
 	public Player(String name, int position) {
 		this.position = position;
 		this.name = name;
@@ -21,6 +23,9 @@ public class Player {
 	
 	public Killer[] getKillers() {
 		return killers;
+	}
+	public Player getTarget() {
+		return target;
 	}
 	public int getPosition() {
 		return position;
@@ -35,6 +40,9 @@ public class Player {
 		return role;
 	}
 	
+	public void setTarget(Player target) {
+		this.target = target;
+	}
 	public void setName(String name) {
 		this.name = name;
 	}

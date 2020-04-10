@@ -1,10 +1,13 @@
 package net.benjaminurquhart.tos;
 
+import java.io.File;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.pcap4j.core.PcapDumper;
 
 //import org.pcap4j.core.BpfProgram.BpfCompileMode;
 
@@ -36,9 +39,21 @@ public class TerminalOfSalem {
 
 	public static void main(String[] args) throws Exception {
 		System.out.print(ANSI.RESET);
+		
+		int i = 2;
+		File file = new File("saves/tos1.pcap"), ng = new File("saves/tos1.pcapng");
+		while(file.exists() || ng.exists()) {
+			file = new File("saves/tos"+i+".pcap");
+			ng = new File("saves/tos"+i+".pcapng");
+			i++;
+		}
+		
+		final String filename = file.getName();
+		
 		Game game = new Game();
 		MessageHandler server = new ServerMessageHandler(game), client = new ClientMessageHandler(game);
 		PromiscuousMode mode = PromiscuousMode.NONPROMISCUOUS;
+		PcapDumper dumper;
 		PcapHandle handle;
 		boolean live = true;
 		if(args.length > 0) {
@@ -54,6 +69,9 @@ public class TerminalOfSalem {
 			}
 		}
 		if(live) {
+			if(file.exists()) {
+				file.delete();
+			}
 			PcapNetworkInterface captureInterface = Pcaps.findAllDevs().get(0);
 			/*
 			for(PcapNetworkInterface iface : Pcaps.findAllDevs()) {
@@ -66,10 +84,13 @@ public class TerminalOfSalem {
 					captureInterface.getDescription()
 			);
 			handle = captureInterface.openLive(1<<16, mode, 10);
+			dumper = handle.dumpOpen(filename);
+			System.out.println("Writing to " + filename);
 		}
 		else {
 			System.out.println("Reading file " + args[1] + "...");
 			handle = Pcaps.openOffline(args[1]);
+			dumper = null;
 		}
 		//handle.setFilter("(((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)", BpfCompileMode.OPTIMIZE);
 		IpV4Packet ipv4Packet;
@@ -77,6 +98,14 @@ public class TerminalOfSalem {
 		Packet tmp;
 		
 		Set<Long> clientSeq = new HashSet<>(), serverSeq = new HashSet<>();
+		
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+			if(dumper != null) {
+				System.out.printf("\n\n%sSaved session as %s\n", ANSI.RESET, filename);
+				dumper.close();
+			}
+			handle.close();
+		}));
 		while(true) {
 			try {
 				tmp = handle.getNextPacketEx();
@@ -106,8 +135,13 @@ public class TerminalOfSalem {
 				}
 				client.parseCommands(packet.getPayload().getRawData());
 			}
+			else {
+				continue;
+			}
+			if(live) {
+				dumper.dump(tmp);
+			}
 		}
-		handle.close();
 	}
 
 }

@@ -429,8 +429,15 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onZombieRotted(byte[] command) {
-		onUnhandledCommand(command);
-		
+		Player zombie = game.getPlayer(command[1]);
+		System.out.printf(
+				"%s%s (%s%s%s) has rotted\n",
+				ANSI.GRAY,
+				zombie,
+				ANSI.toTrueColor(zombie.getRole().getColor()),
+				zombie.getRole().getName(),
+				ANSI.GRAY
+		);
 	}
 
 	private void onAccountFlags(byte[] command) {
@@ -528,10 +535,10 @@ public class ServerMessageHandler extends MessageHandler {
 				4-command[1],
 				ANSI.CYAN,
 				ANSI.RESET,
-				4-command[2],
+				4-command[3],
 				ANSI.RED,
 				ANSI.RESET,
-				4-command[3],
+				4-command[2],
 				ANSI.GRAY
 		);
 	}
@@ -755,13 +762,23 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onOneDayBeforeStalemate(byte[] command) {
-		onUnhandledCommand(command);
+		System.out.printf("%s%s%s\n", ANSI.GREEN, Game.STRING_TABLE.get("GUI_ONE_DAY_BEFORE_STALEMATE").getText(), ANSI.GRAY);
 		
 	}
 
 	private void onSpyNightAbilityMessage(byte[] command) {
-		onUnhandledCommand(command);
-		
+		Faction faction = Game.FACTIONS[command[1]];
+		System.out.printf(
+				"%sA member of the %s%s%s visited %s%s%s last night%s\n",
+				ANSI.GREEN,
+				ANSI.valueOf(faction.getName().toUpperCase()),
+				faction.getName(),
+				ANSI.GREEN,
+				ANSI.RESET,
+				game.getPlayer(command[2]),
+				ANSI.GREEN,
+				ANSI.GRAY
+		);
 	}
 
 	private void onEarnedAchievements(byte[] command) {
@@ -979,7 +996,7 @@ public class ServerMessageHandler extends MessageHandler {
 		
 		List<String> winners = new ArrayList<>();
 		for(int i = 2; i < command.length-1; i++) {
-			winners.add(game.getPlayer(i).getName());
+			winners.add(game.getPlayer(command[i]).getName());
 		}
 		System.out.printf(
 				"%s%s%s\n",
@@ -1259,7 +1276,16 @@ public class ServerMessageHandler extends MessageHandler {
 
 	private void onLookoutNightAbilityMessage(byte[] command) {
 		onUnhandledCommand(command);
-		
+		System.out.printf(
+				"%s%s%s visited %s%s%s last night%s\n",
+				ANSI.RESET,
+				game.getPlayer(command[2]),
+				ANSI.GREEN,
+				ANSI.RESET,
+				game.getSelfPlayer().getTarget(),
+				ANSI.GREEN,
+				ANSI.GRAY
+		);
 	}
 
 	private void onTrialFoundNotGuilty(byte[] command) {
@@ -1490,7 +1516,12 @@ public class ServerMessageHandler extends MessageHandler {
 		Player player;
 		
 		String name, role = " (???)";
-		if(position == 45) {
+		if(position == 75) {
+			name = ANSI.VAMPIRE+"Vampire";
+			alive = true;
+			role = "";
+		}
+		else if(position == 45) {
 			name = ANSI.CYAN+"Medium";
 			alive = true;
 			role = "";

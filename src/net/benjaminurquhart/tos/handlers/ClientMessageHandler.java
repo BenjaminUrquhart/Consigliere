@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
 import net.benjaminurquhart.tos.game.GamePhase;
+import net.benjaminurquhart.tos.game.entities.Player;
 import net.benjaminurquhart.tos.game.entities.StringTableMessage;
 
 public class ClientMessageHandler extends MessageHandler {
@@ -26,6 +27,7 @@ public class ClientMessageHandler extends MessageHandler {
     	case 8: onWhisper(command); break;
     	case 10: onUserVoteUpdate(command); break;
     	case 11: onUserSelectedTarget(command); break;
+    	case 12: onUserSelectedSecondTarget(command); break;
     	case 14: onUserJudgedGuilty(command); break;
     	case 15: onUserJudgedInnocent(command); break;
     	case 16: onUserSelectedDayTarget(command); break;
@@ -98,15 +100,17 @@ public class ClientMessageHandler extends MessageHandler {
 		System.out.printf("%sA report was filed for Player %d (%s)\n", ANSI.GRAY, command[1], new String(Arrays.copyOfRange(command, 3, command.length-1)));
 	}
 	private void onUserChangedTarget(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 	}
 	private void onUserSelectedTarget(byte[] command) {
 		StringTableMessage msg;
 		if(command[1] == 30) {
+			game.getSelfPlayer().setTarget(null);
 			msg = Game.STRING_TABLE.get("GUI_YOU_CHANGED_MIND");
 			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText());
 		}
 		else {
+			game.getSelfPlayer().setTarget(game.getPlayer(command[1]));
 			String msgID = "GUI_ROLE_"+game.getSelfPlayer().getRole().getID()+"_TARGETING_X1";
 			if(game.getPhase() == GamePhase.NIGHT) {
 				msg = Game.STRING_TABLE.get(msgID+"_FIXED");
@@ -117,9 +121,46 @@ public class ClientMessageHandler extends MessageHandler {
 			else {
 				msg = Game.STRING_TABLE.get(msgID);
 			}
-			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText().replace("%target%", game.getPlayer(command[1]).toString()));
+			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText().replace("%target%", game.getSelfPlayer().getTarget().getName()));
 		}
-		
+	}
+	private void onUserSelectedSecondTarget(byte[] command) {
+		StringTableMessage msg;
+		if(command[1] == 30) {
+			msg = Game.STRING_TABLE.get("GUI_YOU_CHANGED_MIND");
+			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText());
+		}
+		else {
+			Player first = game.getSelfPlayer().getTarget(), second = game.getPlayer(command[1]);
+			String msgID = "GUI_ROLE_"+game.getSelfPlayer().getRole().getID()+"_TARGETING_X1_TARGET2";
+			if(game.getPhase() == GamePhase.NIGHT) {
+				msg = Game.STRING_TABLE.get(msgID+"_FIXED");
+				if(msg == null) {
+					msg = Game.STRING_TABLE.get(msgID);
+				}
+			}
+			else {
+				msg = Game.STRING_TABLE.get(msgID);
+			}
+			String type = "target", action = "target";
+			if(game.getSelfPlayer().getRole().equals(Game.ROLE_TABLE.get("Necromancer"))) {
+				if(first == game.getSelfPlayer()) {
+					type = "ghoul";
+					action = "attack";
+				}
+				else {
+					type = "zombie";
+					action = Game.STRING_TABLE.get("GUI_ACTION_VERB"+first.getRole().getID()).getText();
+				}
+			}
+			System.out.printf(
+					"%s%s\n", 
+					ANSI.GRAY, 
+					msg.getText().replace("%target%", second.getName())
+								 .replace("%monstertype%", type)
+								 .replace("%actiontype%", action)
+			);
+		}
 	}
 	private void onUserJudgedInnocent(byte[] command) {
 		
