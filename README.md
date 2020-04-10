@@ -13,4 +13,4 @@ Run with no arguments for live capturing of sessions:
 
 Run with the --file argument to load a capture file for analysis:
 
-`java -jar Consigliere.jar --file mycapture.pcap[ng]`
+`java -jar Consigliere.jar --file path/to/mycapture.pcap[ng]`
