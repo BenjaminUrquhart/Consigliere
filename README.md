@@ -30,6 +30,7 @@ This project relies on `libpcap` for capturing packets. You will need to install
 I would greatly appriciate game captures for the following roles:
 
 **Classic:**
+- Lookout (with visits)
 - Transporter
 - Witch
 - Mayor (reveal - you must be the mayor)
