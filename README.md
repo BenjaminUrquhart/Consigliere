@@ -16,6 +16,9 @@ Run with the --file argument to load a capture file for analysis:
 `java -jar Consigliere.jar --file path/to/mycapture.pcap[ng]`
 
 # Dependencies
+
+**Note:** I am working on packaging these dependencies into the program so you don't need to install them manually.
+
 This project relies on `libpcap` for capturing packets. You will need to install it in order to use Consigliere:
 - Windows: Follow [these installation instructions](https://github.com/kaitoy/pcap4j#winpcap-or-npcap). You may need administrative rights in order to start capturing.
 - MacOS: The preinstalled version is enough to read data. To capture traffic, you will need the ChmodBPF package packaged with Wireshark. Download [Wireshark](https://www.wireshark.org/download.html) and run the `Install ChmodBPF` package.
