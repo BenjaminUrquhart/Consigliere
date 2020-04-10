@@ -29,7 +29,7 @@ I would greatly appriciate game captures for the following roles:
 - Vampire Hunter (Vampire chat and/or conversion to Vigilante)
 - Executioner (preferably with a successful lynch)
 
-**Coven DLC:***
+**Coven DLC:**
 - Guardian Angel
 - Coven Leader
 - Hex Master
