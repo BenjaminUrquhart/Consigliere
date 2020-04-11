@@ -41,14 +41,18 @@ public class TerminalOfSalem {
 		System.out.print(ANSI.RESET);
 		
 		int i = 2;
-		File file = new File("saves/tos1.pcap"), ng = new File("saves/tos1.pcapng");
+		File directory = new File("saves");
+		if(!directory.exists()) {
+			directory.mkdirs();
+		}
+		File file = new File(directory, "tos1.pcap"), ng = new File(directory, "tos1.pcapng");
 		while(file.exists() || ng.exists()) {
-			file = new File("saves/tos"+i+".pcap");
-			ng = new File("saves/tos"+i+".pcapng");
+			file = new File(directory, "tos"+i+".pcap");
+			ng = new File(directory, "tos"+i+".pcapng");
 			i++;
 		}
 		
-		final String filename = file.getName();
+		final String filename = file.getAbsolutePath();
 		
 		Game game = new Game();
 		MessageHandler server = new ServerMessageHandler(game), client = new ClientMessageHandler(game);
@@ -97,6 +101,8 @@ public class TerminalOfSalem {
 		TcpPacket packet;
 		Packet tmp;
 		
+		byte[] data;
+		
 		Set<Long> clientSeq = new HashSet<>(), serverSeq = new HashSet<>();
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -121,19 +127,38 @@ public class TerminalOfSalem {
 			if(!packet.getHeader().getPsh()) {
 				continue;
 			}
+			data = packet.getPayload().getRawData();
 			if(ipv4Packet.getHeader().getSrcAddr().equals(TOS_SERVER)) {
 				if(!serverSeq.add(packet.getHeader().getSequenceNumberAsLong())) {
 					System.out.printf("%sIgnoring packet retransmission...\n", ANSI.GRAY);
 					continue;
 				}
-				server.parseCommands(packet.getPayload().getRawData());
+				try {
+					server.parseCommands(data);
+				}
+				catch(Throwable e) {
+					System.out.printf("%sAn internal error occured:\n", ANSI.RED);
+					e.printStackTrace(System.out);
+					System.out.print("Message: ");
+					server.onDefaultFunction(data);
+					System.out.printf("%s\n\n", ANSI.GRAY);
+				}
 			}
 			else if(ipv4Packet.getHeader().getDstAddr().equals(TOS_SERVER)) {
 				if(!clientSeq.add(packet.getHeader().getSequenceNumberAsLong())) {
 					System.out.printf("%sIgnoring packet retransmission...\n", ANSI.GRAY);
 					continue;
 				}
-				client.parseCommands(packet.getPayload().getRawData());
+				try {
+					client.parseCommands(data);
+				}
+				catch(Throwable e) {
+					System.out.printf("%sAn internal error occured:\n", ANSI.RED);
+					e.printStackTrace(System.out);
+					System.out.print("Message: ");
+					client.onDefaultFunction(data);
+					System.out.printf("%s\n\n", ANSI.GRAY);
+				}
 			}
 			else {
 				continue;

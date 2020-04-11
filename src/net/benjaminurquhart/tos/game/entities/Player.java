@@ -1,8 +1,15 @@
 package net.benjaminurquhart.tos.game.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import net.benjaminurquhart.tos.game.PlayerTag;
+
 public class Player {
 	
 	private static final Killer[] NO_KILLERS = new Killer[0];
+	
+	private Set<PlayerTag> tags;
 
 	private boolean alive;
 	private int position;
@@ -19,8 +26,13 @@ public class Player {
 		
 		this.killers = NO_KILLERS;
 		this.alive = true;
+		
+		this.tags = new HashSet<>();
 	}
 	
+	public Set<PlayerTag> getTags() {
+		return tags;
+	}
 	public Killer[] getKillers() {
 		return killers;
 	}
@@ -48,6 +60,13 @@ public class Player {
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+	public void removeTag(PlayerTag tag) {
+		this.tags.remove(tag);
+	}
+	public void addTag(PlayerTag tag) {
+		this.tags.add(tag);
 	}
 	
 	public void kill(Killer... killers) {

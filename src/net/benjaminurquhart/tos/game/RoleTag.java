@@ -4,11 +4,30 @@ package net.benjaminurquhart.tos.game;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public enum PlayerTag {
+public enum RoleTag {
 
-	FULLMOON_ATTACK,
-	CLEANED,
-	STONED;
+	POST_DEATH_DAY_EXPANDED_ABILITY,
+	POST_DEATH_NIGHT_ABILITY,
+	POST_DEATH_DAY_ABILITY,
+	
+	NIGHT_ABILITY_IS_SILENT,
+	
+	DAY_EXPANDED_ABILITY,
+	NIGHT_ABILITY,
+	DAY_ABILITY,
+	
+	DEFERRED_ABILITY_USE,
+	
+	CLIENT_SIDE_TARGET_TRACKING,
+	
+	GOAL_TARGET_IS_FIXED_TARGET,
+	 
+	INDEPENDENT_WIN_CONDITION,
+	
+	ROLE_BLOCK_IMMUNE,
+	RESTFUL_DEAD,
+	FORGETTABLE,
+	SAFE_ZOMBIE;
 	
 	private static final Pattern NAME_PATTERN = Pattern.compile("([A-Z])(.+?)?( |$)");
 	private String name;
@@ -32,4 +51,5 @@ public enum PlayerTag {
 		}
 		return name;
 	}
+	
 }

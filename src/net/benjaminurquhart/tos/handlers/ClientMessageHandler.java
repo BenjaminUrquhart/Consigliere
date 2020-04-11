@@ -41,7 +41,7 @@ public class ClientMessageHandler extends MessageHandler {
     	case 39: onLeaveGame(command); break;
     	case 62: onUserAcceptedRankedMatch(command); break;
     	case 74: onItemPurchase(command); break;
-    	case 78: onUserChosePirateAttack(command); break;
+    	case 78: onUserChosePirateAction(command); break;
     	case 79: onUserChosePotion(command); break;
     	case 82: onUserChoseHypnotistMessage(command); break;
     	case 85: onSteamLoginAttempt(command); break;
@@ -50,15 +50,18 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
-	private void onUserChosePirateAttack(byte[] command) {
-		onUnhandledCommand(command);
-		String attack = "";
-		switch(command[1]) {
-		case 2: attack = "Scimitar"; break;
-		case 3: attack = "Pistol"; break;
-		case 4: attack = "Rapier"; break;
+	private void onUserChosePirateAction(byte[] command) {
+		//onUnhandledCommand(command);
+		StringTableMessage msg;
+		String action;
+		if(game.getSelfPlayer().getRole().equals(Game.ROLE_TABLE.get("Pirate"))) {
+			action = "ATTACK";
 		}
-		System.out.printf("%sUser chose %s\n", ANSI.GRAY, attack);
+		else {
+			action = "DEFEND";
+		}
+		msg = Game.STRING_TABLE.get("GUI_PIRATE_"+action+command[1]+"NOTICE");
+		System.out.printf("%s%s%s\n", ANSI.GREEN, msg.getText().replace("%name%", String.valueOf(game.getSelfPlayer().getTarget())), ANSI.RESET);
 	}
 	private void onUserChoseHypnotistMessage(byte[] command) {
 		StringTableMessage message = Game.STRING_TABLE.get("GAME_"+this.convertToString(command));
@@ -72,7 +75,7 @@ public class ClientMessageHandler extends MessageHandler {
 	}
 	private void onUserChosePotion(byte[] command) {
 		onUnhandledCommand(command);
-		String potion = "";
+		String potion = "Unknown potion: " + command[1];
 		ANSI color = null;
 		switch(command[1]) {
 		case 4: potion = "Healing"; color = ANSI.GREEN; break;
@@ -112,6 +115,9 @@ public class ClientMessageHandler extends MessageHandler {
 		else {
 			game.getSelfPlayer().setTarget(game.getPlayer(command[1]));
 			String msgID = "GUI_ROLE_"+game.getSelfPlayer().getRole().getID()+"_TARGETING_X1";
+			if(command[1] == game.getSelfPlayer().getPosition()) {
+				msgID += "_SELF";
+			}
 			if(game.getPhase() == GamePhase.NIGHT) {
 				msg = Game.STRING_TABLE.get(msgID+"_FIXED");
 				if(msg == null) {

@@ -46,7 +46,7 @@ public class ServerMessageHandler extends MessageHandler {
                  case 6: onChatBoxMessage(command); break;
                  case 7: onDefaultFunction(command); break;
                  case 8: onDefaultFunction(command); break;
-                 case 9: onDefaultFunction(command); break;
+                 case 9: onCustomRoleListAdd(command); break;
                  case 10: onDefaultFunction(command); break;
                  case 11: onGameStartCountdown(command); break;
                  case 12: onDefaultFunction(command); break;
@@ -86,7 +86,7 @@ public class ServerMessageHandler extends MessageHandler {
                  case 46: onDefaultFunction(command); break;
                  case 47: onDefaultFunction(command); break;
                  case 48: onUpdatePaidCurrency(command); break;
-                 case 49: onDefaultFunction(command); break;
+                 case 49: onFriendReferrals(command); break;
                  case 50: onDefaultFunction(command); break;
                  case 51: onSetLastBonusWinTime(command); break;
                  case 52: onDefaultFunction(command); break;
@@ -119,9 +119,9 @@ public class ServerMessageHandler extends MessageHandler {
                  case 79: onPlayerStatistics(command); break;
                  case 80: onScrollConsumed(command); break;
                  case 81: onDefaultFunction(command); break;
-                 case 82: onDefaultFunction(command); break;
+                 case 82: onLobbyWaitPopup(command); break;
                  case 83: onPromotionPopup(command); break;
-                 case 84: onDefaultFunction(command); break;
+                 case 84: onReferralCodes(command); break;
                  case 85: onDefaultFunction(command); break;
                  case 86: onDefaultFunction(command); break;
                  case 87: onDefaultFunction(command); break;
@@ -271,6 +271,29 @@ public class ServerMessageHandler extends MessageHandler {
                 default: onUnhandledCommand(command); break;
         }
     }
+
+	private void onReferralCodes(byte[] command) {
+		System.out.printf("%sReceived referral code update\n", ANSI.GRAY);
+	}
+
+	private void onLobbyWaitPopup(byte[] command) {
+		System.out.printf("%sYou must wait 15 seconds before joining another lobby%s\n", ANSI.YELLOW, ANSI.GRAY);
+	}
+
+	private void onCustomRoleListAdd(byte[] command) {
+		Role role = Game.ROLES[command[1]-1];
+		System.out.printf(
+				"%sAdded role: %s%s%s\n",
+				ANSI.GRAY,
+				ANSI.toTrueColor(role.getColor()),
+				role.getName(),
+				ANSI.GRAY
+		);
+	}
+
+	private void onFriendReferrals(byte[] command) {
+		System.out.printf("%sReceived friend referral information\n", ANSI.GRAY);
+	}
 
 	private void onVoteToRepickHost(byte[] command) {
 		System.out.printf(
@@ -446,12 +469,20 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onPirateDuelOutcome(byte[] command) {
-		if(command[1]-1 == command[2]) {
-			System.out.printf("%sYou won the duel!%s\n", ANSI.GREEN, ANSI.RESET);
-		}
-		else {
-			System.out.printf("%sYou lost the duel!%s\n", ANSI.RED, ANSI.RESET);
-		}
+		boolean isPirate = game.getSelfPlayer().getRole().equals(Game.ROLE_TABLE.get("Pirate"));
+		StringTableMessage msg = Game.STRING_TABLE.get(String.format(
+				"GUI_PIRATE_DUEL_RESULTS_%s%d%d",
+				isPirate ? 'A' : 'D',
+				command[1],
+				command[2]
+		));
+		ANSI color = msg.getText().contains("lost") ? ANSI.RED : ANSI.GREEN;
+		System.out.printf(
+				"%s%s%s\n",
+				color,
+				msg.getText(),
+				ANSI.GRAY
+		);
 	}
 
 	private void onVIPTarget(byte[] command) {
@@ -1040,7 +1071,31 @@ public class ServerMessageHandler extends MessageHandler {
 			);
 		}
 		else {
-			StringTableMessage msg = Game.STRING_TABLE.get("GUI_FACTION_TARGETING_"+role.getID());
+			Player target = game.getPlayer(command[3]);
+			String targetName = target.getName(), type = "", action = "";
+			String msgID = "GUI_FACTION_TARGETING_"+role.getID();
+			
+			if(member.getTarget() == null) {
+				member.setTarget(target);
+			}
+			// TODO: fix messages for 2-target roles
+			if(command[4] == 7 && role.equals(Game.ROLE_TABLE.get("Medusa"))) {
+				targetName = "visitors";
+			}
+			else if(role.equals(Game.ROLE_TABLE.get("Necromancer"))) {
+				if(member.getTarget() == target) {
+					type = "ghoul";
+					action = "attack";
+				}
+				else if(member == target) {
+					msgID += "_GHOUL";
+				}
+				else if(command[4] == 9) {
+					type = "zombie";
+					action = Game.STRING_TABLE.get("GUI_ACTION_VERB"+member.getTarget().getRole().getID()).getText();
+				}
+			}
+			StringTableMessage msg = Game.STRING_TABLE.get(msgID);
 			String title = String.format(
 					 "%s (%s%s%s)",
 					 member,
@@ -1048,11 +1103,28 @@ public class ServerMessageHandler extends MessageHandler {
 					 role.getName(),
 					 ANSI.GRAY
 			);
+			if(msg == null) {
+				if(role.equals(Game.ROLE_TABLE.get("Potion Master"))) {
+					switch(command[5]) {
+					case 3: msgID+="_HEAL"; break;
+					case 2: msgID+="_INVESTIGATE"; break;
+					case 1: msgID+="_ATTACK"; break;
+					}
+					msg = Game.STRING_TABLE.get(msgID);
+				}
+				if(msg == null) {
+					msg = Game.STRING_TABLE.get("GUI_FACTION_TARGETING_DEFAULT");
+				}
+			}
 			System.out.printf(
 					"%s%s\n",
 					ANSI.GRAY,
-					msg.getText().replace("%name1%", title)
-								 .replace("%name2%", game.getPlayer(command[3]).getName())
+					msg.getText()
+								 .replace("%name%", title)
+								 .replace("%name1%", title)
+								 .replace("%name2%", targetName)
+								 .replace("%actiontype%", action)
+								 .replace("%monstertype%", type)
 			);
 		}
 	}
@@ -1379,21 +1451,24 @@ public class ServerMessageHandler extends MessageHandler {
 		if(role == null) {
 			System.out.printf("We could not determine their role (Unknown role: %d)%s\n", roleID, ANSI.GRAY);
 		}
-		else if (role.getTags().contains(PlayerTag.STONED) || role.getTags().contains(PlayerTag.CLEANED)) {
+		else if (role.getPlayerTags().contains(PlayerTag.STONED) || role.getPlayerTags().contains(PlayerTag.CLEANED)) {
 			System.out.printf(
 					"We could not determine their role (%s%s%s)%s\n",
 					ANSI.toTrueColor(role.getColor()),
-					role.getTags().stream().map(String::valueOf).collect(Collectors.joining(", ")),
+					role.getPlayerTags().stream().map(String::valueOf).collect(Collectors.joining(", ")),
 					ANSI.RESET,
 					ANSI.GRAY
 			);
-			if(player.getRole() != null) {
+			if(player.getRole() == null) {
 				player.setRole(role);
 			}
 		}
 		else {
 			System.out.printf("Role: %s%s%s\n", ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.GRAY);
 			player.setRole(role);
+		}
+		if(role != null) {
+			role.getPlayerTags().forEach(player::addTag);
 		}
 	}
 
@@ -1569,7 +1644,8 @@ public class ServerMessageHandler extends MessageHandler {
 		int asterisk = this.indexOf(command, (byte)'*');
 		String name = new String(Arrays.copyOfRange(command, 3, asterisk));
 		System.out.printf(
-				"Player #%d (%s) joined the game%s\n",
+				"%sPlayer #%d (%s) joined the game%s\n",
+				ANSI.GRAY,
 				command[asterisk+1], 
 				name,
 				command[1] == 0x02 ? " (Host)" : ""

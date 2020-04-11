@@ -11,9 +11,10 @@ import net.benjaminurquhart.tos.game.*;
 
 public class Role {
 	
-	private static Set<String> unknownTags = new HashSet<>();
+	private static Set<String> unknownPlayerTags = new HashSet<>(), unknownRoleTags = new HashSet<>();
 
-	private Set<PlayerTag> tags;
+	private Set<PlayerTag> playerTags;
+	private Set<RoleTag> roleTags;
 	private Faction faction;
 	private String type;
 	private String name;
@@ -46,7 +47,8 @@ public class Role {
 		this.type = json.getJSONObject("Type").getString("text");
 		this.id = Integer.parseInt(json.getString("id"));
 		
-		this.tags = new HashSet<>();
+		String tag;
+		this.playerTags = new HashSet<>();
 		if(json.has("PlayerTags")) {
 			Collection<Object> tags;
 			Object obj = json.get("PlayerTags");
@@ -57,12 +59,35 @@ public class Role {
 				tags = json.getJSONArray("PlayerTags").toList();
 			}
 			for(Object o : tags) {
+				tag = String.valueOf(o).replaceAll("([a-z])([A-Z])", "$1_$2").toUpperCase();
 				try {
-					this.tags.add(PlayerTag.valueOf(String.valueOf(o).toUpperCase()));
+					this.playerTags.add(PlayerTag.valueOf(tag));
 				}
 				catch(Exception e) {
-					if(unknownTags.add(String.valueOf(o))) {
-						System.out.printf("%sUnknown tag: %s%s\n", ANSI.RED, String.valueOf(o).toUpperCase(), ANSI.GRAY);
+					if(unknownPlayerTags.add(tag)) {
+						System.out.printf("%sUnknown player tag: %s%s\n", ANSI.RED, tag, ANSI.GRAY);
+					}
+				}
+			}
+		}
+		this.roleTags = new HashSet<>();
+		if(json.has("Tags")) {
+			Collection<Object> tags;
+			Object obj = json.get("Tags");
+			if(obj instanceof JSONObject) {
+				tags = ((JSONObject)obj).toMap().values();
+			}
+			else {
+				tags = json.getJSONArray("Tags").toList();
+			}
+			for(Object o : tags) {
+				tag = String.valueOf(o).replaceAll("([a-z])([A-Z])", "$1_$2").toUpperCase();
+				try {
+					this.roleTags.add(RoleTag.valueOf(tag));
+				}
+				catch(Exception e) {
+					if(unknownRoleTags.add(tag)) {
+						System.out.printf("%sUnknown role tag: %s%s\n", ANSI.RED, tag, ANSI.GRAY);
 					}
 				}
 			}
@@ -89,8 +114,11 @@ public class Role {
 	public Faction getFaction() {
 		return faction;
 	}
-	public Set<PlayerTag> getTags() {
-		return tags;
+	public Set<RoleTag> getRoleTags() {
+		return roleTags;
+	}
+	public Set<PlayerTag> getPlayerTags() {
+		return playerTags;
 	}
 	public StringTableMessage getDayAbilityUsesLeftMessage(int usesLeft) {
 		return Game.STRING_TABLE.get("GUI_ROLE_"+id+"_DAY" + (usesLeft != 1 ? "_PLURAL" : ""));

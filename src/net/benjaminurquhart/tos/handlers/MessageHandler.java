@@ -23,6 +23,9 @@ public abstract class MessageHandler {
 		byte[] command;
 		while(start > -1 && end > -1) {
 			command = Arrays.copyOfRange(data, start, end);
+			if(command.length == 0 || command[0] == 0) {
+				break;
+			}
 			this.processCommand(command);
 			start = end;
 			if(start >= data.length) {
@@ -31,17 +34,17 @@ public abstract class MessageHandler {
 			end = this.indexOf(data, (byte)0, start)+1;
 		}
 	}
-
+	
 	public void onDefaultFunction(byte[] command) {
     	onUnhandledCommand(command);
     }
 	protected void onUnhandledCommand(byte[] command) {
 		System.out.printf("%s%s: (0x%02x %03d): %s%s\n", ANSI.GRAY, origin, command[0], ((int)command[0])&(int)0xff, convertToString(command), ANSI.RESET);
 	}
-	protected String convertToString(byte[] command) {
+	public String convertToString(byte[] command) {
 		return convertToString(command, true);
 	}
-	protected String convertToString(byte[] command, boolean trim) {
+	public String convertToString(byte[] command, boolean trim) {
 		if(trim) {
 			if(command.length == 1) {
 				return "";
