@@ -109,7 +109,7 @@ public class ServerMessageHandler extends MessageHandler {
                  case 69: onDefaultFunction(command); break;
                  case 70: onDefaultFunction(command); break;
                  case 71: onJoinRankedQueue(command); break;
-                 case 72: onDefaultFunction(command); break;
+                 case 72: onLeftRankedQueue(command); break;
                  case 73: onRankedGameAvailable(command); break;
                  case 74: onUserStatistics(command); break;
                  case 75: onDefaultFunction(command); break;
@@ -272,6 +272,10 @@ public class ServerMessageHandler extends MessageHandler {
         }
     }
 
+	private void onLeftRankedQueue(byte[] command) {
+		System.out.printf("%sLeft Ranked queue%s\n", ANSI.GREEN, ANSI.GRAY);
+	}
+
 	private void onReferralCodes(byte[] command) {
 		System.out.printf("%sReceived referral code update\n", ANSI.GRAY);
 	}
@@ -308,10 +312,16 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onJoinRankedQueue(byte[] command) {
+		String time = new String(Arrays.copyOfRange(command, 2, command.length-1));
+		// For some reason, the server uses the same message ID for referrals as ranked queues.
+		// Why? Beats me. At least referrals aren't numeric data.
+		if(!time.matches("\\d+")) {
+			return;
+		}
 		System.out.printf(
-				"%sJoined %s Ranked queue (%s seconds remaining)%s\n", 
-				ANSI.GREEN, command[1] == 1 ? "Classic" : "Coven",
-				new String(Arrays.copyOfRange(command, 2, command.length-1)),
+				"%sJoined Ranked queue (%s seconds remaining)%s\n", 
+				ANSI.GREEN,
+				time,
 				ANSI.GRAY
 		);
 	}
@@ -544,8 +554,19 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	private void onPsychicNightAbility(byte[] command) {
-		onUnhandledCommand(command);
-		
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_ROLE_49_FEEDBACK"+(command[1] == 1 ? 2 : 1));
+		String text = msg.getText().replace("%name1%", game.getPlayer(command[2]).getName()).replace("%name2%", game.getPlayer(command[3]).getName());
+		if(command[1] == 2) {
+			text = text.replace("%name3%", game.getPlayer(command[4]).getName());
+		}
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(msg.getColor()),
+				ANSI.GREEN,
+				text,
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	private void onOtherCoven(byte[] command) {

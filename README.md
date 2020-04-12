@@ -31,27 +31,24 @@ I would greatly appriciate game captures for the following roles:
 
 **Classic:**
 - Lookout (with visits)
-- Transporter
-- Witch
-- Mayor (reveal - you must be the mayor)
+- ~~Transporter~~
+- ~~Witch~~
+- Mayor (You must be the mayor. Preferably with a reveal)
 - Jailor (Executed Townie only)
 - Vigilante (Death from guilt only)
 - Vampire Hunter (Vampire chat and/or conversion to Vigilante)
-- Executioner (preferably with a successful lynch)
+- Executioner (Preferably with a successful lynch)
 
 **Coven DLC:**
 - Guardian Angel
-- Coven Leader
+- Coven Leader (You must be Coven, but CANNOT be the CL)
 - Hex Master
-- Potion Master (Please tell me which potions were used)
-- Tracker
+- Potion Master (Prefereably you being the PM. Please tell me which potions were used)
+- Tracker (with visits)
 - Trapper
-- Pirate
-
-IF YOU ARE DUELED BY A PIRATE AS ANY ROLE PLEASE SEND ME THE CAPTURE AND THE OPTION YOU CHOSE
+- ~~Pirate~~
 
 # Known Bugs
 - Potion Master potions are wrong
 - Necromancer will always start the night by "changing their mind"
-- Pirate duels do not show the proper attack/defense (outcomes are fine?)
 
