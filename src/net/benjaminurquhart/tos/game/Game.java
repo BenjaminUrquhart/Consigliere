@@ -1,5 +1,6 @@
 package net.benjaminurquhart.tos.game;
 
+import java.awt.Color;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,13 +18,14 @@ import net.benjaminurquhart.tos.game.entities.*;
 public class Game {
 	
 	public static Map<String, StringTableMessage> STRING_TABLE;
+	public static Map<String, GameMode> GAME_MODE_TABLE;
 	public static Map<String, Faction> FACTION_TABLE;
 	public static Map<String, Genre> GENRE_TABLE;
 	public static Map<String, Role> ROLE_TABLE;
 	
 	public static Map<String, List<String>> ROLE_ABBREVIATIONS;
 	
-	public static Map<Integer, String> GAME_MODE_TABLE;
+	public static Map<Integer, GameMode> GAME_MODE_ID_TABLE;
 	public static Map<Integer, Role> ROLE_ID_TABLE;
 	
 	public static Achievement[] ACHIEVEMENTS;
@@ -81,13 +83,17 @@ public class Game {
 			}
 			KILLERS[KILLERS.length-1] = Killer.LYNCHING;
 			JSONArray gamemodes = json.getJSONArray("Modes");
+			GAME_MODE_ID_TABLE = new HashMap<>();
 			GAME_MODE_TABLE = new HashMap<>();
+			GameMode mode;
 			for(int i = 0, length = gamemodes.length(); i < length; i++) {
 				tmp = gamemodes.getJSONObject(i);
 				if(tmp.get("id") instanceof JSONArray) {
 					tmp.put("id", tmp.getJSONArray("id").getString(0));
 				}
-				GAME_MODE_TABLE.put(Integer.parseInt(tmp.getString("id")), tmp.getString("Name"));
+				mode = new GameMode(tmp);
+				GAME_MODE_ID_TABLE.put(mode.getID(), mode);
+				GAME_MODE_TABLE.put(mode.getName(), mode);
 			}
 			JSONArray winners = json.getJSONArray("WinningGroups");
 			WINNERS = new Winner[winners.length()];
@@ -170,21 +176,33 @@ public class Game {
 			throw new RuntimeException(e);
 		}
 	}
-	
 	public static String insertColors(String text) {
+		return insertColors(text, ANSI.RESET);
+	}
+	public static String insertColors(String text, ANSI defaultColor) {
+		return insertColors(text, defaultColor.toString());
+	}
+	public static String insertColors(String text, Color defaultColor) {
+		return insertColors(text, ANSI.toTrueColor(defaultColor));
+	}
+	public static String insertColors(String text, String defaultColor) {
 		Pattern pattern;
+		String match;
 		for(Role role : ROLES) {
 			for(String abbreviation : ROLE_ABBREVIATIONS.computeIfAbsent(role.getName(), n -> new ArrayList<>())) {
 				pattern = REGEX_CACHE.computeIfAbsent(abbreviation, a -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(a)+"s?)(\\s|$|\\p{P})"));
-				text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(abbreviation, a -> "$1"+ANSI.toTrueColor(role.getColor())+"$2"+ANSI.RESET+"$3"));
+				match = String.format(REPLACEMENT_CACHE.computeIfAbsent(abbreviation, a -> "$1"+ANSI.toTrueColor(role.getColor())+"$2%s$3"), defaultColor);
+				text = pattern.matcher(text).replaceAll(match);
 				
 			}
 			pattern = REGEX_CACHE.computeIfAbsent(role.getName(), name -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(name)+"s?)(\\s|$|\\p{P})"));
-			text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(role.getName(), name -> "$1"+ANSI.toTrueColor(role.getColor())+"$2"+ANSI.RESET+"$3"));
+			match = String.format(REPLACEMENT_CACHE.computeIfAbsent(role.getName(), name -> "$1"+ANSI.toTrueColor(role.getColor())+"$2%s$3"), defaultColor);
+			text = pattern.matcher(text).replaceAll(match);
 		}
 		for(Faction faction : FACTIONS) {
 			pattern = REGEX_CACHE.computeIfAbsent(faction.getName(), f -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(faction.getName())+"s?)(\\s|$|\\p{P})"));
-			text = pattern.matcher(text).replaceAll(REPLACEMENT_CACHE.computeIfAbsent(faction.getName(), f -> "$1"+ANSI.valueOf(faction.getName().toUpperCase())+"$2"+ANSI.RESET+"$3"));
+			match = String.format(REPLACEMENT_CACHE.computeIfAbsent(faction.getName(), name -> "$1"+ANSI.valueOf(name.toUpperCase())+"$2%s$3"), defaultColor);
+			text = pattern.matcher(text).replaceAll(match);
 		}
 		return text;
 	}
@@ -195,12 +213,16 @@ public class Game {
 	private int selfPosition;
 	
 	private GamePhase phase;
+	private GameMode mode;
 	
 	private int abilitiesLeft;
 	
 	public Game() {
 		this.players = new Player[15];
 		this.selfPosition = -1;
+	}
+	public GameMode getMode() {
+		return mode;
 	}
 	public GamePhase getPhase() {
 		return phase;
@@ -214,8 +236,21 @@ public class Game {
 	public Player getSelfPlayer() {
 		return players[selfPosition-1];
 	}
+	public void setMode(GameMode mode) {
+		this.mode = mode;
+	}
 	public void setPhase(GamePhase phase) {
 		this.phase = phase;
+		if(phase == GamePhase.PICK_NAME || phase == GamePhase.LOBBY) {
+			for(Player p : players) {
+				if(p != null) {
+					p.getTags().clear();
+					p.setTarget(null);
+					p.setRole(null);
+					p.resurrect();
+				}
+			}
+		}
 	}
 	public void setSelfPosition(int position) {
 		selfPosition = position;

@@ -26,7 +26,16 @@ public abstract class MessageHandler {
 			if(command.length == 0 || command[0] == 0) {
 				break;
 			}
-			this.processCommand(command);
+			try {
+				this.processCommand(command);
+			}
+			catch(Throwable e) {
+				System.out.printf("%sAn internal error occured:\n", ANSI.RED);
+				e.printStackTrace(System.out);
+				System.out.print("Message: ");
+				this.onDefaultFunction(data);
+				System.out.printf("%s\n\n", ANSI.GRAY);
+			}
 			start = end;
 			if(start >= data.length) {
 				break;
@@ -39,7 +48,7 @@ public abstract class MessageHandler {
     	onUnhandledCommand(command);
     }
 	protected void onUnhandledCommand(byte[] command) {
-		System.out.printf("%s%s: (0x%02x %03d): %s%s\n", ANSI.GRAY, origin, command[0], ((int)command[0])&(int)0xff, convertToString(command), ANSI.RESET);
+		System.out.printf("%s%s: (0x%02x %03d): %s\n", ANSI.GRAY, origin, command[0], ((int)command[0])&(int)0xff, convertToString(command));
 	}
 	public String convertToString(byte[] command) {
 		return convertToString(command, true);

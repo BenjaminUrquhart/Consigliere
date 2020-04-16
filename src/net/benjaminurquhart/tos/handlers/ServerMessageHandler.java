@@ -29,262 +29,265 @@ public class ServerMessageHandler extends MessageHandler {
 	private Game game;
 	
     public ServerMessageHandler(Game game) {
-		super("Server");
+    	super("Server");
 		this.game = game;
 	}
-    
-    @Override
+	@Override
 	public void processCommand(byte[] command) {
-    	//this.onUnhandledCommand(command);
-        switch (((int)command[0])&0xff) { 
-                 case 0: onDefaultFunction(command); break;
-                 case 1: onLoginSuccess(command); break;
-                 case 2: onJoinedGameLobby(command); break;
-                 case 3: onDefaultFunction(command); break;
-                 case 4: onUsersJoinedLobby(command); break;
-                 case 5: onUserLeftGame(command); break;
-                 case 6: onChatBoxMessage(command); break;
-                 case 7: onDefaultFunction(command); break;
-                 case 8: onDefaultFunction(command); break;
-                 case 9: onCustomRoleListAdd(command); break;
-                 case 10: onDefaultFunction(command); break;
-                 case 11: onGameStartCountdown(command); break;
-                 case 12: onDefaultFunction(command); break;
-                 case 13: onDefaultFunction(command); break;
-                 case 14: onVoteToRepickHost(command); break;
-                 case 15: onDefaultFunction(command); break;
-                 case 16: onDoNotSpam(command); break;
-                 case 17: onGameStatus(command); break;
-                 case 18: onSystemMessage(command); break;
-                 case 19: onStringTableMessage(command); break;
-                 case 20: onDefaultFunction(command); break;
-                 case 21: onDefaultFunction(command); break;
-                 case 22: onDefaultFunction(command); break;
-                 case 23: onDefaultFunction(command); break;
-                 case 24: onDefaultFunction(command); break;
-                 case 25: onDefaultFunction(command); break;
-                 case 26: onFriendUpdate(command); break;
-                 case 27: onDefaultFunction(command); break;
-                 case 28: onDefaultFunction(command); break;
-                 case 29: onDefaultFunction(command); break;
-                 case 30: onDefaultFunction(command); break;
-                 case 31: onPartyInvite(command); break;
-                 case 32: onJoinedParty(command); break;
-                 case 33: onUsersJoinedParty(command); break;
-                 case 34: onDefaultFunction(command); break;
-                 case 35: onPartyChatBoxMessage(command); break;
-                 case 36: onDefaultFunction(command); break;
-                 case 37: onDefaultFunction(command); break;
-                 case 38: onDefaultFunction(command); break;
-                 case 39: onForcedLogout(command); break;
-                 case 40: onReturnToHomePage(command); break;
-                 case 41: onDefaultFunction(command); break;
-                 case 42: onShopPurchaseSuccess(command); break;
-                 case 43: onDefaultFunction(command); break;
-                 case 44: onDefaultFunction(command); break;
-                 case 45: onDefaultFunction(command); break;
-                 case 46: onDefaultFunction(command); break;
-                 case 47: onDefaultFunction(command); break;
-                 case 48: onUpdatePaidCurrency(command); break;
-                 case 49: onFriendReferrals(command); break;
-                 case 50: onDefaultFunction(command); break;
-                 case 51: onSetLastBonusWinTime(command); break;
-                 case 52: onDefaultFunction(command); break;
-                 case 53: onDefaultFunction(command); break;
-                 case 54: onDefaultFunction(command); break;
-                 case 55: onDefaultFunction(command); break;
-                 case 56: onDefaultFunction(command); break;
-                 case 57: onDefaultFunction(command); break;
-                 case 58: onUserBecamePartyHost(command); break;
-                 case 59: onDefaultFunction(command); break;
-                 case 60: onDefaultFunction(command); break;
-                 case 61: onDefaultFunction(command); break;
-                 case 62: onUserCanInviteToParty(command); break;
-                 case 63: onDefaultFunction(command); break;
-                 case 64: onDefaultFunction(command); break;
-                 case 65: onDefaultFunction(command); break;
-                 case 66: onUpdateFriendName(command); break;
-                 case 67: onDefaultFunction(command); break;
-                 case 68: onDefaultFunction(command); break;
-                 case 69: onDefaultFunction(command); break;
-                 case 70: onDefaultFunction(command); break;
-                 case 71: onJoinRankedQueue(command); break;
-                 case 72: onLeftRankedQueue(command); break;
-                 case 73: onRankedGameAvailable(command); break;
-                 case 74: onUserStatistics(command); break;
-                 case 75: onDefaultFunction(command); break;
-                 case 76: onDefaultFunction(command); break;
-                 case 77: onModeratorMessage(command); break;
-                 case 78: onReferAFriendUpdate(command); break;
-                 case 79: onPlayerStatistics(command); break;
-                 case 80: onScrollConsumed(command); break;
-                 case 81: onDefaultFunction(command); break;
-                 case 82: onLobbyWaitPopup(command); break;
-                 case 83: onPromotionPopup(command); break;
-                 case 84: onReferralCodes(command); break;
-                 case 85: onDefaultFunction(command); break;
-                 case 86: onDefaultFunction(command); break;
-                 case 87: onDefaultFunction(command); break;
-                 case 88: onCurrencyMultiplier(command); break;
-                 case 89: onDefaultFunction(command); break;
+	    	//this.onUnhandledCommand(command);
+	        switch (((int)command[0])&0xff) { 
+	                 case 0: onDefaultFunction(command); break;
+	                 case 1: onLoginSuccess(command); break;
+	                 case 2: onJoinedGameLobby(command); break;
+	                 case 3: onDefaultFunction(command); break;
+	                 case 4: onUsersJoinedLobby(command); break;
+	                 case 5: onUserLeftGame(command); break;
+	                 case 6: onChatBoxMessage(command); break;
+	                 case 7: onDefaultFunction(command); break;
+	                 case 8: onDefaultFunction(command); break;
+	                 case 9: onCustomRoleListAdd(command); break;
+	                 case 10: onDefaultFunction(command); break;
+	                 case 11: onGameStartCountdown(command); break;
+	                 case 12: onDefaultFunction(command); break;
+	                 case 13: onDefaultFunction(command); break;
+	                 case 14: onVoteToRepickHost(command); break;
+	                 case 15: onDefaultFunction(command); break;
+	                 case 16: onDoNotSpam(command); break;
+	                 case 17: onGameStatus(command); break;
+	                 case 18: onSystemMessage(command); break;
+	                 case 19: onStringTableMessage(command); break;
+	                 case 20: onDefaultFunction(command); break;
+	                 case 21: onDefaultFunction(command); break;
+	                 case 22: onDefaultFunction(command); break;
+	                 case 23: onDefaultFunction(command); break;
+	                 case 24: onDefaultFunction(command); break;
+	                 case 25: onDefaultFunction(command); break;
+	                 case 26: onFriendUpdate(command); break;
+	                 case 27: onDefaultFunction(command); break;
+	                 case 28: onDefaultFunction(command); break;
+	                 case 29: onDefaultFunction(command); break;
+	                 case 30: onDefaultFunction(command); break;
+	                 case 31: onPartyInvite(command); break;
+	                 case 32: onJoinedParty(command); break;
+	                 case 33: onUsersJoinedParty(command); break;
+	                 case 34: onDefaultFunction(command); break;
+	                 case 35: onPartyChatBoxMessage(command); break;
+	                 case 36: onDefaultFunction(command); break;
+	                 case 37: onDefaultFunction(command); break;
+	                 case 38: onDefaultFunction(command); break;
+	                 case 39: onForcedLogout(command); break;
+	                 case 40: onReturnToHomePage(command); break;
+	                 case 41: onDefaultFunction(command); break;
+	                 case 42: onShopPurchaseSuccess(command); break;
+	                 case 43: onDefaultFunction(command); break;
+	                 case 44: onDefaultFunction(command); break;
+	                 case 45: onDefaultFunction(command); break;
+	                 case 46: onDefaultFunction(command); break;
+	                 case 47: onDefaultFunction(command); break;
+	                 case 48: onUpdatePaidCurrency(command); break;
+	                 case 49: onFriendReferrals(command); break;
+	                 case 50: onDefaultFunction(command); break;
+	                 case 51: onSetLastBonusWinTime(command); break;
+	                 case 52: onDefaultFunction(command); break;
+	                 case 53: onDefaultFunction(command); break;
+	                 case 54: onDefaultFunction(command); break;
+	                 case 55: onDefaultFunction(command); break;
+	                 case 56: onDefaultFunction(command); break;
+	                 case 57: onDefaultFunction(command); break;
+	                 case 58: onUserBecamePartyHost(command); break;
+	                 case 59: onDefaultFunction(command); break;
+	                 case 60: onDefaultFunction(command); break;
+	                 case 61: onDefaultFunction(command); break;
+	                 case 62: onUserCanInviteToParty(command); break;
+	                 case 63: onDefaultFunction(command); break;
+	                 case 64: onDefaultFunction(command); break;
+	                 case 65: onDefaultFunction(command); break;
+	                 case 66: onUpdateFriendName(command); break;
+	                 case 67: onDefaultFunction(command); break;
+	                 case 68: onDefaultFunction(command); break;
+	                 case 69: onDefaultFunction(command); break;
+	                 case 70: onDefaultFunction(command); break;
+	                 case 71: onJoinRankedQueue(command); break;
+	                 case 72: onLeftRankedQueue(command); break;
+	                 case 73: onRankedGameAvailable(command); break;
+	                 case 74: onUserStatistics(command); break;
+	                 case 75: onDefaultFunction(command); break;
+	                 case 76: onDefaultFunction(command); break;
+	                 case 77: onModeratorMessage(command); break;
+	                 case 78: onReferAFriendUpdate(command); break;
+	                 case 79: onPlayerStatistics(command); break;
+	                 case 80: onScrollConsumed(command); break;
+	                 case 81: onDefaultFunction(command); break;
+	                 case 82: onLobbyWaitPopup(command); break;
+	                 case 83: onPromotionPopup(command); break;
+	                 case 84: onReferralCodes(command); break;
+	                 case 85: onDefaultFunction(command); break;
+	                 case 86: onDefaultFunction(command); break;
+	                 case 87: onDefaultFunction(command); break;
+	                 case 88: onCurrencyMultiplier(command); break;
+	                 case 89: onDefaultFunction(command); break;
 
-                 case 90: onPickNames(command); break;
-                 case 91: onNamesAndPositionsOfUsers(command); break;
-                 case 92: onRoleAndPosition(command); break;
-                 case 93: onStartNight(command); break;
-                 case 94: onStartDay(command); break;
-                 case 95: onWhoDiedAndHow(command); break;
-                 case 96: onStartDiscussion(command); break;
-                 case 97: onStartVoting(command); break;
-                 case 98: onStartDefenseTransition(command); break;
-                 case 99: onStartJudgement(command); break;
-                 case 100: onTrialFoundGuilty(command); break;
-                 case 101: onTrialFoundNotGuilty(command); break;
-                 case 102: onLookoutNightAbilityMessage(command); break;
-                 case 103: onUserVoted(command); break;
-                 case 104: onUserCanceledVote(command); break;
-                 case 105: onUserChangedVote(command); break;
-                 case 106: onUserDied(command); break;
-                 case 107: onResurrection(command); break;
-                 case 108: onTellRoleList(command); break;
-                 case 109: onUserChosenName(command); break;
-                 case 110: onOtherMafia(command); break;
-                 case 111: onTellTownAmnesiacChangedRole(command); break;
-                 case 112: onAmnesiacChangedRole(command); break;
-                 case 113: onBroughtBackToLife(command); break;
-                 case 114: onStartFirstDay(command); break;
-                 case 115: onBeingJailed(command); break;
-                 case 116: onJailedTarget(command); break;
-                 case 117: onUserJudgementVoted(command); break;
-                 case 118: onUserChangedJudgementVote(command); break;
-                 case 119: onUserCanceledJudgementVote(command); break;
-                 case 120: onTellJudgementVotes(command); break;
-                 case 121: onExecutionerCompletedGoal(command); break;
-                 case 122: onJesterCompletedGoal(command); break;
-                 case 123: onMayorRevealed(command); break;
-                 case 124: onMayorRevealedAndAlreadyVoted(command); break;
-                 case 125: onDisguiserStoleYourIdentity(command); break;
-                 case 126: onDisguiserChangedIdentity(command); break;
-                 case 127: onDisguiserChangedUpdateMafia(command); break;
-                 case 128: onMediumIsTalkingToUs(command); break;
-                 case 129: onMediumCommunicating(command); break;
-                 case 130: onTellLastWill(command); break;
-                 case 131: onHowManyAbilitiesLeft(command); break;
-                 case 132: onFactionTargeting(command); break;
-                 case 133: onTellJanitorTargetsRole(command); break;
-                 case 134: onTellJanitorTargetsWill(command); break;
-                 case 135: onSomeoneHasWon(command); break;
-                 case 136: onMafiosoPromotedToGodfather(command); break;
-                 case 137: onMafiosoPromotedToGodfatherUpdateMafia(command); break;
-                 case 138: onMafiaPromotedToMafioso(command); break;
-                 case 139: onTellMafiaAboutMafiosoPromotion(command); break;
-                 case 140: onExecutionerConvertedToJester(command); break;
-                 case 141: onAmnesiacBecameMafiaOrWitch(command); break;
-                 case 142: onUserDisconnected(command); break;
-                 case 143: onMafiaWasJailed(command); break;
-                 case 144: onInvalidNameMessage(command); break;
-                 case 145: onStartNightTransition(command); break;
-                 case 146: onStartDayTransition(command); break;
-                 case 147: onLynchUser(command); break;
-                 case 148: onDeathNote(command); break;
-                 case 149: onDefaultFunction(command); break;
-                 case 150: onHousesChosen(command); break;
-                 case 151: onFirstDayTransition(command); break;
-                 case 152: onDefaultFunction(command); break;
-                 case 153: onCharactersChosen(command); break;
-                 case 154: onResurrectionSetAlive(command); break;
-                 case 155: onStartDefense(command); break;
-                 case 156: onDefaultFunction(command); break;
-                 case 157: onUserLeftDuringSelection(command); break;
-                 case 158: onVigilanteKilledTown(command); break;
-                 case 159: onNotifyUsersOfPrivateMessage(command); break;
-                 case 160: onPrivateMessage(command); break;
-                 case 161: onEarnedAchievements(command); break;
-                 case 162: onDefaultFunction(command); break;
-                 case 163: onSpyNightAbilityMessage(command); break;
-                 case 164: onOneDayBeforeStalemate(command); break;
-                 case 165: onPetsChosen(command); break;
-                 case 166: onFacebookShareAchievement(command); break;
-                 case 167: onFacebookShareWin(command); break;
-                 case 168: onDeathAnimationsChosen(command); break;
-                 case 169: onFullMoonNight(command); break;
-                 case 170: onIdentify(command); break;
-                 case 171: onEndGameInfo(command); break;
-                 case 172: onEndGameChatMessage(command); break;
-                 case 173: onEndGameUserUpdate(command); break;
-                 case 174: onJoinedGameLobby(command); break;
-                 case 175: onRoleLotsInfoMesssage(command); break;
-                 case 176: onPayPalShowApprovalPage(command); break;
-                 case 177: onDefaultFunction(command); break;
-                 case 178: onDefaultFunction(command); break;
-                 case 179: onDefaultFunction(command); break;
-                 case 180: onVampirePromotion(command); break;
-                 case 181: onOtherVampires(command); break;
-                 case 182: onAddVampire(command); break;
-                 case 183: onCanVampiresConvert(command); break;
-                 case 184: onVampireDied(command); break;
-                 case 185: onVampireHunterPromoted(command); break;
-                 case 186: onVampireVisitedMessage(command); break;
-                 //case 186: onDefaultFunction(command); break;
-                 case 187: onDefaultFunction(command); break;
-                 case 188: onDefaultFunction(command); break;
-                 case 189: onDefaultFunction(command); break;
-                 case 190: onDefaultFunction(command); break;
-                 case 191: onDefaultFunction(command); break;
-                 case 192: onTransporterNotification(command); break;
-                 case 193: onItemPurchased(command); break;
-                 case 194: onUpdateFreeCurrency(command); break;
-                 case 195: onActiveEvents(command); break;
-                 case 196: onDefaultFunction(command); break;
-                 case 197: onTauntResult(command); break;
-                 case 198: onTauntActivated(command); break;
-                 case 199: onTauntConsumed(command); break;
-                 case 200: onTrackerNightAbility(command); break;
-                 case 201: onAmbusherNightAbility(command); break;
-                 case 202: onGuardianAngelProtection(command); break;
-                 case 203: onPirateDuel(command); break;
-                 case 204: onDuelTarget(command); break;
-                 case 205: onPotionMasterPotions(command); break;
-                 case 206: onHasNecronomicon(command); break;
-                 case 207: onOtherCoven(command); break;
-                 case 208: onPsychicNightAbility(command); break;
-                 case 209: onTrapperNightAbility(command); break;
-                 case 210: onTrapperTrapStatus(command); break;
-                 case 211: onPestilenceConversion(command); break;
-                 case 212: onJuggernautKillCount(command); break;
-                 case 213: onCovenGotNecronomicon(command); break;
-                 case 214: onGuardianAngelPromoted(command); break;
-                 case 215: onVIPTarget(command); break;
-                 case 216: onPirateDuelOutcome(command); break;
-                 case 217: onPartyGamemodeUpdate(command); break;
-                 case 218: onDefaultFunction(command); break;
-                 case 219: onAccountFlags(command); break;
-                 case 220: onZombieRotted(command); break;
-                 case 221: onLoverTarget(command); break;
-                 case 222: onPlagueSpread(command); break;
-                 case 223: onRivalTarget(command); break;
-                 case 224: onRankedInfo(command); break;
-                 case 225: onJailorDeathNote(command); break;
-                 case 226: onLoginFailure(command); break;
-                 case 227: onSpyNightInfo(command); break;
-                 case 228: onDefaultFunction(command); break;
-                default: onUnhandledCommand(command); break;
-        }
-    }
-
-	private void onLeftRankedQueue(byte[] command) {
+	                 case 90: onPickNames(command); break;
+	                 case 91: onNamesAndPositionsOfUsers(command); break;
+	                 case 92: onRoleAndPosition(command); break;
+	                 case 93: onStartNight(command); break;
+	                 case 94: onStartDay(command); break;
+	                 case 95: onWhoDiedAndHow(command); break;
+	                 case 96: onStartDiscussion(command); break;
+	                 case 97: onStartVoting(command); break;
+	                 case 98: onStartDefenseTransition(command); break;
+	                 case 99: onStartJudgement(command); break;
+	                 case 100: onTrialFoundGuilty(command); break;
+	                 case 101: onTrialFoundNotGuilty(command); break;
+	                 case 102: onLookoutNightAbilityMessage(command); break;
+	                 case 103: onUserVoted(command); break;
+	                 case 104: onUserCanceledVote(command); break;
+	                 case 105: onUserChangedVote(command); break;
+	                 case 106: onUserDied(command); break;
+	                 case 107: onResurrection(command); break;
+	                 case 108: onTellRoleList(command); break;
+	                 case 109: onUserChosenName(command); break;
+	                 case 110: onOtherMafia(command); break;
+	                 case 111: onTellTownAmnesiacChangedRole(command); break;
+	                 case 112: onAmnesiacChangedRole(command); break;
+	                 case 113: onBroughtBackToLife(command); break;
+	                 case 114: onStartFirstDay(command); break;
+	                 case 115: onBeingJailed(command); break;
+	                 case 116: onJailedTarget(command); break;
+	                 case 117: onUserJudgementVoted(command); break;
+	                 case 118: onUserChangedJudgementVote(command); break;
+	                 case 119: onUserCanceledJudgementVote(command); break;
+	                 case 120: onTellJudgementVotes(command); break;
+	                 case 121: onExecutionerCompletedGoal(command); break;
+	                 case 122: onJesterCompletedGoal(command); break;
+	                 case 123: onMayorRevealed(command); break;
+	                 case 124: onMayorRevealedAndAlreadyVoted(command); break;
+	                 case 125: onDisguiserStoleYourIdentity(command); break;
+	                 case 126: onDisguiserChangedIdentity(command); break;
+	                 case 127: onDisguiserChangedUpdateMafia(command); break;
+	                 case 128: onMediumIsTalkingToUs(command); break;
+	                 case 129: onMediumCommunicating(command); break;
+	                 case 130: onTellLastWill(command); break;
+	                 case 131: onHowManyAbilitiesLeft(command); break;
+	                 case 132: onFactionTargeting(command); break;
+	                 case 133: onTellJanitorTargetsRole(command); break;
+	                 case 134: onTellJanitorTargetsWill(command); break;
+	                 case 135: onSomeoneHasWon(command); break;
+	                 case 136: onMafiosoPromotedToGodfather(command); break;
+	                 case 137: onMafiosoPromotedToGodfatherUpdateMafia(command); break;
+	                 case 138: onMafiaPromotedToMafioso(command); break;
+	                 case 139: onTellMafiaAboutMafiosoPromotion(command); break;
+	                 case 140: onExecutionerConvertedToJester(command); break;
+	                 case 141: onAmnesiacBecameMafiaOrCoven(command); break;
+	                 case 142: onUserDisconnected(command); break;
+	                 case 143: onMafiaWasJailed(command); break;
+	                 case 144: onInvalidNameMessage(command); break;
+	                 case 145: onStartNightTransition(command); break;
+	                 case 146: onStartDayTransition(command); break;
+	                 case 147: onLynchUser(command); break;
+	                 case 148: onDeathNote(command); break;
+	                 case 149: onDefaultFunction(command); break;
+	                 case 150: onHousesChosen(command); break;
+	                 case 151: onFirstDayTransition(command); break;
+	                 case 152: onDefaultFunction(command); break;
+	                 case 153: onCharactersChosen(command); break;
+	                 case 154: onResurrectionSetAlive(command); break;
+	                 case 155: onStartDefense(command); break;
+	                 case 156: onDefaultFunction(command); break;
+	                 case 157: onUserLeftDuringSelection(command); break;
+	                 case 158: onVigilanteKilledTown(command); break;
+	                 case 159: onNotifyUsersOfPrivateMessage(command); break;
+	                 case 160: onPrivateMessage(command); break;
+	                 case 161: onEarnedAchievements(command); break;
+	                 case 162: onDefaultFunction(command); break;
+	                 case 163: onSpyNightAbilityMessage(command); break;
+	                 case 164: onOneDayBeforeStalemate(command); break;
+	                 case 165: onPetsChosen(command); break;
+	                 case 166: onFacebookShareAchievement(command); break;
+	                 case 167: onFacebookShareWin(command); break;
+	                 case 168: onDeathAnimationsChosen(command); break;
+	                 case 169: onFullMoonNight(command); break;
+	                 case 170: onIdentify(command); break;
+	                 case 171: onEndGameInfo(command); break;
+	                 case 172: onEndGameChatMessage(command); break;
+	                 case 173: onEndGameUserUpdate(command); break;
+	                 case 174: onJoinedGameLobby(command); break;
+	                 case 175: onRoleLotsInfoMesssage(command); break;
+	                 case 176: onPayPalShowApprovalPage(command); break;
+	                 case 177: onDefaultFunction(command); break;
+	                 case 178: onDefaultFunction(command); break;
+	                 case 179: onDefaultFunction(command); break;
+	                 case 180: onVampirePromotion(command); break;
+	                 case 181: onOtherVampires(command); break;
+	                 case 182: onAddVampire(command); break;
+	                 case 183: onCanVampiresConvert(command); break;
+	                 case 184: onVampireDied(command); break;
+	                 case 185: onVampireHunterPromoted(command); break;
+	                 case 186: onVampireVisitedMessage(command); break;
+	                 //case 186: onDefaultFunction(command); break;
+	                 case 187: onDefaultFunction(command); break;
+	                 case 188: onDefaultFunction(command); break;
+	                 case 189: onDefaultFunction(command); break;
+	                 case 190: onDefaultFunction(command); break;
+	                 case 191: onDefaultFunction(command); break;
+	                 case 192: onTransporterNotification(command); break;
+	                 case 193: onItemPurchased(command); break;
+	                 case 194: onUpdateFreeCurrency(command); break;
+	                 case 195: onActiveEvents(command); break;
+	                 case 196: onDefaultFunction(command); break;
+	                 case 197: onTauntResult(command); break;
+	                 case 198: onTauntActivated(command); break;
+	                 case 199: onTauntConsumed(command); break;
+	                 case 200: onTrackerNightAbility(command); break;
+	                 case 201: onAmbusherNightAbility(command); break;
+	                 case 202: onGuardianAngelProtection(command); break;
+	                 case 203: onPirateDuel(command); break;
+	                 case 204: onDuelTarget(command); break;
+	                 case 205: onPotionMasterPotions(command); break;
+	                 case 206: onHasNecronomicon(command); break;
+	                 case 207: onOtherCoven(command); break;
+	                 case 208: onPsychicNightAbility(command); break;
+	                 case 209: onTrapperNightAbility(command); break;
+	                 case 210: onTrapperTrapStatus(command); break;
+	                 case 211: onPestilenceConversion(command); break;
+	                 case 212: onJuggernautKillCount(command); break;
+	                 case 213: onCovenGotNecronomicon(command); break;
+	                 case 214: onGuardianAngelPromoted(command); break;
+	                 case 215: onVIPTarget(command); break;
+	                 case 216: onPirateDuelOutcome(command); break;
+	                 case 217: onPartyGamemodeUpdate(command); break;
+	                 case 218: onDefaultFunction(command); break;
+	                 case 219: onAccountFlags(command); break;
+	                 case 220: onZombieRotted(command); break;
+	                 case 221: onLoverTarget(command); break;
+	                 case 222: onPlagueSpread(command); break;
+	                 case 223: onRivalTarget(command); break;
+	                 case 224: onRankedInfo(command); break;
+	                 case 225: onJailorDeathNote(command); break;
+	                 case 226: onLoginFailure(command); break;
+	                 case 227: onSpyNightInfo(command); break;
+	                 case 228: onDefaultFunction(command); break;
+	                default: onUnhandledCommand(command); break;
+	        }
+	    }
+	
+	
+	public void onLeftRankedQueue(byte[] command) {
 		System.out.printf("%sLeft Ranked queue%s\n", ANSI.GREEN, ANSI.GRAY);
 	}
 
-	private void onReferralCodes(byte[] command) {
+	
+	public void onReferralCodes(byte[] command) {
 		System.out.printf("%sReceived referral code update\n", ANSI.GRAY);
 	}
 
-	private void onLobbyWaitPopup(byte[] command) {
+	
+	public void onLobbyWaitPopup(byte[] command) {
 		System.out.printf("%sYou must wait 15 seconds before joining another lobby%s\n", ANSI.YELLOW, ANSI.GRAY);
 	}
 
-	private void onCustomRoleListAdd(byte[] command) {
+	
+	public void onCustomRoleListAdd(byte[] command) {
 		Role role = Game.ROLES[command[1]-1];
 		System.out.printf(
 				"%sAdded role: %s%s%s\n",
@@ -295,11 +298,13 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onFriendReferrals(byte[] command) {
+	
+	public void onFriendReferrals(byte[] command) {
 		System.out.printf("%sReceived friend referral information\n", ANSI.GRAY);
 	}
 
-	private void onVoteToRepickHost(byte[] command) {
+	
+	public void onVoteToRepickHost(byte[] command) {
 		System.out.printf(
 				"%s%d more votes are needed to repick the host\n",
 				ANSI.GRAY,
@@ -307,11 +312,13 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onRankedGameAvailable(byte[] command) {
+	
+	public void onRankedGameAvailable(byte[] command) {
 		System.out.printf("%sA Ranked match is available%s\n", ANSI.GREEN, ANSI.GRAY);
 	}
 
-	private void onJoinRankedQueue(byte[] command) {
+	
+	public void onJoinRankedQueue(byte[] command) {
 		String time = new String(Arrays.copyOfRange(command, 2, command.length-1));
 		// For some reason, the server uses the same message ID for referrals as ranked queues.
 		// Why? Beats me. At least referrals aren't numeric data.
@@ -326,12 +333,14 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onPartyGamemodeUpdate(byte[] command) {
+	
+	public void onPartyGamemodeUpdate(byte[] command) {
 		//onUnhandledCommand(command);
-		System.out.printf("%sGame Mode updated to %s%s\n", ANSI.RESET, Game.GAME_MODE_TABLE.get((int)command[2]-1), ANSI.GRAY);
+		System.out.printf("%sGame Mode updated to %s%s\n", ANSI.RESET, Game.GAME_MODE_ID_TABLE.get((int)command[2]-1).getLabel().getText(), ANSI.GRAY);
 	}
 
-	private void onUserBecamePartyHost(byte[] command) {
+	
+	public void onUserBecamePartyHost(byte[] command) {
 		System.out.printf(
 				"%s%s is now the host%s\n",
 				ANSI.GREEN,
@@ -340,16 +349,19 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onUsersJoinedParty(byte[] command) {
+	
+	public void onUsersJoinedParty(byte[] command) {
 		int seperator = this.indexOf(command, (byte)'*');
 		System.out.printf("%s%s joined the party\n", ANSI.GRAY, new String(Arrays.copyOfRange(command, 1, seperator)));
 	}
 
-	private void onJoinedParty(byte[] command) {
+	
+	public void onJoinedParty(byte[] command) {
 		System.out.printf("%sJoined party%s\n", ANSI.RESET, ANSI.GRAY);
 	}
 
-	private void onUserCanInviteToParty(byte[] command) {
+	
+	public void onUserCanInviteToParty(byte[] command) {
 		System.out.printf(
 				"%s%s%s can now invite others to the party%s\n", 
 				ANSI.RESET,
@@ -359,46 +371,57 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onPartyInvite(byte[] command) {
+	
+	public void onPartyInvite(byte[] command) {
 		int seperator = this.indexOf(command, (byte)'*');
 		String username = new String(Arrays.copyOfRange(command, seperator+1, command.length-1));
 		String party = new String(Arrays.copyOfRange(command, 1, seperator));
 		System.out.printf("%sReceived party invite from %s%s (%s)%s\n", ANSI.GREEN, ANSI.RESET, username, party, ANSI.GRAY);
 	}
 
-	private void onPartyChatBoxMessage(byte[] command) {
+	
+	public void onPartyChatBoxMessage(byte[] command) {
 		int seperator = this.indexOf(command, (byte)'*');
 		String message = new String(Arrays.copyOfRange(command, seperator+1, command.length-1));
 		String name = new String(Arrays.copyOfRange(command, 1, seperator));
 		System.out.printf("%s%s: %s%s\n", ANSI.RESET, name, message, ANSI.GRAY);
 	}
 
-	private void onItemPurchased(byte[] command) {
+	
+	public void onItemPurchased(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onGameStartCountdown(byte[] command) {
+	
+	public void onGameStartCountdown(byte[] command) {
 		System.out.println(ANSI.GREEN+"Lobby is full, game is starting..."+ANSI.GRAY);
 	}
 
-	private void onGameStatus(byte[] command) {
+	
+	public void onGameStatus(byte[] command) {
 		int asterisk = this.indexOf(command, (byte)'*');
 		int players = Integer.parseInt(new String(Arrays.copyOfRange(command, 1, asterisk)));
 		int games = Integer.parseInt(new String(Arrays.copyOfRange(command, asterisk+1, command.length-1)));
 		System.out.printf("%s%d players online (%d games running)%s\n", ANSI.GREEN, players, games, ANSI.GRAY);
 	}
 
-	private void onSpyNightInfo(byte[] command) {
-		onUnhandledCommand(command);
-		
+	
+	public void onSpyNightInfo(byte[] command) {
+		StringTableMessage msg;
+		for(int i = 1; i < command.length-1; i++) {
+			msg = Game.STRING_TABLE.get("GAME_SPY_RESULT_"+((command[i]&0xff)-1));
+			System.out.printf("%s%s%s%s\n", ANSI.RED, ANSI.toTrueColorBackground(msg.getColor()), msg.getText(), ANSI.RESET, ANSI.GRAY);
+		}
 	}
 
-	private void onLoginFailure(byte[] command) {
+	
+	public void onLoginFailure(byte[] command) {
 		System.out.println("Login failed");
 	}
 
-	private void onJailorDeathNote(byte[] command) {
+	
+	public void onJailorDeathNote(byte[] command) {
 		String message;
 		switch(command[3]) {
 		case 1: message = "No reason specified."; break;
@@ -419,7 +442,8 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onRankedInfo(byte[] command) {
+	
+	public void onRankedInfo(byte[] command) {
 		int[] stats = Arrays.stream(this.convertToString(command, true).split(","))
 							.mapToInt(Integer::parseInt)
 							.toArray();
@@ -445,23 +469,35 @@ public class ServerMessageHandler extends MessageHandler {
 		System.out.println("-----------------------------------------------");
 	}
 
-	private void onRivalTarget(byte[] command) {
+	
+	public void onRivalTarget(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onPlagueSpread(byte[] command) {
+	
+	public void onPlagueSpread(byte[] command) {
 		for(int i = 1; i < command.length-1; i++) {
 			System.out.printf("%s%s was infected with the plague\n", ANSI.GRAY, game.getPlayer(command[i]));
 		}
 	}
 
-	private void onLoverTarget(byte[] command) {
-		onUnhandledCommand(command);
-		
+	
+	public void onLoverTarget(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_LOVER_TARGET");
+		Player lover = game.getPlayer(command[1]);
+		lover.addTag(PlayerTag.LOVER);
+		System.out.printf(
+				"%s%s%s%s\n",
+				ANSI.toTrueColorBackground(msg.getColor()),
+				msg.getText().replace("%name%", ANSI.WHITE+lover.getName()+ANSI.GREEN),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
-	private void onZombieRotted(byte[] command) {
+	
+	public void onZombieRotted(byte[] command) {
 		Player zombie = game.getPlayer(command[1]);
 		System.out.printf(
 				"%s%s (%s%s%s) has rotted\n",
@@ -473,12 +509,14 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onAccountFlags(byte[] command) {
+	
+	public void onAccountFlags(byte[] command) {
 		//onUnhandledCommand(command);
 		
 	}
 
-	private void onPirateDuelOutcome(byte[] command) {
+	
+	public void onPirateDuelOutcome(byte[] command) {
 		boolean isPirate = game.getSelfPlayer().getRole().equals(Game.ROLE_TABLE.get("Pirate"));
 		StringTableMessage msg = Game.STRING_TABLE.get(String.format(
 				"GUI_PIRATE_DUEL_RESULTS_%s%d%d",
@@ -495,17 +533,33 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onVIPTarget(byte[] command) {
-		onUnhandledCommand(command);
-		
+	
+	public void onVIPTarget(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_VIPTARGET");
+		Player vip = game.getPlayer(command[1]);
+		vip.addTag(PlayerTag.VIP);
+		System.out.printf(
+				"%s%s%s%s\n",
+				ANSI.toTrueColorBackground(msg.getColor()),
+				msg.getText().replace("%name%", ANSI.WHITE+vip.getName()+ANSI.GREEN),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
-	private void onGuardianAngelPromoted(byte[] command) {
-		onUnhandledCommand(command);
-		
+	
+	public void onGuardianAngelPromoted(byte[] command) {
+		game.getSelfPlayer().setRole(Game.ROLE_TABLE.get("Survivor"));
+		System.out.printf(
+				"%s%s%s\n",
+				ANSI.GREEN,
+				Game.insertColors(Game.STRING_TABLE.get("GUI_GUARDIAN_ANGEL_CONVERTED_TO_29").getText(), ANSI.GREEN),
+				ANSI.GRAY
+		);
 	}
 
-	private void onCovenGotNecronomicon(byte[] command) {
+	
+	public void onCovenGotNecronomicon(byte[] command) {
 		//onUnhandledCommand(command);
 		Player player = game.getPlayer(command[2]);
 		// Previous holder died, passed on to next member
@@ -533,27 +587,51 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onJuggernautKillCount(byte[] command) {
+	
+	public void onJuggernautKillCount(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onPestilenceConversion(byte[] command) {
+	
+	public void onPestilenceConversion(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onTrapperTrapStatus(byte[] command) {
-		onUnhandledCommand(command);
-		
+	
+	public void onTrapperTrapStatus(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_ROLE_48_FEEDBACK"+(command[1]+1));
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.BLACK,
+				ANSI.GREEN,
+				msg.getText(),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
-	private void onTrapperNightAbility(byte[] command) {
-		onUnhandledCommand(command);
+	
+	public void onTrapperNightAbility(byte[] command) {
+		//onUnhandledCommand(command);
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_ROLE_48_FEEDBACK1");
+		Role role = Game.ROLES[command[1]-1];
 		
+		String text = msg.getText().replace("%role%", ANSI.toTrueColor(role.getColor())+role.getName());
+		
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(Color.BLACK),
+				ANSI.GREEN,
+				text,
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
-	private void onPsychicNightAbility(byte[] command) {
+	
+	public void onPsychicNightAbility(byte[] command) {
 		StringTableMessage msg = Game.STRING_TABLE.get("GUI_ROLE_49_FEEDBACK"+(command[1] == 1 ? 2 : 1));
 		String text = msg.getText().replace("%name1%", game.getPlayer(command[2]).getName()).replace("%name2%", game.getPlayer(command[3]).getName());
 		if(command[1] == 2) {
@@ -569,15 +647,18 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onOtherCoven(byte[] command) {
+	
+	public void onOtherCoven(byte[] command) {
 		this.tellFactionMembers(command, Game.FACTION_TABLE.get("Coven"));
 	}
 
-	private void onHasNecronomicon(byte[] command) {
+	
+	public void onHasNecronomicon(byte[] command) {
 		//onUnhandledCommand(command);
 	}
 
-	private void onPotionMasterPotions(byte[] command) {
+	
+	public void onPotionMasterPotions(byte[] command) {
 		System.out.printf(
 				"%sPotion Status%s:\n%sHeal%s: %d/3\n%sReveal%s: %d/3\n%sKill%s: %d/3%s\n",
 				ANSI.COVEN,
@@ -595,11 +676,13 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onDuelTarget(byte[] command) {
+	
+	public void onDuelTarget(byte[] command) {
 		System.out.printf("%sDueling %s...\n", ANSI.GRAY, game.getPlayer(command[1]));
 	}
 
-	private void onPirateDuel(byte[] command) {
+	
+	public void onPirateDuel(byte[] command) {
 		System.out.printf(
 				"%s%sThe pirate duel has roleblocked you!%s%s\n",
 				ANSI.toTrueColorBackground(Color.LIGHT_GRAY),
@@ -609,50 +692,60 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onGuardianAngelProtection(byte[] command) {
+	
+	public void onGuardianAngelProtection(byte[] command) {
 		System.out.printf("%sThe Guardian Angel was watching over %s%s%s\n", ANSI.GREEN, ANSI.RESET, game.getPlayer(command[1]), ANSI.GRAY);
 	}
 
-	private void onAmbusherNightAbility(byte[] command) {
+	
+	public void onAmbusherNightAbility(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onTrackerNightAbility(byte[] command) {
+	
+	public void onTrackerNightAbility(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onTauntConsumed(byte[] command) {
+	
+	public void onTauntConsumed(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onTauntActivated(byte[] command) {
+	
+	public void onTauntActivated(byte[] command) {
 		//onUnhandledCommand(command);
 		System.out.printf("%s%s was taunted with %s\n", ANSI.GRAY, game.getPlayer(command[1]), Game.TAUNTS[command[2]-1]);
 	}
 
-	private void onTauntResult(byte[] command) {
+	
+	public void onTauntResult(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onActiveEvents(byte[] command) {
+	
+	public void onActiveEvents(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onUpdateFreeCurrency(byte[] command) {
+	
+	public void onUpdateFreeCurrency(byte[] command) {
 		System.out.printf("%sMerit Points updated: %s%s\n", ANSI.LIGHT_GRAY, this.convertToString(command), ANSI.GRAY);
 	}
 
-	private void onTransporterNotification(byte[] command) {
+	
+	public void onTransporterNotification(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onVampireVisitedMessage(byte[] command) {
+	
+	public void onVampireVisitedMessage(byte[] command) {
 		StringTableMessage msg = Game.STRING_TABLE.get("GUI_VAMPIRE_VISITED_MESSAGE2");
 		System.out.printf(
 				"%s%s%s%s%s\n",
@@ -664,16 +757,30 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onVampireHunterPromoted(byte[] command) {
-		onUnhandledCommand(command);
-		
+	
+	public void onVampireHunterPromoted(byte[] command) {
+		game.getSelfPlayer().setRole(Game.ROLE_TABLE.get("Vigilante"));
+		System.out.printf(
+				"%s%s%s\n",
+				ANSI.GREEN,
+				Game.insertColors(Game.STRING_TABLE.get("GUI_VAMPIRE_HUNTER_PROMOTED1").getText(), ANSI.GREEN),
+				ANSI.GRAY
+		);
+		System.out.printf(
+				"%s%s%s\n",
+				ANSI.GREEN,
+				Game.STRING_TABLE.get("GUI_VAMPIRE_HUNTER_PROMOTED2").getText(),
+				ANSI.GRAY
+		);
 	}
 
-	private void onVampireDied(byte[] command) {
+	
+	public void onVampireDied(byte[] command) {
 		game.getPlayer(command[1]).kill();
 	}
 
-	private void onCanVampiresConvert(byte[] command) {
+	
+	public void onCanVampiresConvert(byte[] command) {
 		StringTableMessage msg = Game.STRING_TABLE.get(command[1] == 1 ? "GUI_VAMP_CANT_BITE_TONIGHT" : "GUI_VAMP_CAN_BITE_TONIGHT");
 		System.out.printf(
 				"%s%s%s%s%s\n",
@@ -685,11 +792,13 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onAddVampire(byte[] command) {
+	
+	public void onAddVampire(byte[] command) {
 		game.getPlayer(command[1]).setRole(Game.ROLE_TABLE.get("Vampire"));
 	}
 
-	private void onOtherVampires(byte[] command) {
+	
+	public void onOtherVampires(byte[] command) {
 		System.out.printf("%sVampire%s Members:\n", ANSI.VAMPIRE, ANSI.RESET);
 		Player member;
 		Role role = Game.ROLE_TABLE.get("Vampire");
@@ -707,30 +816,36 @@ public class ServerMessageHandler extends MessageHandler {
 		System.out.print(ANSI.GRAY);
 	}
 
-	private void onVampirePromotion(byte[] command) {
+	
+	public void onVampirePromotion(byte[] command) {
 		game.getSelfPlayer().setRole(Game.ROLE_TABLE.get("Vampire"));
 	}
 
-	private void onPayPalShowApprovalPage(byte[] command) {
+	
+	public void onPayPalShowApprovalPage(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onRoleLotsInfoMesssage(byte[] command) {
+	
+	public void onRoleLotsInfoMesssage(byte[] command) {
 		//onUnhandledCommand(command);
 		
 	}
 
-	private void onEndGameUserUpdate(byte[] command) {
+	
+	public void onEndGameUserUpdate(byte[] command) {
 		//onUnhandledCommand(command);
 		
 	}
 
-	private void onEndGameChatMessage(byte[] command) {
+	
+	public void onEndGameChatMessage(byte[] command) {
 		onChatBoxMessage(command);
 	}
 
-	private void onEndGameInfo(byte[] command) {
+	
+	public void onEndGameInfo(byte[] command) {
 		//onUnhandledCommand(command);
 		System.out.printf("%s---------------Game Information----------------\n", ANSI.RESET);
 		String infoString = this.convertToString(Arrays.copyOfRange(command, this.indexOf(command, (byte)'(')-1, command.length));
@@ -778,12 +893,14 @@ public class ServerMessageHandler extends MessageHandler {
 		System.out.printf("%s-----------------------------------------------%s\n", ANSI.RESET, ANSI.GRAY);
 	}
 
-	private void onIdentify(byte[] command) {
+	
+	public void onIdentify(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onFullMoonNight(byte[] command) {
+	
+	public void onFullMoonNight(byte[] command) {
 		System.out.printf(
 				"%s%sThere is a full moon out tonight%s%s\n",
 				ANSI.WHITE,
@@ -793,32 +910,38 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onDeathAnimationsChosen(byte[] command) {
+	
+	public void onDeathAnimationsChosen(byte[] command) {
 		//onUnhandledCommand(command);
 		
 	}
 
-	private void onFacebookShareWin(byte[] command) {
+	
+	public void onFacebookShareWin(byte[] command) {
 		//onUnhandledCommand(command);
 		System.out.printf("%sShare this win on Facebook%s\n", ANSI.BLUE, ANSI.GRAY);
 	}
 
-	private void onFacebookShareAchievement(byte[] command) {
+	
+	public void onFacebookShareAchievement(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onPetsChosen(byte[] command) {
+	
+	public void onPetsChosen(byte[] command) {
 		//onUnhandledCommand(command);
 		
 	}
 
-	private void onOneDayBeforeStalemate(byte[] command) {
+	
+	public void onOneDayBeforeStalemate(byte[] command) {
 		System.out.printf("%s%s%s\n", ANSI.GREEN, Game.STRING_TABLE.get("GUI_ONE_DAY_BEFORE_STALEMATE").getText(), ANSI.GRAY);
 		
 	}
 
-	private void onSpyNightAbilityMessage(byte[] command) {
+	
+	public void onSpyNightAbilityMessage(byte[] command) {
 		Faction faction = Game.FACTIONS[command[1]];
 		System.out.printf(
 				"%sA member of the %s%s%s visited %s%s%s last night%s\n",
@@ -833,7 +956,8 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onEarnedAchievements(byte[] command) {
+	
+	public void onEarnedAchievements(byte[] command) {
 		Achievement achievement = Game.ACHIEVEMENTS[Integer.parseInt(this.convertToString(command))];
 		Role role = achievement.getRole();
 		
@@ -863,8 +987,9 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onPrivateMessage(byte[] command) {
-		//onUnhandledCommand(command);
+	
+	public void onPrivateMessage(byte[] command) {
+		//for(byte b : command) System.out.printf("%02x ", b); System.out.println();
 		String color = ANSI.toTrueColor(Color.MAGENTA);
 		// Blackmailer
 		if(command[1] == 3) {
@@ -896,7 +1021,8 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	private void onNotifyUsersOfPrivateMessage(byte[] command) {
+	
+	public void onNotifyUsersOfPrivateMessage(byte[] command) {
 		System.out.printf(
 				"%s%s%s is whispering to %s%s%s\n",
 				ANSI.LIGHT_GRAY,
@@ -908,47 +1034,57 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onVigilanteKilledTown(byte[] command) {
+	
+	public void onVigilanteKilledTown(byte[] command) {
 		onUnhandledCommand(command);
 	}
 
-	private void onUserLeftDuringSelection(byte[] command) {
+	
+	public void onUserLeftDuringSelection(byte[] command) {
 		onUnhandledCommand(command);
 	}
 
-	private void onStartDefense(byte[] command) {
+	
+	public void onStartDefense(byte[] command) {
 		System.out.println(ANSI.GRAY+"----------Defense----------");
 	}
 
-	private void onResurrectionSetAlive(byte[] command) {
+	
+	public void onResurrectionSetAlive(byte[] command) {
 		game.getPlayer(command[1]).resurrect();
 	}
 
-	private void onCharactersChosen(byte[] command) {
+	
+	public void onCharactersChosen(byte[] command) {
 		//onUnhandledCommand(command);
 		
 	}
 
-	private void onFirstDayTransition(byte[] command) {
+	
+	public void onFirstDayTransition(byte[] command) {
 		game.setPhase(GamePhase.FIRST_DAY_TRANSITION);
 		System.out.println(ANSI.GRAY+"---------- Start ----------");
 	}
 
-	private void onHousesChosen(byte[] command) {
+	
+	public void onHousesChosen(byte[] command) {
 		//onUnhandledCommand(command);
 		
 	}
 
-	private void onDeathNote(byte[] command) {
+	
+	public void onDeathNote(byte[] command) {
 		System.out.printf("%sDeath Note:\n%s%s%s\n", ANSI.RESET, ANSI.RED, new String(Arrays.copyOfRange(command, 3, command.length-1)), ANSI.GRAY);
 	}
 
-	private void onLynchUser(byte[] command) {
+	
+	public void onLynchUser(byte[] command) {
 		game.setPhase(GamePhase.EXECUTION);
 		game.getPlayerOnTrial().kill(Killer.LYNCHING);
 	}
 
-	private void onStartDayTransition(byte[] command) {
+	
+	public void onStartDayTransition(byte[] command) {
 		if(command.length == 2) {
 			System.out.printf("%sNo deaths last night...\n", ANSI.GRAY);
 		}
@@ -957,16 +1093,19 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	private void onStartNightTransition(byte[] command) {
+	
+	public void onStartNightTransition(byte[] command) {
 		game.setPhase(GamePhase.NIGHT_TRANSITION);
 	}
 
-	private void onInvalidNameMessage(byte[] command) {
+	
+	public void onInvalidNameMessage(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onMafiaWasJailed(byte[] command) {
+	
+	public void onMafiaWasJailed(byte[] command) {
 		//onUnhandledCommand(command);
 		System.out.printf(
 				"%s%s (%s%s%s) was hauled off to jail!%s\n",
@@ -979,21 +1118,29 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onUserDisconnected(byte[] command) {
+	
+	public void onUserDisconnected(byte[] command) {
 		//onUnhandledCommand(command);
 	}
 
-	private void onAmnesiacBecameMafiaOrWitch(byte[] command) {
-		onUnhandledCommand(command);
-		
+	
+	public void onAmnesiacBecameMafiaOrCoven(byte[] command) {
+		game.getPlayer(command[1]).setRole(Game.ROLES[(command[2]&0xff)-1]);
 	}
 
-	private void onExecutionerConvertedToJester(byte[] command) {
-		onUnhandledCommand(command);
-		
+	
+	public void onExecutionerConvertedToJester(byte[] command) {
+		game.getSelfPlayer().setRole(Game.ROLE_TABLE.get("Jester"));
+		System.out.printf(
+				"%s%s%s\n",
+				ANSI.GREEN,
+				Game.insertColors(Game.STRING_TABLE.get("GUI_EXECUTIONER_CONVERTED_TO_27").getText(), ANSI.GREEN),
+				ANSI.GRAY
+		);
 	}
 
-	private void onTellMafiaAboutMafiosoPromotion(byte[] command) {
+	
+	public void onTellMafiaAboutMafiosoPromotion(byte[] command) {
 		//onUnhandledCommand(command);
 		Role role = Game.ROLE_TABLE.get("Mafioso");
 		game.getPlayer(command[1]).setRole(role);
@@ -1006,7 +1153,8 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onMafiaPromotedToMafioso(byte[] command) {
+	
+	public void onMafiaPromotedToMafioso(byte[] command) {
 		game.getSelfPlayer().setRole(Game.ROLE_TABLE.get("Mafioso"));
 		System.out.printf(
 				"%s%s%s%s%s\n",
@@ -1018,7 +1166,8 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onMafiosoPromotedToGodfatherUpdateMafia(byte[] command) {
+	
+	public void onMafiosoPromotedToGodfatherUpdateMafia(byte[] command) {
 		Role role = Game.ROLE_TABLE.get("Godfather");
 		game.getPlayer(command[1]).setRole(role);
 		System.out.printf(
@@ -1030,7 +1179,8 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onMafiosoPromotedToGodfather(byte[] command) {
+	
+	public void onMafiosoPromotedToGodfather(byte[] command) {
 		game.getSelfPlayer().setRole(Game.ROLE_TABLE.get("Godfather"));
 		System.out.printf(
 				"%s%s%s%s%s\n",
@@ -1042,7 +1192,8 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onSomeoneHasWon(byte[] command) {
+	
+	public void onSomeoneHasWon(byte[] command) {
 		//onUnhandledCommand(command);
 		Winner winner = Game.WINNERS[command[1]-1];
 		
@@ -1067,17 +1218,20 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	private void onTellJanitorTargetsWill(byte[] command) {
+	
+	public void onTellJanitorTargetsWill(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onTellJanitorTargetsRole(byte[] command) {
+	
+	public void onTellJanitorTargetsRole(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onFactionTargeting(byte[] command) {
+	
+	public void onFactionTargeting(byte[] command) {
 		//onUnhandledCommand(command);
 		Player member = game.getPlayer(command[1]);
 		Role role = member.getRole();
@@ -1150,11 +1304,13 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	private void onHowManyAbilitiesLeft(byte[] command) {
+	
+	public void onHowManyAbilitiesLeft(byte[] command) {
 		game.setAbilitiesLeft(command[1]-1);
 	}
 
-	private void onTellLastWill(byte[] command) {
+	
+	public void onTellLastWill(byte[] command) {
 		String will = new String(Arrays.copyOfRange(command, 3, command.length-1));
 		if(!will.trim().isEmpty()) {
 			System.out.printf("%sWill:\n%s%s\n\n", ANSI.RESET, Game.insertColors(will), ANSI.GRAY);
@@ -1164,50 +1320,66 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	private void onMediumCommunicating(byte[] command) {
+	
+	public void onMediumCommunicating(byte[] command) {
 		System.out.printf("%sYou have opened a connection to the living!%s\n", ANSI.CYAN, ANSI.GRAY);
 	}
 
-	private void onMediumIsTalkingToUs(byte[] command) {
+	
+	public void onMediumIsTalkingToUs(byte[] command) {
 		System.out.printf("%sA Medium is speaking to you!%s\n", ANSI.CYAN, ANSI.GRAY);
 	}
 
-	private void onDisguiserChangedUpdateMafia(byte[] command) {
+	
+	public void onDisguiserChangedUpdateMafia(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onDisguiserChangedIdentity(byte[] command) {
+	
+	public void onDisguiserChangedIdentity(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onDisguiserStoleYourIdentity(byte[] command) {
+	
+	public void onDisguiserStoleYourIdentity(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onMayorRevealedAndAlreadyVoted(byte[] command) {
+	
+	public void onMayorRevealedAndAlreadyVoted(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onMayorRevealed(byte[] command) {
-		System.out.printf("%s%s%s has revealed themselves as Mayor!%s\n", ANSI.RESET, game.getPlayer(command[1]), ANSI.RED, ANSI.GRAY);
+	
+	public void onMayorRevealed(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_XMAYOR_REVEALED");
+		System.out.printf(
+				"%s%s%s\n", 
+				ANSI.RESET,
+				msg.getText().replace("%name%", game.getPlayer(command[1]).getName()+ANSI.toTrueColor(msg.getColor())),
+				ANSI.GRAY
+		);
 		game.getPlayer(command[1]).setRole(Game.ROLE_TABLE.get("Mayor"));
 	}
 
-	private void onJesterCompletedGoal(byte[] command) {
+	
+	public void onJesterCompletedGoal(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onExecutionerCompletedGoal(byte[] command) {
+	
+	public void onExecutionerCompletedGoal(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onTellJudgementVotes(byte[] command) {
+	
+	public void onTellJudgementVotes(byte[] command) {
 		String verb = "voted ";
 		Color color;
 		String vote;
@@ -1229,19 +1401,23 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onUserCanceledJudgementVote(byte[] command) {
+	
+	public void onUserCanceledJudgementVote(byte[] command) {
 		System.out.printf("%s%s%s has canceled their vote%s\n", ANSI.RESET, game.getPlayer(command[1]), ANSI.GREEN, ANSI.GRAY);
 	}
 
-	private void onUserChangedJudgementVote(byte[] command) {
+	
+	public void onUserChangedJudgementVote(byte[] command) {
 		System.out.printf("%s%s%s has changed their vote%s\n", ANSI.RESET, game.getPlayer(command[1]), ANSI.GREEN, ANSI.GRAY);
 	}
 
-	private void onUserJudgementVoted(byte[] command) {
+	
+	public void onUserJudgementVoted(byte[] command) {
 		System.out.printf("%s%s%s has voted%s\n", ANSI.RESET, game.getPlayer(command[1]), ANSI.GREEN, ANSI.GRAY);
 	}
 
-	private void onJailedTarget(byte[] command) {
+	
+	public void onJailedTarget(byte[] command) {
 		Player jailee = game.getPlayer(command[1]);
 		System.out.printf(
 				"%s%sYou hauled %s off to jail!%s\n", 
@@ -1253,7 +1429,8 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onBeingJailed(byte[] command) {
+	
+	public void onBeingJailed(byte[] command) {
 		System.out.printf(
 				"%s%sYou were hauled off to jail!%s\n", 
 				ANSI.toTrueColorBackground(Color.LIGHT_GRAY), 
@@ -1263,43 +1440,52 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onStartFirstDay(byte[] command) {
+	
+	public void onStartFirstDay(byte[] command) {
 		game.setPhase(GamePhase.FIRST_DAY);
 	}
 
-	private void onBroughtBackToLife(byte[] command) {
+	
+	public void onBroughtBackToLife(byte[] command) {
 		System.out.println(ANSI.GREEN+"You were resurrected by a Retributionist!"+ANSI.GRAY);//onUnhandledCommand(command);
 	}
 
-	private void onAmnesiacChangedRole(byte[] command) {
-		onUnhandledCommand(command);
-		
+	
+	public void onAmnesiacChangedRole(byte[] command) {
+		game.getSelfPlayer().setRole(Game.ROLES[(command[1]&0xff)-1]);
 	}
 
-	private void onTellTownAmnesiacChangedRole(byte[] command) {
-		Role role = Game.ROLES[command[1]-1];
+	
+	public void onTellTownAmnesiacChangedRole(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_AMNESIAC_REMEMBERED_ROLE_X");
+		Role role = Game.ROLES[(command[1]&0xff)-1];
+		
+		String text = msg.getText().replace("%role%", ANSI.toTrueColor(role.getColor())+role.getName()+ANSI.RESET);
+		
 		System.out.printf(
-				"%sAn amnesiac has remembered that they were like the %s%s%s\n",
+				"%s%s%s\n",
 				ANSI.GREEN,
-				ANSI.toTrueColor(role.getColor()),
-				role.getName(),
+				text,
 				ANSI.GRAY
 		);
 	}
 
-	private void onOtherMafia(byte[] command) {
+	
+	public void onOtherMafia(byte[] command) {
 		//onUnhandledCommand(command);
 		this.tellFactionMembers(command, Game.FACTION_TABLE.get("Mafia"));
 	}
 
-	private void onUserChosenName(byte[] command) {
+	
+	public void onUserChosenName(byte[] command) {
 		//onUnhandledCommand(command);
 		String name = new String(Arrays.copyOfRange(command, 3, command.length-1));
 		game.updatePlayerName(name, command[2]);
 		System.out.printf("%s%s (%d) has joined the Town%s\n", ANSI.GREEN, name, command[2], ANSI.GRAY);
 	}
 
-	private void onTellRoleList(byte[] command) {
+	
+	public void onTellRoleList(byte[] command) {
 		System.out.println("Role List:");
 		Color color;
 		Role role;
@@ -1310,7 +1496,8 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	private void onResurrection(byte[] command) {
+	
+	public void onResurrection(byte[] command) {
 		Player player = game.getPlayer(command[1]);
 		System.out.printf(
 				"%s%s (%s%s%s) was brought back to life!%s\n",
@@ -1323,12 +1510,14 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onUserDied(byte[] command) {
+	
+	public void onUserDied(byte[] command) {
 		game.getSelfPlayer().kill();
 		System.out.printf("%s%sYou have died!%s%s\n", ANSI.WHITE, ANSI.toTrueColorBackground(Color.RED), ANSI.RESET, ANSI.GRAY);
 	}
 
-	private void onUserChangedVote(byte[] command) {
+	
+	public void onUserChangedVote(byte[] command) {
 		//onUnhandledCommand(command);
 		Player voter = game.getPlayer(command[1]), voted = game.getPlayer(command[2]);
 		System.out.printf(
@@ -1343,7 +1532,8 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onUserCanceledVote(byte[] command) {
+	
+	public void onUserCanceledVote(byte[] command) {
 		System.out.printf(
 				"%s%s%s has canceled their vote%s\n",
 				ANSI.RESET,
@@ -1353,7 +1543,8 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onUserVoted(byte[] command) {
+	
+	public void onUserVoted(byte[] command) {
 		Player voter = game.getPlayer(command[1]), voted = game.getPlayer(command[2]);
 		System.out.printf(
 				"%s%s%s has voted against %s%s (Vote Worth: %d)%s\n",
@@ -1367,12 +1558,13 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onLookoutNightAbilityMessage(byte[] command) {
-		onUnhandledCommand(command);
+	
+	public void onLookoutNightAbilityMessage(byte[] command) {
+		//onUnhandledCommand(command);
 		System.out.printf(
 				"%s%s%s visited %s%s%s last night%s\n",
 				ANSI.RESET,
-				game.getPlayer(command[2]),
+				game.getPlayer(command[1]),
 				ANSI.GREEN,
 				ANSI.RESET,
 				game.getSelfPlayer().getTarget(),
@@ -1381,7 +1573,8 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onTrialFoundNotGuilty(byte[] command) {
+	
+	public void onTrialFoundNotGuilty(byte[] command) {
 		game.setPhase(GamePhase.DEEMED_NOT_GUILTY);
 		System.out.printf(
 				"%s%s was found %sinnocent%s by a vote of %s%s%s to %s%d%s\n",
@@ -1399,7 +1592,8 @@ public class ServerMessageHandler extends MessageHandler {
 		game.clearPlayerOnTrial();
 	}
 
-	private void onTrialFoundGuilty(byte[] command) {
+	
+	public void onTrialFoundGuilty(byte[] command) {
 		game.setPhase(GamePhase.DEEMED_GUILTY);
 		System.out.printf(
 				"%s%s was found %sguilty%s by a vote of %s%s%s to %s%d%s\n",
@@ -1416,11 +1610,13 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onStartJudgement(byte[] command) {
+	
+	public void onStartJudgement(byte[] command) {
 		System.out.printf("%sThe Town may now vote on the fate of %s%s%s\n", ANSI.GREEN, ANSI.RESET, game.getPlayerOnTrial(), ANSI.GRAY);
 		System.out.println("---------Judgement---------");
 	}
-	private void onStartDefenseTransition(byte[] command) {
+	
+	public void onStartDefenseTransition(byte[] command) {
 		game.placePlayerOnTrial(command[1]);
 		System.out.printf(
 				"%sThe Town has decided to put %s%s%s on trial%s\n",
@@ -1432,12 +1628,14 @@ public class ServerMessageHandler extends MessageHandler {
 		);
 	}
 
-	private void onStartVoting(byte[] command) {
+	
+	public void onStartVoting(byte[] command) {
 		game.setPhase(GamePhase.VOTING);
 		System.out.println(ANSI.GRAY+"----------Voting-----------");
 	}
 
-	private void onStartDiscussion(byte[] command) {
+	
+	public void onStartDiscussion(byte[] command) {
 		game.setPhase(GamePhase.DISCUSSION);
 		System.out.println(ANSI.GRAY+"--------Discussion---------");
 		String msg = game.getDayAbilitiesLeftMessage();
@@ -1446,7 +1644,8 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	private void onWhoDiedAndHow(byte[] command) {
+	
+	public void onWhoDiedAndHow(byte[] command) {
 		//System.out.println(ANSI.RESET+"-----------Death-----------");
 		//this.onUnhandledCommand(command);
 		int roleID = (command[2]&0xff)-1;
@@ -1493,12 +1692,14 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	private void onStartDay(byte[] command) {
+	
+	public void onStartDay(byte[] command) {
 		game.setPhase(GamePhase.DAY_TRANSITION);
 		System.out.println(ANSI.GRAY+"------------Day------------");
 	}
 
-	private void onStartNight(byte[] command) {
+	
+	public void onStartNight(byte[] command) {
 		game.setPhase(GamePhase.NIGHT);
 		System.out.println(ANSI.GRAY+"-----------Night-----------");
 		String msg = game.getNightAbilitiesLeftMessage();
@@ -1507,7 +1708,8 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	private void onRoleAndPosition(byte[] command) {
+	
+	public void onRoleAndPosition(byte[] command) {
 		game.setPhase(GamePhase.GET_ROLE);
 		Role role = Game.ROLES[command[1]-1];
 		Player self = game.getPlayer(command[2]);
@@ -1516,119 +1718,141 @@ public class ServerMessageHandler extends MessageHandler {
 		System.out.printf("%sRole: %s%s%s\nPosition: %d%s\n", ANSI.RESET, ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.RESET, command[2], ANSI.GRAY);
 	}
 
-	private void onNamesAndPositionsOfUsers(byte[] command) {
+	
+	public void onNamesAndPositionsOfUsers(byte[] command) {
 		game.updatePlayerName(new String(Arrays.copyOfRange(command, 2, command.length-1)), command[1]);
 	}
 
-	private void onPickNames(byte[] command) {
+	
+	public void onPickNames(byte[] command) {
 		game.setPhase(GamePhase.PICK_NAME);
 		System.out.println("Name selection has begun");
 	}
 
-	private void onCurrencyMultiplier(byte[] command) {
+	
+	public void onCurrencyMultiplier(byte[] command) {
 		onUnhandledCommand(command);
 	}
 
-	private void onPromotionPopup(byte[] command) {
+	
+	public void onPromotionPopup(byte[] command) {
 		onUnhandledCommand(command);
 	}
 
-	private void onScrollConsumed(byte[] command) {
+	
+	public void onScrollConsumed(byte[] command) {
 		//onUnhandledCommand(command);
 		Scroll scroll = Game.SCROLLS[Integer.parseInt(new String(Arrays.copyOfRange(command, 1, command.length-1)))];
 		System.out.printf("%sScroll used: %s%s\n", ANSI.RESET, Game.insertColors(scroll.toString()), ANSI.GRAY);
 	}
 
-	private void onPlayerStatistics(byte[] command) {
+	
+	public void onPlayerStatistics(byte[] command) {
 		onUnhandledCommand(command);
 	}
 
-	private void onReferAFriendUpdate(byte[] command) {
+	
+	public void onReferAFriendUpdate(byte[] command) {
 		//onUnhandledCommand(command);
 	}
 
-	private void onModeratorMessage(byte[] command) {
+	
+	public void onModeratorMessage(byte[] command) {
 		System.err.println("Moderator Message: " + this.convertToString(command));
 	}
 
-	private void onUserStatistics(byte[] command) {
+	
+	public void onUserStatistics(byte[] command) {
 		onUnhandledCommand(command);
 	}
 
-	private void onUpdateFriendName(byte[] command) {
+	
+	public void onUpdateFriendName(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onSetLastBonusWinTime(byte[] command) {
+	
+	public void onSetLastBonusWinTime(byte[] command) {
 		//onUnhandledCommand(command);
 	}
 
-	private void onUpdatePaidCurrency(byte[] command) {
+	
+	public void onUpdatePaidCurrency(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onShopPurchaseSuccess(byte[] command) {
+	
+	public void onShopPurchaseSuccess(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onReturnToHomePage(byte[] command) {
+	
+	public void onReturnToHomePage(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onForcedLogout(byte[] command) {
+	
+	public void onForcedLogout(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onFriendUpdate(byte[] command) {
+	
+	public void onFriendUpdate(byte[] command) {
 		//onUnhandledCommand(command);
 		
 	}
 
-	private void onStringTableMessage(byte[] command) {
+	
+	public void onStringTableMessage(byte[] command) {
 		String id = String.valueOf((command[1]&0xff)-1);
+		if(game.getMode().isCovenGamemode() && Game.STRING_TABLE.containsKey("GAME_COVEN"+id)) {
+			id = "COVEN" + id;
+		}
 		StringTableMessage msg = Game.STRING_TABLE.get("GAME_"+id);
 		System.out.printf("%s%s%s%s\n", ANSI.WHITE, ANSI.toTrueColorBackground(msg.getColor()), msg.getText(), ANSI.RESET, ANSI.GRAY);
 	}
 
-	private void onSystemMessage(byte[] command) {
+	
+	public void onSystemMessage(byte[] command) {
 		onUnhandledCommand(command);
 		
 	}
 
-	private void onDoNotSpam(byte[] command) {
+	
+	public void onDoNotSpam(byte[] command) {
 		System.out.println(ANSI.YELLOW+"Please do not spam the chat"+ANSI.GRAY);
 	}
 
-	private void onChatBoxMessage(byte[] command) {
+	
+	public void onChatBoxMessage(byte[] command) {
 		int offset = command[1] == (byte)0xff ? 1 : 0;
 		int position = command[1+offset];
-		boolean alive;
+		boolean alive = true, isVIP = false, isLover = false;
 		
 		Player player;
 		
 		String name, role = " (???)";
 		if(position == 75) {
 			name = ANSI.VAMPIRE+"Vampire";
-			alive = true;
 			role = "";
 		}
 		else if(position == 45) {
 			name = ANSI.CYAN+"Medium";
-			alive = true;
 			role = "";
 		}
 		else if(position == 30) {
 			name = ANSI.YELLOW+"Jailor";
-			alive = true;
 			role = "";
 		}
 		else {
 			player = game.getPlayer(position);
+			isLover = player.getTags().contains(PlayerTag.LOVER);
+			isVIP = player.getTags().contains(PlayerTag.VIP);
 			alive = player.isAlive();
 			name = player.getName();
 			if(player.getRole() != null) {
@@ -1639,19 +1863,38 @@ public class ServerMessageHandler extends MessageHandler {
 						ANSI.RESET
 				);
 			}
+			else if(!player.getTags().isEmpty()) {
+				String tags = player.getTags()
+									.stream()
+									.map(t -> {
+										try {
+											return ANSI.valueOf(t.name())+t.toString()+ANSI.RESET;
+										}
+										catch(Exception e) {
+											return null;
+										}
+									})
+									.filter(t -> t != null)
+									.collect(Collectors.joining(", "));
+				role = " (" + tags + ")";
+									
+			}
 		}
+		String color = String.valueOf(isVIP ? ANSI.VIP : isLover ? ANSI.LOVER : ANSI.RESET);
 		System.out.printf(
-				"%s%s%s%s: %s%s\n", 
-				alive ? ANSI.RESET : ANSI.RED, 
+				"%s%s%s%s: %s%s%s\n",
+				alive ? color : ANSI.RED, 
 				name, 
 				ANSI.RESET, 
 				role,
-				Game.insertColors(new String(Arrays.copyOfRange(command, 2+offset, command.length-1))), 
+				color,
+				Game.insertColors(new String(Arrays.copyOfRange(command, 2+offset, command.length-1)), color), 
 				ANSI.GRAY
 		);
 	}
 
-	private void onUserLeftGame(byte[] command) {
+	
+	public void onUserLeftGame(byte[] command) {
 		System.out.printf("%s%s left the game%s\n", ANSI.YELLOW, game.getPlayer(command[3]), ANSI.GRAY);
 		if(game.getPhase() == GamePhase.LOBBY) {
 			for(int i = command[3]; i < 15; i++) {
@@ -1661,7 +1904,8 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	private void onUsersJoinedLobby(byte[] command) {
+	
+	public void onUsersJoinedLobby(byte[] command) {
 		int asterisk = this.indexOf(command, (byte)'*');
 		String name = new String(Arrays.copyOfRange(command, 3, asterisk));
 		System.out.printf(
@@ -1674,13 +1918,16 @@ public class ServerMessageHandler extends MessageHandler {
 		game.updatePlayerName(name, command[asterisk+1]);
 	}
 
-	private void onJoinedGameLobby(byte[] command) {
-		//onUnhandledCommand(command);
+	
+	public void onJoinedGameLobby(byte[] command) {
 		game.setPhase(GamePhase.LOBBY);
-		System.out.printf("%sJoined game lobby (Game Mode: %s)%s\n", ANSI.RESET, Game.GAME_MODE_TABLE.get((int)command[2]), ANSI.GRAY);
+		game.setMode(Game.GAME_MODE_ID_TABLE.get((int)command[2]));
+		System.out.printf("%sJoined game lobby (Game Mode: %s)%s\n", ANSI.GREEN, game.getMode().getLabel().getText(), ANSI.GRAY);
+		System.out.printf("%sSummary: %s%s\n", ANSI.GREEN, game.getMode().getSummary().getText(), ANSI.GRAY);
 	}
 
-	private void onLoginSuccess(byte[] command) {
+	
+	public void onLoginSuccess(byte[] command) {
 		System.out.println("Log in succeeded");
 		//onUnhandledCommand(command);
 	}

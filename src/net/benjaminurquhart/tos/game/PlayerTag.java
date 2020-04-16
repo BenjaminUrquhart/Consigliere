@@ -8,7 +8,10 @@ public enum PlayerTag {
 
 	FULLMOON_ATTACK,
 	CLEANED,
-	STONED;
+	STONED,
+	LOVER,
+	
+	VIP("VIP");
 	
 	private static final Pattern NAME_PATTERN = Pattern.compile("([A-Z])(.+?)?( |$)");
 	private String name;
@@ -17,6 +20,13 @@ public enum PlayerTag {
 	static {
 		System.out.println(Arrays.toString(values()));
 	}*/
+	
+	private PlayerTag() {
+		this(null);
+	}
+	private PlayerTag(String name) {
+		this.name = name;
+	}
 	
 	@Override
 	public String toString() {

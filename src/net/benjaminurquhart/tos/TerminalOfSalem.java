@@ -1,6 +1,7 @@
 package net.benjaminurquhart.tos;
 
 import java.io.File;
+import java.io.PrintStream;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -37,9 +38,9 @@ public class TerminalOfSalem {
 		}
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] a) throws Exception {
 		System.out.print(ANSI.RESET);
-		
+		PrintStream out = System.out;
 		int i = 2;
 		File directory = new File("saves");
 		if(!directory.exists()) {
@@ -54,25 +55,10 @@ public class TerminalOfSalem {
 		
 		final String filename = file.getAbsolutePath();
 		
-		Game game = new Game();
-		MessageHandler server = new ServerMessageHandler(game), client = new ClientMessageHandler(game);
-		PromiscuousMode mode = PromiscuousMode.NONPROMISCUOUS;
 		PcapDumper dumper;
 		PcapHandle handle;
-		boolean live = true;
-		if(args.length > 0) {
-			if(args[0].equalsIgnoreCase("--file")) {
-				if(args.length == 1) {
-					System.out.println("Please provide a file name.");
-					return;
-				}
-				live = false;
-			}
-			else if(args[0].equalsIgnoreCase("--promiscuous")) {
-				mode = PromiscuousMode.NONPROMISCUOUS;
-			}
-		}
-		if(live) {
+		Arguments args = new Arguments(a);
+		if(args.getMode() == Mode.LIVE) {
 			if(file.exists()) {
 				file.delete();
 			}
@@ -87,13 +73,13 @@ public class TerminalOfSalem {
 					captureInterface.getAddresses(), 
 					captureInterface.getDescription()
 			);
-			handle = captureInterface.openLive(1<<16, mode, 10);
+			handle = captureInterface.openLive(1<<16, PromiscuousMode.NONPROMISCUOUS, 10);
 			dumper = handle.dumpOpen(filename);
 			System.out.println("Writing to " + filename);
 		}
 		else {
-			System.out.println("Reading file " + args[1] + "...");
-			handle = Pcaps.openOffline(args[1]);
+			System.out.println("Reading file " + args.getFilename() + "...");
+			handle = Pcaps.openOffline(args.getFilename());
 			dumper = null;
 		}
 		//handle.setFilter("(((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)", BpfCompileMode.OPTIMIZE);
@@ -112,6 +98,18 @@ public class TerminalOfSalem {
 			}
 			handle.close();
 		}));
+		
+		Game game = new Game();
+		MessageHandler server, client = new ClientMessageHandler(game);
+		
+		if(args.getMode() == Mode.SUMMARIZE) {
+			server = new Summarizer(game);
+			System.setOut(new StubbedStream());
+		}
+		else {
+			server = new ServerMessageHandler(game);
+		}
+		
 		while(true) {
 			try {
 				tmp = handle.getNextPacketEx();
@@ -163,9 +161,13 @@ public class TerminalOfSalem {
 			else {
 				continue;
 			}
-			if(live) {
+			if(args.getMode() == Mode.LIVE) {
 				dumper.dump(tmp);
 			}
+		}
+		if(args.getMode() == Mode.SUMMARIZE) {
+			System.setOut(out);
+			((Summarizer)server).summarize();
 		}
 	}
 

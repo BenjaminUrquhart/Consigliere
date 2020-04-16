@@ -35,7 +35,7 @@
 	"Werewolf":["ww"],
 	"Witch":[],
 	
-	"Random Town":["rt","tplo"],
+	"Random Town":["rt","vip","tplo"],
 	"Town Investigative":["ti","town invest"],
 	"Town Protective":["tp","town protect"],
 	"Town Killing":["tk"],

@@ -9,6 +9,13 @@ public enum ANSI {
 	COVEN(new Color(0xBF5FFF)),
 	VAMPIRE(new Color(0x7B8968)),
 	
+	CLEANED(new Color(0xCCCCCC)),
+	STONED(new Color(0xCCCCCC)),
+	
+	ORANGE(new Color(0xFFA500)),
+	LOVER(new Color(0xFF99CC)),
+	VIP(new Color(0x00B816)),
+	
 	RED(Color.RED),
 	GRAY(Color.GRAY),
 	CYAN(Color.CYAN),

@@ -39,6 +39,7 @@ public class ClientMessageHandler extends MessageHandler {
     	case 22: onUserReported(command); break;
     	case 30: onUserJoinedLobby(command); break;
     	case 39: onLeaveGame(command); break;
+    	case 60: onUserSelectedLobby(command); break;
     	case 62: onUserAcceptedRankedMatch(command); break;
     	case 74: onItemPurchase(command); break;
     	case 78: onUserChosePirateAction(command); break;
@@ -50,6 +51,9 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	private void onUserSelectedLobby(byte[] command) {
+		game.setMode(Game.GAME_MODE_ID_TABLE.get((int)command[1]));
+	}
 	private void onUserChosePirateAction(byte[] command) {
 		//onUnhandledCommand(command);
 		StringTableMessage msg;
@@ -126,6 +130,9 @@ public class ClientMessageHandler extends MessageHandler {
 			}
 			else {
 				msg = Game.STRING_TABLE.get(msgID);
+			}
+			if(msg == null) {
+				return;
 			}
 			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText().replace("%target%", game.getSelfPlayer().getTarget().getName()));
 		}
