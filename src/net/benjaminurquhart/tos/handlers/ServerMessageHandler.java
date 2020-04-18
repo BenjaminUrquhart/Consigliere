@@ -699,8 +699,18 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onAmbusherNightAbility(byte[] command) {
-		onUnhandledCommand(command);
-		
+		//onUnhandledCommand(command);
+		Player ambusher = game.getPlayer(command[1]);
+		ambusher.setRole(Game.ROLE_TABLE.get("Ambusher"));
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_ROLE_51_NOTIFICATION");
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(msg.getColor()),
+				ANSI.GREEN,
+				msg.getText().replace("%name%", ANSI.WHITE+ambusher.getName()+ANSI.GREEN),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	
@@ -751,7 +761,7 @@ public class ServerMessageHandler extends MessageHandler {
 				"%s%s%s%s%s\n",
 				ANSI.toTrueColorBackground(msg.getColor()),
 				ANSI.GREEN,
-				msg.getText().replace("%name%", game.getPlayer(command[1]).getName()),
+				msg.getText().replace("%name%", ANSI.WHITE+game.getPlayer(command[1]).getName()+ANSI.GREEN),
 				ANSI.RESET,
 				ANSI.GRAY
 		);
@@ -1880,7 +1890,7 @@ public class ServerMessageHandler extends MessageHandler {
 									
 			}
 		}
-		String color = String.valueOf(isVIP ? ANSI.VIP : isLover ? ANSI.LOVER : ANSI.RESET);
+		String color = String.valueOf(isVIP ? ANSI.VIP : isLover ? ANSI.LOVER : alive ? ANSI.RESET : ANSI.GRAY);
 		System.out.printf(
 				"%s%s%s%s: %s%s%s\n",
 				alive ? color : ANSI.RED, 

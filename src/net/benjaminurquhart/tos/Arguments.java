@@ -12,8 +12,8 @@ public class Arguments {
 				if(args.length <= i+1) {
 					throw new IllegalArgumentException("No file argument provided");
 				}
-				filename = args[++i];
 				mode = args[i].equalsIgnoreCase("--file") ? Mode.REVIEW : Mode.SUMMARIZE;
+				filename = args[++i];
 			}
 			else {
 				System.out.println("Ignoring invalid argument: " + args[i]);

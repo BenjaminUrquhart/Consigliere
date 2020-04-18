@@ -33,19 +33,20 @@ I would greatly appriciate game captures for the following roles:
 - Lookout (with visits)
 - ~~Transporter~~
 - ~~Witch~~
-- Mayor (You must be the mayor. Preferably with a reveal)
+- ~~Mayor (You must be the mayor. Preferably with a reveal)~~
 - Jailor (Executed Townie only)
 - Vigilante (Death from guilt only)
 - Vampire Hunter (Vampire chat and/or conversion to Vigilante)
-- Executioner (Preferably with a successful lynch)
+- Jester (Lynched - you must be the Jester)
+- ~~Executioner (Preferably with a successful lynch)~~ I got a game, working on it.
 
 **Coven DLC:**
 - Guardian Angel
 - Coven Leader (You must be Coven, but CANNOT be the CL)
 - Hex Master
 - Potion Master (Prefereably you being the PM. Please tell me which potions were used)
-- Tracker (with visits)
-- Trapper
+- ~~Tracker (with visits)~~
+- ~~Trapper~~
 - ~~Pirate~~
 
 # Known Bugs

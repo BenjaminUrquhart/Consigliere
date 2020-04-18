@@ -58,6 +58,7 @@ public class TerminalOfSalem {
 		PcapDumper dumper;
 		PcapHandle handle;
 		Arguments args = new Arguments(a);
+		System.out.println("Mode: " + args.getMode());
 		if(args.getMode() == Mode.LIVE) {
 			if(file.exists()) {
 				file.delete();
