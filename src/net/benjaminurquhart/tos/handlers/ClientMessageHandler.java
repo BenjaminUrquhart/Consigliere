@@ -42,6 +42,7 @@ public class ClientMessageHandler extends MessageHandler {
     	case 60: onUserSelectedLobby(command); break;
     	case 62: onUserAcceptedRankedMatch(command); break;
     	case 74: onItemPurchase(command); break;
+    	case 77: onUserSelectedTaunt(command); break;
     	case 78: onUserChosePirateAction(command); break;
     	case 79: onUserChosePotion(command); break;
     	case 82: onUserChoseHypnotistMessage(command); break;
@@ -51,6 +52,9 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	private void onUserSelectedTaunt(byte[] command) {
+		// TODO Auto-generated method stub
+	}
 	private void onUserSelectedLobby(byte[] command) {
 		game.setMode(Game.GAME_MODE_ID_TABLE.get((int)command[1]));
 	}
@@ -82,9 +86,9 @@ public class ClientMessageHandler extends MessageHandler {
 		String potion = "Unknown potion: " + command[1];
 		ANSI color = null;
 		switch(command[1]) {
-		case 4: potion = "Healing"; color = ANSI.GREEN; break;
-		case 3: potion = "Revealing"; color = ANSI.CYAN; break;
-		case 2: potion = "Killing"; color = ANSI.RED; break;
+		case 1: potion = "Healing"; color = ANSI.GREEN; break;
+		case 3: potion = "Killing"; color = ANSI.RED; break;
+		case 2: potion = "Revealing"; color = ANSI.CYAN; break;
 		}
 		System.out.printf(
 				"%sUser chose %s%s%s potion\n", 
@@ -111,15 +115,22 @@ public class ClientMessageHandler extends MessageHandler {
 	}
 	private void onUserSelectedTarget(byte[] command) {
 		StringTableMessage msg;
+		Player self = game.getSelfPlayer();
 		if(command[1] == 30) {
 			game.getSelfPlayer().setTarget(null);
 			msg = Game.STRING_TABLE.get("GUI_YOU_CHANGED_MIND");
 			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText());
+			self.setTarget(null);
 		}
 		else {
-			game.getSelfPlayer().setTarget(game.getPlayer(command[1]));
-			String msgID = "GUI_ROLE_"+game.getSelfPlayer().getRole().getID()+"_TARGETING_X1";
-			if(command[1] == game.getSelfPlayer().getPosition()) {
+			String msgID = "GUI_ROLE_"+self.getRole().getID()+"_TARGETING_X1";
+			if(self.getTarget() != null && self.getTarget().getPosition() != command[1]) {
+				if(Game.STRING_TABLE.containsKey(msgID+"_INSTEAD")) {
+					msgID += "_INSTEAD";
+				}
+			}
+			self.setTarget(game.getPlayer(command[1]));
+			if(command[1] == self.getPosition()) {
 				msgID += "_SELF";
 			}
 			if(game.getPhase() == GamePhase.NIGHT) {
@@ -134,7 +145,7 @@ public class ClientMessageHandler extends MessageHandler {
 			if(msg == null) {
 				return;
 			}
-			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText().replace("%target%", game.getSelfPlayer().getTarget().getName()));
+			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText().replace("%target%", self.getTarget().getName()));
 		}
 	}
 	private void onUserSelectedSecondTarget(byte[] command) {

@@ -180,7 +180,7 @@ public class ServerMessageHandler extends MessageHandler {
 	                 case 140: onExecutionerConvertedToJester(command); break;
 	                 case 141: onAmnesiacBecameMafiaOrCoven(command); break;
 	                 case 142: onUserDisconnected(command); break;
-	                 case 143: onMafiaWasJailed(command); break;
+	                 case 143: onFactionMemberJailed(command); break;
 	                 case 144: onInvalidNameMessage(command); break;
 	                 case 145: onStartNightTransition(command); break;
 	                 case 146: onStartDayTransition(command); break;
@@ -595,8 +595,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onPestilenceConversion(byte[] command) {
-		onUnhandledCommand(command);
-		
+		game.getSelfPlayer().setRole(Game.ROLE_TABLE.get("Pestilence"));
 	}
 
 	
@@ -721,19 +720,19 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onTauntConsumed(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 
 	
 	public void onTauntActivated(byte[] command) {
 		//onUnhandledCommand(command);
-		System.out.printf("%s%s was taunted with %s\n", ANSI.GRAY, game.getPlayer(command[1]), Game.TAUNTS[command[2]-1]);
+		System.out.printf("%s%s was taunted with %s\n", ANSI.GRAY, game.getPlayer(command[1]), Game.TAUNTS[command[3]-1]);
 	}
 
 	
 	public void onTauntResult(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 
@@ -1090,7 +1089,7 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onLynchUser(byte[] command) {
 		game.setPhase(GamePhase.EXECUTION);
-		game.getPlayerOnTrial().kill(Killer.LYNCHING);
+		game.getPlayerOnTrial().lynch();
 	}
 
 	
@@ -1115,14 +1114,15 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	
-	public void onMafiaWasJailed(byte[] command) {
+	public void onFactionMemberJailed(byte[] command) {
 		//onUnhandledCommand(command);
+		Role role = game.getPlayer(command[1]).getRole();
 		System.out.printf(
 				"%s%s (%s%s%s) was hauled off to jail!%s\n",
 				ANSI.LIGHT_GRAY,
 				game.getPlayer(command[1]),
-				ANSI.MAFIA,
-				game.getPlayer(command[1]).getRole().getName(),
+				ANSI.valueOf(role.getFaction().getName().toUpperCase()),
+				role.getName(),
 				ANSI.LIGHT_GRAY,
 				ANSI.GRAY
 		);
@@ -1260,25 +1260,24 @@ public class ServerMessageHandler extends MessageHandler {
 			String targetName = target.getName(), type = "", action = "";
 			String msgID = "GUI_FACTION_TARGETING_"+role.getID();
 			
-			if(member.getTarget() == null) {
-				member.setTarget(target);
-			}
+			member.setTarget(target);
 			// TODO: fix messages for 2-target roles
 			if(command[4] == 7 && role.equals(Game.ROLE_TABLE.get("Medusa"))) {
 				targetName = "visitors";
 			}
 			else if(role.equals(Game.ROLE_TABLE.get("Necromancer"))) {
-				if(member.getTarget() == target) {
-					type = "ghoul";
-					action = "attack";
-				}
-				else if(member == target) {
+				boolean ghoul = command[4] == 11;
+				if(ghoul) {
 					msgID += "_GHOUL";
 				}
-				else if(command[4] == 9) {
-					type = "zombie";
-					action = Game.STRING_TABLE.get("GUI_ACTION_VERB"+member.getTarget().getRole().getID()).getText();
+				else {
+					type = "entity";
+					action = "attack";
+					msgID += "_ADDITIONAL";
 				}
+			}
+			else if(command[4] == 4 && role.equals(Game.ROLE_TABLE.get("Coven Leader"))) {
+				msgID += "_VICTIM";
 			}
 			StringTableMessage msg = Game.STRING_TABLE.get(msgID);
 			String title = String.format(
@@ -1291,9 +1290,9 @@ public class ServerMessageHandler extends MessageHandler {
 			if(msg == null) {
 				if(role.equals(Game.ROLE_TABLE.get("Potion Master"))) {
 					switch(command[5]) {
-					case 3: msgID+="_HEAL"; break;
-					case 2: msgID+="_INVESTIGATE"; break;
-					case 1: msgID+="_ATTACK"; break;
+					case 1: msgID+="_HEAL"; break;
+					case 2: msgID+="_ATTACK"; break;
+					case 3: msgID+="_INVESTIGATE"; break;
 					}
 					msg = Game.STRING_TABLE.get(msgID);
 				}
@@ -1499,11 +1498,14 @@ public class ServerMessageHandler extends MessageHandler {
 		System.out.println("Role List:");
 		Color color;
 		Role role;
+		List<Role> rolelist = new ArrayList<>();
 		for(int i = 1; i < command.length-1; i++) {
 			role = Game.ROLES[command[i]-1];
 			color = role.getColor();
+			rolelist.add(role);
 			System.out.printf("%s%s%s\n", ANSI.toTrueColor(color), role.getName(), ANSI.GRAY);
 		}
+		game.setRoleList(rolelist);
 	}
 
 	
@@ -1667,6 +1669,7 @@ public class ServerMessageHandler extends MessageHandler {
 		for(Killer k : player.getKillers()) {
 			killers.add(k);
 		}
+		player.kill(killers.toArray(Killer[]::new));
 		for(int i = 4; i < command.length-1; i++) {
 			killers.add(Game.KILLERS[command[i]-1]);
 		}

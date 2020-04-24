@@ -69,6 +69,9 @@ public class Player {
 		this.tags.add(tag);
 	}
 	
+	public void lynch() {
+		this.killers = new Killer[] {Killer.LYNCHING};
+	}
 	public void kill(Killer... killers) {
 		if(this.killers.length > 0) {
 			Killer[] tmp = new Killer[this.killers.length+killers.length];

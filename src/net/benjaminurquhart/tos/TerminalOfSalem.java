@@ -1,18 +1,22 @@
 package net.benjaminurquhart.tos;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.PrintStream;
 import java.net.Inet4Address;
+import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.TimeoutException;
 
 import org.pcap4j.core.PcapDumper;
 
 //import org.pcap4j.core.BpfProgram.BpfCompileMode;
 
 import org.pcap4j.core.PcapHandle;
+import org.pcap4j.core.PcapNativeException;
 import org.pcap4j.core.PcapNetworkInterface;
 import org.pcap4j.core.PcapNetworkInterface.PromiscuousMode;
 import org.pcap4j.core.Pcaps;
@@ -27,10 +31,11 @@ import net.benjaminurquhart.tos.handlers.*;
 
 public class TerminalOfSalem {
 	
-	public static InetAddress TOS_SERVER;
+	public static InetAddress TOS_SERVER, TOS_SERVER_IPV6;
 	
 	static {
 		try {
+			TOS_SERVER_IPV6 = Inet6Address.getByName("2001:4800:7818:104:be76:4eff:fe04:6c7c");
 			TOS_SERVER = Inet4Address.getByName("104.239.145.241");
 		}
 		catch(UnknownHostException e) {
@@ -63,11 +68,11 @@ public class TerminalOfSalem {
 			if(file.exists()) {
 				file.delete();
 			}
-			PcapNetworkInterface captureInterface = Pcaps.findAllDevs().get(0);
-			/*
+			PcapNetworkInterface captureInterface = Pcaps.getDevByName("any");
+			
 			for(PcapNetworkInterface iface : Pcaps.findAllDevs()) {
 				System.out.printf("%s (%s): %s\n", iface.getName(), iface.getAddresses(), iface.getDescription());
-			}*/
+			}
 			System.out.printf(
 					"Capturing on interface %s (%s): %s...\n", 
 					captureInterface.getName(), 
@@ -84,7 +89,8 @@ public class TerminalOfSalem {
 			dumper = null;
 		}
 		//handle.setFilter("(((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)", BpfCompileMode.OPTIMIZE);
-		IpV4Packet ipv4Packet;
+		InetAddress src, dst;
+		IpPacket ipPacket;
 		TcpPacket packet;
 		Packet tmp;
 		
@@ -115,19 +121,30 @@ public class TerminalOfSalem {
 			try {
 				tmp = handle.getNextPacketEx();
 			}
-			catch(Exception e) {
+			catch(EOFException e) {
+				System.out.println("Reached end of file");
 				break;
 			}
-			ipv4Packet = tmp.get(IpV4Packet.class);
+			catch(PcapNativeException e) {
+				e.printStackTrace();
+				continue;
+			}
+			catch(TimeoutException e) {
+				System.out.println(ANSI.GRAY+"Timed out while waiting for packets...");
+				continue;
+			}
+			ipPacket = tmp.get(IpPacket.class);
 			packet = tmp.get(TcpPacket.class);
-			if(packet == null || ipv4Packet == null) {
+			if(packet == null || ipPacket == null) {
 				continue;
 			}
 			if(!packet.getHeader().getPsh()) {
 				continue;
 			}
+			src = ipPacket.getHeader().getSrcAddr();
+			dst = ipPacket.getHeader().getDstAddr();
 			data = packet.getPayload().getRawData();
-			if(ipv4Packet.getHeader().getSrcAddr().equals(TOS_SERVER)) {
+			if(src.equals(TOS_SERVER) || src.equals(TOS_SERVER_IPV6)) {
 				if(!serverSeq.add(packet.getHeader().getSequenceNumberAsLong())) {
 					System.out.printf("%sIgnoring packet retransmission...\n", ANSI.GRAY);
 					continue;
@@ -136,14 +153,12 @@ public class TerminalOfSalem {
 					server.parseCommands(data);
 				}
 				catch(Throwable e) {
-					System.out.printf("%sAn internal error occured:\n", ANSI.RED);
+					System.out.printf("%sAn internal parsing error occured:\n", ANSI.RED);
 					e.printStackTrace(System.out);
-					System.out.print("Message: ");
-					server.onDefaultFunction(data);
-					System.out.printf("%s\n\n", ANSI.GRAY);
+					System.out.printf("Message: %s%s\n\n", server.convertToString(data, false));
 				}
 			}
-			else if(ipv4Packet.getHeader().getDstAddr().equals(TOS_SERVER)) {
+			else if(dst.equals(TOS_SERVER) || dst.equals(TOS_SERVER_IPV6)) {
 				if(!clientSeq.add(packet.getHeader().getSequenceNumberAsLong())) {
 					System.out.printf("%sIgnoring packet retransmission...\n", ANSI.GRAY);
 					continue;
@@ -152,11 +167,9 @@ public class TerminalOfSalem {
 					client.parseCommands(data);
 				}
 				catch(Throwable e) {
-					System.out.printf("%sAn internal error occured:\n", ANSI.RED);
+					System.out.printf("%sAn internal parsing error occured:\n", ANSI.RED);
 					e.printStackTrace(System.out);
-					System.out.print("Message: ");
-					client.onDefaultFunction(data);
-					System.out.printf("%s\n\n", ANSI.GRAY);
+					System.out.printf("Message: %s%s\n\n", client.convertToString(data, false));
 				}
 			}
 			else {

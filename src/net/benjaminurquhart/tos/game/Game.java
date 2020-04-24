@@ -18,6 +18,7 @@ import net.benjaminurquhart.tos.game.entities.*;
 public class Game {
 	
 	public static Map<String, StringTableMessage> STRING_TABLE;
+	public static Map<String, List<Role>> ROLE_LIST_TABLE;
 	public static Map<String, GameMode> GAME_MODE_TABLE;
 	public static Map<String, Faction> FACTION_TABLE;
 	public static Map<String, Genre> GENRE_TABLE;
@@ -99,6 +100,21 @@ public class Game {
 			WINNERS = new Winner[winners.length()];
 			for(int i = 0, length = winners.length(); i < length; i++) {
 				WINNERS[i] = new Winner(winners.getJSONObject(i));
+			}
+			JSONArray rolelists = json.getJSONArray("RoleLists");
+			ROLE_LIST_TABLE = new HashMap<>();
+			for(int i = 0, length = rolelists.length(); i < length; i++) {
+				tmp = rolelists.getJSONObject(i);
+				ROLE_LIST_TABLE.put(
+						tmp.getString("id"), 
+						tmp.getJSONArray("Role").toList()
+												.stream()
+												.map(Map.class::cast)
+												.map(m -> (String)m.get("id"))
+												.map(Integer::parseInt)
+												.map(ROLE_ID_TABLE::get)
+												.collect(Collectors.toList())
+				);
 			}
 			sb.delete(0, sb.length());
 			stream = Game.class.getResourceAsStream("/Customization.json");
@@ -207,6 +223,7 @@ public class Game {
 		return text;
 	}
 	
+	private List<Role> rolelist;
 	private int playerOnTrial;
 	
 	private Player[] players;
@@ -222,6 +239,9 @@ public class Game {
 		this.selfPosition = -1;
 	}
 	public GameMode getMode() {
+		if(mode == null) {
+			this.inferModeFromRoleList();
+		}
 		return mode;
 	}
 	public GamePhase getPhase() {
@@ -235,6 +255,9 @@ public class Game {
 	}
 	public Player getSelfPlayer() {
 		return players[selfPosition-1];
+	}
+	public List<Role> getRoleList() {
+		return rolelist;
 	}
 	public void setMode(GameMode mode) {
 		this.mode = mode;
@@ -251,6 +274,9 @@ public class Game {
 				}
 			}
 		}
+	}
+	public void setRoleList(List<Role> list) {
+		this.rolelist = list;
 	}
 	public void setSelfPosition(int position) {
 		selfPosition = position;
@@ -309,5 +335,11 @@ public class Game {
 				ANSI.RESET, 
 				ANSI.GRAY
 		);
+	}
+	private void inferModeFromRoleList() {
+		if(rolelist == null) {
+			return;
+		}
+		// TODO: implement
 	}
 }

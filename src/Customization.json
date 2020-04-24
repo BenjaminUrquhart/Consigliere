@@ -1,5 +1,5 @@
 {
-   "hash": "n45Y7LRKDZizcwXMSn4CGT+eBlOTJmMSpcmtHkfvnJyunIBKf9X3k2IkN1xU8wvTYl+GhvKbSQSw3qfy5eux4CZT0SaeX0m+MKJDJO2yRf63tbAe3p2T4SBoreBfamIqzmyfpJDkLDSmt+tz4WUWlgG2wgfw1AWWho1X6HhfSwOqIp4njqJ/vFP5Hz26vS8twCnzUknyzvzxyH+vukqWTFs9hiHBmOsy1mrxwaCC6FVrqp9kcRy1mwnuFhqsvbc/RVO78mbL/rdYDhO5NEYT0vnT7aWhT+kmKUOu1Dr0ETmxtWrNDobS7SNaJwFGZezVakAuMGg3hZd4bvdHGOXu1A==",
+   "hash": "QZ+degTGoRqYAgRO7rLi58p6F94kYsB0KL767zO0mruThWzF587S8DXfL4hSCivmiM8DSzVSWM+XdPaaxPZ+RR75B0WsXeuQZc31f31SIc96fi5Kf+xip98B/Uim0mCv5LJTHj93LbVYDY2Xvvytzp9KWqyzqkZEipEP1NJ4mMAT0+MhdMQSGr5Mqq4dRHLpvbz3KTAH2fox7WXqy/DFM92N1+AR6rxpqPir1DDKpOLcTKsK0WIhSXHo897/poyBiMUvC3c2+qFd0E6gEEx2QWYsxzFZ3Og+OEPheY2fRZx8PNfdBBB02VFOcjDdNXvrwq15fqe0hXTbce9QcH2c+g==",
    "CustomizationHouses": [
       {
          "DayFile": "Houses/Standard/HouseDay0_1.png",
@@ -13,11 +13,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay1_1.png",
@@ -31,11 +27,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay2_1.png",
@@ -49,11 +41,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay3_1.png",
@@ -67,11 +55,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay4_1.png",
@@ -85,11 +69,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay5_1.png",
@@ -103,11 +83,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay6_1.png",
@@ -121,11 +97,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay7_1.png",
@@ -139,11 +111,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay8_1.png",
@@ -157,11 +125,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay9_1.png",
@@ -175,11 +139,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay10_1.png",
@@ -193,11 +153,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay11_1.png",
@@ -211,11 +167,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay12_1.png",
@@ -229,11 +181,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay13_1.png",
@@ -247,11 +195,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay14_1.png",
@@ -265,11 +209,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay15_1.png",
@@ -283,11 +223,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay16_1.png",
@@ -301,11 +237,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.4",
-         "TileX": "85",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.4"
       },
       {
          "DayFile": "Houses/Standard/HouseDay17_1.png",
@@ -319,11 +251,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.55",
-         "ScaleY": "0.55",
-         "TileX": "85",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.55"
       },
       {
          "DayFile": "Houses/Standard/HouseDay18_1.png",
@@ -337,11 +265,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.4",
-         "TileX": "85",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.4"
       },
       {
          "DayFile": "Houses/Holiday/HolidayDay19_1.png",
@@ -355,11 +279,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.5",
-         "ScaleY": "0.45",
-         "TileX": "85",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay20_1.png",
@@ -373,11 +293,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.55",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.3",
-         "TileScaleY": "0.6"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay21_1.png",
@@ -391,11 +307,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.35",
-         "ScaleY": "0.35",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.6"
+         "ScaleY": "0.35"
       },
       {
          "DayFile": "Houses/Standard/HouseDay22_1.png",
@@ -409,11 +321,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.35",
-         "ScaleY": "0.3",
-         "TileX": "85",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.6"
+         "ScaleY": "0.3"
       },
       {
          "DayFile": "Houses/Standard/HouseDay23_1.png",
@@ -427,11 +335,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.35",
-         "ScaleY": "0.45",
-         "TileX": "84",
-         "TileY": "86",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.6"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay24_1.png",
@@ -445,11 +349,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.35",
-         "ScaleY": "0.35",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.5"
+         "ScaleY": "0.35"
       },
       {
          "DayFile": "Houses/Standard/HouseDay25_1.png",
@@ -463,11 +363,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.35",
-         "ScaleY": "0.35",
-         "TileX": "83",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.6"
+         "ScaleY": "0.35"
       },
       {
          "DayFile": "Houses/Standard/HouseDay26_1.png",
@@ -481,11 +377,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.35",
-         "ScaleY": "0.35",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.6"
+         "ScaleY": "0.35"
       },
       {
          "DayFile": "Houses/Standard/HouseDay27_1.png",
@@ -499,11 +391,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "84",
-         "TileY": "86",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.6"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay28_1.png",
@@ -517,11 +405,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.45",
-         "ScaleY": "0.45",
-         "TileX": "200",
-         "TileY": "150",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.6"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay29_1.png",
@@ -535,11 +419,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.5",
-         "ScaleY": "0.5",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.7",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.5"
       },
       {
          "DayFile": "Houses/Standard/HouseDay30_1.png",
@@ -553,11 +433,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.55",
-         "ScaleY": "0.55",
-         "TileX": "95",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.55"
       },
       {
          "DayFile": "Houses/Standard/HouseDay31_1.png",
@@ -571,11 +447,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.5",
-         "ScaleY": "0.45",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.45"
       },
       {
          "DayFile": "Houses/Standard/HouseDay32_1.png",
@@ -589,11 +461,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.5",
-         "ScaleY": "0.5",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.6"
+         "ScaleY": "0.5"
       },
       {
          "DayFile": "Houses/Standard/HouseDay33_1.png",
@@ -607,11 +475,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.55",
-         "ScaleY": "0.55",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.6"
+         "ScaleY": "0.55"
       },
       {
          "DayFile": "Houses/Standard/HouseDay34_1.png",
@@ -625,11 +489,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.5",
-         "ScaleY": "0.5",
-         "TileX": "82",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.5"
       },
       {
          "DayFile": "Houses/Standard/HouseDay35_1.png",
@@ -643,11 +503,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.5",
-         "ScaleY": "0.5",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.5"
       },
       {
          "DayFile": "Houses/Standard/HouseDay36_1.png",
@@ -661,11 +517,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.5",
-         "ScaleY": "0.5",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.5"
       },
       {
          "DayFile": "Houses/Standard/HouseDay37_1.png",
@@ -679,11 +531,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.43",
-         "ScaleY": "0.43",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.43"
       },
       {
          "DayFile": "Houses/Standard/HouseDay38_1.png",
@@ -697,11 +545,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": "0.43",
-         "ScaleY": "0.43",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": "0.6",
-         "TileScaleY": "0.7"
+         "ScaleY": "0.43"
       },
       {
          "DayFile": "Houses/Standard/HouseDay39_1.png",
@@ -715,11 +559,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": ".47",
-         "ScaleY": ".47",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": ".6",
-         "TileScaleY": ".7"
+         "ScaleY": ".47"
       },
       {
          "Name": {
@@ -733,11 +573,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": ".45",
-         "ScaleY": ".45",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": ".6",
-         "TileScaleY": ".6"
+         "ScaleY": ".45"
       },
       {
          "Name": {
@@ -752,16 +588,12 @@
          "PreviewOffsetY": "70",
          "IsMapPack": "0",
          "ScaleX": ".5",
-         "ScaleY": ".5",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": ".6",
-         "TileScaleY": ".6"
+         "ScaleY": ".5"
       },
       {
          "Name": {
             "l10n": "ITEM_2_42",
-            "text": "Cardboard"
+            "text": "One Man's Trash"
          },
          "id": "42",
          "DayFile": "Houses/Standard/HouseDay42_1.png",
@@ -771,11 +603,7 @@
          "PreviewOffsetY": "70",
          "IsMapPack": "0",
          "ScaleX": ".5",
-         "ScaleY": ".5",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": ".6",
-         "TileScaleY": ".6"
+         "ScaleY": ".5"
       },
       {
          "Name": {
@@ -790,11 +618,7 @@
          "PreviewOffsetY": "70",
          "IsMapPack": "0",
          "ScaleX": ".5",
-         "ScaleY": ".5",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": ".6",
-         "TileScaleY": ".6"
+         "ScaleY": ".5"
       },
       {
          "Name": {
@@ -809,11 +633,7 @@
          "PreviewOffsetY": "70",
          "IsMapPack": "0",
          "ScaleX": ".5",
-         "ScaleY": ".5",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": ".6",
-         "TileScaleY": ".6"
+         "ScaleY": ".5"
       },
       {
          "Name": {
@@ -828,11 +648,22 @@
          "PreviewOffsetY": "70",
          "IsMapPack": "0",
          "ScaleX": ".5",
-         "ScaleY": ".5",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": ".6",
-         "TileScaleY": ".6"
+         "ScaleY": ".5"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_2_46",
+            "text": "Crystal Chateau"
+         },
+         "id": "46",
+         "DayFile": "Houses/Standard/HouseDay46_1.png",
+         "NightFile": "Houses/Standard/HouseNight46_1.png",
+         "PreviewFile": "Customization/Houses/CustomizationHouseCrystal.png",
+         "PreviewOffsetX": "-128",
+         "PreviewOffsetY": "70",
+         "IsMapPack": "0",
+         "ScaleX": ".5",
+         "ScaleY": ".5"
       },
       {
          "DayFile": "Customization/Houses/CustomizationHouseRandomCell.png",
@@ -846,11 +677,7 @@
          "PreviewOffsetX": "-128",
          "PreviewOffsetY": "70",
          "ScaleX": ".4",
-         "ScaleY": ".4",
-         "TileX": "84",
-         "TileY": "85",
-         "TileScaleX": ".6",
-         "TileScaleY": ".6"
+         "ScaleY": ".4"
       }
    ],
    "CustomizationCharacters": [
@@ -2231,6 +2058,54 @@
          "TileScaleY": "0.5"
       },
       {
+         "File": "Characters/CrystalFighter",
+         "id": "86",
+         "Name": {
+            "l10n": "ITEM_1_86",
+            "text": "Crystal Fighter"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "85",
+         "TileY": "100",
+         "TileScaleX": ".5",
+         "TileScaleY": ".5"
+      },
+      {
+         "File": "Characters/CrystalKunoichi",
+         "id": "87",
+         "Name": {
+            "l10n": "ITEM_1_87",
+            "text": "Crystal Kunoichi"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.55",
+         "ScaleY": "0.55",
+         "TileX": "80",
+         "TileY": "100",
+         "TileScaleX": ".5",
+         "TileScaleY": ".5"
+      },
+      {
+         "File": "Characters/CrystalSamurai",
+         "id": "88",
+         "Name": {
+            "l10n": "ITEM_1_88",
+            "text": "Crystal Samurai"
+         },
+         "PreviewOffsetX": "0",
+         "PreviewOffsetY": "0",
+         "ScaleX": "0.6",
+         "ScaleY": "0.6",
+         "TileX": "80",
+         "TileY": "100",
+         "TileScaleX": ".5",
+         "TileScaleY": ".5"
+      },
+      {
          "File": "Characters/RandomTownie",
          "id": "-3",
          "Name": {
@@ -2532,6 +2407,39 @@
          "NightFile": "Backgrounds/Mini/Night/Mini_NightConstruction.jpg",
          "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundConstruction.jpg",
          "id": "25",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_26",
+            "text": "Crystal Haven"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayCrystal.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightCrystal.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundCrystal.jpg",
+         "id": "26",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_27",
+            "text": "Little Big World"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayLittleBigWorld.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightLittleBigWorld.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundLittleBigWorld.jpg",
+         "id": "27",
+         "IsMapPack": "0"
+      },
+      {
+         "Name": {
+            "l10n": "ITEM_3_28",
+            "text": "Under The Sea"
+         },
+         "DayFile": "Backgrounds/Mini/Day/Mini_DayUnderwater.jpg",
+         "NightFile": "Backgrounds/Mini/Night/Mini_NightUnderwater.jpg",
+         "PreviewFile": "Customization/Backgrounds/CustomizationBackgroundUnderwater.jpg",
+         "id": "28",
          "IsMapPack": "0"
       }
    ],
@@ -3565,6 +3473,38 @@
          "TileY": "175",
          "TileScaleX": ".7",
          "TileScaleY": ".7"
+      },
+      {
+         "File": "Pets/CrystalThief",
+         "Name": {
+            "l10n": "ITEM_4_60",
+            "text": "Crystal Thief"
+         },
+         "id": "60",
+         "PreviewOffsetX": "-75",
+         "PreviewOffsetY": "10",
+         "ScaleX": ".55",
+         "ScaleY": ".55",
+         "TileX": "66",
+         "TileY": "135",
+         "TileScaleX": ".55",
+         "TileScaleY": ".55"
+      },
+      {
+         "File": "Pets/WhiteTiger",
+         "Name": {
+            "l10n": "ITEM_4_61",
+            "text": "White Tiger"
+         },
+         "id": "61",
+         "PreviewOffsetX": "-75",
+         "PreviewOffsetY": "10",
+         "ScaleX": ".6",
+         "ScaleY": ".6",
+         "TileX": "86",
+         "TileY": "135",
+         "TileScaleX": ".55",
+         "TileScaleY": ".55"
       },
       {
          "File": "Pets/NoPet",
@@ -4984,6 +4924,14 @@
          "Name": {
             "l10n": "ITEM_25_3",
             "text": "Celebrate"
+         }
+      },
+      {
+         "File": "Taunts/Snowflake/SmallPreview.png",
+         "id": "4",
+         "Name": {
+            "l10n": "ITEM_25_4",
+            "text": "Winter Wonder"
          }
       }
    ],
