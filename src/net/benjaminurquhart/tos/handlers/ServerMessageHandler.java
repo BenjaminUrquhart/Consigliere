@@ -1083,7 +1083,13 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onDeathNote(byte[] command) {
-		System.out.printf("%sDeath Note:\n%s%s%s\n", ANSI.RESET, ANSI.RED, new String(Arrays.copyOfRange(command, 3, command.length-1)), ANSI.GRAY);
+		System.out.printf(
+				"%sDeath Note:\n%s%s%s\n",
+				ANSI.RESET,
+				ANSI.RED,
+				new String(Arrays.copyOfRange(command, 3, command.length-1)).replace((char)0x0d, '\n'),
+				ANSI.GRAY
+		);
 	}
 
 	
@@ -1320,7 +1326,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onTellLastWill(byte[] command) {
-		String will = new String(Arrays.copyOfRange(command, 3, command.length-1));
+		String will = new String(Arrays.copyOfRange(command, 3, command.length-1)).replace((char)0x0d, '\n');
 		if(!will.trim().isEmpty()) {
 			System.out.printf("%sWill:\n%s%s\n\n", ANSI.RESET, Game.insertColors(will), ANSI.GRAY);
 		}

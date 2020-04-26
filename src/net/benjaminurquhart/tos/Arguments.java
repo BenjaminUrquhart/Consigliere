@@ -7,16 +7,19 @@ public class Arguments {
 	
 	public Arguments(String... args) {
 		mode = Mode.LIVE;
-		for(int i = 0; i < args.length; i++) {
-			if(args[i].equalsIgnoreCase("--file") || args[i].equalsIgnoreCase("--preview")) {
-				if(args.length <= i+1) {
-					throw new IllegalArgumentException("No file argument provided");
-				}
-				mode = args[i].equalsIgnoreCase("--file") ? Mode.REVIEW : Mode.SUMMARIZE;
-				filename = args[++i];
+		if(args.length > 0) {
+			switch(args[0].toLowerCase()) {
+			case "--file": mode = Mode.REVIEW; break;
+			case "--preview": mode = Mode.SUMMARIZE; break;
+			case "--replay": mode = Mode.REPLAY; break;
+			default: return;
+			}
+			if(args.length == 1) {
+				System.out.println("Missing filepath argument after " + args[0]);
+				System.exit(0);
 			}
 			else {
-				System.out.println("Ignoring invalid argument: " + args[i]);
+				filename = args[1];
 			}
 		}
 	}

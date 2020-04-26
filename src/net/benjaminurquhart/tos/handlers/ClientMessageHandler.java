@@ -205,13 +205,21 @@ public class ClientMessageHandler extends MessageHandler {
 		
 	}
 	private void onDeathNoteUpdate(byte[] command) {
-		System.out.printf("%sDeath Note updated:\n%s\n", ANSI.GRAY, new String(Arrays.copyOfRange(command, 1, command.length-1)));
+		System.out.printf(
+				"%sDeath Note updated:\n%s\n",
+				ANSI.GRAY,
+				new String(Arrays.copyOfRange(command, 1, command.length-1)).replace((char)0x0d, '\n')
+		);
 	}
 	private void onUserVoteUpdate(byte[] command) {
 		
 	}
 	private void onWillUpdate(byte[] command) {
-		System.out.printf("%sWill updated:\n%s\n", ANSI.GRAY, new String(Arrays.copyOfRange(command, 1, command.length-1)));
+		System.out.printf(
+				"%sWill updated:\n%s\n", 
+				ANSI.GRAY, 
+				new String(Arrays.copyOfRange(command, 1, command.length-1)).replace((char)0x0d, '\n')
+		);
 	}
 	private void onChat(byte[] command) {
 		

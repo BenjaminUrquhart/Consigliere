@@ -7,13 +7,12 @@ import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
 
 import org.pcap4j.core.PcapDumper;
-
-//import org.pcap4j.core.BpfProgram.BpfCompileMode;
 
 import org.pcap4j.core.PcapHandle;
 import org.pcap4j.core.PcapNativeException;
@@ -25,9 +24,8 @@ import org.pcap4j.packet.*;
 
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
+import net.benjaminurquhart.tos.game.GamePhase;
 import net.benjaminurquhart.tos.handlers.*;
-
-//import net.benjaminurquhart.tos.game.Game;
 
 public class TerminalOfSalem {
 	
@@ -88,7 +86,6 @@ public class TerminalOfSalem {
 			handle = Pcaps.openOffline(args.getFilename());
 			dumper = null;
 		}
-		//handle.setFilter("(((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)", BpfCompileMode.OPTIMIZE);
 		InetAddress src, dst;
 		IpPacket ipPacket;
 		TcpPacket packet;
@@ -116,10 +113,21 @@ public class TerminalOfSalem {
 		else {
 			server = new ServerMessageHandler(game);
 		}
-		
+		Timestamp previous = null, current = null;
+		boolean gameStarted = false;
 		while(true) {
 			try {
 				tmp = handle.getNextPacketEx();
+				if(args.getMode() == Mode.REPLAY) {
+					current = handle.getTimestamp();
+					if(game.getPhase() == GamePhase.PICK_NAME) {
+						gameStarted = true;
+					}
+					if(previous != null && gameStarted) {
+						Thread.sleep(current.getTime()-previous.getTime());
+					}
+					previous = current;
+				}
 			}
 			catch(EOFException e) {
 				System.out.println("Reached end of file");

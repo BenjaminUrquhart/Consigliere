@@ -240,6 +240,11 @@ public class Game {
 	}
 	public GameMode getMode() {
 		if(mode == null) {
+			System.out.printf(
+					"%sWarning: This game capture was started late. Make sure you start capturing before you enter a game lobby!\n%sAttempting to infer game mode...\n",
+					ANSI.ORANGE,
+					ANSI.GRAY
+			);
 			this.inferModeFromRoleList();
 		}
 		return mode;
@@ -251,6 +256,9 @@ public class Game {
 		return players;
 	}
 	public Player getPlayer(int position) {
+		if(players[position-1] == null) {
+			this.updatePlayerName("Player "+position, position);
+		}
 		return players[position-1];
 	}
 	public Player getSelfPlayer() {
@@ -340,6 +348,20 @@ public class Game {
 		if(rolelist == null) {
 			return;
 		}
-		// TODO: implement
+		for(GameMode mode : Game.GAME_MODE_TABLE.values()) {
+			if(mode.getRoleList() == null) {
+				continue;
+			}
+			if(mode.getRoleList().containsAll(rolelist)) {
+				System.out.printf("%sSuccessfully determined game mode from role list: %s\n ", ANSI.GRAY, mode.getName());
+				this.mode = mode;
+				return;
+			}
+		}
+		System.out.println(ANSI.GRAY+"Non-standard role list detected!");
+		
+		// TODO: differentiate between classic and coven custom
+		this.mode = Game.GAME_MODE_TABLE.get("Custom");
+		System.out.printf("%sBased on the roles in the list, the game mode was inferred to be %s\n", ANSI.GRAY, mode.getName());
 	}
 }

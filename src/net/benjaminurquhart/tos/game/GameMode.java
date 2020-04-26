@@ -1,7 +1,10 @@
 package net.benjaminurquhart.tos.game;
 
+import java.util.List;
+
 import org.json.JSONObject;
 
+import net.benjaminurquhart.tos.game.entities.Role;
 import net.benjaminurquhart.tos.game.entities.StringTableMessage;
 
 public class GameMode {
@@ -11,12 +14,16 @@ public class GameMode {
 	private int minimumPlayers,id;
 	private String name;
 	
-	private String labelKey, summaryKey;
+	private String labelKey, summaryKey, rolelistKey;
 	
 	public GameMode(JSONObject json) {
 		this.minimumPlayers = Integer.parseInt(json.getString("MinimumPlayers"));
 		this.requiresCoven = "1".equals(json.optString("PermissionLevel"));
 		this.id = Integer.parseInt(json.getString("id"));
+		
+		if(json.has("RoleList")) {
+			this.rolelistKey = json.getJSONObject("RoleList").getString("id");
+		}
 		
 		this.summaryKey = json.getJSONObject("Summary").getString("l10n");
 		this.labelKey = json.getJSONObject("Label").getString("l10n");
@@ -37,6 +44,9 @@ public class GameMode {
 	}
 	public boolean isCovenGamemode() {
 		return requiresCoven;
+	}
+	public List<Role> getRoleList() {
+		return Game.ROLE_LIST_TABLE.get(rolelistKey);
 	}
 	public int getMinimumPlayers() {
 		return minimumPlayers;
