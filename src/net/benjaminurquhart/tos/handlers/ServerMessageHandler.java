@@ -422,22 +422,12 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onJailorDeathNote(byte[] command) {
-		String message;
-		switch(command[3]) {
-		case 1: message = "No reason specified."; break;
-		case 2: message = "They are known to be an evildoer."; break;
-		case 3: message = "Their confession was contradictory."; break;
-		case 4: message = "They are possessed and talking nonsense."; break;
-		case 5: message = "They were too quiet or won't respond to questioning."; break;
-		case 6: message = "They are an outsider that might turn against us."; break;
-		case 7: message = "I'm using my own discretion."; break;
-		default: message = "Unknown jailor message: " + command[3]; break;
-		}
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_JAILOR_MENU_OPTION"+command[3]);
 		System.out.printf(
 				"%sDeath Note: %s%s%s\n",
 				ANSI.RESET,
 				ANSI.YELLOW,
-				message,
+				msg.getText(),
 				ANSI.GRAY
 		);
 	}
@@ -659,7 +649,7 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onPotionMasterPotions(byte[] command) {
 		System.out.printf(
-				"%sPotion Status%s:\n%sHeal%s: %d/3\n%sReveal%s: %d/3\n%sKill%s: %d/3%s\n",
+				"%sPotion Status%s: %sHeal%s: %d/3 | %sReveal%s: %d/3 | %sKill%s: %d/3%s\n",
 				ANSI.COVEN,
 				ANSI.RESET,
 				ANSI.GREEN,
@@ -1055,6 +1045,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onStartDefense(byte[] command) {
+		game.setPhase(GamePhase.DEFENSE);
 		System.out.println(ANSI.GRAY+"----------Defense----------");
 	}
 
@@ -1243,7 +1234,20 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onTellJanitorTargetsRole(byte[] command) {
 		onUnhandledCommand(command);
-		
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_JANITOR_KNOWS_ROLE_X");
+		Player target = game.getSelfPlayer().getTarget();
+		Role role = Game.ROLES[(command[1]&0xff)-1];
+		if(target != null) {
+			target.setRole(role);
+		}
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(msg.getColor()),
+				ANSI.GREEN,
+				msg.getText().replace("%role%", ANSI.toTrueColor(role.getColor())+role.getName()+ANSI.GREEN),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	
@@ -1277,8 +1281,8 @@ public class ServerMessageHandler extends MessageHandler {
 					msgID += "_GHOUL";
 				}
 				else {
-					type = "entity";
-					action = "attack";
+					type = "target";
+					action = "target";
 					msgID += "_ADDITIONAL";
 				}
 			}
@@ -1395,40 +1399,60 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onTellJudgementVotes(byte[] command) {
-		String verb = "voted ";
-		Color color;
-		String vote;
+		StringTableMessage verdict, vote = Game.STRING_TABLE.get("GUI_JUDGEMENT_VOTED");
+		String msgID = "GUI_JUDGEMENT_";
+		boolean abstained = false;
+		Color color = Color.GRAY;
 		switch(command[2]) {
-		case 1: color = Color.RED; vote = "guilty"; break;
-		case 2: color = Color.GREEN; vote = "innocent"; break;
-		case 3: color = Color.CYAN; vote = "abstained"; verb = ""; break;
-		default: color = Color.GRAY; vote = "???";
+		case 1: color = Color.RED; msgID += "VOTED_GUILTY"; break;
+		case 2: color = Color.GREEN; msgID += "VOTED_INNOCENT"; break;
+		case 3: color = Color.CYAN; msgID += "ABSTAINED"; abstained = true; break;
 		}
+		verdict = Game.STRING_TABLE.get(msgID);
+		String result = game.getPlayer(command[1]).getName() + ANSI.GREEN + " ";
+		if(!abstained) {
+			result += vote.getText() + " ";
+		}
+		result += ANSI.toTrueColor(color) + verdict.getText();
 		System.out.printf(
-				"%s%s%s %s%s%s%s\n",
+				"%s%s%s\n",
 				ANSI.RESET,
-				game.getPlayer(command[1]),
-				ANSI.GREEN,
-				verb,
-				ANSI.toTrueColor(color),
-				vote,
+				result,
 				ANSI.GRAY
 		);
 	}
 
 	
 	public void onUserCanceledJudgementVote(byte[] command) {
-		System.out.printf("%s%s%s has canceled their vote%s\n", ANSI.RESET, game.getPlayer(command[1]), ANSI.GREEN, ANSI.GRAY);
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_XJUDGEMENT_CANCELLED");
+		System.out.printf(
+				"%s%s%s\n", 
+				ANSI.GREEN, 
+				msg.getText().replace("%name%", ANSI.RESET + game.getPlayer(command[1]).getName() + ANSI.GREEN), 
+				ANSI.GRAY
+		);
 	}
 
 	
 	public void onUserChangedJudgementVote(byte[] command) {
-		System.out.printf("%s%s%s has changed their vote%s\n", ANSI.RESET, game.getPlayer(command[1]), ANSI.GREEN, ANSI.GRAY);
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_XJUDGEMENT_CHANGED_VOTE");
+		System.out.printf(
+				"%s%s%s\n", 
+				ANSI.GREEN, 
+				msg.getText().replace("%name%", ANSI.RESET + game.getPlayer(command[1]).getName() + ANSI.GREEN), 
+				ANSI.GRAY
+		);
 	}
 
 	
 	public void onUserJudgementVoted(byte[] command) {
-		System.out.printf("%s%s%s has voted%s\n", ANSI.RESET, game.getPlayer(command[1]), ANSI.GREEN, ANSI.GRAY);
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_XJUDGEMENT_HAS_VOTED");
+		System.out.printf(
+				"%s%s%s\n", 
+				ANSI.GREEN, 
+				msg.getText().replace("%name%", ANSI.RESET + game.getPlayer(command[1]).getName() + ANSI.GREEN), 
+				ANSI.GRAY
+		);
 	}
 
 	
@@ -1446,10 +1470,12 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onBeingJailed(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_YOU_WERE_JAILED");
 		System.out.printf(
-				"%s%sYou were hauled off to jail!%s\n", 
+				"%s%s%s%s\n", 
 				ANSI.toTrueColorBackground(Color.LIGHT_GRAY), 
 				ANSI.WHITE,
+				msg.getText(),
 				ANSI.RESET, 
 				ANSI.GRAY
 		);
@@ -1593,18 +1619,14 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onTrialFoundNotGuilty(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_TOWN_DECIDED_TO_PARDON_THEM");
 		game.setPhase(GamePhase.DEEMED_NOT_GUILTY);
 		System.out.printf(
-				"%s%s was found %sinnocent%s by a vote of %s%s%s to %s%d%s\n",
+				"%s%s%s\n",
 				ANSI.RESET,
-				game.getPlayerOnTrial(),
-				ANSI.GREEN,
-				ANSI.RESET,
-				ANSI.RED,
-				command[1]-1,
-				ANSI.RESET,
-				ANSI.GREEN,
-				command[2]-1,
+				msg.getText().replace("%name%", game.getPlayerOnTrial().getName())
+							 .replace("%x%", ANSI.RED + String.valueOf(command[1]-1) + ANSI.RESET)
+							 .replace("%y%", ANSI.GREEN + String.valueOf(command[2]-1) + ANSI.RESET),
 				ANSI.GRAY
 		);
 		game.clearPlayerOnTrial();
@@ -1612,36 +1634,38 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onTrialFoundGuilty(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_TOWN_DECIDED_TO_LYNCH_THEM");
 		game.setPhase(GamePhase.DEEMED_GUILTY);
 		System.out.printf(
-				"%s%s was found %sguilty%s by a vote of %s%s%s to %s%d%s\n",
+				"%s%s%s\n",
 				ANSI.RESET,
-				game.getPlayerOnTrial(),
-				ANSI.RED,
-				ANSI.RESET,
-				ANSI.RED,
-				command[1]-1,
-				ANSI.RESET,
-				ANSI.GREEN,
-				command[2]-1,
+				msg.getText().replace("%name%", game.getPlayerOnTrial().getName())
+							 .replace("%x%", ANSI.RED + String.valueOf(command[1]-1) + ANSI.RESET)
+							 .replace("%y%", ANSI.GREEN + String.valueOf(command[2]-1) + ANSI.RESET),
 				ANSI.GRAY
 		);
 	}
 
 	
 	public void onStartJudgement(byte[] command) {
-		System.out.printf("%sThe Town may now vote on the fate of %s%s%s\n", ANSI.GREEN, ANSI.RESET, game.getPlayerOnTrial(), ANSI.GRAY);
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_TOWN_MAY_VOTE_ON_THEM");
+		game.setPhase(GamePhase.JUDGEMENT);
+		System.out.printf(
+				"%s%s%s\n", 
+				ANSI.GREEN, 
+				msg.getText().replace("%name%",ANSI.RESET + game.getPlayerOnTrial().getName() + ANSI.GREEN), 
+				ANSI.GRAY
+		);
 		System.out.println("---------Judgement---------");
 	}
 	
 	public void onStartDefenseTransition(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_TOWN_PUT_THEM_ON_TRIAL");
 		game.placePlayerOnTrial(command[1]);
 		System.out.printf(
-				"%sThe Town has decided to put %s%s%s on trial%s\n",
+				"%s%s%s\n",
 				ANSI.GREEN,
-				ANSI.RESET,
-				game.getPlayerOnTrial(),
-				ANSI.GREEN,
+				msg.getText().replace("%name%",ANSI.RESET + game.getPlayerOnTrial().getName() + ANSI.GREEN),
 				ANSI.GRAY
 		);
 	}
@@ -1671,13 +1695,13 @@ public class ServerMessageHandler extends MessageHandler {
 		Player player = game.getPlayer(command[1]);
 		
 		List<Killer> killers = new ArrayList<>();
-		
-		for(Killer k : player.getKillers()) {
-			killers.add(k);
-		}
-		player.kill(killers.toArray(Killer[]::new));
+		Killer[] oldKillers = player.getKillers();
 		for(int i = 4; i < command.length-1; i++) {
 			killers.add(Game.KILLERS[command[i]-1]);
+		}
+		player.kill(killers.toArray(new Killer[0]));
+		for(Killer k : oldKillers) {
+			killers.add(k);
 		}
 		String killersStr = killers.stream()
 								   .map(k -> String.format("%s%s%s", ANSI.toTrueColor(k.getColor()), k.getName(), ANSI.RESET))
@@ -1720,6 +1744,7 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onStartNight(byte[] command) {
 		game.setPhase(GamePhase.NIGHT);
+		game.getSelfPlayer().setTarget(null);
 		System.out.println(ANSI.GRAY+"-----------Night-----------");
 		String msg = game.getNightAbilitiesLeftMessage();
 		if(msg != null) {

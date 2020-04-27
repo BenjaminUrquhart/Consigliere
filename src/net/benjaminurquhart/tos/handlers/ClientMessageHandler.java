@@ -11,6 +11,8 @@ import net.benjaminurquhart.tos.game.entities.StringTableMessage;
 
 public class ClientMessageHandler extends MessageHandler {
 	
+	private int potion = -1;
+	
 	private String selfName;
 	private Game game;
 	
@@ -82,13 +84,15 @@ public class ClientMessageHandler extends MessageHandler {
 		);
 	}
 	private void onUserChosePotion(byte[] command) {
-		onUnhandledCommand(command);
-		String potion = "Unknown potion: " + command[1];
-		ANSI color = null;
-		switch(command[1]) {
+		//onUnhandledCommand(command);
+		this.potion = command[1];
+		String potion = "Unknown potion: " + this.potion;
+		ANSI color = ANSI.GRAY;
+		switch(this.potion) {
 		case 1: potion = "Healing"; color = ANSI.GREEN; break;
-		case 3: potion = "Killing"; color = ANSI.RED; break;
-		case 2: potion = "Revealing"; color = ANSI.CYAN; break;
+		case 2: potion = "Killing"; color = ANSI.RED; break;
+		case 3: potion = "Revealing"; color = ANSI.CYAN; break;
+		default: this.potion = -1;
 		}
 		System.out.printf(
 				"%sUser chose %s%s%s potion\n", 
@@ -123,15 +127,24 @@ public class ClientMessageHandler extends MessageHandler {
 			self.setTarget(null);
 		}
 		else {
-			String msgID = "GUI_ROLE_"+self.getRole().getID()+"_TARGETING_X1";
+			String msgID = "GUI_ROLE_"+self.getRole().getID()+"_TARGETING_X";
 			if(self.getTarget() != null && self.getTarget().getPosition() != command[1]) {
-				if(Game.STRING_TABLE.containsKey(msgID+"_INSTEAD")) {
-					msgID += "_INSTEAD";
+				if(Game.STRING_TABLE.containsKey(msgID+"1_INSTEAD")) {
+					msgID += "1_INSTEAD";
 				}
+				else if(Game.STRING_TABLE.containsKey(msgID+"2")) {
+					msgID += "2";
+				}
+			}
+			else {
+				msgID += "1";
 			}
 			self.setTarget(game.getPlayer(command[1]));
 			if(command[1] == self.getPosition()) {
 				msgID += "_SELF";
+			}
+			if(self.getRole().equals(Game.ROLE_TABLE.get("Potion Master")) && potion > 1) {
+				msgID += "_ALT" + (potion == 3 ? "1" : "2");
 			}
 			if(game.getPhase() == GamePhase.NIGHT) {
 				msg = Game.STRING_TABLE.get(msgID+"_FIXED");
@@ -155,8 +168,9 @@ public class ClientMessageHandler extends MessageHandler {
 			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText());
 		}
 		else {
-			Player first = game.getSelfPlayer().getTarget(), second = game.getPlayer(command[1]);
-			String msgID = "GUI_ROLE_"+game.getSelfPlayer().getRole().getID()+"_TARGETING_X1_TARGET2";
+			Player self = game.getSelfPlayer();
+			Player first = self.getTarget(), second = game.getPlayer(command[1]);
+			String msgID = "GUI_ROLE_"+self.getRole().getID()+"_TARGETING_X1_TARGET2";
 			if(game.getPhase() == GamePhase.NIGHT) {
 				msg = Game.STRING_TABLE.get(msgID+"_FIXED");
 				if(msg == null) {
@@ -167,8 +181,8 @@ public class ClientMessageHandler extends MessageHandler {
 				msg = Game.STRING_TABLE.get(msgID);
 			}
 			String type = "target", action = "target";
-			if(game.getSelfPlayer().getRole().equals(Game.ROLE_TABLE.get("Necromancer"))) {
-				if(first == game.getSelfPlayer()) {
+			if(self.getRole().equals(Game.ROLE_TABLE.get("Necromancer"))) {
+				if(first == self) {
 					type = "ghoul";
 					action = "attack";
 				}

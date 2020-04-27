@@ -23,6 +23,10 @@ public class StringTableMessage {
 		}
 		this.text = json.optString("text");
 		this.id = id;
+		
+		if(text != null) {
+			text = text.replaceAll("</?[^>]+>", "");
+		}
 	}
 	public String getText() {
 		return text;
