@@ -163,7 +163,7 @@ public class TerminalOfSalem {
 				catch(Throwable e) {
 					System.out.printf("%sAn internal parsing error occured:\n", ANSI.RED);
 					e.printStackTrace(System.out);
-					System.out.printf("Message: %s%s\n\n", server.convertToString(data, false));
+					System.out.printf("Message: %s%s\n\n", server.convertToString(data, false), ANSI.GRAY);
 				}
 			}
 			else if(dst.equals(TOS_SERVER) || dst.equals(TOS_SERVER_IPV6)) {
@@ -177,7 +177,7 @@ public class TerminalOfSalem {
 				catch(Throwable e) {
 					System.out.printf("%sAn internal parsing error occured:\n", ANSI.RED);
 					e.printStackTrace(System.out);
-					System.out.printf("Message: %s%s\n\n", client.convertToString(data, false));
+					System.out.printf("Message: %s%s\n\n", client.convertToString(data, false), ANSI.GRAY);
 				}
 			}
 			else {

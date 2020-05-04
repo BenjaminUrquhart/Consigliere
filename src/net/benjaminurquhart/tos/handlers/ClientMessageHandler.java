@@ -40,6 +40,8 @@ public class ClientMessageHandler extends MessageHandler {
     	case 21: onNameSubmission(command); break;
     	case 22: onUserReported(command); break;
     	case 30: onUserJoinedLobby(command); break;
+    	case 33: onPartyInviteResponse(command); break;
+    	case 36: onPartyChatMessage(command); break;
     	case 39: onLeaveGame(command); break;
     	case 60: onUserSelectedLobby(command); break;
     	case 62: onUserAcceptedRankedMatch(command); break;
@@ -54,6 +56,13 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	private void onPartyInviteResponse(byte[] command) {
+		// TODO Auto-generated method stub
+		
+	}
+	private void onPartyChatMessage(byte[] command) {
+		// TODO Auto-generated method stub
+	}
 	private void onUserSelectedTaunt(byte[] command) {
 		// TODO Auto-generated method stub
 	}
@@ -112,7 +121,8 @@ public class ClientMessageHandler extends MessageHandler {
 		
 	}
 	private void onUserReported(byte[] command) {
-		System.out.printf("%sA report was filed for Player %d (%s)\n", ANSI.GRAY, command[1], new String(Arrays.copyOfRange(command, 3, command.length-1)));
+		//this.onUnhandledCommand(command);
+		System.out.printf("%sA report was filed for %s (%s)\n", ANSI.GRAY, game.getPlayer(command[1]), new String(Arrays.copyOfRange(command, 3, command.length-1)));
 	}
 	private void onUserChangedTarget(byte[] command) {
 		//onUnhandledCommand(command);
@@ -140,7 +150,7 @@ public class ClientMessageHandler extends MessageHandler {
 				msgID += "1";
 			}
 			self.setTarget(game.getPlayer(command[1]));
-			if(command[1] == self.getPosition()) {
+			if(self.getTarget() == self) {
 				msgID += "_SELF";
 			}
 			if(self.getRole().equals(Game.ROLE_TABLE.get("Potion Master")) && potion > 1) {
@@ -156,6 +166,7 @@ public class ClientMessageHandler extends MessageHandler {
 				msg = Game.STRING_TABLE.get(msgID);
 			}
 			if(msg == null) {
+				System.out.println(ANSI.GRAY+msgID);
 				return;
 			}
 			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText().replace("%target%", self.getTarget().getName()));

@@ -8,7 +8,7 @@
 	"Mayor":[],
 	"Medium":["med"],
 	"Retributionist":["ret","retri","retrib"],
-	"Sheriff":[],
+	"Sheriff":["sher"],
 	"Spy":[],
 	"Transporter":["trans"],
 	"Vampire Hunter":["vh","vamp hunter"],
@@ -19,8 +19,8 @@
 	"Consigliere":["consig"],
 	"Consort":["cons"],
 	"Disguiser":["disg"],
-	"Forger":[],
-	"Framer":[],
+	"Forger":["forg"],
+	"Framer":["framed"],
 	"Godfather":["gf"],
 	"Janitor":["jan","jani"],
 	"Mafioso":[],
@@ -35,8 +35,8 @@
 	"Werewolf":["ww"],
 	"Witch":[],
 	
-	"Random Town":["rt","vip","tplo"],
-	"Town Investigative":["ti","town invest"],
+	"Random Town":["rt","townie"],
+	"Town Investigative":["ti","town inv","town invest"],
 	"Town Protective":["tp","town protect"],
 	"Town Killing":["tk"],
 	"Town Support":["ts"],
@@ -45,7 +45,7 @@
 	"Mafia Support":["ms"],
 	"Mafia Deception":[],
 	
-	"Random Neutral":[],
+	"Random Neutral":["neutral"],
 	"Neutral Benign":["nb"],
 	"Neutral Evil":["ne"],
 	"Neutral Killing":["nk"],
@@ -76,5 +76,5 @@
 	"Coven Neutral Chaos":["nc"],
 	"Coven Town Support":["ts"],
 	
-	"Pestilence":["pest"]
+	"Pestilence":["pest","pesti"]
 }

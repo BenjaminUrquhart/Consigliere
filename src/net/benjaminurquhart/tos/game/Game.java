@@ -1,6 +1,7 @@
 package net.benjaminurquhart.tos.game;
 
 import java.awt.Color;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +26,7 @@ public class Game {
 	public static Map<String, Role> ROLE_TABLE;
 	
 	public static Map<String, List<String>> ROLE_ABBREVIATIONS;
+	public static Map<Role, List<String>> COMMON_ACTIONS;
 	
 	public static Map<Integer, GameMode> GAME_MODE_ID_TABLE;
 	public static Map<Integer, Role> ROLE_ID_TABLE;
@@ -42,16 +44,7 @@ public class Game {
 
 	static {
 		try {
-			StringBuilder sb = new StringBuilder();
-			InputStream stream = Game.class.getResourceAsStream("/GameRules.json");
-			byte[] buff = new byte[1024];
-			int read;
-			while((read = stream.read(buff)) != -1) {
-				if(read == 0) continue;
-				sb.append(new String(Arrays.copyOfRange(buff, 0, read)));
-			}
-			stream.close();
-			JSONObject json = new JSONObject(sb.toString()), tmp;
+			JSONObject json = new JSONObject(Game.load("/GameRules.json")), tmp;
 			JSONArray factions = json.getJSONArray("Factions");
 			FACTIONS = new Faction[factions.length()];
 			FACTION_TABLE = new HashMap<>();
@@ -116,14 +109,7 @@ public class Game {
 												.collect(Collectors.toList())
 				);
 			}
-			sb.delete(0, sb.length());
-			stream = Game.class.getResourceAsStream("/Customization.json");
-			while((read = stream.read(buff)) != -1) {
-				if(read == 0) continue;
-				sb.append(new String(Arrays.copyOfRange(buff, 0, read)));
-			}
-			stream.close();
-			json = new JSONObject(sb.toString());
+			json = new JSONObject(Game.load("/Customization.json"));
 			JSONArray scrolls = json.getJSONArray("CustomizationScrolls");
 			SCROLLS = new Scroll[scrolls.length()];
 			for(int i = 0, length = scrolls.length(); i < length; i++) {
@@ -141,26 +127,12 @@ public class Game {
 				tmp = taunts.getJSONObject(i);
 				TAUNTS[i] = tmp.getJSONObject("Name").getString("text");
 			}
-			sb.delete(0, sb.length());
-			stream = Game.class.getResourceAsStream("/StringTable.json");
-			while((read = stream.read(buff)) != -1) {
-				if(read == 0) continue;
-				sb.append(new String(Arrays.copyOfRange(buff, 0, read)));
-			}
-			stream.close();
-			JSONObject table = new JSONObject(sb.toString());
+			JSONObject table = new JSONObject(Game.load("/StringTable.json"));
 			STRING_TABLE = new HashMap<>();
 			for(String key : table.keySet()) {
 				STRING_TABLE.put(key, new StringTableMessage(key, table.getJSONObject(key)));
 			}
-			sb.delete(0, sb.length());
-			stream = Game.class.getResourceAsStream("/Achievements.json");
-			while((read = stream.read(buff)) != -1) {
-				if(read == 0) continue;
-				sb.append(new String(Arrays.copyOfRange(buff, 0, read)));
-			}
-			stream.close();
-			tmp = new JSONObject(sb.toString());
+			tmp = new JSONObject(Game.load("/Achievements.json"));
 			JSONArray achievements = tmp.getJSONArray("Achievement");
 			ACHIEVEMENTS = new Achievement[achievements.length()];
 			for(int i = 0, length = achievements.length(); i < length; i++) {
@@ -173,20 +145,29 @@ public class Game {
 				genre = new Genre(genres.getJSONObject(i));
 				GENRE_TABLE.put(genre.getID(), genre);
 			}
-			sb.delete(0, sb.length());
-			stream = Game.class.getResourceAsStream("/RoleAliases.json");
-			while((read = stream.read(buff)) != -1) {
-				if(read == 0) continue;
-				sb.append(new String(Arrays.copyOfRange(buff, 0, read)));
-			}
-			stream.close();
-			final JSONObject abbreviationJSON = new JSONObject(sb.toString());
+			final JSONObject abbreviationJSON = new JSONObject(Game.load("/RoleAliases.json"));
 			ROLE_ABBREVIATIONS = abbreviationJSON.keySet()
 												 .stream()
 												 .collect(Collectors.toMap(key -> key, key -> {
 													 JSONArray abbreviations = abbreviationJSON.getJSONArray((String)key);
 													 return abbreviations.toList().stream().map(String::valueOf).collect(Collectors.toList());
 												 }));
+			final JSONObject commonActionJSON = new JSONObject(Game.load("/CommonActions.json"));
+			COMMON_ACTIONS = new HashMap<>();
+			
+			JSONObject definitions = commonActionJSON.getJSONObject("definitions");
+			commonActionJSON.remove("definitions");
+			
+			List<String> actions;
+			
+			for(String key : commonActionJSON.keySet()) {
+				role = Game.ROLE_ID_TABLE.get(definitions.get(key));
+				if(role == null) {
+					continue;
+				}
+				actions = commonActionJSON.getJSONArray(key).toList().stream().map(String::valueOf).collect(Collectors.toList());
+				COMMON_ACTIONS.put(role, actions);
+			}
 		}
 		catch(Exception e) {
 			throw new RuntimeException(e);
@@ -206,21 +187,46 @@ public class Game {
 		String match;
 		for(Role role : ROLES) {
 			for(String abbreviation : ROLE_ABBREVIATIONS.computeIfAbsent(role.getName(), n -> new ArrayList<>())) {
-				pattern = REGEX_CACHE.computeIfAbsent(abbreviation, a -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(a)+"s?)(\\s|$|\\p{P})"));
-				match = String.format(REPLACEMENT_CACHE.computeIfAbsent(abbreviation, a -> "$1"+ANSI.toTrueColor(role.getColor())+"$2%s$3"), defaultColor);
+				pattern = Game.getPatternFor(abbreviation);
+				match = String.format(Game.getReplacementFor(abbreviation, ANSI.toTrueColor(role.getColor())), defaultColor);
 				text = pattern.matcher(text).replaceAll(match);
 				
 			}
-			pattern = REGEX_CACHE.computeIfAbsent(role.getName(), name -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(name)+"s?)(\\s|$|\\p{P})"));
-			match = String.format(REPLACEMENT_CACHE.computeIfAbsent(role.getName(), name -> "$1"+ANSI.toTrueColor(role.getColor())+"$2%s$3"), defaultColor);
+			if(COMMON_ACTIONS.containsKey(role)) {
+				for(String action : COMMON_ACTIONS.get(role)) {
+					pattern = Game.getPatternFor(action);
+					match = String.format(Game.getReplacementFor(action, ANSI.toTrueColor(role.getColor())), defaultColor);
+					text = pattern.matcher(text).replaceAll(match);
+				}
+			}
+			pattern = Game.getPatternFor(role.getName());
+			match = String.format(Game.getReplacementFor(role.getName(), ANSI.toTrueColor(role.getColor())), defaultColor);
 			text = pattern.matcher(text).replaceAll(match);
 		}
 		for(Faction faction : FACTIONS) {
-			pattern = REGEX_CACHE.computeIfAbsent(faction.getName(), f -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(faction.getName())+"s?)(\\s|$|\\p{P})"));
-			match = String.format(REPLACEMENT_CACHE.computeIfAbsent(faction.getName(), name -> "$1"+ANSI.valueOf(name.toUpperCase())+"$2%s$3"), defaultColor);
+			pattern = Game.getPatternFor(faction.getName());
+			match = String.format(Game.getReplacementFor(faction.getName(), ANSI.valueOf(faction.getName().toUpperCase())), defaultColor);
 			text = pattern.matcher(text).replaceAll(match);
 		}
 		return text;
+	}
+	private static String load(String path) throws IOException {
+		StringBuilder sb = new StringBuilder();
+		InputStream stream = Game.class.getResourceAsStream(path);
+		byte[] buff = new byte[1024];
+		int read;
+		while((read = stream.read(buff)) != -1) {
+			if(read == 0) continue;
+			sb.append(new String(Arrays.copyOfRange(buff, 0, read)));
+		}
+		stream.close();
+		return sb.toString();
+	}
+	private static Pattern getPatternFor(String text) {
+		return REGEX_CACHE.computeIfAbsent(text, t -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(t)+"s?)(\\s|$|\\p{P})"));
+	}
+	private static String getReplacementFor(String text, Object replacement) {
+		return REPLACEMENT_CACHE.computeIfAbsent(text, t -> "$1"+replacement+"$2%s$3");
 	}
 	
 	private List<Role> rolelist;
@@ -229,12 +235,15 @@ public class Game {
 	private Player[] players;
 	private int selfPosition;
 	
+	private String[] lobbyUsernames;
+	
 	private GamePhase phase;
 	private GameMode mode;
 	
 	private int abilitiesLeft;
 	
 	public Game() {
+		this.lobbyUsernames = new String[15];
 		this.players = new Player[15];
 		this.selfPosition = -1;
 	}
@@ -248,6 +257,12 @@ public class Game {
 			this.inferModeFromRoleList();
 		}
 		return mode;
+	}
+	public String[] getLobbyUsernames() {
+		return lobbyUsernames;
+	}
+	public String getLobbyUsername(int position) {
+		return lobbyUsernames[position-1];
 	}
 	public GamePhase getPhase() {
 		return phase;
@@ -289,7 +304,9 @@ public class Game {
 	public void setSelfPosition(int position) {
 		selfPosition = position;
 	}
-	
+	public void updateLobbyName(String name, int position) {
+		lobbyUsernames[position-1] = name;
+	}
 	public void updatePlayerName(String name, int position) {
 		if(players[position-1] != null) {
 			players[position-1].setName(name);

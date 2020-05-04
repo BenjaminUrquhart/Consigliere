@@ -27,14 +27,13 @@ public abstract class MessageHandler {
 				break;
 			}
 			try {
+				//System.out.printf("%s%s: (0x%02x %03d): %s%s\n", ANSI.RESET, origin, command[0], ((int)command[0])&(int)0xff, convertToString(command), ANSI.GRAY);
 				this.processCommand(command);
 			}
 			catch(Throwable e) {
 				System.out.printf("%sAn internal error occured:\n", ANSI.RED);
 				e.printStackTrace(System.out);
-				System.out.print("Message: ");
-				this.onDefaultFunction(data);
-				System.out.printf("%s\n\n", ANSI.GRAY);
+				System.out.printf("Message: %s%s\n\n", this.convertToString(command, false), ANSI.GRAY);
 			}
 			start = end;
 			if(start >= data.length) {
