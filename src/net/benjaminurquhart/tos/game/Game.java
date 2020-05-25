@@ -31,6 +31,7 @@ public class Game {
 	public static Map<Integer, GameMode> GAME_MODE_ID_TABLE;
 	public static Map<Integer, Role> ROLE_ID_TABLE;
 	
+	public static CharacterSkin[] CHARACTERS;
 	public static Achievement[] ACHIEVEMENTS;
 	public static Faction[] FACTIONS;
 	public static Killer[] KILLERS;
@@ -126,6 +127,11 @@ public class Game {
 			for(int i = 0, length = taunts.length(); i < length; i++) {
 				tmp = taunts.getJSONObject(i);
 				TAUNTS[i] = tmp.getJSONObject("Name").getString("text");
+			}
+			JSONArray characters = new JSONObject(Game.load("/Characters.json")).getJSONArray("Character");
+			CHARACTERS = new CharacterSkin[characters.length()];
+			for(int i = 0; i < CHARACTERS.length; i++) {
+				CHARACTERS[i] = new CharacterSkin(characters.getJSONObject(i));
 			}
 			JSONObject table = new JSONObject(Game.load("/StringTable.json"));
 			STRING_TABLE = new HashMap<>();
@@ -223,7 +229,7 @@ public class Game {
 		return sb.toString();
 	}
 	private static Pattern getPatternFor(String text) {
-		return REGEX_CACHE.computeIfAbsent(text, t -> Pattern.compile("(?i)(^|\\s|\\p{P})("+Pattern.quote(t)+"s?)(\\s|$|\\p{P})"));
+		return REGEX_CACHE.computeIfAbsent(text, t -> Pattern.compile("(?i)(^|\\s|\\p{P}|=)((?:"+Pattern.quote(t)+"s?)+)(\\s|$|\\p{P}|=)"));
 	}
 	private static String getReplacementFor(String text, Object replacement) {
 		return REPLACEMENT_CACHE.computeIfAbsent(text, t -> "$1"+replacement+"$2%s$3");

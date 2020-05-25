@@ -13,6 +13,7 @@ public enum ANSI {
 	STONED(new Color(0xCCCCCC)),
 	
 	ORANGE(new Color(0xFFA500)),
+	TARGET(new Color(0xAAAAEE)),
 	LOVER(new Color(0xFF99CC)),
 	VIP(new Color(0x00B816)),
 	

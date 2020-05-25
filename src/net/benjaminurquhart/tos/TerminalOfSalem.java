@@ -7,6 +7,7 @@ import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.security.Security;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
@@ -35,6 +36,8 @@ public class TerminalOfSalem {
 		try {
 			TOS_SERVER_IPV6 = Inet6Address.getByName("2001:4800:7818:104:be76:4eff:fe04:6c7c");
 			TOS_SERVER = Inet4Address.getByName("104.239.145.241");
+			
+			Security.setProperty("crypto.policy", "unlimited");
 		}
 		catch(UnknownHostException e) {
 			throw new RuntimeException(e);
@@ -111,7 +114,7 @@ public class TerminalOfSalem {
 			System.setOut(new StubbedStream());
 		}
 		else {
-			server = new ServerMessageHandler(game);
+			server = new ServerMessageHandler(game, args);
 		}
 		Timestamp previous = null, current = null;
 		boolean gameStarted = false;
