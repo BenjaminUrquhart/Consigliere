@@ -11,6 +11,7 @@ public class Player {
 	
 	private Set<PlayerTag> tags;
 
+	private CharacterSkin character;
 	private boolean alive;
 	private int position;
 	private String name;
@@ -30,6 +31,9 @@ public class Player {
 		this.tags = new HashSet<>();
 	}
 	
+	public CharacterSkin getCharacter() {
+		return character;
+	}
 	public Set<PlayerTag> getTags() {
 		return tags;
 	}
@@ -52,6 +56,9 @@ public class Player {
 		return role;
 	}
 	
+	public void setCharacter(CharacterSkin character) {
+		this.character = character;
+	}
 	public void setTarget(Player target) {
 		this.target = target;
 	}

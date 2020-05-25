@@ -9,6 +9,7 @@ public enum PlayerTag {
 	FULLMOON_ATTACK,
 	CLEANED,
 	STONED,
+	TARGET,
 	LOVER,
 	
 	VIP("VIP");

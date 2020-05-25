@@ -1,7 +1,14 @@
 package net.benjaminurquhart.tos.handlers;
 
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.stream.Collectors;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
+import org.json.JSONObject;
 
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
@@ -24,7 +31,7 @@ public class ClientMessageHandler extends MessageHandler {
     public void processCommand(byte[] command) {
     	switch(((int)command[0])&0xff) {
     	case 0: break;
-    	case 2: onLoginAttempt(command); break;
+    	case 2: onFlashLoginAttempt(command); break;
     	case 3: onChat(command); break;
     	case 8: onWhisper(command); break;
     	case 10: onUserVoteUpdate(command); break;
@@ -45,17 +52,42 @@ public class ClientMessageHandler extends MessageHandler {
     	case 39: onLeaveGame(command); break;
     	case 60: onUserSelectedLobby(command); break;
     	case 62: onUserAcceptedRankedMatch(command); break;
+    	case 64: onForgedWill(command); break;
     	case 74: onItemPurchase(command); break;
+    	case 75: onRequestCauldronStatus(command); break;
     	case 77: onUserSelectedTaunt(command); break;
     	case 78: onUserChosePirateAction(command); break;
     	case 79: onUserChosePotion(command); break;
     	case 82: onUserChoseHypnotistMessage(command); break;
-    	case 85: onSteamLoginAttempt(command); break;
+    	case 83: onUserChoseJailorDeathNote(command); break;
+    	case 85: onUnityLoginAttempt(command); break;
     	case 127: onKeepAlive(command); break;
     	default: this.onUnhandledCommand(command); break;
     	}
     }
 
+	private void onUserChoseJailorDeathNote(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_JAILOR_MENU_OPTION"+command[1]);
+		System.out.printf(
+				"%sDeath Note updated: '%s%s%s'\n",
+				ANSI.GRAY,
+				ANSI.LIGHT_GRAY,
+				msg.getText(),
+				ANSI.GRAY
+		);
+	}
+	private void onForgedWill(byte[] command) {
+		System.out.printf(
+				"%sForged will:\n%s%s\n",
+				ANSI.LIGHT_GRAY,
+				Game.insertColors(new String(Arrays.copyOfRange(command, 1, command.length-1)), ANSI.LIGHT_GRAY),
+				ANSI.GRAY
+		);
+	}
+	private void onRequestCauldronStatus(byte[] command) {
+		// TODO Auto-generated method stub
+		
+	}
 	private void onPartyInviteResponse(byte[] command) {
 		// TODO Auto-generated method stub
 		
@@ -249,8 +281,33 @@ public class ClientMessageHandler extends MessageHandler {
 	private void onChat(byte[] command) {
 		
 	}
-	private void onSteamLoginAttempt(byte[] command) {
-		System.out.println("Attemping to log in via Steam...");
+	private void onUnityLoginAttempt(byte[] command) {
+		System.out.println("Attemping to log in via Unity...");
+		JSONObject json = new JSONObject(new String(Arrays.copyOfRange(command, 1, command.length-1)));
+		System.out.println(ANSI.GRAY+"{");
+		for(String key : json.keySet()) {
+			System.out.printf("\t\"%s\":\"%s\"\n", key, json.get(key));
+		}
+		System.out.println("}");
+		System.out.println("Attempting to decode payload...");
+		try {
+			byte[] payload = Base64.getDecoder().decode(json.getString("payload"));
+			byte[] key = Base64.getDecoder().decode(json.getString("key"));
+			byte[] iv = Base64.getDecoder().decode(json.getString("iv"));
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+			
+			System.out.println("Key length: " + key.length);
+			
+			cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key, 0, key.length, "AES"), new IvParameterSpec(iv));
+			byte[] decrypted = cipher.doFinal(payload);
+			
+			System.out.println("Payload: " + (decrypted == null ? "null" : this.convertToString(decrypted, false)));
+		}
+		catch(Exception e) {
+			System.out.println(ANSI.RED+"An error occured:");
+			e.printStackTrace(System.out);
+			System.out.println(ANSI.GRAY);
+		}
 	}
 	private void onKeepAlive(byte[] command) {
 		//onUnhandledCommand(command);
@@ -259,7 +316,7 @@ public class ClientMessageHandler extends MessageHandler {
 		onUnhandledCommand(command);
 		
 	}
-	private void onLoginAttempt(byte[] command) {
+	private void onFlashLoginAttempt(byte[] command) {
 		int start = this.indexOf(command, (byte)0x1e)+1;
 		int end = this.indexOf(command, (byte)0x1e, start);
 		System.out.println("Attempting to log in as user " + new String(Arrays.copyOfRange(command, start, end)) + "...");

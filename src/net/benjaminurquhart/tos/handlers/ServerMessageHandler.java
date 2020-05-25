@@ -4,15 +4,18 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import net.benjaminurquhart.tos.Arguments;
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
 import net.benjaminurquhart.tos.game.GameMode;
 import net.benjaminurquhart.tos.game.GamePhase;
 import net.benjaminurquhart.tos.game.PlayerTag;
+import net.benjaminurquhart.tos.game.RoleTag;
 import net.benjaminurquhart.tos.game.entities.Achievement;
 import net.benjaminurquhart.tos.game.entities.Faction;
 import net.benjaminurquhart.tos.game.entities.Genre;
@@ -28,11 +31,16 @@ public class ServerMessageHandler extends MessageHandler {
 	private static final Pattern END_GAME_RESULTS = Pattern.compile("\\(([^\\)]+)\\)");
 	
 	private Game game;
+	private Arguments args;
 	
     public ServerMessageHandler(Game game) {
+    	this(game, null);
+	}
+    public ServerMessageHandler(Game game, Arguments args) {
     	super("Server");
 		this.game = game;
-	}
+		this.args = args;
+    }
 	@Override
 	public void processCommand(byte[] command) {
 	    	//this.onUnhandledCommand(command);
@@ -73,7 +81,7 @@ public class ServerMessageHandler extends MessageHandler {
 	                 case 33: onUsersJoinedParty(command); break;
 	                 case 34: onDefaultFunction(command); break;
 	                 case 35: onPartyChatBoxMessage(command); break;
-	                 case 36: onDefaultFunction(command); break;
+	                 case 36: onUserLeftParty(command); break;
 	                 case 37: onDefaultFunction(command); break;
 	                 case 38: onDefaultFunction(command); break;
 	                 case 39: onForcedLogout(command); break;
@@ -235,7 +243,7 @@ public class ServerMessageHandler extends MessageHandler {
 	                 case 193: onItemPurchased(command); break;
 	                 case 194: onUpdateFreeCurrency(command); break;
 	                 case 195: onActiveEvents(command); break;
-	                 case 196: onDefaultFunction(command); break;
+	                 case 196: onCauldronStatus(command); break;
 	                 case 197: onTauntResult(command); break;
 	                 case 198: onTauntActivated(command); break;
 	                 case 199: onTauntConsumed(command); break;
@@ -273,6 +281,25 @@ public class ServerMessageHandler extends MessageHandler {
 	    }
 	
 	
+	private void onUserLeftParty(byte[] command) {
+		System.out.printf("%s%s left the party%s\n", ANSI.RED, this.convertToString(command), ANSI.GRAY);
+	}
+	private void onCauldronStatus(byte[] command) {
+		String[] split = this.convertToString(command).split(",");
+		int timeRemaining = Integer.parseInt(split[4]);
+		if(timeRemaining <= 0) {
+			System.out.printf("%sCauldron is available (Day %s/%s)\n", ANSI.GRAY, split[1], split[2]);
+		}
+		else {
+			int seconds = timeRemaining%60;
+			int minutes = timeRemaining/60;
+			int hours = minutes/60;
+			
+			minutes%=60;
+			
+			System.out.printf("%sCauldron will be available in %02dH %02dM %02dS (Day %s/%s)\n", ANSI.GRAY, hours, minutes, seconds, split[1], split[2]);
+		}
+	}
 	public void onGameCountdownCanceled(byte[] command) {
 		StringTableMessage msg = Game.STRING_TABLE.get("GUI_START_COUNTDOWN_CANCELED");
 		System.out.printf("%s%s%s\n", ANSI.RED, msg.getText(), ANSI.GRAY);
@@ -414,7 +441,7 @@ public class ServerMessageHandler extends MessageHandler {
 		int seperator = this.indexOf(command, (byte)'*');
 		String message = new String(Arrays.copyOfRange(command, seperator+1, command.length-1));
 		String name = new String(Arrays.copyOfRange(command, 1, seperator));
-		System.out.printf("%s%s: %s%s\n", ANSI.RESET, name, message, ANSI.GRAY);
+		System.out.printf("%s%s: %s%s\n", ANSI.RESET, name, Game.insertColors(message), ANSI.GRAY);
 	}
 
 	
@@ -1095,7 +1122,7 @@ public class ServerMessageHandler extends MessageHandler {
 	public void onUserLeftDuringSelection(byte[] command) {
 		//this.onUnhandledCommand(command);
 		if(game.getPhase() == GamePhase.PICK_NAME) {
-			System.out.printf("%s (#%d) left during name selection%s\n", ANSI.RED, game.getPlayer(command[1]), command[1], ANSI.GRAY);
+			System.out.printf("%s%s (#%d) left during name selection%s\n", ANSI.RED, game.getPlayer(command[1]), command[1], ANSI.GRAY);
 		}
 	}
 
@@ -1112,8 +1139,9 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onCharactersChosen(byte[] command) {
-		//onUnhandledCommand(command);
-		
+		for(int i = 1; i < command.length-1; i+=2) {
+			game.getPlayer(command[i]&0xff).setCharacter(Game.CHARACTERS[(command[i+1]&0xff)-1]);
+		}
 	}
 
 	
@@ -1281,7 +1309,6 @@ public class ServerMessageHandler extends MessageHandler {
 		}
 	}
 
-	// TODO
 	public void onTellJanitorTargetsWill(byte[] command) {
 		//onUnhandledCommand(command);
 		String will = new String(Arrays.copyOfRange(command, 2, command.length-1)).replace((char)0x0d, '\n');
@@ -1399,22 +1426,38 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onTellLastWill(byte[] command) {
 		String will = new String(Arrays.copyOfRange(command, 3, command.length-1)).replace((char)0x0d, '\n');
+		StringTableMessage msg = Game.STRING_TABLE.get(will.trim().isEmpty() ? "GUI_FOUND_NO_WILL" : "GUI_FOUND_WILL");
+		System.out.println(ANSI.RESET+msg.getText());
 		if(!will.trim().isEmpty()) {
-			System.out.printf("%sWill:\n%s%s\n\n", ANSI.RESET, Game.insertColors(will), ANSI.GRAY);
+			System.out.printf("%s%s%s\n", ANSI.RESET, Game.insertColors(will), ANSI.GRAY);
 		}
-		else {
-			System.out.println(ANSI.RESET+"We could not find a last will\n");
-		}
+		System.out.println();
 	}
 
 	
 	public void onMediumCommunicating(byte[] command) {
-		System.out.printf("%sYou have opened a connection to the living!%s\n", ANSI.CYAN, ANSI.GRAY);
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_YOU_ARE_TALKING_TO_THE_LIVING");
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(Color.BLACK),
+				ANSI.CYAN,
+				msg.getText(),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	
 	public void onMediumIsTalkingToUs(byte[] command) {
-		System.out.printf("%sA Medium is speaking to you!%s\n", ANSI.CYAN, ANSI.GRAY);
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_MEDIUM_IS_TALKING_TO_YOU");
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(Color.BLACK),
+				ANSI.CYAN,
+				msg.getText(),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	
@@ -1456,13 +1499,24 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onJesterCompletedGoal(byte[] command) {
 		onUnhandledCommand(command);
-		
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_JESTER_COMPLETED_GOAL");
+		System.out.printf(
+				"%s%s%s\n", 
+				ANSI.GREEN,
+				msg.getText(),
+				ANSI.GRAY
+		);
 	}
 
 	
 	public void onExecutionerCompletedGoal(byte[] command) {
-		onUnhandledCommand(command);
-		
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_EXECUTIONER_COMPLETED_GOAL");
+		System.out.printf(
+				"%s%s%s\n", 
+				ANSI.GREEN,
+				msg.getText(),
+				ANSI.GRAY
+		);
 	}
 
 	
@@ -1552,11 +1606,22 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onStartFirstDay(byte[] command) {
 		game.setPhase(GamePhase.FIRST_DAY);
+		/*
+		for(Player player : game.getPlayers()) {
+			if(player == null) continue;
+			System.out.printf("%s%-20s %s%s\n", ANSI.RESET, player, player.getCharacter(), ANSI.GRAY);
+		}*/
 	}
 
 	
 	public void onBroughtBackToLife(byte[] command) {
-		System.out.println(ANSI.GREEN+"You were resurrected by a Retributionist!"+ANSI.GRAY);//onUnhandledCommand(command);
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_YOU_WERE_RESURRECTED");
+		System.out.printf(
+				"%s%s%s\n", 
+				ANSI.GREEN,
+				msg.getText(),
+				ANSI.GRAY
+		);
 	}
 
 	
@@ -1611,21 +1676,28 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onResurrection(byte[] command) {
 		Player player = game.getPlayer(command[1]);
+		String nameFormatted = player+" ("+ANSI.toTrueColor(player.getRole().getColor())+player.getRole().getName()+ANSI.RESET+")";
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_WAS_BROUGHT_BACK_TO_LIFE");
 		System.out.printf(
-				"%s%s (%s%s%s) was brought back to life!%s\n",
+				"%s%s%s\n", 
 				ANSI.RESET,
-				player,
-				ANSI.toTrueColor(player.getRole().getColor()),
-				player.getRole().getName(),
-				ANSI.RESET,
-				ANSI.LIGHT_GRAY
+				msg.getText().replace("%name%", nameFormatted),
+				ANSI.GRAY
 		);
 	}
 
 	
 	public void onUserDied(byte[] command) {
 		game.getSelfPlayer().kill();
-		System.out.printf("%s%sYou have died!%s%s\n", ANSI.WHITE, ANSI.toTrueColorBackground(Color.RED), ANSI.RESET, ANSI.GRAY);
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_YOU_HAVE_DIED");
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.toTrueColorBackground(Color.RED),
+				ANSI.WHITE,
+				msg.getText(),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	
@@ -1771,20 +1843,36 @@ public class ServerMessageHandler extends MessageHandler {
 		for(Killer k : oldKillers) {
 			killers.add(k);
 		}
-		String killersStr = killers.stream()
-								   .map(k -> String.format("%s%s%s", ANSI.toTrueColor(k.getColor()), k.getName(), ANSI.RESET))
-								   .collect(Collectors.joining(", "));
-		/*
-		if(lynched[command[1]-1]) {
-			killers.add(String.format("%sLynching%s", ANSI.toTrueColor(Killer.DEFAULT_COLOR), ANSI.RESET));
-		}*/
-		System.out.printf("\n%s%s (%d) was killed%s%s\n", ANSI.RESET, player, command[1], killers.size() > 0 ? " by " : "", killersStr);
+		if(args != null && args.useFancyDeaths() && !killers.contains(Killer.LYNCHING)) {
+			int which = Math.min(killers.size(), 3), subID = 2;
+			StringTableMessage fluff = Game.STRING_TABLE.get(killers.size() == 1 && killers.get(0).equals(Game.KILLERS[5]) ? "GUI_DEAD_FLUFF00" : "GUI_DEAD_FLUFF0"+which);
+			System.out.printf("\n%s%s\n", ANSI.RESET, fluff.getText().replace("%name%", player.getName()));
+			String gender = player.getCharacter() == null ? "He/She" : player.getCharacter().isMale() ? "He" : "She";
+			for(Killer killer : killers) {
+				fluff = Game.STRING_TABLE.get("GUI_XDIED_REASON"+killer.getID()+"_"+subID);
+				System.out.printf(
+						"%s%s\n", 
+						ANSI.RESET,
+						fluff.getText().replace("%gender%", gender).replace("%role%", ANSI.toTrueColor(killer.getColor())+killer.getName()+ANSI.RESET)
+				);
+				subID = 1;
+			}
+		}
+		else {
+			String killersStr = killers.stream()
+					   .map(k -> String.format("%s%s%s", ANSI.toTrueColor(k.getColor()), k.getName(), ANSI.RESET))
+					   .collect(Collectors.joining(", "));
+			System.out.printf("\n%s%s (%d) was killed%s%s\n", ANSI.RESET, player, command[1], killers.size() > 0 ? " by " : "", killersStr);
+		}
+		StringTableMessage roleMsg;
 		if(role == null) {
 			System.out.printf("We could not determine their role (Unknown role: %d)%s\n", roleID, ANSI.GRAY);
 		}
 		else if (role.getPlayerTags().contains(PlayerTag.STONED) || role.getPlayerTags().contains(PlayerTag.CLEANED)) {
+			roleMsg = Game.STRING_TABLE.get("GUI_WE_COULD_NOT_DETERMINE_XROLE");
 			System.out.printf(
-					"We could not determine their role (%s%s%s)%s\n",
+					"%s (%s%s%s)%s\n",
+					roleMsg.getText(),
 					ANSI.toTrueColor(role.getColor()),
 					role.getPlayerTags().stream().map(String::valueOf).collect(Collectors.joining(", ")),
 					ANSI.RESET,
@@ -1795,8 +1883,26 @@ public class ServerMessageHandler extends MessageHandler {
 			}
 		}
 		else {
-			System.out.printf("Role: %s%s%s\n", ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.GRAY);
-			player.setRole(role);
+			Role disguiser = Game.ROLE_TABLE.get("Disguiser");
+			roleMsg = Game.STRING_TABLE.get("GUI_XROLE_WAS_Y");
+			StringTableMessage disguise = Game.STRING_TABLE.get("GUI_ROLE_ABILITY_VERB_18");
+			String message = roleMsg.getText().replace("%name%", player.getName());
+			if(player.getRole() != null && player.getRole().equals(disguiser) && !role.equals(disguiser)) {
+				message = message.replace("%role%", ANSI.MAFIA+disguiser.getName()+ANSI.RESET);
+				message += String.format(
+						" (%s: %s%s%s)",
+						disguise.getText(),
+						ANSI.toTrueColor(role.getColor()),
+						role.getName(),
+						ANSI.RESET
+				);
+			}
+			else {
+				message = message.replace("%role%", ANSI.toTrueColor(role.getColor())+role.getName()+ANSI.RESET);
+				player.setRole(role);
+			}
+			System.out.println(message);
+			System.out.println();
 		}
 		if(role != null) {
 			role.getPlayerTags().forEach(player::addTag);
@@ -1806,13 +1912,20 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onStartDay(byte[] command) {
 		game.setPhase(GamePhase.DAY_TRANSITION);
+		Set<RoleTag> tags = game.getSelfPlayer().getRole().getRoleTags();
+		if(tags.contains(RoleTag.DAY_EXPANDED_ABILITY) || tags.contains(RoleTag.POST_DEATH_DAY_EXPANDED_ABILITY) || tags.contains(RoleTag.POST_DEATH_DAY_ABILITY) || tags.contains(RoleTag.DAY_ABILITY)) {
+			game.getSelfPlayer().setTarget(null);
+		}
 		System.out.println(ANSI.GRAY+"------------Day------------");
 	}
 
 	
 	public void onStartNight(byte[] command) {
 		game.setPhase(GamePhase.NIGHT);
-		game.getSelfPlayer().setTarget(null);
+		Set<RoleTag> tags = game.getSelfPlayer().getRole().getRoleTags();
+		if(!(tags.contains(RoleTag.DAY_EXPANDED_ABILITY) || tags.contains(RoleTag.POST_DEATH_DAY_EXPANDED_ABILITY) || tags.contains(RoleTag.POST_DEATH_DAY_ABILITY) || tags.contains(RoleTag.DAY_ABILITY))) {
+			game.getSelfPlayer().setTarget(null);
+		}
 		System.out.println(ANSI.GRAY+"-----------Night-----------");
 		String msg = game.getNightAbilitiesLeftMessage();
 		if(msg != null) {
@@ -1827,6 +1940,15 @@ public class ServerMessageHandler extends MessageHandler {
 		game.setSelfPosition(command[2]);
 		self.setRole(role);
 		System.out.printf("%sRole: %s%s%s\nPosition: %d%s\n", ANSI.RESET, ANSI.toTrueColor(role.getColor()), role.getName(), ANSI.RESET, command[2], ANSI.GRAY);
+		if(command.length > 4) {
+			Player target = game.getPlayer(command[3]);
+			target.addTag(PlayerTag.TARGET);
+			System.out.printf("%sTarget: %s (%02d)%s\n", ANSI.RESET, target, command[3], ANSI.GRAY);
+			
+			if(role.equals(Game.ROLE_TABLE.get("Executioner"))) {
+				target.setRole(Game.ROLE_TABLE.get("Random Town"));
+			}
+		}
 	}
 
 	
@@ -1837,6 +1959,9 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onPickNames(byte[] command) {
 		game.setPhase(GamePhase.PICK_NAME);
+		for(int i = 1; i <= 15; i++) {
+			game.updatePlayerName("Player "+i, i);
+		}
 		System.out.println("Name selection has begun");
 	}
 
@@ -1943,7 +2068,7 @@ public class ServerMessageHandler extends MessageHandler {
 	public void onChatBoxMessage(byte[] command) {
 		int offset = command[1] == (byte)0xff ? 1 : 0;
 		int position = command[1+offset];
-		boolean alive = true, isVIP = false, isLover = false;
+		boolean alive = true, isVIP = false, isLover = false, isTarget = false;
 		
 		Player player;
 		
@@ -1963,36 +2088,39 @@ public class ServerMessageHandler extends MessageHandler {
 		else {
 			positionFormatted = String.format("(%02d) ", position);
 			player = game.getPlayer(position);
+			
+			// Due to the rolelists for VIP and Lovers mode, only 1 of these tags can be assigned at a time
+			// Even though VIP includes a GA which has a target, they cannot see the VIP.
+			isTarget = player.getTags().contains(PlayerTag.TARGET);
 			isLover = player.getTags().contains(PlayerTag.LOVER);
 			isVIP = player.getTags().contains(PlayerTag.VIP);
+			
 			alive = player.isAlive();
 			name = player.getName();
+			
+			List<String> metadata = new ArrayList<>();
 			if(player.getRole() != null) {
-				role = String.format(
-						" (%s%s%s)",
-						ANSI.toTrueColor(player.getRole().getColor()),
-						player.getRole().getName(),
-						ANSI.RESET
-				);
+				metadata.add(ANSI.toTrueColor(player.getRole().getColor())+player.getRole().getName()+ANSI.RESET);
 			}
-			else if(!player.getTags().isEmpty()) {
-				String tags = player.getTags()
-									.stream()
-									.map(t -> {
-										try {
-											return ANSI.valueOf(t.name())+t.toString()+ANSI.RESET;
-										}
-										catch(Exception e) {
-											return null;
-										}
-									})
-									.filter(t -> t != null)
-									.collect(Collectors.joining(", "));
-				role = " (" + tags + ")";
+			if(!player.getTags().isEmpty()) {
+				player.getTags().stream()
+								.map(t -> {
+									try {
+										return ANSI.valueOf(t.name())+t.toString()+ANSI.RESET;
+									}
+									catch(Exception e) {
+										return null;
+									}
+								})
+								.filter(t -> t != null)
+								.forEach(metadata::add);
 									
 			}
+			if(!metadata.isEmpty()) {
+				role = " ("+String.join(", ", metadata)+")";
+			}
 		}
-		String color = String.valueOf(isVIP ? ANSI.VIP : isLover ? ANSI.LOVER : alive ? ANSI.RESET : ANSI.GRAY);
+		String color = String.valueOf(isTarget ? ANSI.TARGET : isVIP ? ANSI.VIP : isLover ? ANSI.LOVER : alive ? ANSI.RESET : ANSI.GRAY);
 		System.out.printf(
 				"%s%s%s%s%s: %s%s%s\n",
 				alive ? color : ANSI.RED,
@@ -2050,7 +2178,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onLoginSuccess(byte[] command) {
-		System.out.println("Log in succeeded");
+		System.out.println(ANSI.RESET+"Log in succeeded"+ANSI.GRAY);
 		//onUnhandledCommand(command);
 	}
 	
