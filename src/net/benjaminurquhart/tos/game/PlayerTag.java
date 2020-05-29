@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public enum PlayerTag {
 
 	FULLMOON_ATTACK,
+	TRAITOR,
 	CLEANED,
 	STONED,
 	TARGET,
