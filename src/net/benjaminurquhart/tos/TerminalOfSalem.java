@@ -10,9 +10,11 @@ import java.net.UnknownHostException;
 import java.security.Security;
 import java.sql.Timestamp;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
 
+import org.pcap4j.core.PcapAddress;
 import org.pcap4j.core.PcapDumper;
 
 import org.pcap4j.core.PcapHandle;
@@ -70,9 +72,29 @@ public class TerminalOfSalem {
 				file.delete();
 			}
 			PcapNetworkInterface captureInterface = Pcaps.getDevByName("any");
+			List<PcapNetworkInterface> interfaces = Pcaps.findAllDevs();
 			
-			for(PcapNetworkInterface iface : Pcaps.findAllDevs()) {
+			for(PcapNetworkInterface iface : interfaces) {
 				System.out.printf("%s (%s): %s\n", iface.getName(), iface.getAddresses(), iface.getDescription());
+			}
+			if(captureInterface == null) {
+				if(interfaces.isEmpty()) {
+					System.err.println("No capture interfaces found!");
+					System.exit(1);
+				}
+				else {
+					InetAddress addr;
+					selection:
+					for(PcapNetworkInterface iface : interfaces) {
+						for(PcapAddress address : iface.getAddresses()) {
+							addr = address.getAddress();
+							if(addr != null && addr.isLinkLocalAddress() && !addr.isMulticastAddress() && !addr.isLoopbackAddress()) {
+								captureInterface = iface;
+								break selection;
+							}
+						}
+					}
+				}
 			}
 			System.out.printf(
 					"Capturing on interface %s (%s): %s...\n", 
@@ -80,7 +102,7 @@ public class TerminalOfSalem {
 					captureInterface.getAddresses(), 
 					captureInterface.getDescription()
 			);
-			handle = captureInterface.openLive(1<<16, PromiscuousMode.NONPROMISCUOUS, 10);
+			handle = captureInterface.openLive(1<<16, PromiscuousMode.NONPROMISCUOUS, 1<<16);
 			dumper = handle.dumpOpen(filename);
 			System.out.println("Writing to " + filename);
 		}
@@ -142,6 +164,7 @@ public class TerminalOfSalem {
 			}
 			catch(TimeoutException e) {
 				System.out.println(ANSI.GRAY+"Timed out while waiting for packets...");
+				e.printStackTrace(System.out);
 				continue;
 			}
 			ipPacket = tmp.get(IpPacket.class);
