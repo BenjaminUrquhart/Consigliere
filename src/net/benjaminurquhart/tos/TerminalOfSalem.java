@@ -18,6 +18,7 @@ import org.pcap4j.core.PcapAddress;
 import org.pcap4j.core.PcapDumper;
 
 import org.pcap4j.core.PcapHandle;
+import org.pcap4j.core.PcapHandle.TimestampPrecision;
 import org.pcap4j.core.PcapNativeException;
 import org.pcap4j.core.PcapNetworkInterface;
 import org.pcap4j.core.PcapNetworkInterface.PromiscuousMode;
@@ -83,17 +84,20 @@ public class TerminalOfSalem {
 					System.exit(1);
 				}
 				else {
+					System.out.println();
 					InetAddress addr;
 					selection:
 					for(PcapNetworkInterface iface : interfaces) {
 						for(PcapAddress address : iface.getAddresses()) {
 							addr = address.getAddress();
-							if(addr != null && addr.isLinkLocalAddress() && !addr.isMulticastAddress() && !addr.isLoopbackAddress()) {
+							System.out.println(iface.getName() + " " + addr);
+							if(addr != null && !addr.toString().startsWith("/fe80:") && !addr.toString().equals("/0.0.0.0") && !addr.isLinkLocalAddress() && !addr.isMulticastAddress() && !addr.isLoopbackAddress()) {
 								captureInterface = iface;
 								break selection;
 							}
 						}
 					}
+					System.out.println();
 				}
 			}
 			System.out.printf(
@@ -102,7 +106,13 @@ public class TerminalOfSalem {
 					captureInterface.getAddresses(), 
 					captureInterface.getDescription()
 			);
-			handle = captureInterface.openLive(1<<16, PromiscuousMode.NONPROMISCUOUS, 1<<16);
+			handle = new PcapHandle.Builder(captureInterface.getName())
+								   .promiscuousMode(PromiscuousMode.NONPROMISCUOUS)
+								   .timestampPrecision(TimestampPrecision.NANO)
+								   .timeoutMillis(10)
+								   //.bufferSize(1<<16)
+								   .build();
+			
 			dumper = handle.dumpOpen(filename);
 			System.out.println("Writing to " + filename);
 		}
@@ -143,6 +153,7 @@ public class TerminalOfSalem {
 		while(true) {
 			try {
 				tmp = handle.getNextPacketEx();
+				//System.out.println(tmp);
 				if(args.getMode() == Mode.REPLAY) {
 					current = handle.getTimestamp();
 					if(game.getPhase() == GamePhase.PICK_NAME) {
@@ -163,8 +174,8 @@ public class TerminalOfSalem {
 				continue;
 			}
 			catch(TimeoutException e) {
-				System.out.println(ANSI.GRAY+"Timed out while waiting for packets...");
-				e.printStackTrace(System.out);
+				//System.out.println(ANSI.GRAY+"Timed out while waiting for packets...");
+				//e.printStackTrace(System.out);
 				continue;
 			}
 			ipPacket = tmp.get(IpPacket.class);

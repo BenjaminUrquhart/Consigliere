@@ -246,6 +246,8 @@ public class Game {
 	private GamePhase phase;
 	private GameMode mode;
 	
+	private Winner winner;
+	
 	private int abilitiesLeft;
 	
 	public Game() {
@@ -288,6 +290,9 @@ public class Game {
 	public List<Role> getRoleList() {
 		return rolelist;
 	}
+	public Winner getWinner() {
+		return winner;
+	}
 	public void setMode(GameMode mode) {
 		this.mode = mode;
 	}
@@ -300,9 +305,14 @@ public class Game {
 					p.setTarget(null);
 					p.setRole(null);
 					p.resurrect();
+					p.lose();
 				}
 			}
+			this.winner = null;
 		}
+	}
+	public void setWinner(Winner winner) {
+		this.winner = winner;
 	}
 	public void setRoleList(List<Role> list) {
 		this.rolelist = list;

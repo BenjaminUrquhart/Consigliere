@@ -12,7 +12,7 @@ public class Player {
 	private Set<PlayerTag> tags;
 
 	private CharacterSkin character;
-	private boolean alive;
+	private boolean alive, won;
 	private int position;
 	private String name;
 	private Role role;
@@ -49,6 +49,9 @@ public class Player {
 	public boolean isAlive() {
 		return alive;
 	}
+	public boolean didWin() {
+		return won;
+	}
 	public String getName() {
 		return name;
 	}
@@ -67,6 +70,12 @@ public class Player {
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	public void lose() {
+		this.won = false;
+	}
+	public void win() {
+		this.won = true;
 	}
 	
 	public void removeTag(PlayerTag tag) {
