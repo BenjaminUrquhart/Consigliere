@@ -483,7 +483,7 @@ public class ServerMessageHandler extends MessageHandler {
 		int seperator = this.indexOf(command, (byte)'*');
 		String message = new String(Arrays.copyOfRange(command, seperator+1, command.length-1));
 		String name = new String(Arrays.copyOfRange(command, 1, seperator));
-		System.out.printf("%s%s: %s%s\n", ANSI.RESET, name, Game.insertColors(message), ANSI.GRAY);
+		System.out.printf("%s%s: %s%s\n", ANSI.RESET, name, Game.insertColors(message, game), ANSI.GRAY);
 	}
 
 	
@@ -642,7 +642,7 @@ public class ServerMessageHandler extends MessageHandler {
 		System.out.printf(
 				"%s%s%s\n",
 				ANSI.GREEN,
-				Game.insertColors(Game.STRING_TABLE.get("GUI_GUARDIAN_ANGEL_CONVERTED_TO_29").getText(), ANSI.GREEN),
+				Game.insertColors(Game.STRING_TABLE.get("GUI_GUARDIAN_ANGEL_CONVERTED_TO_29").getText(), ANSI.GREEN, game),
 				ANSI.GRAY
 		);
 	}
@@ -865,7 +865,7 @@ public class ServerMessageHandler extends MessageHandler {
 		System.out.printf(
 				"%s%s%s\n",
 				ANSI.GREEN,
-				Game.insertColors(Game.STRING_TABLE.get("GUI_VAMPIRE_HUNTER_PROMOTED1").getText(), ANSI.GREEN),
+				Game.insertColors(Game.STRING_TABLE.get("GUI_VAMPIRE_HUNTER_PROMOTED1").getText(), ANSI.GREEN, game),
 				ANSI.GRAY
 		);
 		System.out.printf(
@@ -998,7 +998,7 @@ public class ServerMessageHandler extends MessageHandler {
 			
 			if(!traitorFound) {
 				try {
-					if(game.getWinner() != Game.WINNERS[0] && role.getFaction().getName().equals(Game.WINNERS[0].getName()) && player.didWin()) {
+					if(game.getWinner() != Game.WINNERS[0] && role.getFaction() != null && role.getFaction().getName().equals(Game.WINNERS[0].getName()) && player.didWin()) {
 						System.out.printf(
 								"%sThrough process of deduction, %s (%02d) was determined to be Town Traitor %s%s\n",
 								ANSI.GRAY,
@@ -1118,7 +1118,7 @@ public class ServerMessageHandler extends MessageHandler {
 			color = role.getColor();
 			name = role.getName();
 		}
-		text = Game.insertColors(message.getText());
+		text = Game.insertColors(message.getText(), game);
 		
 		System.out.printf(
 				"%sReceived %s%s%s achievement: %s%s\n",
@@ -1262,12 +1262,16 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onFactionMemberJailed(byte[] command) {
 		//onUnhandledCommand(command);
-		Role role = game.getPlayer(command[1]).getRole();
+		
+		Player player = game.getPlayer(command[1]);
+		Role role = player.getRole();
+		
+		ANSI color = player.getTags().contains(PlayerTag.TRAITOR) ? (game.getMode().isCovenGamemode() ? ANSI.COVEN : ANSI.MAFIA) : ANSI.valueOf(role.getFaction().getName().toUpperCase());
 		System.out.printf(
 				"%s%s (%s%s%s) was hauled off to jail!%s\n",
 				ANSI.LIGHT_GRAY,
 				game.getPlayer(command[1]),
-				ANSI.valueOf(role.getFaction().getName().toUpperCase()),
+				color,
 				role.getName(),
 				ANSI.LIGHT_GRAY,
 				ANSI.GRAY
@@ -1290,7 +1294,7 @@ public class ServerMessageHandler extends MessageHandler {
 		System.out.printf(
 				"%s%s%s\n",
 				ANSI.GREEN,
-				Game.insertColors(Game.STRING_TABLE.get("GUI_EXECUTIONER_CONVERTED_TO_27").getText(), ANSI.GREEN),
+				Game.insertColors(Game.STRING_TABLE.get("GUI_EXECUTIONER_CONVERTED_TO_27").getText(), ANSI.GREEN, game),
 				ANSI.GRAY
 		);
 	}
@@ -1392,7 +1396,7 @@ public class ServerMessageHandler extends MessageHandler {
 					ANSI.RESET,
 					ANSI.GRAY
 			);
-			System.out.printf("%sWill:\n%s%s\n\n", ANSI.RESET, Game.insertColors(will), ANSI.GRAY);
+			System.out.printf("%sWill:\n%s%s\n\n", ANSI.RESET, Game.insertColors(will, game), ANSI.GRAY);
 		}
 	}
 
@@ -1505,7 +1509,7 @@ public class ServerMessageHandler extends MessageHandler {
 		StringTableMessage msg = Game.STRING_TABLE.get(will.trim().isEmpty() ? "GUI_FOUND_NO_WILL" : "GUI_FOUND_WILL");
 		System.out.println(ANSI.RESET+msg.getText());
 		if(!will.trim().isEmpty()) {
-			System.out.printf("%s%s%s\n", ANSI.RESET, Game.insertColors(will), ANSI.GRAY);
+			System.out.printf("%s%s%s\n", ANSI.RESET, Game.insertColors(will, game), ANSI.GRAY);
 		}
 		System.out.println();
 	}
@@ -1839,10 +1843,10 @@ public class ServerMessageHandler extends MessageHandler {
 		game.setPhase(GamePhase.DEEMED_NOT_GUILTY);
 		System.out.printf(
 				"%s%s%s\n",
-				ANSI.RESET,
+				ANSI.GREEN,
 				msg.getText().replace("%name%", game.getPlayerOnTrial().getName())
-							 .replace("%x%", ANSI.RED + String.valueOf(command[1]-1) + ANSI.RESET)
-							 .replace("%y%", ANSI.GREEN + String.valueOf(command[2]-1) + ANSI.RESET),
+							 .replace("%x%", ANSI.RED + String.valueOf(command[1]-1) + ANSI.GREEN)
+							 .replace("%y%", ANSI.TOWN + String.valueOf(command[2]-1) + ANSI.GREEN),
 				ANSI.GRAY
 		);
 		game.clearPlayerOnTrial();
@@ -1854,10 +1858,10 @@ public class ServerMessageHandler extends MessageHandler {
 		game.setPhase(GamePhase.DEEMED_GUILTY);
 		System.out.printf(
 				"%s%s%s\n",
-				ANSI.RESET,
+				ANSI.GREEN,
 				msg.getText().replace("%name%", game.getPlayerOnTrial().getName())
-							 .replace("%x%", ANSI.RED + String.valueOf(command[1]-1) + ANSI.RESET)
-							 .replace("%y%", ANSI.GREEN + String.valueOf(command[2]-1) + ANSI.RESET),
+							 .replace("%x%", ANSI.RED + String.valueOf(command[1]-1) + ANSI.GREEN)
+							 .replace("%y%", ANSI.TOWN + String.valueOf(command[2]-1) + ANSI.GREEN),
 				ANSI.GRAY
 		);
 	}
@@ -1952,7 +1956,7 @@ public class ServerMessageHandler extends MessageHandler {
 			roleMsg = Game.STRING_TABLE.get("GUI_WE_COULD_NOT_DETERMINE_XROLE");
 			System.out.printf(
 					"%s (%s%s%s)%s\n",
-					roleMsg.getText(),
+					roleMsg.getText().replace("%name%", player.getName()),
 					color,
 					role.getPlayerTags().stream().map(String::valueOf).collect(Collectors.joining(", ")),
 					ANSI.RESET,
@@ -2059,7 +2063,7 @@ public class ServerMessageHandler extends MessageHandler {
 	public void onScrollConsumed(byte[] command) {
 		//onUnhandledCommand(command);
 		Scroll scroll = Game.SCROLLS[Integer.parseInt(new String(Arrays.copyOfRange(command, 1, command.length-1)))];
-		System.out.printf("%sScroll used: %s%s\n", ANSI.RESET, Game.insertColors(scroll.toString()), ANSI.GRAY);
+		System.out.printf("%sScroll used: %s%s\n", ANSI.RESET, Game.insertColors(scroll.toString(), game), ANSI.GRAY);
 	}
 
 	
@@ -2210,7 +2214,7 @@ public class ServerMessageHandler extends MessageHandler {
 				ANSI.RESET, 
 				role,
 				color,
-				Game.insertColors(new String(Arrays.copyOfRange(command, 2+offset, command.length-1)), color), 
+				Game.insertColors(new String(Arrays.copyOfRange(command, 2+offset, command.length-1)), color, game), 
 				ANSI.GRAY
 		);
 	}
