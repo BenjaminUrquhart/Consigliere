@@ -10,12 +10,15 @@ import java.net.UnknownHostException;
 import java.security.Security;
 import java.sql.Timestamp;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
 
+import org.pcap4j.core.PcapAddress;
 import org.pcap4j.core.PcapDumper;
 
 import org.pcap4j.core.PcapHandle;
+import org.pcap4j.core.PcapHandle.TimestampPrecision;
 import org.pcap4j.core.PcapNativeException;
 import org.pcap4j.core.PcapNetworkInterface;
 import org.pcap4j.core.PcapNetworkInterface.PromiscuousMode;
@@ -70,9 +73,32 @@ public class TerminalOfSalem {
 				file.delete();
 			}
 			PcapNetworkInterface captureInterface = Pcaps.getDevByName("any");
+			List<PcapNetworkInterface> interfaces = Pcaps.findAllDevs();
 			
-			for(PcapNetworkInterface iface : Pcaps.findAllDevs()) {
+			for(PcapNetworkInterface iface : interfaces) {
 				System.out.printf("%s (%s): %s\n", iface.getName(), iface.getAddresses(), iface.getDescription());
+			}
+			if(captureInterface == null) {
+				if(interfaces.isEmpty()) {
+					System.err.println("No capture interfaces found!");
+					System.exit(1);
+				}
+				else {
+					System.out.println();
+					InetAddress addr;
+					selection:
+					for(PcapNetworkInterface iface : interfaces) {
+						for(PcapAddress address : iface.getAddresses()) {
+							addr = address.getAddress();
+							System.out.println(iface.getName() + " " + addr);
+							if(addr != null && !addr.toString().startsWith("/fe80:") && !addr.toString().equals("/0.0.0.0") && !addr.isLinkLocalAddress() && !addr.isMulticastAddress() && !addr.isLoopbackAddress()) {
+								captureInterface = iface;
+								break selection;
+							}
+						}
+					}
+					System.out.println();
+				}
 			}
 			System.out.printf(
 					"Capturing on interface %s (%s): %s...\n", 
@@ -80,7 +106,13 @@ public class TerminalOfSalem {
 					captureInterface.getAddresses(), 
 					captureInterface.getDescription()
 			);
-			handle = captureInterface.openLive(1<<16, PromiscuousMode.NONPROMISCUOUS, 10);
+			handle = new PcapHandle.Builder(captureInterface.getName())
+								   .promiscuousMode(PromiscuousMode.NONPROMISCUOUS)
+								   .timestampPrecision(TimestampPrecision.NANO)
+								   .timeoutMillis(10)
+								   //.bufferSize(1<<16)
+								   .build();
+			
 			dumper = handle.dumpOpen(filename);
 			System.out.println("Writing to " + filename);
 		}
@@ -121,6 +153,7 @@ public class TerminalOfSalem {
 		while(true) {
 			try {
 				tmp = handle.getNextPacketEx();
+				//System.out.println(tmp);
 				if(args.getMode() == Mode.REPLAY) {
 					current = handle.getTimestamp();
 					if(game.getPhase() == GamePhase.PICK_NAME) {
@@ -141,7 +174,8 @@ public class TerminalOfSalem {
 				continue;
 			}
 			catch(TimeoutException e) {
-				System.out.println(ANSI.GRAY+"Timed out while waiting for packets...");
+				//System.out.println(ANSI.GRAY+"Timed out while waiting for packets...");
+				//e.printStackTrace(System.out);
 				continue;
 			}
 			ipPacket = tmp.get(IpPacket.class);

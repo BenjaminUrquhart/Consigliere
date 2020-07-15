@@ -80,7 +80,7 @@ public class ClientMessageHandler extends MessageHandler {
 		System.out.printf(
 				"%sForged will:\n%s%s\n",
 				ANSI.LIGHT_GRAY,
-				Game.insertColors(new String(Arrays.copyOfRange(command, 1, command.length-1)), ANSI.LIGHT_GRAY),
+				Game.insertColors(new String(Arrays.copyOfRange(command, 1, command.length-1)), ANSI.LIGHT_GRAY, game),
 				ANSI.GRAY
 		);
 	}
@@ -330,7 +330,7 @@ public class ClientMessageHandler extends MessageHandler {
 									 .map(String::valueOf)
 									 .collect(Collectors.joining(", "));
 		System.out.println("Default Name: " + data[data.length-1]);
-		System.out.println("Scrolls: " + Game.insertColors(scrolledRoles)+ANSI.GRAY);
+		System.out.println("Scrolls: " + Game.insertColors(scrolledRoles, game)+ANSI.GRAY);
 	}
 
 }

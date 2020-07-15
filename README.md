@@ -1,6 +1,4 @@
-# IMPORTANT: with the new Town Traitor gamemode comes a change in how the game client communicates with the server. Due to security updates, to record games, the tool can no longer passively listen to network traffic. It must instead intercept it and forward it to the server. As of Unity update 3.2 (released May 28th, 2020), Consigliere will no longer correctly parse packets until a fix is implemented.
-
-# UPDATE: it appears the new connection method only applies to web. Steam and mobile still operate the same way. For now, I will be dropping support for the web client.
+# As of now, web is unsupported because it connects over websockets (as opposed to raw sockets)
 
 # Consigliere
 Record your Town of Salem sessions for post-game analysis.

@@ -179,16 +179,25 @@ public class Game {
 			throw new RuntimeException(e);
 		}
 	}
-	public static String insertColors(String text) {
-		return insertColors(text, ANSI.RESET);
+	public String insertColors(String text) {
+		return insertColors(text, ANSI.RESET, this);
 	}
-	public static String insertColors(String text, ANSI defaultColor) {
-		return insertColors(text, defaultColor.toString());
+	public String insertColors(String text, ANSI defaultColor) {
+		return insertColors(text, defaultColor.toString(), this);
 	}
-	public static String insertColors(String text, Color defaultColor) {
-		return insertColors(text, ANSI.toTrueColor(defaultColor));
+	public String insertColors(String text, Color defaultColor) {
+		return insertColors(text, ANSI.toTrueColor(defaultColor), this);
 	}
-	public static String insertColors(String text, String defaultColor) {
+	public static String insertColors(String text, Game ctx) {
+		return insertColors(text, ANSI.RESET, ctx);
+	}
+	public static String insertColors(String text, ANSI defaultColor, Game ctx) {
+		return insertColors(text, defaultColor.toString(), ctx);
+	}
+	public static String insertColors(String text, Color defaultColor, Game ctx) {
+		return insertColors(text, ANSI.toTrueColor(defaultColor), ctx);
+	}
+	public static String insertColors(String text, String defaultColor, Game ctx) {
 		Pattern pattern;
 		String match;
 		for(Role role : ROLES) {
@@ -212,6 +221,18 @@ public class Game {
 		for(Faction faction : FACTIONS) {
 			pattern = Game.getPatternFor(faction.getName());
 			match = String.format(Game.getReplacementFor(faction.getName(), ANSI.valueOf(faction.getName().toUpperCase())), defaultColor);
+			text = pattern.matcher(text).replaceAll(match);
+		}
+		// Not using getMode() here because it will trigger the game mode auto-detection when used outside of a game
+		if(ctx != null && ctx.mode != null && ctx.mode.getName().contains("Traitor")) {
+			ANSI traitor = ctx.getMode().isCovenGamemode() ? ANSI.COVEN : ANSI.MAFIA;
+			
+			pattern = Game.getPatternFor("Town Traitor");
+			match = String.format(Game.getReplacementFor("Town Traitor", traitor), defaultColor);
+			text = pattern.matcher(text).replaceAll(match);
+			
+			pattern = Game.getPatternFor("TT");
+			match = String.format(Game.getReplacementFor("TT", traitor), defaultColor);
 			text = pattern.matcher(text).replaceAll(match);
 		}
 		return text;
@@ -245,6 +266,8 @@ public class Game {
 	
 	private GamePhase phase;
 	private GameMode mode;
+	
+	private Winner winner;
 	
 	private int abilitiesLeft;
 	
@@ -288,6 +311,9 @@ public class Game {
 	public List<Role> getRoleList() {
 		return rolelist;
 	}
+	public Winner getWinner() {
+		return winner;
+	}
 	public void setMode(GameMode mode) {
 		this.mode = mode;
 	}
@@ -300,9 +326,14 @@ public class Game {
 					p.setTarget(null);
 					p.setRole(null);
 					p.resurrect();
+					p.lose();
 				}
 			}
+			this.winner = null;
 		}
+	}
+	public void setWinner(Winner winner) {
+		this.winner = winner;
 	}
 	public void setRoleList(List<Role> list) {
 		this.rolelist = list;

@@ -14,6 +14,7 @@ public class Arguments {
 				fancy = true;
 				index++;
 			}
+			if(args.length <= index) return;
 			switch(args[index].toLowerCase()) {
 			case "--file": mode = Mode.REVIEW; break;
 			case "--preview": mode = Mode.SUMMARIZE; break;
