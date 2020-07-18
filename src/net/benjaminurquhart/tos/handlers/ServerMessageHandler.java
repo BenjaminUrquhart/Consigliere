@@ -1,6 +1,7 @@
 package net.benjaminurquhart.tos.handlers;
 
 import java.awt.Color;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -397,7 +398,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onJoinRankedQueue(byte[] command) {
-		String time = new String(Arrays.copyOfRange(command, 2, command.length-1));
+		String time = new String(Arrays.copyOfRange(command, 2, command.length-1), Charset.forName("UTF-8"));
 		// For some reason, the server uses the same message ID for referrals as ranked queues.
 		// Why? Beats me. At least referrals aren't numeric data.
 		if(!time.matches("\\d+")) {
@@ -444,7 +445,7 @@ public class ServerMessageHandler extends MessageHandler {
 		int seperator = this.indexOf(command, (byte)'*');
 		byte status = command[seperator+1];
 		
-		String name = new String(Arrays.copyOfRange(command, 1, seperator));
+		String name = new String(Arrays.copyOfRange(command, 1, seperator), Charset.forName("UTF-8"));
 		switch(status) {
 		case 1: System.out.printf("%s%s was invited to the party\n", ANSI.GRAY, name);
 		case 2: System.out.printf("%s%s rejected the party invite\n", ANSI.GRAY, name); break;
@@ -464,7 +465,7 @@ public class ServerMessageHandler extends MessageHandler {
 		System.out.printf(
 				"%s%s%s can now invite others to the party%s\n", 
 				ANSI.RESET,
-				new String(Arrays.copyOfRange(command, 1, command.length-1)),
+				new String(Arrays.copyOfRange(command, 1, command.length-1), Charset.forName("UTF-8")),
 				ANSI.GREEN,
 				ANSI.GRAY
 		);
@@ -473,16 +474,16 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onPartyInvite(byte[] command) {
 		int seperator = this.indexOf(command, (byte)'*');
-		String username = new String(Arrays.copyOfRange(command, seperator+1, command.length-1));
-		String party = new String(Arrays.copyOfRange(command, 1, seperator));
+		String username = new String(Arrays.copyOfRange(command, seperator+1, command.length-1), Charset.forName("UTF-8"));
+		String party = new String(Arrays.copyOfRange(command, 1, seperator), Charset.forName("UTF-8"));
 		System.out.printf("%sReceived party invite from %s%s (%s)%s\n", ANSI.GREEN, ANSI.RESET, username, party, ANSI.GRAY);
 	}
 
 	
 	public void onPartyChatBoxMessage(byte[] command) {
 		int seperator = this.indexOf(command, (byte)'*');
-		String message = new String(Arrays.copyOfRange(command, seperator+1, command.length-1));
-		String name = new String(Arrays.copyOfRange(command, 1, seperator));
+		String message = new String(Arrays.copyOfRange(command, seperator+1, command.length-1), Charset.forName("UTF-8"));
+		String name = new String(Arrays.copyOfRange(command, 1, seperator), Charset.forName("UTF-8"));
 		System.out.printf("%s%s: %s%s\n", ANSI.RESET, name, Game.insertColors(message, game), ANSI.GRAY);
 	}
 
@@ -500,8 +501,8 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onGameStatus(byte[] command) {
 		int asterisk = this.indexOf(command, (byte)'*');
-		int players = Integer.parseInt(new String(Arrays.copyOfRange(command, 1, asterisk)));
-		int games = Integer.parseInt(new String(Arrays.copyOfRange(command, asterisk+1, command.length-1)));
+		int players = Integer.parseInt(new String(Arrays.copyOfRange(command, 1, asterisk), Charset.forName("UTF-8")));
+		int games = Integer.parseInt(new String(Arrays.copyOfRange(command, asterisk+1, command.length-1), Charset.forName("UTF-8")));
 		System.out.printf("%s%d players online (%d games running)%s\n", ANSI.GREEN, players, games, ANSI.GRAY);
 	}
 
@@ -933,7 +934,7 @@ public class ServerMessageHandler extends MessageHandler {
 	public void onRoleLotsInfoMesssage(byte[] command) {
 		game.setPhase(GamePhase.GET_ROLE);
 		System.out.printf("%s------------------Role Lots--------------------\n", ANSI.RESET);
-		String[] lots = new String(Arrays.copyOfRange(command, 1, command.length-1)).split("\\*"), tmp;
+		String[] lots = new String(Arrays.copyOfRange(command, 1, command.length-1), Charset.forName("UTF-8")).split("\\*"), tmp;
 		int mine, total;
 		Role role;
 		for(String lot : lots) {
@@ -965,7 +966,6 @@ public class ServerMessageHandler extends MessageHandler {
 		onChatBoxMessage(command);
 	}
 
-	// TODO: determine who Town Traitor is if they are still living when the game ends
 	public void onEndGameInfo(byte[] command) {
 		//onUnhandledCommand(command);
 		String infoString = this.convertToString(Arrays.copyOfRange(command, this.indexOf(command, (byte)'(')-1, command.length));
@@ -1147,7 +1147,7 @@ public class ServerMessageHandler extends MessageHandler {
 					ANSI.GRAY,
 					game.getPlayer(command[3]),
 					color,
-					new String(Arrays.copyOfRange(command, 4, command.length-1)),
+					new String(Arrays.copyOfRange(command, 4, command.length-1), Charset.forName("UTF-8")),
 					ANSI.GRAY
 			);
 		}
@@ -1159,7 +1159,7 @@ public class ServerMessageHandler extends MessageHandler {
 					ANSI.GRAY,
 					game.getPlayer(command[2]),
 					color,
-					new String(Arrays.copyOfRange(command, 3, command.length-1)),
+					new String(Arrays.copyOfRange(command, 3, command.length-1), Charset.forName("UTF-8")),
 					ANSI.GRAY
 			);
 		}
@@ -1227,7 +1227,7 @@ public class ServerMessageHandler extends MessageHandler {
 				"%sDeath Note:\n%s%s%s\n",
 				ANSI.RESET,
 				ANSI.RED,
-				new String(Arrays.copyOfRange(command, 3, command.length-1)).replace((char)0x0d, '\n'),
+				new String(Arrays.copyOfRange(command, 3, command.length-1), Charset.forName("UTF-8")).replace((char)0x0d, '\n'),
 				ANSI.GRAY
 		);
 	}
@@ -1385,7 +1385,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	public void onTellJanitorTargetsWill(byte[] command) {
 		//onUnhandledCommand(command);
-		String will = new String(Arrays.copyOfRange(command, 2, command.length-1)).replace((char)0x0d, '\n');
+		String will = new String(Arrays.copyOfRange(command, 2, command.length-1), Charset.forName("UTF-8")).replace((char)0x0d, '\n');
 		if(!will.trim().isEmpty()) {
 			System.out.printf(
 					"%s%s%s\n%s%s%s\n",
@@ -1505,7 +1505,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onTellLastWill(byte[] command) {
-		String will = new String(Arrays.copyOfRange(command, 3, command.length-1)).replace((char)0x0d, '\n');
+		String will = new String(Arrays.copyOfRange(command, 3, command.length-1), Charset.forName("UTF-8")).replace((char)0x0d, '\n');
 		StringTableMessage msg = Game.STRING_TABLE.get(will.trim().isEmpty() ? "GUI_FOUND_NO_WILL" : "GUI_FOUND_WILL");
 		System.out.println(ANSI.RESET+msg.getText());
 		if(!will.trim().isEmpty()) {
@@ -1576,7 +1576,6 @@ public class ServerMessageHandler extends MessageHandler {
 		game.getPlayer(command[1]).setRole(Game.ROLE_TABLE.get("Mayor"));
 	}
 
-	
 	public void onJesterCompletedGoal(byte[] command) {
 		onUnhandledCommand(command);
 		StringTableMessage msg = Game.STRING_TABLE.get("GUI_JESTER_COMPLETED_GOAL");
@@ -1586,6 +1585,30 @@ public class ServerMessageHandler extends MessageHandler {
 				msg.getText(),
 				ANSI.GRAY
 		);
+		List<Player> targets = new ArrayList<>();
+		for(int i = 1; i < command.length-1; i++) {
+			targets.add(game.getPlayer(command[i]));
+		}
+		targets.sort((a,b) -> a.getPosition()-b.getPosition());
+		System.out.printf("%sAvailable Jester targets:\n", ANSI.RESET);
+		for(Player player : targets) {
+			System.out.printf(
+					"%s(%02d) %-16s - %-35s",
+					ANSI.RESET,
+					player.getPosition(), 
+					player, 
+					player.getLatestJudgementVote()
+			);
+			if(player.getRole() != null) {
+				System.out.printf(
+						"(%s%s%s)",
+						ANSI.toTrueColor(player.getRole().getColor()),
+						player.getRole().getName(),
+						ANSI.RESET
+				);
+			}
+			System.out.println(ANSI.GRAY);
+		}
 	}
 
 	
@@ -1602,6 +1625,7 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onTellJudgementVotes(byte[] command) {
 		StringTableMessage verdict, vote = Game.STRING_TABLE.get("GUI_JUDGEMENT_VOTED");
+		Player player = game.getPlayer(command[1]);
 		String msgID = "GUI_JUDGEMENT_";
 		boolean abstained = false;
 		Color color = Color.GRAY;
@@ -1611,15 +1635,18 @@ public class ServerMessageHandler extends MessageHandler {
 		case 3: color = Color.CYAN; msgID += "ABSTAINED"; abstained = true; break;
 		}
 		verdict = Game.STRING_TABLE.get(msgID);
-		String result = game.getPlayer(command[1]).getName() + ANSI.GREEN + " ";
-		if(!abstained) {
-			result += vote.getText() + " ";
+		if(abstained) {
+			player.setLatestJudgementVote(ANSI.toTrueColor(color) + verdict.getText() + ANSI.RESET);
 		}
-		result += ANSI.toTrueColor(color) + verdict.getText();
+		else {
+			player.setLatestJudgementVote(vote.getText() + " " + ANSI.toTrueColor(color) + verdict.getText() + ANSI.RESET);
+		}
 		System.out.printf(
-				"%s%s%s\n",
+				"%s%s%s %s%s\n",
 				ANSI.RESET,
-				result,
+				player.getName(),
+				ANSI.GREEN,
+				player.getLatestJudgementVote(),
 				ANSI.GRAY
 		);
 	}
@@ -1733,7 +1760,7 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onUserChosenName(byte[] command) {
 		//onUnhandledCommand(command);
-		String name = new String(Arrays.copyOfRange(command, 3, command.length-1));
+		String name = new String(Arrays.copyOfRange(command, 3, command.length-1), Charset.forName("UTF-8"));
 		game.updatePlayerName(name, command[2]);
 		System.out.printf("%s%s (%d) has joined the Town%s\n", ANSI.GREEN, name, command[2], ANSI.GRAY);
 	}
@@ -2037,7 +2064,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onNamesAndPositionsOfUsers(byte[] command) {
-		game.updatePlayerName(new String(Arrays.copyOfRange(command, 2, command.length-1)), command[1]);
+		game.updatePlayerName(new String(Arrays.copyOfRange(command, 2, command.length-1), Charset.forName("UTF-8")), command[1]);
 	}
 
 	
@@ -2062,7 +2089,7 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onScrollConsumed(byte[] command) {
 		//onUnhandledCommand(command);
-		Scroll scroll = Game.SCROLLS[Integer.parseInt(new String(Arrays.copyOfRange(command, 1, command.length-1)))];
+		Scroll scroll = Game.SCROLLS[Integer.parseInt(new String(Arrays.copyOfRange(command, 1, command.length-1), Charset.forName("UTF-8")))];
 		System.out.printf("%sScroll used: %s%s\n", ANSI.RESET, Game.insertColors(scroll.toString(), game), ANSI.GRAY);
 	}
 
@@ -2214,7 +2241,7 @@ public class ServerMessageHandler extends MessageHandler {
 				ANSI.RESET, 
 				role,
 				color,
-				Game.insertColors(new String(Arrays.copyOfRange(command, 2+offset, command.length-1)), color, game), 
+				Game.insertColors(new String(Arrays.copyOfRange(command, 2+offset, command.length-1), Charset.forName("UTF-8")), color, game), 
 				ANSI.GRAY
 		);
 	}
@@ -2241,7 +2268,7 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onUsersJoinedLobby(byte[] command) {
 		int asterisk = this.indexOf(command, (byte)'*');
-		String name = new String(Arrays.copyOfRange(command, 3, asterisk));
+		String name = new String(Arrays.copyOfRange(command, 3, asterisk), Charset.forName("UTF-8"));
 		System.out.printf(
 				"%sPlayer #%d (%s) joined the game%s\n",
 				ANSI.GRAY,

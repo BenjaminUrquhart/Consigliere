@@ -1,5 +1,6 @@
 package net.benjaminurquhart.tos.handlers;
 
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.stream.Collectors;
@@ -80,7 +81,7 @@ public class ClientMessageHandler extends MessageHandler {
 		System.out.printf(
 				"%sForged will:\n%s%s\n",
 				ANSI.LIGHT_GRAY,
-				Game.insertColors(new String(Arrays.copyOfRange(command, 1, command.length-1)), ANSI.LIGHT_GRAY, game),
+				Game.insertColors(new String(Arrays.copyOfRange(command, 1, command.length-1), Charset.forName("UTF-8")), ANSI.LIGHT_GRAY, game),
 				ANSI.GRAY
 		);
 	}
@@ -154,7 +155,12 @@ public class ClientMessageHandler extends MessageHandler {
 	}
 	private void onUserReported(byte[] command) {
 		//this.onUnhandledCommand(command);
-		System.out.printf("%sA report was filed for %s (%s)\n", ANSI.GRAY, game.getPlayer(command[1]), new String(Arrays.copyOfRange(command, 3, command.length-1)));
+		System.out.printf(
+				"%sA report was filed for %s (%s)\n", 
+				ANSI.GRAY, 
+				game.getPlayer(command[1]), 
+				new String(Arrays.copyOfRange(command, 3, command.length-1), Charset.forName("UTF-8"))
+		);
 	}
 	private void onUserChangedTarget(byte[] command) {
 		//onUnhandledCommand(command);
@@ -265,7 +271,7 @@ public class ClientMessageHandler extends MessageHandler {
 		System.out.printf(
 				"%sDeath Note updated:\n%s\n",
 				ANSI.GRAY,
-				new String(Arrays.copyOfRange(command, 1, command.length-1)).replace((char)0x0d, '\n')
+				new String(Arrays.copyOfRange(command, 1, command.length-1), Charset.forName("UTF-8")).replace((char)0x0d, '\n')
 		);
 	}
 	private void onUserVoteUpdate(byte[] command) {
@@ -275,7 +281,7 @@ public class ClientMessageHandler extends MessageHandler {
 		System.out.printf(
 				"%sWill updated:\n%s\n", 
 				ANSI.GRAY, 
-				new String(Arrays.copyOfRange(command, 1, command.length-1)).replace((char)0x0d, '\n')
+				new String(Arrays.copyOfRange(command, 1, command.length-1), Charset.forName("UTF-8")).replace((char)0x0d, '\n')
 		);
 	}
 	private void onChat(byte[] command) {
@@ -283,7 +289,7 @@ public class ClientMessageHandler extends MessageHandler {
 	}
 	private void onUnityLoginAttempt(byte[] command) {
 		System.out.println("Attemping to log in via Unity...");
-		JSONObject json = new JSONObject(new String(Arrays.copyOfRange(command, 1, command.length-1)));
+		JSONObject json = new JSONObject(new String(Arrays.copyOfRange(command, 1, command.length-1), Charset.forName("UTF-8")));
 		System.out.println(ANSI.GRAY+"{");
 		for(String key : json.keySet()) {
 			System.out.printf("\t\"%s\":\"%s\"\n", key, json.get(key));
@@ -319,7 +325,7 @@ public class ClientMessageHandler extends MessageHandler {
 	private void onFlashLoginAttempt(byte[] command) {
 		int start = this.indexOf(command, (byte)0x1e)+1;
 		int end = this.indexOf(command, (byte)0x1e, start);
-		System.out.println("Attempting to log in as user " + new String(Arrays.copyOfRange(command, start, end)) + "...");
+		System.out.println("Attempting to log in as user " + new String(Arrays.copyOfRange(command, start, end), Charset.forName("UTF-8")) + "...");
 	}
 	public void onCustomizationUpdate(byte[] command) {
 		String[] data = this.convertToString(command).split(",");

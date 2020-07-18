@@ -1,5 +1,6 @@
 package net.benjaminurquhart.tos.handlers;
 
+import java.nio.charset.Charset;
 import java.util.Arrays;
 
 import net.benjaminurquhart.tos.game.ANSI;
@@ -66,7 +67,7 @@ public abstract class MessageHandler {
 			if(b < 0) {
 				b&=0xff;
 			}
-			if((now = new String(new byte[]{(byte)b})).matches("\\p{C}")) {
+			if((now = new String(new byte[]{(byte)b}, Charset.forName("UTF-8"))).matches("\\p{C}")) {
 				if(!wasUnprintable && sb.length() > 0) {
 					sb.append(' ');
 				}

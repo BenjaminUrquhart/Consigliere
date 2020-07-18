@@ -91,7 +91,7 @@ public class TerminalOfSalem {
 						for(PcapAddress address : iface.getAddresses()) {
 							addr = address.getAddress();
 							System.out.println(iface.getName() + " " + addr);
-							if(addr != null && !addr.toString().startsWith("/fe80:") && !addr.toString().equals("/0.0.0.0") && !addr.isLinkLocalAddress() && !addr.isMulticastAddress() && !addr.isLoopbackAddress()) {
+							if(addr != null && !addr.toString().startsWith("/fe80:") && !addr.toString().startsWith("/172.") && !addr.toString().equals("/0.0.0.0") && !addr.isLinkLocalAddress() && !addr.isMulticastAddress() && !addr.isLoopbackAddress()) {
 								captureInterface = iface;
 								break selection;
 							}

@@ -18,10 +18,12 @@ public class Player {
 	private Role role;
 	
 	private Killer[] killers;
-	
 	private Player target;
 	
+	private String latestJudgement;
+	
 	public Player(String name, int position) {
+		this.latestJudgement = "N/A";
 		this.position = position;
 		this.name = name;
 		
@@ -31,6 +33,9 @@ public class Player {
 		this.tags = new HashSet<>();
 	}
 	
+	public String getLatestJudgementVote() {
+		return latestJudgement;
+	}
 	public CharacterSkin getCharacter() {
 		return character;
 	}
@@ -59,6 +64,9 @@ public class Player {
 		return role;
 	}
 	
+	public void setLatestJudgementVote(String judgement) {
+		this.latestJudgement = judgement;
+	}
 	public void setCharacter(CharacterSkin character) {
 		this.character = character;
 	}
