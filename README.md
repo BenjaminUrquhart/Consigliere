@@ -32,10 +32,6 @@ This project relies on `libpcap` for capturing packets. You will need to install
 I would greatly appriciate game captures for the following roles:
 
 **Classic:**
-- Lookout (with visits)
-- ~~Transporter~~
-- ~~Witch~~
-- ~~Mayor (You must be the mayor. Preferably with a reveal)~~
 - Jailor (Executed Townie only)
 - Vigilante (Death from guilt only)
 - Vampire Hunter (Vampire chat and/or conversion to Vigilante)
@@ -43,15 +39,10 @@ I would greatly appriciate game captures for the following roles:
 - ~~Executioner (Preferably with a successful lynch)~~ I got a game, working on it.
 
 **Coven DLC:**
-- Guardian Angel
-- Coven Leader (You must be Coven, but CANNOT be the CL)
-- Hex Master
-- Potion Master (Prefereably you being the PM. Please tell me which potions were used)
-- ~~Tracker (with visits)~~
-- ~~Trapper~~
-- ~~Pirate~~
+- Juggernaut (Must get at least one kill)
+
+Additionally I would like complete captures for Town Traitor games. I don't think there's any major issues but if you notice something wrong don't hesitate to let me know.
 
 # Known Bugs
-- Potion Master potions are wrong
-- Necromancer will always start the night by "changing their mind"
+- ~~Necromancer will always start the night by "changing their mind"~~ Fixed?
 
