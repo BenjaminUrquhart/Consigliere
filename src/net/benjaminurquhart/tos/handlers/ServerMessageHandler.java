@@ -279,11 +279,16 @@ public class ServerMessageHandler extends MessageHandler {
 	                 case 228: onDefaultFunction(command); break;
 	                 case 239: onTownTraitor(command); break;
 	                 case 240: onTownTraitorCountdown(command); break;
+	                 case 241: onAnonymousVotingUpdate(command); break;
 	                default: onUnhandledCommand(command); break;
 	        }
 	    }
 	
 	
+	private void onAnonymousVotingUpdate(byte[] command) {
+		onUnhandledCommand(command);
+		System.out.println("Anonymous voting thing");
+	}
 	private void onPlayersDoused(byte[] command) {
 		onUnhandledCommand(command);
 		
@@ -1524,13 +1529,21 @@ public class ServerMessageHandler extends MessageHandler {
 	public void onHowManyAbilitiesLeft(byte[] command) {
 		game.setAbilitiesLeft(command[1]-1);
 	}
-
 	
 	public void onTellLastWill(byte[] command) {
-		String will = new String(Arrays.copyOfRange(command, 3, command.length-1), Charset.forName("UTF-8")).replace((char)0x0d, '\n');
-		StringTableMessage msg = Game.STRING_TABLE.get(will.trim().isEmpty() ? "GUI_FOUND_NO_WILL" : "GUI_FOUND_WILL");
-		System.out.println(ANSI.RESET+msg.getText());
-		if(!will.trim().isEmpty()) {
+		Object color = ANSI.RESET;
+		boolean hasWill = false;
+		String key = "";
+		switch(command[2]) {
+		case 1:  key = "GUI_FOUND_NO_WILL"; break;
+		case 2:  key = "GUI_FOUND_WILL"; hasWill = true; break;
+		case 3:  key = "GUI_FOUND_BLOOD_COVERED_WILL"; color = ANSI.RED; break;
+		default: key = "GUI_ERROR"; hasWill = true; break;
+		}
+		StringTableMessage msg = Game.STRING_TABLE.get(key);
+		System.out.println(color+msg.getText());
+		if(hasWill) {
+			String will = new String(Arrays.copyOfRange(command, 3, command.length-1), Charset.forName("UTF-8")).replace((char)0x0d, '\n');
 			System.out.printf("%s%s%s\n", ANSI.RESET, Game.insertColors(will, game), ANSI.GRAY);
 		}
 		System.out.println();
