@@ -190,7 +190,7 @@ public class ServerMessageHandler extends MessageHandler {
 	                 case 140: onExecutionerConvertedToJester(command); break;
 	                 case 141: onAmnesiacBecameMafiaOrCoven(command); break;
 	                 case 142: onUserDisconnected(command); break;
-	                 case 143: onFactionMemberJailed(command); break;
+	                 case 143: onSomeoneJailedTellFaction(command); break;
 	                 case 144: onInvalidNameMessage(command); break;
 	                 case 145: onStartNightTransition(command); break;
 	                 case 146: onStartDayTransition(command); break;
@@ -199,7 +199,7 @@ public class ServerMessageHandler extends MessageHandler {
 	                 case 149: onDefaultFunction(command); break;
 	                 case 150: onHousesChosen(command); break;
 	                 case 151: onFirstDayTransition(command); break;
-	                 case 152: onDefaultFunction(command); break;
+	                 case 152: onPlayersDoused(command); break;
 	                 case 153: onCharactersChosen(command); break;
 	                 case 154: onResurrectionSetAlive(command); break;
 	                 case 155: onStartDefense(command); break;
@@ -284,6 +284,16 @@ public class ServerMessageHandler extends MessageHandler {
 	    }
 	
 	
+	private void onPlayersDoused(byte[] command) {
+		onUnhandledCommand(command);
+		
+		Player player;
+		for(int i = 2; i < command.length-1; i++) {
+			player = game.getPlayer(command[i]);
+			System.out.printf("%s%s was doused\n", ANSI.GRAY, player);
+			player.addTag(PlayerTag.DOUSED);
+		}
+	}
 	private void onTownTraitorCountdown(byte[] command) {
 		StringTableMessage countdown = Game.STRING_TABLE.get(command[1] == 1 ? "GUI_DAYS_LEFT_TO_FIND_TRAITOR_DAY" : "GUI_DAYS_LEFT_TO_FIND_TRAITOR_DAY_2");
 		StringTableMessage warning = Game.STRING_TABLE.get("GUI_DAYS_LEFT_TO_FIND_TRAITOR_DAY_3");
@@ -567,8 +577,12 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onPlagueSpread(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_PLAGUED_TARGET");
+		Player player;
 		for(int i = 1; i < command.length-1; i++) {
-			System.out.printf("%s%s was infected with the plague\n", ANSI.GRAY, game.getPlayer(command[i]));
+			player = game.getPlayer(command[i]);
+			System.out.printf("%s%s\n", ANSI.GRAY, msg.getText().replace("%name%", player.getName()));
+			player.addTag(PlayerTag.INFECTED);
 		}
 	}
 
@@ -589,6 +603,7 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onZombieRotted(byte[] command) {
 		Player zombie = game.getPlayer(command[1]);
+		zombie.addTag(PlayerTag.DECAYED);
 		System.out.printf(
 				"%s%s (%s%s%s) has rotted\n",
 				ANSI.GRAY,
@@ -674,8 +689,15 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onJuggernautKillCount(byte[] command) {
-		onUnhandledCommand(command);
-		
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_ROLE_53_FEEDBACK"+(command[1]-1));
+		System.out.printf(
+				"%s%s%s%s%s\n",
+				ANSI.BLACK,
+				ANSI.GREEN,
+				msg.getText(),
+				ANSI.RESET,
+				ANSI.GRAY
+		);
 	}
 
 	
@@ -975,7 +997,7 @@ public class ServerMessageHandler extends MessageHandler {
 		Role role;
 		
 		Player player;
-		boolean traitorFound = Arrays.stream(game.getPlayers()).filter(p -> p != null).anyMatch(p -> p.getTags().contains(PlayerTag.TRAITOR));
+		boolean traitorFound = Arrays.stream(game.getPlayers()).filter(p -> p != null).anyMatch(p -> p.getTags().contains(PlayerTag.TRAITOR)) || game.getWinner() == Game.WINNERS[18]; // Special case for Lovers Mode
 		
 		String[] info, table = new String[15];
 		while(matcher.find()) {
@@ -1260,19 +1282,19 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	
-	public void onFactionMemberJailed(byte[] command) {
+	public void onSomeoneJailedTellFaction(byte[] command) {
 		//onUnhandledCommand(command);
 		
 		Player player = game.getPlayer(command[1]);
 		Role role = player.getRole();
 		
-		ANSI color = player.getTags().contains(PlayerTag.TRAITOR) ? (game.getMode().isCovenGamemode() ? ANSI.COVEN : ANSI.MAFIA) : ANSI.valueOf(role.getFaction().getName().toUpperCase());
+		ANSI color = player.getTags().contains(PlayerTag.TRAITOR) ? (game.getMode().isCovenGamemode() ? ANSI.COVEN : ANSI.MAFIA) : (role == null ? ANSI.LIGHT_GRAY : ANSI.valueOf(role.getFaction().getName().toUpperCase()));
 		System.out.printf(
 				"%s%s (%s%s%s) was hauled off to jail!%s\n",
 				ANSI.LIGHT_GRAY,
 				game.getPlayer(command[1]),
 				color,
-				role.getName(),
+				role == null ? "???" : role.getName(),
 				ANSI.LIGHT_GRAY,
 				ANSI.GRAY
 		);
@@ -1558,9 +1580,9 @@ public class ServerMessageHandler extends MessageHandler {
 		
 	}
 
-	
+	// Unneeded, we don't track votes (yet?)
 	public void onMayorRevealedAndAlreadyVoted(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		
 	}
 
@@ -1577,7 +1599,7 @@ public class ServerMessageHandler extends MessageHandler {
 	}
 
 	public void onJesterCompletedGoal(byte[] command) {
-		onUnhandledCommand(command);
+		//onUnhandledCommand(command);
 		StringTableMessage msg = Game.STRING_TABLE.get("GUI_JESTER_COMPLETED_GOAL");
 		System.out.printf(
 				"%s%s%s\n", 
@@ -1589,7 +1611,12 @@ public class ServerMessageHandler extends MessageHandler {
 		for(int i = 1; i < command.length-1; i++) {
 			targets.add(game.getPlayer(command[i]));
 		}
+		
+		// See: https://www.blankmediagames.com/phpbb/viewtopic.php?f=10&t=110851
+		// Sorting here in the meanwhile to prevent abuse
+		// Plus, it looks better this way
 		targets.sort((a,b) -> a.getPosition()-b.getPosition());
+		
 		System.out.printf("%sAvailable Jester targets:\n", ANSI.RESET);
 		for(Player player : targets) {
 			System.out.printf(

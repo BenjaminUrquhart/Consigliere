@@ -38,6 +38,7 @@ public class ClientMessageHandler extends MessageHandler {
     	case 10: onUserVoteUpdate(command); break;
     	case 11: onUserSelectedTarget(command); break;
     	case 12: onUserSelectedSecondTarget(command); break;
+    	case 13: onUserDecidedToBeCautious(command); break;
     	case 14: onUserJudgedGuilty(command); break;
     	case 15: onUserJudgedInnocent(command); break;
     	case 16: onUserSelectedDayTarget(command); break;
@@ -67,6 +68,17 @@ public class ClientMessageHandler extends MessageHandler {
     	}
     }
 
+	// New Serial Killer ability
+	private void onUserDecidedToBeCautious(byte[] command) {
+		StringTableMessage msg = Game.STRING_TABLE.get("GUI_ROLE_28_TARGETING_X"+(3-command[1])+"_SELF");
+		
+		System.out.printf(
+				"%s%s\n",
+				ANSI.GRAY,
+				msg.getText()
+		);
+		
+	}
 	private void onUserChoseJailorDeathNote(byte[] command) {
 		StringTableMessage msg = Game.STRING_TABLE.get("GUI_JAILOR_MENU_OPTION"+command[1]);
 		System.out.printf(
@@ -104,6 +116,14 @@ public class ClientMessageHandler extends MessageHandler {
 	}
 	private void onUserChosePirateAction(byte[] command) {
 		//onUnhandledCommand(command);
+		
+		// Um, what?
+		if(command.length != 3) {
+			System.out.printf("%sWarning: unexpected pirate duel message %s\n", ANSI.ORANGE, this.convertToString(command, false));
+			command = new byte[] {command[0], (byte)1, (byte)0};
+			System.out.printf("Treating as %s%s\n", this.convertToString(command, false), ANSI.GRAY);
+		}
+		
 		StringTableMessage msg;
 		String action;
 		if(game.getSelfPlayer().getRole().equals(Game.ROLE_TABLE.get("Pirate"))) {
@@ -113,6 +133,7 @@ public class ClientMessageHandler extends MessageHandler {
 			action = "DEFEND";
 		}
 		msg = Game.STRING_TABLE.get("GUI_PIRATE_"+action+command[1]+"NOTICE");
+		//System.out.println(msg);
 		System.out.printf("%s%s%s\n", ANSI.GREEN, msg.getText().replace("%name%", String.valueOf(game.getSelfPlayer().getTarget())), ANSI.RESET);
 	}
 	private void onUserChoseHypnotistMessage(byte[] command) {

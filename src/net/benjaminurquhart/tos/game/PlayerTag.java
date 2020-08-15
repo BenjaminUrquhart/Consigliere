@@ -7,10 +7,14 @@ import java.util.regex.Pattern;
 public enum PlayerTag {
 
 	FULLMOON_ATTACK,
+	INFECTED,
+	DECAYED,
 	TRAITOR,
 	CLEANED,
+	HIDDEN,
 	STONED,
 	TARGET,
+	DOUSED,
 	LOVER,
 	
 	VIP("VIP");

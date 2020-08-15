@@ -3,9 +3,24 @@ package net.benjaminurquhart.tos.game.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.PlayerTag;
 
 public class Player {
+	
+	static class AnonymousPlayer extends Player {
+		
+		public static final AnonymousPlayer INSTANCE = new AnonymousPlayer();
+
+		private AnonymousPlayer() {
+			super(ANSI.GREEN + "Someone" + ANSI.RESET, 100);
+		}
+		
+	}
+	
+	public static AnonymousPlayer getAnonymousPlayer() {
+		return AnonymousPlayer.INSTANCE;
+	}
 	
 	private static final Killer[] NO_KILLERS = new Killer[0];
 	

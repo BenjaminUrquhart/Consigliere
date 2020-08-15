@@ -12,8 +12,11 @@ public enum ANSI {
 	CLEANED(new Color(0xCCCCCC)),
 	STONED(new Color(0xCCCCCC)),
 	
+	INFECTED(new Color(0xCFFF63)),
+	DECAYED(new Color(0x18DE95)),
 	ORANGE(new Color(0xFFA500)),
 	TARGET(new Color(0xAAAAEE)),
+	DOUSED(new Color(0xEE7600)),
 	LOVER(new Color(0xFF99CC)),
 	VIP(new Color(0x00B816)),
 	

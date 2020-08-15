@@ -41,6 +41,7 @@ public class TerminalOfSalem {
 			TOS_SERVER = Inet4Address.getByName("104.239.145.241");
 			
 			Security.setProperty("crypto.policy", "unlimited");
+			System.setProperty("crypto.policy", "unlimited");
 		}
 		catch(UnknownHostException e) {
 			throw new RuntimeException(e);

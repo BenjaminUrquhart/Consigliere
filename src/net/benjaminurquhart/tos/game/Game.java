@@ -300,6 +300,9 @@ public class Game {
 		return players;
 	}
 	public Player getPlayer(int position) {
+		if(position == 101) {
+			return Player.getAnonymousPlayer();
+		}
 		if(players[position-1] == null) {
 			this.updatePlayerName("Player "+position, position);
 		}

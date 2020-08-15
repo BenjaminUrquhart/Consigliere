@@ -12,7 +12,7 @@
 	},
 	"TOWN":["rb","res","rez","vip","rbd","inno","rbed","tplo","jail","trap","heal","stake","seance","seanced","staked","healed","jailed","transd","ressed","rezzed","transed","trapped","ressurect","transport","roleblocked","transported","ressurected","role blocked"],
 	"MAFIA":["bmd","bmed","clean","guilty","forge","ambush","forged","hypnod","cleaned","ambushed","blackmail","hypnotised"],
-	"COVEN":["hex","cld","hexed","witched","poisoned","controlled"],
+	"COVEN":["hex","cld","hexed","poison","witched","poisoned","controlled"],
 	"PIRATE":["duel","dueled","pirated","plundered"],
 	"VAMPIRE":["bit","bite"],
 	"ARSONIST":["douse","doused","ignite","ignited"],
