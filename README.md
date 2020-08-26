@@ -35,14 +35,10 @@ I would greatly appriciate game captures for the following roles:
 - Jailor (Executed Townie only)
 - Vigilante (Death from guilt only)
 - Vampire Hunter (Vampire chat and/or conversion to Vigilante)
-- Jester (Lynched - you must be the Jester)
-- ~~Executioner (Preferably with a successful lynch)~~ I got a game, working on it.
 
 **Coven DLC:**
-- Juggernaut (Must get at least one kill)
-
-Additionally I would like complete captures for Town Traitor games. I don't think there's any major issues but if you notice something wrong don't hesitate to let me know.
+- Pirate - there are some strange things happening with duels
 
 # Known Bugs
-- ~~Necromancer will always start the night by "changing their mind"~~ Fixed?
+- Retributionist's secondary message will not inherit the action verb of their zombie (defaults to "target")
 

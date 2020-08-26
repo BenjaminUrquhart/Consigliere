@@ -56,7 +56,7 @@ public class ServerMessageHandler extends MessageHandler {
 	                 case 7: onDefaultFunction(command); break;
 	                 case 8: onDefaultFunction(command); break;
 	                 case 9: onCustomRoleListAdd(command); break;
-	                 case 10: onDefaultFunction(command); break;
+	                 case 10: onCustomRoleRemove(command); break;
 	                 case 11: onGameStartCountdown(command); break;
 	                 case 12: onGameCountdownCanceled(command); break;
 	                 case 13: onDefaultFunction(command); break;
@@ -234,7 +234,6 @@ public class ServerMessageHandler extends MessageHandler {
 	                 case 184: onVampireDied(command); break;
 	                 case 185: onVampireHunterPromoted(command); break;
 	                 case 186: onVampireVisitedMessage(command); break;
-	                 //case 186: onDefaultFunction(command); break;
 	                 case 187: onDefaultFunction(command); break;
 	                 case 188: onDefaultFunction(command); break;
 	                 case 189: onDefaultFunction(command); break;
@@ -285,9 +284,21 @@ public class ServerMessageHandler extends MessageHandler {
 	    }
 	
 	
+	private void onCustomRoleRemove(byte[] command) {
+		List<Role> roles = game.getRoleList();
+		if(roles == null || roles.size() < command[1]-1) {
+			System.out.printf("Removed role at index %d\n", command[1]-1);
+		}
+		else {
+			Role removed = roles.remove(command[1]-1);
+			System.out.printf("Removed role: %s%s%s\n", ANSI.toTrueColor(removed.getColor()), removed.getName(), ANSI.GRAY);
+		}
+	}
 	private void onAnonymousVotingUpdate(byte[] command) {
-		onUnhandledCommand(command);
-		System.out.println("Anonymous voting thing");
+		//onUnhandledCommand(command);
+		String key = "GUI_LOBBY_FEEDBACK_ALTERNATE_RULE_0_" + (command[2]-1);
+		StringTableMessage msg = Game.STRING_TABLE.get(key);
+		System.out.printf("%s%s%s\n", ANSI.YELLOW, msg.getText(), ANSI.GRAY);
 	}
 	private void onPlayersDoused(byte[] command) {
 		onUnhandledCommand(command);
@@ -387,6 +398,11 @@ public class ServerMessageHandler extends MessageHandler {
 				role.getName(),
 				ANSI.GRAY
 		);
+		List<Role> roles = game.getRoleList();
+		if(roles == null) {
+			game.setRoleList(roles = new ArrayList<>());
+		}
+		roles.add(role);
 	}
 
 	
@@ -2224,15 +2240,19 @@ public class ServerMessageHandler extends MessageHandler {
 		Player player;
 		
 		String name, role = " (???)", positionFormatted = "";
+		String color = null;
 		if(position == 75) {
+			color = ANSI.VAMPIRE.toString();
 			name = ANSI.VAMPIRE+"Vampire";
 			role = "";
 		}
 		else if(position == 45) {
+			color = ANSI.CYAN.toString();
 			name = ANSI.CYAN+"Medium";
 			role = "";
 		}
 		else if(position == 30) {
+			color = ANSI.YELLOW.toString();
 			name = ANSI.YELLOW+"Jailor";
 			role = "";
 		}
@@ -2272,7 +2292,9 @@ public class ServerMessageHandler extends MessageHandler {
 				role = " ("+String.join(", ", metadata)+")";
 			}
 		}
-		String color = String.valueOf(isTarget ? ANSI.TARGET : isVIP ? ANSI.VIP : isLover ? ANSI.LOVER : alive ? ANSI.RESET : ANSI.GRAY);
+		if(color == null) {
+			color = String.valueOf(isTarget ? ANSI.TARGET : isVIP ? ANSI.VIP : isLover ? ANSI.LOVER : alive ? ANSI.RESET : ANSI.GRAY);
+		}
 		System.out.printf(
 				"%s%s%s%s%s: %s%s%s\n",
 				alive ? color : ANSI.RED,

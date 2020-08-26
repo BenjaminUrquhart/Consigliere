@@ -7,7 +7,8 @@ import net.benjaminurquhart.tos.game.ANSI;
 
 public abstract class MessageHandler {
 	
-	public static boolean debug = false;
+	// They're running out of message ids, I expect something to change in the future
+	public static boolean debug = false, rawDueToCatastrophicProtocolChange = false;
 	
 	private String origin;
 	
@@ -30,10 +31,12 @@ public abstract class MessageHandler {
 				break;
 			}
 			try {
-				if(debug) {
-					System.out.printf("%s%s: (0x%02x %03d): %s%s\n", ANSI.LIGHT_GRAY, origin, command[0], ((int)command[0])&(int)0xff, convertToString(command), ANSI.GRAY);
+				if(debug || rawDueToCatastrophicProtocolChange) {
+					System.out.printf("%s[DEBUG] %s%s: (0x%02x %03d): %s%s\n", ANSI.GRAY, ANSI.LIGHT_GRAY, origin, command[0], command[0]&0xff, convertToString(command), ANSI.GRAY);
 				}
-				this.processCommand(command);
+				if(!rawDueToCatastrophicProtocolChange) {
+					this.processCommand(command);
+				}
 			}
 			catch(Throwable e) {
 				System.out.printf("%sAn internal error occured:\n", ANSI.RED);

@@ -223,18 +223,28 @@ public class Game {
 			match = String.format(Game.getReplacementFor(faction.getName(), ANSI.valueOf(faction.getName().toUpperCase())), defaultColor);
 			text = pattern.matcher(text).replaceAll(match);
 		}
+		
+		ANSI evil = ctx != null && ctx.mode != null && ctx.getMode().isCovenGamemode() ? ANSI.COVEN : ANSI.MAFIA;
 		// Not using getMode() here because it will trigger the game mode auto-detection when used outside of a game
 		if(ctx != null && ctx.mode != null && ctx.mode.getName().contains("Traitor")) {
-			ANSI traitor = ctx.getMode().isCovenGamemode() ? ANSI.COVEN : ANSI.MAFIA;
 			
 			pattern = Game.getPatternFor("Town Traitor");
-			match = String.format(Game.getReplacementFor("Town Traitor", traitor), defaultColor);
+			match = String.format(Game.getReplacementFor("Town Traitor", evil), defaultColor);
 			text = pattern.matcher(text).replaceAll(match);
 			
 			pattern = Game.getPatternFor("TT");
-			match = String.format(Game.getReplacementFor("TT", traitor), defaultColor);
+			match = String.format(Game.getReplacementFor("TT", evil), defaultColor);
 			text = pattern.matcher(text).replaceAll(match);
 		}
+		
+		pattern = Game.getPatternFor("sus");
+		match = String.format(Game.getReplacementFor("sus", evil), defaultColor);
+		text = pattern.matcher(text).replaceAll(match);
+		
+		pattern = Game.getPatternFor("suspicious");
+		match = String.format(Game.getReplacementFor("suspicious", evil), defaultColor);
+		text = pattern.matcher(text).replaceAll(match);
+		
 		return text;
 	}
 	private static String load(String path) throws IOException {
@@ -318,6 +328,9 @@ public class Game {
 		return winner;
 	}
 	public void setMode(GameMode mode) {
+		if(mode.getName().contains("Custom") && rolelist == null) {
+			rolelist = new ArrayList<>();
+		}
 		this.mode = mode;
 	}
 	public void setPhase(GamePhase phase) {

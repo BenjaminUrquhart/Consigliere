@@ -251,14 +251,14 @@ public class ClientMessageHandler extends MessageHandler {
 				msg = Game.STRING_TABLE.get(msgID);
 			}
 			String type = "target", action = "target";
-			if(self.getRole().equals(Game.ROLE_TABLE.get("Necromancer"))) {
+			if(self.getRole().equals(Game.ROLE_TABLE.get("Necromancer")) || self.getRole().equals(Game.ROLE_TABLE.get("Retributionist"))) {
 				if(first == self) {
 					type = "ghoul";
 					action = "attack";
 				}
 				else {
 					type = "zombie";
-					action = Game.STRING_TABLE.get("GUI_ACTION_VERB"+first.getRole().getID()).getText();
+					action = Game.STRING_TABLE.get("GUI_ZOMBIE_ACTION_VERB"+first.getRole().getID()).getText();
 				}
 			}
 			System.out.printf(
@@ -343,6 +343,8 @@ public class ClientMessageHandler extends MessageHandler {
 		onUnhandledCommand(command);
 		
 	}
+	
+	// Legacy
 	private void onFlashLoginAttempt(byte[] command) {
 		int start = this.indexOf(command, (byte)0x1e)+1;
 		int end = this.indexOf(command, (byte)0x1e, start);
