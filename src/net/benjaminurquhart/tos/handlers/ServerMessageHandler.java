@@ -339,7 +339,7 @@ public class ServerMessageHandler extends MessageHandler {
 		
 		Faction selfFaction = self.getRole().getFaction();
 		
-		if(traitor == self || selfFaction == null || selfFaction.equals(Game.FACTION_TABLE.get("Mafia")) || selfFaction.equals(Game.FACTION_TABLE.get("Coven"))) {
+		if(traitor == self || (selfFaction != null && (selfFaction.equals(Game.FACTION_TABLE.get("Mafia")) || selfFaction.equals(Game.FACTION_TABLE.get("Coven"))))) {
 			System.out.printf(
 					"%s%s%s%s%s\n",
 					ANSI.toTrueColorBackground(Color.LIGHT_GRAY),

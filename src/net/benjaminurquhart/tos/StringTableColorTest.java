@@ -2,7 +2,7 @@ package net.benjaminurquhart.tos;
 
 import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
-import net.benjaminurquhart.tos.game.entities.StringTableMessage;
+import net.benjaminurquhart.tos.game.entities.*;
 
 public class StringTableColorTest {
 
