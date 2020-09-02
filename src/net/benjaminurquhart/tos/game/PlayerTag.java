@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public enum PlayerTag {
 
 	FULLMOON_ATTACK,
+	KILLED_TOWN, // for special Vigilante / Jailor messages
 	INFECTED,
 	DECAYED,
 	TRAITOR,

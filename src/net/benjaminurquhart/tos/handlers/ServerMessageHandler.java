@@ -45,7 +45,7 @@ public class ServerMessageHandler extends MessageHandler {
 	@Override
 	public void processCommand(byte[] command) {
 	    	//this.onUnhandledCommand(command);
-	        switch (((int)command[0])&0xff) { 
+	        switch (command[0]&0xff) { 
 	                 case 0: onDefaultFunction(command); break;
 	                 case 1: onLoginSuccess(command); break;
 	                 case 2: onJoinedGameLobby(command); break;
@@ -276,6 +276,7 @@ public class ServerMessageHandler extends MessageHandler {
 	                 case 226: onLoginFailure(command); break;
 	                 case 227: onSpyNightInfo(command); break;
 	                 case 228: onDefaultFunction(command); break;
+	                 case 233: onVisibleReferralCodes(command); break;
 	                 case 239: onTownTraitor(command); break;
 	                 case 240: onTownTraitorCountdown(command); break;
 	                 case 241: onAnonymousVotingUpdate(command); break;
@@ -284,6 +285,9 @@ public class ServerMessageHandler extends MessageHandler {
 	    }
 	
 	
+	private void onVisibleReferralCodes(byte[] command) {
+		
+	}
 	private void onCustomRoleRemove(byte[] command) {
 		List<Role> roles = game.getRoleList();
 		if(roles == null || roles.size() < command[1]-1) {
@@ -637,8 +641,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onAccountFlags(byte[] command) {
-		//onUnhandledCommand(command);
-		
+		System.out.printf("%sAccount flags: 0x%02x (0b%s)\n", ANSI.GRAY, command[1], Integer.toBinaryString(command[1]));
 	}
 
 	
@@ -1223,7 +1226,7 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onVigilanteKilledTown(byte[] command) {
-		onUnhandledCommand(command);
+		game.getSelfPlayer().addTag(PlayerTag.KILLED_TOWN);
 	}
 
 	
@@ -1908,16 +1911,23 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onLookoutNightAbilityMessage(byte[] command) {
 		//onUnhandledCommand(command);
-		System.out.printf(
-				"%s%s%s visited %s%s%s last night%s\n",
-				ANSI.RESET,
-				game.getPlayer(command[1]),
-				ANSI.GREEN,
-				ANSI.RESET,
-				game.getSelfPlayer().getTarget(),
-				ANSI.GREEN,
-				ANSI.GRAY
-		);
+		Player player = game.getPlayer(command[1]);
+		if(player == Player.getAnonymousPlayer()) {
+			StringTableMessage msg = Game.STRING_TABLE.get("GUI_MULTI_VISITED_YOUR_TARGET");
+			System.out.printf("%s%s%s\n", ANSI.GREEN, msg.getText(), ANSI.GRAY);
+		}
+		else {
+			System.out.printf(
+					"%s%s%s visited %s%s%s last night%s\n",
+					ANSI.RESET,
+					player,
+					ANSI.GREEN,
+					ANSI.RESET,
+					game.getSelfPlayer().getTarget(),
+					ANSI.GREEN,
+					ANSI.GRAY
+			);
+		}
 	}
 
 	
@@ -2088,15 +2098,37 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onStartNight(byte[] command) {
+		Player self = game.getSelfPlayer();
 		game.setPhase(GamePhase.NIGHT);
-		Set<RoleTag> tags = game.getSelfPlayer().getRole().getRoleTags();
+		Set<RoleTag> tags = self.getRole().getRoleTags();
 		if(!(tags.contains(RoleTag.DAY_EXPANDED_ABILITY) || tags.contains(RoleTag.POST_DEATH_DAY_EXPANDED_ABILITY) || tags.contains(RoleTag.POST_DEATH_DAY_ABILITY) || tags.contains(RoleTag.DAY_ABILITY))) {
-			game.getSelfPlayer().setTarget(null);
+			self.setTarget(null);
 		}
 		System.out.println(ANSI.GRAY+"-----------Night-----------");
 		String msg = game.getNightAbilitiesLeftMessage();
 		if(msg != null) {
 			System.out.println(msg);
+			
+			if(self.getTags().contains(PlayerTag.KILLED_TOWN)) {
+				StringTableMessage message = null;
+				if(self.getRole().equals(Game.ROLE_TABLE.get("Vigilante"))) {
+					message = Game.STRING_TABLE.get("GUI_VIGILANTE_KILLED_TOWN");
+					self.getTags().remove(PlayerTag.KILLED_TOWN);
+				}
+				else if(self.getRole().equals(Game.ROLE_TABLE.get("Jailor"))) {
+					message = Game.STRING_TABLE.get("GUI_JAILOR_CANT_KILL_AGAIN");
+				}
+				if(message != null) {
+					System.out.printf(
+							"%s%s%s%s%s\n",
+							ANSI.toTrueColor(message.getColor()),
+							ANSI.BLACK,
+							message.getText(),
+							ANSI.RESET,
+							ANSI.GRAY
+					);
+				}
+			}
 		}
 	}
 
