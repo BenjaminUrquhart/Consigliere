@@ -714,14 +714,26 @@ public class ServerMessageHandler extends MessageHandler {
 	
 	public void onJuggernautKillCount(byte[] command) {
 		StringTableMessage msg = Game.STRING_TABLE.get("GUI_ROLE_53_FEEDBACK"+(command[1]-1));
-		System.out.printf(
-				"%s%s%s%s%s\n",
-				ANSI.BLACK,
-				ANSI.GREEN,
-				msg.getText(),
-				ANSI.RESET,
-				ANSI.GRAY
-		);
+		if(msg == null) {
+			System.out.printf(
+					"%s%sTarget was killed (%d kills)%s%s\n",
+					ANSI.toTrueColorBackground(Color.BLACK),
+					ANSI.GREEN,
+					command[1]-1,
+					ANSI.RESET,
+					ANSI.GRAY
+			);
+		}
+		else {
+			System.out.printf(
+					"%s%s%s%s%s\n",
+					ANSI.toTrueColorBackground(Color.BLACK),
+					ANSI.GREEN,
+					msg.getText(),
+					ANSI.RESET,
+					ANSI.GRAY
+			);
+		}
 	}
 
 	
@@ -1510,6 +1522,11 @@ public class ServerMessageHandler extends MessageHandler {
 			else if(command[4] == 4 && role.equals(Game.ROLE_TABLE.get("Coven Leader"))) {
 				msgID += "_VICTIM";
 			}
+			
+			// New disguiser backwards-compatibility
+			else if(command.length > 4 && command[4] == 4 && role.equals(Game.ROLE_TABLE.get("Disguiser"))) {
+				msgID += "_VICTIM";
+			}
 			StringTableMessage msg = Game.STRING_TABLE.get(msgID);
 			String title = String.format(
 					 "%s (%s%s%s)",
@@ -2041,6 +2058,14 @@ public class ServerMessageHandler extends MessageHandler {
 					   .collect(Collectors.joining(", "));
 			System.out.printf("\n%s%s (%d) was killed%s%s\n", ANSI.RESET, player, command[1], killers.size() > 0 ? " by " : "", killersStr);
 		}
+		
+		// I'm sure there's a message for this but I can't be bothered to find it
+		Player self = game.getSelfPlayer();
+		if(role != null && killers.contains(Game.KILLERS[0]) && !self.getTags().contains(PlayerTag.TRAITOR) && self.getRole().equals(Game.ROLE_TABLE.get("Jailor"))) {
+			if(role.getFaction() != null && role.getFaction().equals(Game.FACTION_TABLE.get("Town")) && !player.getTags().contains(PlayerTag.TRAITOR)) {
+				self.addTag(PlayerTag.KILLED_TOWN);
+			}
+		}
 		StringTableMessage roleMsg;
 		if(role == null) {
 			System.out.printf("We could not determine their role (Unknown role: %d)%s\n", roleID, ANSI.GRAY);
@@ -2060,12 +2085,14 @@ public class ServerMessageHandler extends MessageHandler {
 			}
 		}
 		else {
-			Role disguiser = Game.ROLE_TABLE.get("Disguiser");
 			roleMsg = Game.STRING_TABLE.get("GUI_XROLE_WAS_Y");
 			StringTableMessage disguise = Game.STRING_TABLE.get("GUI_ROLE_ABILITY_VERB_18");
 			String message = roleMsg.getText().replace("%name%", player.getName());
-			if(player.getRole() != null && player.getRole().equals(disguiser) && !role.equals(disguiser)) {
-				message = message.replace("%role%", ANSI.MAFIA+disguiser.getName()+ANSI.RESET);
+			Role knownRole = player.getRole();
+			
+			boolean possibleConvert = knownRole != null && knownRole.getFaction().equals(Game.FACTION_TABLE.get("Town")) && role.equals(Game.ROLE_TABLE.get("Vampire"));
+			if(!possibleConvert && knownRole != null && !role.equals(knownRole)) {
+				message = message.replace("%role%", ANSI.toTrueColor(knownRole.getColor())+knownRole.getName()+ANSI.RESET);
 				message += String.format(
 						" (%s: %s%s%s)",
 						disguise.getText(),
@@ -2121,8 +2148,8 @@ public class ServerMessageHandler extends MessageHandler {
 				if(message != null) {
 					System.out.printf(
 							"%s%s%s%s%s\n",
-							ANSI.toTrueColor(message.getColor()),
-							ANSI.BLACK,
+							ANSI.toTrueColorBackground(message.getColor()),
+							ANSI.WHITE,
 							message.getText(),
 							ANSI.RESET,
 							ANSI.GRAY
@@ -2193,7 +2220,14 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onModeratorMessage(byte[] command) {
-		System.err.println("Moderator Message: " + this.convertToString(command));
+		onUnhandledCommand(command);
+		StringTableMessage msg = Game.STRING_TABLE.get("MOD_"+command[1]);
+		System.out.printf(
+				"%s%s%s\n", 
+				ANSI.YELLOW, 
+				msg.getText().replaceAll("\\{.{0,}\\}", new String(Arrays.copyOfRange(command, 2, command.length-1), Charset.forName("UTF-8"))),
+				ANSI.GRAY
+		);
 	}
 
 	

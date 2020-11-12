@@ -92,7 +92,7 @@ public class TerminalOfSalem {
 						for(PcapAddress address : iface.getAddresses()) {
 							addr = address.getAddress();
 							System.out.println(iface.getName() + " " + addr);
-							if(addr != null && !addr.toString().startsWith("/fe80:") && !addr.toString().startsWith("/172.") && !addr.toString().equals("/0.0.0.0") && !addr.isLinkLocalAddress() && !addr.isMulticastAddress() && !addr.isLoopbackAddress()) {
+							if(addr != null && !addr.toString().endsWith(".1") && !addr.toString().startsWith("/fe80:") && !addr.toString().startsWith("/172.") && !addr.toString().equals("/0.0.0.0") && !addr.isLinkLocalAddress() && !addr.isMulticastAddress() && !addr.isLoopbackAddress()) {
 								captureInterface = iface;
 								break selection;
 							}
@@ -187,9 +187,17 @@ public class TerminalOfSalem {
 			if(!packet.getHeader().getPsh()) {
 				continue;
 			}
-			src = ipPacket.getHeader().getSrcAddr();
-			dst = ipPacket.getHeader().getDstAddr();
-			data = packet.getPayload().getRawData();
+			try {
+				src = ipPacket.getHeader().getSrcAddr();
+				dst = ipPacket.getHeader().getDstAddr();
+				data = packet.getPayload().getRawData();
+			}
+			catch(Exception e) {
+				System.out.printf("%sAn internal occured while receiving a packet:\n", ANSI.RED);
+				e.printStackTrace(System.out);
+				System.out.println(ANSI.GRAY);
+				continue;
+			}
 			if(src.equals(TOS_SERVER) || src.equals(TOS_SERVER_IPV6)) {
 				if(!serverSeq.add(packet.getHeader().getSequenceNumberAsLong())) {
 					System.out.printf("%sIgnoring packet retransmission...\n", ANSI.GRAY);

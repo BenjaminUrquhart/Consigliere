@@ -15,6 +15,7 @@ import net.benjaminurquhart.tos.game.ANSI;
 import net.benjaminurquhart.tos.game.Game;
 import net.benjaminurquhart.tos.game.GamePhase;
 import net.benjaminurquhart.tos.game.entities.Player;
+import net.benjaminurquhart.tos.game.entities.Role;
 import net.benjaminurquhart.tos.game.entities.StringTableMessage;
 
 public class ClientMessageHandler extends MessageHandler {
@@ -90,10 +91,30 @@ public class ClientMessageHandler extends MessageHandler {
 		);
 	}
 	private void onForgedWill(byte[] command) {
+		StringTableMessage roleMsg = Game.STRING_TABLE.get("GUI_FORGED_ROLE");
+		StringTableMessage willTxt = Game.STRING_TABLE.get("GUI_FORGED_WILL");
+		Role role = Game.ROLE_ID_TABLE.get((command[1]&0xff)-1);
+		
+		int willOffset = 1;
+		
+		if(role != null) {
+			willOffset = 2;
+			
+			System.out.printf(
+					"%s%s%s\n",
+					ANSI.GRAY,
+					roleMsg.getText().replace("%target%", game.getSelfPlayer().getTarget().getName())
+								 	 .replace("%role%", ANSI.toTrueColor(role.getColor())+role.getName()+ANSI.GRAY),
+					ANSI.GRAY
+			);
+			
+		}
+		
 		System.out.printf(
-				"%sForged will:\n%s%s\n",
+				"%s%s:\n%s%s\n",
 				ANSI.LIGHT_GRAY,
-				Game.insertColors(new String(Arrays.copyOfRange(command, 1, command.length-1), Charset.forName("UTF-8")), ANSI.LIGHT_GRAY, game),
+				willTxt.getText(),
+				Game.insertColors(new String(Arrays.copyOfRange(command, willOffset, command.length-1), Charset.forName("UTF-8")), ANSI.LIGHT_GRAY, game),
 				ANSI.GRAY
 		);
 	}
