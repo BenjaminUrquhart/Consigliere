@@ -286,6 +286,7 @@ public class ClientMessageHandler extends MessageHandler {
 					"%s%s\n", 
 					ANSI.GRAY, 
 					msg.getText().replace("%target%", second.getName())
+								 .replace("%target2%", String.valueOf(first))
 								 .replace("%monstertype%", type)
 								 .replace("%actiontype%", action)
 			);
