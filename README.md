@@ -34,7 +34,6 @@ I would greatly appriciate game captures for the following roles:
 **Classic:**
 - Jailor (Executed Townie only)
 - Vigilante (Death from guilt only)
-- Vampire Hunter (Vampire chat and/or conversion to Vigilante)
 
 **Coven DLC:**
 - Pirate - there are some strange things happening with duels
