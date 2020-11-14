@@ -2090,8 +2090,8 @@ public class ServerMessageHandler extends MessageHandler {
 			String message = roleMsg.getText().replace("%name%", player.getName());
 			Role knownRole = player.getRole();
 			
-			boolean possibleConvert = knownRole != null && knownRole.getFaction().equals(Game.FACTION_TABLE.get("Town")) && role.equals(Game.ROLE_TABLE.get("Vampire"));
-			if(!possibleConvert && knownRole != null && !role.equals(knownRole)) {
+			boolean possibleConvert = knownRole != null && Game.FACTION_TABLE.get("Town").equals(knownRole.getFaction()) && role.equals(Game.ROLE_TABLE.get("Vampire"));
+			if(!possibleConvert && knownRole != null && !role.equals(knownRole) && !knownRole.equals(Game.ROLE_TABLE.get("Random Town"))) {
 				message = message.replace("%role%", ANSI.toTrueColor(knownRole.getColor())+knownRole.getName()+ANSI.RESET);
 				message += String.format(
 						" (%s: %s%s%s)",
