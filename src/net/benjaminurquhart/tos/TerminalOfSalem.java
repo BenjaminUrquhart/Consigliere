@@ -9,6 +9,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.security.Security;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,12 +34,31 @@ import net.benjaminurquhart.tos.handlers.*;
 
 public class TerminalOfSalem {
 	
-	public static InetAddress TOS_SERVER, TOS_SERVER_IPV6;
+	public static String[] DOMAINS = {
+			"live4.tos.blankmediagames.com",
+			"live.tos.blankmediagames.com"
+	};
+	
+	public static Set<InetAddress> ADDRESSES;
 	
 	static {
 		try {
-			TOS_SERVER_IPV6 = Inet6Address.getByName("2001:4800:7818:104:be76:4eff:fe04:6c7c");
-			TOS_SERVER = Inet4Address.getByName("104.239.145.241");
+			ADDRESSES = new HashSet<>(Arrays.asList(
+				Inet6Address.getByName("2001:4800:7818:104:be76:4eff:fe04:6c7c"),
+				Inet6Address.getByName("2001:4800:7818:104:be76:4eff:fe00:c80c"),
+				Inet4Address.getByName("104.239.145.241")
+			));
+			
+			for(String domain : DOMAINS) {
+				ADDRESSES.add(Inet4Address.getByName(domain));
+				ADDRESSES.add(Inet6Address.getByName(domain));
+			}
+			
+			System.out.println(ANSI.RESET + "TOS Server IP addresses:");
+			for(InetAddress addr : ADDRESSES) {
+				System.out.println("- " + addr.getHostAddress());
+			}
+			System.out.println();
 			
 			Security.setProperty("crypto.policy", "unlimited");
 			System.setProperty("crypto.policy", "unlimited");
@@ -198,7 +218,7 @@ public class TerminalOfSalem {
 				System.out.println(ANSI.GRAY);
 				continue;
 			}
-			if(src.equals(TOS_SERVER) || src.equals(TOS_SERVER_IPV6)) {
+			if(isTOSAddress(src)) {
 				if(!serverSeq.add(packet.getHeader().getSequenceNumberAsLong())) {
 					System.out.printf("%sIgnoring packet retransmission...\n", ANSI.GRAY);
 					continue;
@@ -212,7 +232,7 @@ public class TerminalOfSalem {
 					System.out.printf("Message: %s%s\n\n", server.convertToString(data, false), ANSI.GRAY);
 				}
 			}
-			else if(dst.equals(TOS_SERVER) || dst.equals(TOS_SERVER_IPV6)) {
+			else if(isTOSAddress(dst)) {
 				if(!clientSeq.add(packet.getHeader().getSequenceNumberAsLong())) {
 					System.out.printf("%sIgnoring packet retransmission...\n", ANSI.GRAY);
 					continue;
@@ -238,5 +258,13 @@ public class TerminalOfSalem {
 			((Summarizer)server).summarize();
 		}
 	}
-
+	
+	private static boolean isTOSAddress(InetAddress addr) {
+		for(InetAddress a : ADDRESSES) {
+			if(a.equals(addr)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
