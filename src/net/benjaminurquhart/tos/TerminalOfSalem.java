@@ -44,14 +44,14 @@ public class TerminalOfSalem {
 	static {
 		try {
 			ADDRESSES = new HashSet<>(Arrays.asList(
+				// Older IP addresses. No longer in use but still here so old captures work. 
 				Inet6Address.getByName("2001:4800:7818:104:be76:4eff:fe04:6c7c"),
-				Inet6Address.getByName("2001:4800:7818:104:be76:4eff:fe00:c80c"),
 				Inet4Address.getByName("104.239.145.241")
 			));
 			
 			for(String domain : DOMAINS) {
-				ADDRESSES.add(Inet4Address.getByName(domain));
-				ADDRESSES.add(Inet6Address.getByName(domain));
+				ADDRESSES.addAll(Arrays.asList(Inet4Address.getAllByName(domain)));
+				ADDRESSES.addAll(Arrays.asList(Inet6Address.getAllByName(domain)));
 			}
 			
 			System.out.println(ANSI.RESET + "TOS Server IP addresses:");
