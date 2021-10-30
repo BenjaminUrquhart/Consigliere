@@ -198,53 +198,41 @@ public class Game {
 		return insertColors(text, ANSI.toTrueColor(defaultColor), ctx);
 	}
 	public static String insertColors(String text, String defaultColor, Game ctx) {
-		Pattern pattern;
-		String match;
+		//Pattern pattern;
+		//String match;
 		for(Role role : ROLES) {
 			for(String abbreviation : ROLE_ABBREVIATIONS.computeIfAbsent(role.getName(), n -> new ArrayList<>())) {
-				pattern = Game.getPatternFor(abbreviation);
-				match = String.format(Game.getReplacementFor(abbreviation, ANSI.toTrueColor(role.getColor())), defaultColor);
-				text = pattern.matcher(text).replaceAll(match);
-				
+				text = format(text, abbreviation, ANSI.toTrueColor(role.getColor()), defaultColor);
 			}
 			if(COMMON_ACTIONS.containsKey(role)) {
 				for(String action : COMMON_ACTIONS.get(role)) {
-					pattern = Game.getPatternFor(action);
-					match = String.format(Game.getReplacementFor(action, ANSI.toTrueColor(role.getColor())), defaultColor);
-					text = pattern.matcher(text).replaceAll(match);
+					text = format(text, action, ANSI.toTrueColor(role.getColor()), defaultColor);
 				}
 			}
-			pattern = Game.getPatternFor(role.getName());
-			match = String.format(Game.getReplacementFor(role.getName(), ANSI.toTrueColor(role.getColor())), defaultColor);
-			text = pattern.matcher(text).replaceAll(match);
+			text = format(text, role.getName(), ANSI.toTrueColor(role.getColor()), defaultColor);
 		}
 		for(Faction faction : FACTIONS) {
-			pattern = Game.getPatternFor(faction.getName());
-			match = String.format(Game.getReplacementFor(faction.getName(), ANSI.valueOf(faction.getName().toUpperCase())), defaultColor);
-			text = pattern.matcher(text).replaceAll(match);
+			text = format(text, faction.getName(), ANSI.valueOf(faction.getName().toUpperCase()), defaultColor);
 		}
 		
 		ANSI evil = ctx != null && ctx.mode != null && ctx.getMode().isCovenGamemode() ? ANSI.COVEN : ANSI.MAFIA;
 		// Not using getMode() here because it will trigger the game mode auto-detection when used outside of a game
 		if(ctx != null && ctx.mode != null && ctx.mode.getName().contains("Traitor")) {
-			
-			pattern = Game.getPatternFor("Town Traitor");
-			match = String.format(Game.getReplacementFor("Town Traitor", evil), defaultColor);
-			text = pattern.matcher(text).replaceAll(match);
-			
-			pattern = Game.getPatternFor("TT");
-			match = String.format(Game.getReplacementFor("TT", evil), defaultColor);
-			text = pattern.matcher(text).replaceAll(match);
+			text = format(text, new String[] { "Town Traitor", "TT" }, evil, defaultColor);
 		}
+		text = format(text, new String[] { "sus", "suspicious" }, evil, defaultColor);
 		
-		pattern = Game.getPatternFor("sus");
-		match = String.format(Game.getReplacementFor("sus", evil), defaultColor);
-		text = pattern.matcher(text).replaceAll(match);
-		
-		pattern = Game.getPatternFor("suspicious");
-		match = String.format(Game.getReplacementFor("suspicious", evil), defaultColor);
-		text = pattern.matcher(text).replaceAll(match);
-		
+		return text;
+	}
+	private static String format(String text, String match, Object replacement, String defaultColor) {
+		Pattern pattern = Game.getPatternFor(match);
+		String target = String.format(Game.getReplacementFor(match, replacement), defaultColor);
+		return pattern.matcher(text).replaceAll(target);
+	}
+	private static String format(String text, String[] matches, Object replacement, String defaultColor) {
+		for(String match : matches) {
+			text = format(text, match, replacement, defaultColor);
+		}
 		return text;
 	}
 	private static String load(String path) throws IOException {
