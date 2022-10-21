@@ -22,6 +22,7 @@ public class StringTableMessage {
 		case "ability_feedback": color = Color.BLACK; break;
 		case "ability_status": color = Color.LIGHT_GRAY; break;
 		case "positive": color = Color.GREEN; break;
+		case "system": color = Color.YELLOW; break;
 		case "vital": color = Color.BLACK; break;
 		case "alert": color = Color.RED; break;
 		case "spy": color = Color.BLACK; break;

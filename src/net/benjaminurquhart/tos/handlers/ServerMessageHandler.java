@@ -602,14 +602,14 @@ public class ServerMessageHandler extends MessageHandler {
 		int seasonHigh = stats[14];
 		int elo = stats[15];
 		
-		System.out.println("-----------------------------------------------");
+		System.out.println(ANSI.RESET + "-----------------------------------------------");
 		System.out.println((coven ? "Coven" : "Classic") + " Ranked Statistics:");
 		System.out.printf("Practice Games: %d/%d\n", practiceGamesPlayed, practiceGamesRequired);
 		if(practiceGamesRequired <= practiceGamesPlayed) {
 			System.out.printf("Current Elo: %d\nSeason High: %d\n", elo, seasonHigh);
 			System.out.printf("Wins: %d | Losses: %d | Draws: %d\n", rankedGamesWon, rankedGamesLost, rankedGamesDrawn);
 		}
-		System.out.println("-----------------------------------------------");
+		System.out.println("-----------------------------------------------" + ANSI.GRAY);
 	}
 
 	
@@ -659,7 +659,32 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onAccountFlags(byte[] command) {
-		System.out.printf("%sAccount flags: 0x%02x (0b%s)\n", ANSI.GRAY, command[1], Integer.toBinaryString(command[1]));
+		int bitflags = (command[1] - 1) & 0xff;
+		System.out.printf("%sAccount flags: 0x%02x (0b%s)\n", ANSI.GRAY, bitflags, Integer.toBinaryString(bitflags));
+		
+		String[] flagLabels = {
+				"Owns Steam Version",
+				"Owns Coven Expansion",
+				"Owns Web Version",
+				"Owns Mobile Version",
+				"Restricted",
+				"Trial Player"
+		};
+		
+		boolean flag;
+		for(int i = 0; i < 8; i++) {
+			flag = ((bitflags >> i) & 1) == 1;
+			//System.out.println(Integer.toBinaryString((bitflags >> i)));
+			if(i < flagLabels.length) {
+				System.out.printf("%s%s: %s%s\n", flag ? ANSI.GREEN : ANSI.RED, flagLabels[i], flag, ANSI.GRAY);
+			}
+			else if((bitflags >> i) > 0) {
+				System.out.printf("%sUNKNOWN_%d: %s%s\n", flag ? ANSI.GREEN : ANSI.RED, i + 1, flag, ANSI.GRAY);
+			}
+			else {
+				break;
+			}
+		}
 	}
 
 	
@@ -1967,6 +1992,10 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onTrialFoundNotGuilty(byte[] command) {
+		if(game.getPhase() != GamePhase.JUDGEMENT) {
+			System.out.printf("%sIgnoring out-of-line game state change (%s -> DEEMED_NOT_GUILTY)%s\n", ANSI.YELLOW, game.getPhase(), ANSI.GRAY);
+			return;
+		}
 		StringTableMessage msg = Game.STRING_TABLE.get("GUI_TOWN_DECIDED_TO_PARDON_THEM");
 		game.setPhase(GamePhase.DEEMED_NOT_GUILTY);
 		System.out.printf(
@@ -1982,6 +2011,10 @@ public class ServerMessageHandler extends MessageHandler {
 
 	
 	public void onTrialFoundGuilty(byte[] command) {
+		if(game.getPhase() != GamePhase.JUDGEMENT) {
+			System.out.printf("%sIgnoring out-of-line game state change (%s -> DEEMED_GUILTY)%s\n", ANSI.YELLOW, game.getPhase(), ANSI.GRAY);
+			return;
+		}
 		StringTableMessage msg = Game.STRING_TABLE.get("GUI_TOWN_DECIDED_TO_LYNCH_THEM");
 		game.setPhase(GamePhase.DEEMED_GUILTY);
 		System.out.printf(
@@ -2059,7 +2092,7 @@ public class ServerMessageHandler extends MessageHandler {
 			int which = Math.min(killers.size(), 3), subID = 2;
 			StringTableMessage fluff = Game.STRING_TABLE.get(killers.size() == 1 && killers.get(0).equals(Game.KILLERS[5]) ? "GUI_DEAD_FLUFF00" : "GUI_DEAD_FLUFF0"+which);
 			System.out.printf("\n%s%s\n", ANSI.RESET, fluff.getText().replace("%name%", player.getName()));
-			String gender = player.getCharacter() == null ? "He/She" : player.getCharacter().isMale() ? "He" : "She";
+			String gender = player.getCharacter() == null ? "They" : player.getCharacter().isMale() ? "He" : "She";
 			for(Killer killer : killers) {
 				fluff = Game.STRING_TABLE.get("GUI_XDIED_REASON"+killer.getID()+"_"+subID);
 				System.out.printf(

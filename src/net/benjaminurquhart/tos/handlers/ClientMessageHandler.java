@@ -204,7 +204,7 @@ public class ClientMessageHandler extends MessageHandler {
 		
 	}
 	private void onUserReported(byte[] command) {
-		//this.onUnhandledCommand(command);
+		this.onUnhandledCommand(command);
 		System.out.printf(
 				"%sA report was filed for %s (%s)\n", 
 				ANSI.GRAY, 
@@ -344,6 +344,10 @@ public class ClientMessageHandler extends MessageHandler {
 			JSONObject json = new JSONObject(new String(Arrays.copyOfRange(command, 1, command.length-1), Charset.forName("UTF-8")));
 			printJSON(json);
 		}
+		
+		// It turns out that the AES key is encrypted using asymmetric cryptography.
+		// So yeah, this isn't happening.
+		
 		/*
 		System.out.println("Attempting to decode payload...");
 		try {

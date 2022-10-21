@@ -9,16 +9,16 @@ repositories {
 }
 
 dependencies {
-	compile 'org.json:json:20190722'
-	compile 'org.pcap4j:pcap4j-core:1.+'
-	compile 'org.pcap4j:pcap4j-packetfactory-static:1.+'
+	implementation 'org.json:json:+'
+	implementation 'org.pcap4j:pcap4j-core:1.+'
+	implementation 'org.pcap4j:pcap4j-packetfactory-static:1.+'
 }
 
 sourceSets {
     main.java.srcDirs = ['src/']
     main.resources.srcDirs = ['src/']
 }
-sourceCompatibility = '1.11'
-targetCompatibility = '1.11'
+sourceCompatibility = '1.17'
+targetCompatibility = '1.17'
 
 mainClassName='net.benjaminurquhart.tos.TerminalOfSalem'
