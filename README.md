@@ -1,7 +1,7 @@
-# As of now, web is unsupported because it connects over websockets (as opposed to raw sockets)
+# This project has been discontinued. TOS2 uses a different protocol (with LiteNetLib iirc) and I can't be bothered to reverse it.
 
 # Consigliere
-Record your Town of Salem sessions for post-game analysis.
+Record your Town of Salem (original, not 2) sessions for post-game analysis.
 
 This program requires a TrueColor compatible terminal:
 - On MacOS/OSX, I recomend iTerm
